@@ -5,11 +5,64 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix obda: <https://w3id.org/obda/vocabulary#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
 @base <http://plasma-mds.org/qptdat> .
 
 <http://plasma-mds.org/qptdat> rdf:type owl:Ontology ;
                                 owl:versionIRI <http://plasma-mds.org/qptdat/v1.0> ;
-                                owl:imports <http://purl.org/dc/terms/> .
+                                owl:imports dcterms: .
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://purl.org/dc/terms/Box
+dcterms:Box rdf:type rdfs:Datatype .
+
+
+###  http://purl.org/dc/terms/ISO3166
+dcterms:ISO3166 rdf:type rdfs:Datatype .
+
+
+###  http://purl.org/dc/terms/ISO639-2
+dcterms:ISO639-2 rdf:type rdfs:Datatype .
+
+
+###  http://purl.org/dc/terms/ISO639-3
+dcterms:ISO639-3 rdf:type rdfs:Datatype .
+
+
+###  http://purl.org/dc/terms/Period
+dcterms:Period rdf:type rdfs:Datatype .
+
+
+###  http://purl.org/dc/terms/Point
+dcterms:Point rdf:type rdfs:Datatype .
+
+
+###  http://purl.org/dc/terms/RFC1766
+dcterms:RFC1766 rdf:type rdfs:Datatype .
+
+
+###  http://purl.org/dc/terms/RFC3066
+dcterms:RFC3066 rdf:type rdfs:Datatype .
+
+
+###  http://purl.org/dc/terms/RFC4646
+dcterms:RFC4646 rdf:type rdfs:Datatype .
+
+
+###  http://purl.org/dc/terms/RFC5646
+dcterms:RFC5646 rdf:type rdfs:Datatype .
+
+
+###  http://purl.org/dc/terms/URI
+dcterms:URI rdf:type rdfs:Datatype .
+
+
+###  http://purl.org/dc/terms/W3CDTF
+dcterms:W3CDTF rdf:type rdfs:Datatype .
+
 
 #################################################################
 #    Object Properties
@@ -20,6 +73,12 @@
         rdfs:subPropertyOf owl:topObjectProperty ;
         rdfs:domain :Plasma ;
         rdfs:range :Target .
+
+
+###  http://plasma-mds.org/qptdat#consistsOf
+:consistsOf rdf:type owl:ObjectProperty ;
+            rdfs:domain :Medium ;
+            rdfs:range :Gas .
 
 
 ###  http://plasma-mds.org/qptdat#gatheredBy
@@ -43,11 +102,31 @@
              rdfs:range :Medium .
 
 
+###  http://plasma-mds.org/qptdat#hasApplication
+:hasApplication rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf owl:topObjectProperty ;
+                rdfs:domain :Source ;
+                rdfs:range :Application .
+
+
 ###  http://plasma-mds.org/qptdat#investigatedBy
 :investigatedBy rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf owl:topObjectProperty ;
                 rdfs:domain :Medium ;
-                rdfs:range :Experiment .
+                rdfs:range :PlasmaExperiment .
+
+
+###  http://plasma-mds.org/qptdat#investigatedWith
+:investigatedWith rdf:type owl:ObjectProperty ;
+                  rdfs:domain :PlasmaExperiment ;
+                  rdfs:range :Diagnostics .
+
+
+###  http://plasma-mds.org/qptdat#specifiedBy
+:specifiedBy rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             rdfs:domain :Source ;
+             rdfs:range :Specification .
 
 
 #################################################################
@@ -68,6 +147,18 @@
           rdfs:range xsd:string .
 
 
+###  http://plasma-mds.org/qptdat#frequency
+:frequency rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf :specifiedByValue ;
+           rdfs:domain :Source .
+
+
+###  http://plasma-mds.org/qptdat#pressure
+:pressure rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf :specifiedByValue ;
+          rdfs:domain :Source .
+
+
 ###  http://plasma-mds.org/qptdat#purity
 :purity rdf:type owl:DatatypeProperty ;
         rdfs:subPropertyOf owl:topDataProperty ;
@@ -75,9 +166,27 @@
         rdfs:range xsd:integer .
 
 
+###  http://plasma-mds.org/qptdat#specifiedByValue
+:specifiedByValue rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :Source .
+
+
+###  http://plasma-mds.org/qptdat#temperature
+:temperature rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf :specifiedByValue ;
+             rdfs:domain :Source .
+
+
 #################################################################
 #    Classes
 #################################################################
+
+###  http://plasma-mds.org/qptdat#APPJ
+:APPJ rdf:type owl:Class ;
+      rdfs:subClassOf :PlasmaJet ;
+      rdfs:comment "Plasma jet operating at atmospheric pressure"@en ;
+      rdfs:label "Atmospheric pressure plasma jet"@en .
+
 
 ###  http://plasma-mds.org/qptdat#Application
 :Application rdf:type owl:Class .
@@ -88,19 +197,46 @@
      rdfs:subClassOf :Plasma .
 
 
+###  http://plasma-mds.org/qptdat#CCP
+:CCP rdf:type owl:Class ;
+     rdfs:subClassOf :Source ;
+     rdfs:comment "Capacitively coupled plasma system"@en ;
+     rdfs:label "Capacitively coupled plasma system"@en .
+
+
 ###  http://plasma-mds.org/qptdat#CarrierGas
 :CarrierGas rdf:type owl:Class ;
             rdfs:subClassOf :Gas .
 
 
-###  http://plasma-mds.org/qptdat#CollisionSimulation
-:CollisionSimulation rdf:type owl:Class ;
-                     rdfs:subClassOf :Diagnostics .
+###  http://plasma-mds.org/qptdat#ComputerSimulation
+:ComputerSimulation rdf:type owl:Class ;
+                    rdfs:subClassOf :PlasmaExperiment .
 
 
-###  http://plasma-mds.org/qptdat#CuttingGas
-:CuttingGas rdf:type owl:Class ;
-            rdfs:subClassOf :Gas .
+###  http://plasma-mds.org/qptdat#CurrentProbe
+:CurrentProbe rdf:type owl:Class ;
+              rdfs:subClassOf :ElectricalMeasurements .
+
+
+###  http://plasma-mds.org/qptdat#DBD
+:DBD rdf:type owl:Class ;
+     rdfs:subClassOf :Source ;
+     rdfs:comment "Discharge involving at least one insulating dielectric barrier between the electrodes"@en ;
+     rdfs:label "Dielectric Barrier Discharge"@en .
+
+
+###  http://plasma-mds.org/qptdat#DCPlasmaJet
+:DCPlasmaJet rdf:type owl:Class ;
+             rdfs:subClassOf :PlasmaJet ;
+             rdfs:comment "DC powered plasma jet"@en ;
+             rdfs:label "DC Plasma Jet"@en .
+
+
+###  http://plasma-mds.org/qptdat#DataRecorderOszillioscope
+:DataRecorderOszillioscope rdf:type owl:Class ;
+                           owl:equivalentClass :TransientRecorder ;
+                           rdfs:subClassOf :ElectricalMeasurements .
 
 
 ###  http://plasma-mds.org/qptdat#Diagnostics
@@ -112,8 +248,9 @@
                         rdfs:subClassOf :Diagnostics .
 
 
-###  http://plasma-mds.org/qptdat#Experiment
-:Experiment rdf:type owl:Class .
+###  http://plasma-mds.org/qptdat#FramingCamera
+:FramingCamera rdf:type owl:Class ;
+               rdfs:subClassOf :HighSpeedImaging .
 
 
 ###  http://plasma-mds.org/qptdat#Gas
@@ -122,12 +259,43 @@
 
 ###  http://plasma-mds.org/qptdat#HFPlasmaJet
 :HFPlasmaJet rdf:type owl:Class ;
-             rdfs:subClassOf :PlasmaJet .
+             rdfs:subClassOf :PlasmaJet ;
+             rdfs:comment "Plasma jet operating at high frequency"@en ;
+             rdfs:label "High frequency plasma jet"@en .
+
+
+###  http://plasma-mds.org/qptdat#HighResolutionSpectrometer
+:HighResolutionSpectrometer rdf:type owl:Class ;
+                            rdfs:subClassOf :Spectrometer .
 
 
 ###  http://plasma-mds.org/qptdat#HighSpeedImaging
 :HighSpeedImaging rdf:type owl:Class ;
                   rdfs:subClassOf :Diagnostics .
+
+
+###  http://plasma-mds.org/qptdat#HighSpeedVideoCamera
+:HighSpeedVideoCamera rdf:type owl:Class ;
+                      rdfs:subClassOf :HighSpeedImaging .
+
+
+###  http://plasma-mds.org/qptdat#KHzPlasmaJet
+:KHzPlasmaJet rdf:type owl:Class ;
+              rdfs:subClassOf :PlasmaJet ;
+              rdfs:comment "Plasma jet operating at kiloherz frequency"@en ;
+              rdfs:label "Kiloherz plasma jet"@en .
+
+
+###  http://plasma-mds.org/qptdat#LFPlasmaJet
+:LFPlasmaJet rdf:type owl:Class ;
+             rdfs:subClassOf :PlasmaJet ;
+             rdfs:comment "Plasma jet operating at low frequency"@en ;
+             rdfs:label "Low frequency plasma jet"@en .
+
+
+###  http://plasma-mds.org/qptdat#LabExperiment
+:LabExperiment rdf:type owl:Class ;
+               rdfs:subClassOf :PlasmaExperiment .
 
 
 ###  http://plasma-mds.org/qptdat#Medium
@@ -139,17 +307,53 @@
            rdfs:subClassOf :Plasma .
 
 
+###  http://plasma-mds.org/qptdat#OverviewSpectrometer
+:OverviewSpectrometer rdf:type owl:Class ;
+                      rdfs:subClassOf :Spectrometer .
+
+
+###  http://plasma-mds.org/qptdat#Person
+:Person rdf:type owl:Class .
+
+
 ###  http://plasma-mds.org/qptdat#Plasma
 :Plasma rdf:type owl:Class .
 
 
+###  http://plasma-mds.org/qptdat#PlasmaExperiment
+:PlasmaExperiment rdf:type owl:Class .
+
+
 ###  http://plasma-mds.org/qptdat#PlasmaJet
 :PlasmaJet rdf:type owl:Class ;
+           owl:equivalentClass :PlasmaPen ;
+           rdfs:subClassOf :Source ;
+           rdfs:comment "Capillary plasma source, sometimes in form of a handheld device"@en ;
+           rdfs:label "Plasma jet"@en .
+
+
+###  http://plasma-mds.org/qptdat#PlasmaPen
+:PlasmaPen rdf:type owl:Class ;
            rdfs:subClassOf :Source .
+
+
+###  http://plasma-mds.org/qptdat#PlasmaTorch
+:PlasmaTorch rdf:type owl:Class ;
+             rdfs:subClassOf :Source .
+
+
+###  http://plasma-mds.org/qptdat#Pyrometer
+:Pyrometer rdf:type owl:Class ;
+           rdfs:subClassOf :Thermography .
 
 
 ###  http://plasma-mds.org/qptdat#Resource
 :Resource rdf:type owl:Class .
+
+
+###  http://plasma-mds.org/qptdat#ScanningDriftTubeApparatus
+:ScanningDriftTubeApparatus rdf:type owl:Class ;
+                            rdfs:subClassOf :Source .
 
 
 ###  http://plasma-mds.org/qptdat#ShieldingGas
@@ -165,8 +369,8 @@
 :Specification rdf:type owl:Class .
 
 
-###  http://plasma-mds.org/qptdat#Spectroscopy
-:Spectroscopy rdf:type owl:Class ;
+###  http://plasma-mds.org/qptdat#Spectrometer
+:Spectrometer rdf:type owl:Class ;
               rdfs:subClassOf :Diagnostics .
 
 
@@ -174,14 +378,122 @@
 :Target rdf:type owl:Class .
 
 
+###  http://plasma-mds.org/qptdat#TheoreticalModel
+:TheoreticalModel rdf:type owl:Class ;
+                  rdfs:subClassOf :PlasmaExperiment .
+
+
+###  http://plasma-mds.org/qptdat#ThermalCamera
+:ThermalCamera rdf:type owl:Class ;
+               rdfs:subClassOf :Thermography .
+
+
 ###  http://plasma-mds.org/qptdat#Thermography
 :Thermography rdf:type owl:Class ;
               rdfs:subClassOf :Diagnostics .
 
 
+###  http://plasma-mds.org/qptdat#TransientRecorder
+:TransientRecorder rdf:type owl:Class ;
+                   rdfs:subClassOf :ElectricalMeasurements .
+
+
+###  http://plasma-mds.org/qptdat#VoltageDifferentialProbe
+:VoltageDifferentialProbe rdf:type owl:Class ;
+                          rdfs:subClassOf :ElectricalMeasurements .
+
+
 ###  http://plasma-mds.org/qptdat#Waveform
 :Waveform rdf:type owl:Class ;
           rdfs:subClassOf :Specification .
+
+
+###  http://purl.org/dc/terms/Agent
+dcterms:Agent rdf:type owl:Class .
+
+
+###  http://purl.org/dc/terms/AgentClass
+dcterms:AgentClass rdf:type owl:Class .
+
+
+###  http://purl.org/dc/terms/BibliographicResource
+dcterms:BibliographicResource rdf:type owl:Class .
+
+
+###  http://purl.org/dc/terms/FileFormat
+dcterms:FileFormat rdf:type owl:Class .
+
+
+###  http://purl.org/dc/terms/Frequency
+dcterms:Frequency rdf:type owl:Class .
+
+
+###  http://purl.org/dc/terms/Jurisdiction
+dcterms:Jurisdiction rdf:type owl:Class .
+
+
+###  http://purl.org/dc/terms/LicenseDocument
+dcterms:LicenseDocument rdf:type owl:Class .
+
+
+###  http://purl.org/dc/terms/LinguisticSystem
+dcterms:LinguisticSystem rdf:type owl:Class .
+
+
+###  http://purl.org/dc/terms/Location
+dcterms:Location rdf:type owl:Class .
+
+
+###  http://purl.org/dc/terms/LocationPeriodOrJurisdiction
+dcterms:LocationPeriodOrJurisdiction rdf:type owl:Class .
+
+
+###  http://purl.org/dc/terms/MediaType
+dcterms:MediaType rdf:type owl:Class .
+
+
+###  http://purl.org/dc/terms/MediaTypeOrExtent
+dcterms:MediaTypeOrExtent rdf:type owl:Class .
+
+
+###  http://purl.org/dc/terms/MethodOfAccrual
+dcterms:MethodOfAccrual rdf:type owl:Class .
+
+
+###  http://purl.org/dc/terms/MethodOfInstruction
+dcterms:MethodOfInstruction rdf:type owl:Class .
+
+
+###  http://purl.org/dc/terms/PeriodOfTime
+dcterms:PeriodOfTime rdf:type owl:Class .
+
+
+###  http://purl.org/dc/terms/PhysicalMedium
+dcterms:PhysicalMedium rdf:type owl:Class .
+
+
+###  http://purl.org/dc/terms/PhysicalResource
+dcterms:PhysicalResource rdf:type owl:Class .
+
+
+###  http://purl.org/dc/terms/Policy
+dcterms:Policy rdf:type owl:Class .
+
+
+###  http://purl.org/dc/terms/ProvenanceStatement
+dcterms:ProvenanceStatement rdf:type owl:Class .
+
+
+###  http://purl.org/dc/terms/RightsStatement
+dcterms:RightsStatement rdf:type owl:Class .
+
+
+###  http://purl.org/dc/terms/SizeOrDuration
+dcterms:SizeOrDuration rdf:type owl:Class .
+
+
+###  http://purl.org/dc/terms/Standard
+dcterms:Standard rdf:type owl:Class .
 
 
 ###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

@@ -9,8 +9,19 @@
 @base <http://plasma-mds.org/qptdat> .
 
 <http://plasma-mds.org/qptdat> rdf:type owl:Ontology ;
-                                owl:versionIRI <http://plasma-mds.org/qptdat/v1.0> ;
-                                owl:imports dcterms: .
+                                owl:versionIRI <http://plasma-mds.org/qptdat/v1.0> .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/dcam/domainIncludes
+<http://purl.org/dc/dcam/domainIncludes> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/dcam/rangeIncludes
+<http://purl.org/dc/dcam/rangeIncludes> rdf:type owl:AnnotationProperty .
+
 
 #################################################################
 #    Datatypes
@@ -64,6 +75,10 @@ dcterms:URI rdf:type rdfs:Datatype .
 dcterms:W3CDTF rdf:type rdfs:Datatype .
 
 
+###  http://www.w3.org/2001/XMLSchema#date
+xsd:date rdf:type rdfs:Datatype .
+
+
 #################################################################
 #    Object Properties
 #################################################################
@@ -73,6 +88,13 @@ dcterms:W3CDTF rdf:type rdfs:Datatype .
         rdfs:subPropertyOf owl:topObjectProperty ;
         rdfs:domain :Plasma ;
         rdfs:range :Target .
+
+
+###  http://plasma-mds.org/qptdat#application
+:application rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             rdfs:domain :Source ;
+             rdfs:range :Application .
 
 
 ###  http://plasma-mds.org/qptdat#consistsOf
@@ -102,11 +124,11 @@ dcterms:W3CDTF rdf:type rdfs:Datatype .
              rdfs:range :Medium .
 
 
-###  http://plasma-mds.org/qptdat#hasApplication
-:hasApplication rdf:type owl:ObjectProperty ;
-                rdfs:subPropertyOf owl:topObjectProperty ;
-                rdfs:domain :Source ;
-                rdfs:range :Application .
+###  http://plasma-mds.org/qptdat#geometry
+:geometry rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf owl:topObjectProperty ;
+          rdfs:domain :Source ;
+          rdfs:range :SourceGeometry .
 
 
 ###  http://plasma-mds.org/qptdat#investigatedBy
@@ -122,6 +144,28 @@ dcterms:W3CDTF rdf:type rdfs:Datatype .
                   rdfs:range :Diagnostics .
 
 
+###  http://plasma-mds.org/qptdat#isMediumOf
+:isMediumOf rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf :partOf .
+
+
+###  http://plasma-mds.org/qptdat#isSourceOf
+:isSourceOf rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf :partOf .
+
+
+###  http://plasma-mds.org/qptdat#isTargetOf
+:isTargetOf rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf :partOf ;
+            rdfs:domain :Target ;
+            rdfs:range :PlasmaExperiment .
+
+
+###  http://plasma-mds.org/qptdat#partOf
+:partOf rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf owl:topObjectProperty .
+
+
 ###  http://plasma-mds.org/qptdat#specifiedBy
 :specifiedBy rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf owl:topObjectProperty ;
@@ -133,11 +177,32 @@ dcterms:W3CDTF rdf:type rdfs:Datatype .
 #    Data properties
 #################################################################
 
+###  http://plasma-mds.org/qptdat#amplitudeVoltage
+:amplitudeVoltage rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf owl:topDataProperty ;
+                  rdfs:domain :AC ;
+                  rdfs:range xsd:float .
+
+
+###  http://plasma-mds.org/qptdat#appliedVoltage
+:appliedVoltage rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf owl:topDataProperty ;
+                rdfs:domain :DC ;
+                rdfs:range xsd:float .
+
+
 ###  http://plasma-mds.org/qptdat#dataType
 :dataType rdf:type owl:DatatypeProperty ;
           rdfs:subPropertyOf owl:topDataProperty ;
           rdfs:domain :Resource ;
           rdfs:range xsd:string .
+
+
+###  http://plasma-mds.org/qptdat#dutyCycle
+:dutyCycle rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf owl:topDataProperty ;
+           rdfs:domain :AC ;
+           rdfs:range xsd:float .
 
 
 ###  http://plasma-mds.org/qptdat#fileType
@@ -147,16 +212,53 @@ dcterms:W3CDTF rdf:type rdfs:Datatype .
           rdfs:range xsd:string .
 
 
-###  http://plasma-mds.org/qptdat#frequency
-:frequency rdf:type owl:DatatypeProperty ;
-           rdfs:subPropertyOf :specifiedByValue ;
-           rdfs:domain :Source .
+###  http://plasma-mds.org/qptdat#frequencyMax
+:frequencyMax rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf owl:topDataProperty ;
+              rdfs:domain :AC ;
+              rdfs:range xsd:float .
 
 
-###  http://plasma-mds.org/qptdat#pressure
-:pressure rdf:type owl:DatatypeProperty ;
-          rdfs:subPropertyOf :specifiedByValue ;
-          rdfs:domain :Source .
+###  http://plasma-mds.org/qptdat#frequencyMin
+:frequencyMin rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf owl:topDataProperty ;
+              rdfs:domain :AC ;
+              rdfs:range xsd:float .
+
+
+###  http://plasma-mds.org/qptdat#frequencyValue
+:frequencyValue rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf owl:topDataProperty ;
+                rdfs:domain :AC ;
+                rdfs:range xsd:float .
+
+
+###  http://plasma-mds.org/qptdat#peakToPeakVoltage
+:peakToPeakVoltage rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf owl:topDataProperty ;
+                   rdfs:domain :AC ;
+                   rdfs:range xsd:float .
+
+
+###  http://plasma-mds.org/qptdat#pressureMax
+:pressureMax rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty ;
+             rdfs:domain :Pressure ;
+             rdfs:range xsd:float .
+
+
+###  http://plasma-mds.org/qptdat#pressureMin
+:pressureMin rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty ;
+             rdfs:domain :Pressure ;
+             rdfs:range xsd:float .
+
+
+###  http://plasma-mds.org/qptdat#pressureValue
+:pressureValue rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf owl:topDataProperty ;
+               rdfs:domain :Pressure ;
+               rdfs:range xsd:float .
 
 
 ###  http://plasma-mds.org/qptdat#purity
@@ -166,26 +268,35 @@ dcterms:W3CDTF rdf:type rdfs:Datatype .
         rdfs:range xsd:integer .
 
 
-###  http://plasma-mds.org/qptdat#specifiedByValue
-:specifiedByValue rdf:type owl:DatatypeProperty ;
-                  rdfs:domain :Source .
+###  http://plasma-mds.org/qptdat#temperatureMax
+:temperatureMax rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf owl:topDataProperty ;
+                rdfs:domain :Temperature ;
+                rdfs:range xsd:float .
 
 
-###  http://plasma-mds.org/qptdat#temperature
-:temperature rdf:type owl:DatatypeProperty ;
-             rdfs:subPropertyOf :specifiedByValue ;
-             rdfs:domain :Source .
+###  http://plasma-mds.org/qptdat#temperatureMin
+:temperatureMin rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf owl:topDataProperty ;
+                rdfs:domain :Temperature ;
+                rdfs:range xsd:float .
+
+
+###  http://plasma-mds.org/qptdat#temperatureValue
+:temperatureValue rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf owl:topDataProperty ;
+                  rdfs:domain :Temperature ;
+                  rdfs:range xsd:float .
 
 
 #################################################################
 #    Classes
 #################################################################
 
-###  http://plasma-mds.org/qptdat#APPJ
-:APPJ rdf:type owl:Class ;
-      rdfs:subClassOf :PlasmaJet ;
-      rdfs:comment "Plasma jet operating at atmospheric pressure"@en ;
-      rdfs:label "Atmospheric pressure plasma jet"@en .
+###  http://plasma-mds.org/qptdat#AC
+:AC rdf:type owl:Class ;
+    rdfs:subClassOf :Waveform ;
+    owl:disjointWith :DC .
 
 
 ###  http://plasma-mds.org/qptdat#Application
@@ -226,11 +337,9 @@ dcterms:W3CDTF rdf:type rdfs:Datatype .
      rdfs:label "Dielectric Barrier Discharge"@en .
 
 
-###  http://plasma-mds.org/qptdat#DCPlasmaJet
-:DCPlasmaJet rdf:type owl:Class ;
-             rdfs:subClassOf :PlasmaJet ;
-             rdfs:comment "DC powered plasma jet"@en ;
-             rdfs:label "DC Plasma Jet"@en .
+###  http://plasma-mds.org/qptdat#DC
+:DC rdf:type owl:Class ;
+    rdfs:subClassOf :Waveform .
 
 
 ###  http://plasma-mds.org/qptdat#DataRecorderOszillioscope
@@ -248,6 +357,11 @@ dcterms:W3CDTF rdf:type rdfs:Datatype .
                         rdfs:subClassOf :Diagnostics .
 
 
+###  http://plasma-mds.org/qptdat#ElectrodeShape
+:ElectrodeShape rdf:type owl:Class ;
+                rdfs:subClassOf :SourceGeometry .
+
+
 ###  http://plasma-mds.org/qptdat#FramingCamera
 :FramingCamera rdf:type owl:Class ;
                rdfs:subClassOf :HighSpeedImaging .
@@ -257,11 +371,9 @@ dcterms:W3CDTF rdf:type rdfs:Datatype .
 :Gas rdf:type owl:Class .
 
 
-###  http://plasma-mds.org/qptdat#HFPlasmaJet
-:HFPlasmaJet rdf:type owl:Class ;
-             rdfs:subClassOf :PlasmaJet ;
-             rdfs:comment "Plasma jet operating at high frequency"@en ;
-             rdfs:label "High frequency plasma jet"@en .
+###  http://plasma-mds.org/qptdat#Helix
+:Helix rdf:type owl:Class ;
+       rdfs:subClassOf :Source .
 
 
 ###  http://plasma-mds.org/qptdat#HighResolutionSpectrometer
@@ -277,20 +389,6 @@ dcterms:W3CDTF rdf:type rdfs:Datatype .
 ###  http://plasma-mds.org/qptdat#HighSpeedVideoCamera
 :HighSpeedVideoCamera rdf:type owl:Class ;
                       rdfs:subClassOf :HighSpeedImaging .
-
-
-###  http://plasma-mds.org/qptdat#KHzPlasmaJet
-:KHzPlasmaJet rdf:type owl:Class ;
-              rdfs:subClassOf :PlasmaJet ;
-              rdfs:comment "Plasma jet operating at kiloherz frequency"@en ;
-              rdfs:label "Kiloherz plasma jet"@en .
-
-
-###  http://plasma-mds.org/qptdat#LFPlasmaJet
-:LFPlasmaJet rdf:type owl:Class ;
-             rdfs:subClassOf :PlasmaJet ;
-             rdfs:comment "Plasma jet operating at low frequency"@en ;
-             rdfs:label "Low frequency plasma jet"@en .
 
 
 ###  http://plasma-mds.org/qptdat#LabExperiment
@@ -312,8 +410,23 @@ dcterms:W3CDTF rdf:type rdfs:Datatype .
                       rdfs:subClassOf :Spectrometer .
 
 
+###  http://plasma-mds.org/qptdat#ParallelPlate
+:ParallelPlate rdf:type owl:Class ;
+               rdfs:subClassOf :ElectrodeShape .
+
+
 ###  http://plasma-mds.org/qptdat#Person
 :Person rdf:type owl:Class .
+
+
+###  http://plasma-mds.org/qptdat#PinToPin
+:PinToPin rdf:type owl:Class ;
+          rdfs:subClassOf :ElectrodeShape .
+
+
+###  http://plasma-mds.org/qptdat#PinToPlate
+:PinToPlate rdf:type owl:Class ;
+            rdfs:subClassOf :ElectrodeShape .
 
 
 ###  http://plasma-mds.org/qptdat#Plasma
@@ -342,6 +455,21 @@ dcterms:W3CDTF rdf:type rdfs:Datatype .
              rdfs:subClassOf :Source .
 
 
+###  http://plasma-mds.org/qptdat#Pressure
+:Pressure rdf:type owl:Class ;
+          rdfs:subClassOf :Specification .
+
+
+###  http://plasma-mds.org/qptdat#PulsedAC
+:PulsedAC rdf:type owl:Class ;
+          rdfs:subClassOf :AC .
+
+
+###  http://plasma-mds.org/qptdat#PulsedDC
+:PulsedDC rdf:type owl:Class ;
+          rdfs:subClassOf :DC .
+
+
 ###  http://plasma-mds.org/qptdat#Pyrometer
 :Pyrometer rdf:type owl:Class ;
            rdfs:subClassOf :Thermography .
@@ -365,6 +493,10 @@ dcterms:W3CDTF rdf:type rdfs:Datatype .
 :Source rdf:type owl:Class .
 
 
+###  http://plasma-mds.org/qptdat#SourceGeometry
+:SourceGeometry rdf:type owl:Class .
+
+
 ###  http://plasma-mds.org/qptdat#Specification
 :Specification rdf:type owl:Class .
 
@@ -376,6 +508,11 @@ dcterms:W3CDTF rdf:type rdfs:Datatype .
 
 ###  http://plasma-mds.org/qptdat#Target
 :Target rdf:type owl:Class .
+
+
+###  http://plasma-mds.org/qptdat#Temperature
+:Temperature rdf:type owl:Class ;
+             rdfs:subClassOf :Specification .
 
 
 ###  http://plasma-mds.org/qptdat#TheoreticalModel
@@ -408,92 +545,628 @@ dcterms:W3CDTF rdf:type rdfs:Datatype .
           rdfs:subClassOf :Specification .
 
 
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://purl.org/dc/terms/
+dcterms: rdf:type owl:NamedIndividual .
+
+
 ###  http://purl.org/dc/terms/Agent
-dcterms:Agent rdf:type owl:Class .
+dcterms:Agent rdf:type owl:NamedIndividual .
 
 
 ###  http://purl.org/dc/terms/AgentClass
-dcterms:AgentClass rdf:type owl:Class .
+dcterms:AgentClass rdf:type owl:NamedIndividual .
 
 
 ###  http://purl.org/dc/terms/BibliographicResource
-dcterms:BibliographicResource rdf:type owl:Class .
+dcterms:BibliographicResource rdf:type owl:NamedIndividual .
+
+
+###  http://purl.org/dc/terms/Box
+dcterms:Box rdf:type owl:NamedIndividual .
+
+
+###  http://purl.org/dc/terms/DCMIType
+dcterms:DCMIType rdf:type owl:NamedIndividual ;
+                 rdfs:comment "The set of classes specified by the DCMI Type Vocabulary, used to categorize the nature or genre of the resource."@en ;
+                 rdfs:isDefinedBy dcterms: ;
+                 rdfs:label "DCMI Type Vocabulary"@en ;
+                 rdfs:seeAlso <http://purl.org/dc/dcmitype/> .
+
+
+###  http://purl.org/dc/terms/DDC
+dcterms:DDC rdf:type owl:NamedIndividual ;
+            rdfs:comment "The set of conceptual resources specified by the Dewey Decimal Classification."@en ;
+            rdfs:isDefinedBy dcterms: ;
+            rdfs:label "DDC"@en ;
+            rdfs:seeAlso <http://www.oclc.org/dewey/> .
 
 
 ###  http://purl.org/dc/terms/FileFormat
-dcterms:FileFormat rdf:type owl:Class .
+dcterms:FileFormat rdf:type owl:NamedIndividual .
 
 
 ###  http://purl.org/dc/terms/Frequency
-dcterms:Frequency rdf:type owl:Class .
+dcterms:Frequency rdf:type owl:NamedIndividual .
+
+
+###  http://purl.org/dc/terms/IMT
+dcterms:IMT rdf:type owl:NamedIndividual ;
+            rdfs:comment "The set of media types specified by the Internet Assigned Numbers Authority."@en ;
+            rdfs:isDefinedBy dcterms: ;
+            rdfs:label "IMT"@en ;
+            rdfs:seeAlso <http://www.iana.org/assignments/media-types/> .
+
+
+###  http://purl.org/dc/terms/ISO3166
+dcterms:ISO3166 rdf:type owl:NamedIndividual .
+
+
+###  http://purl.org/dc/terms/ISO639-2
+dcterms:ISO639-2 rdf:type owl:NamedIndividual .
+
+
+###  http://purl.org/dc/terms/ISO639-3
+dcterms:ISO639-3 rdf:type owl:NamedIndividual .
 
 
 ###  http://purl.org/dc/terms/Jurisdiction
-dcterms:Jurisdiction rdf:type owl:Class .
+dcterms:Jurisdiction rdf:type owl:NamedIndividual .
+
+
+###  http://purl.org/dc/terms/LCC
+dcterms:LCC rdf:type owl:NamedIndividual ;
+            rdfs:comment "The set of conceptual resources specified by the Library of Congress Classification."@en ;
+            rdfs:isDefinedBy dcterms: ;
+            rdfs:label "LCC"@en ;
+            rdfs:seeAlso <http://lcweb.loc.gov/catdir/cpso/lcco/lcco.html> .
+
+
+###  http://purl.org/dc/terms/LCSH
+dcterms:LCSH rdf:type owl:NamedIndividual ;
+             rdfs:comment "The set of labeled concepts specified by the Library of Congress Subject Headings."@en ;
+             rdfs:isDefinedBy dcterms: ;
+             rdfs:label "LCSH"@en .
 
 
 ###  http://purl.org/dc/terms/LicenseDocument
-dcterms:LicenseDocument rdf:type owl:Class .
+dcterms:LicenseDocument rdf:type owl:NamedIndividual .
 
 
 ###  http://purl.org/dc/terms/LinguisticSystem
-dcterms:LinguisticSystem rdf:type owl:Class .
+dcterms:LinguisticSystem rdf:type owl:NamedIndividual .
 
 
 ###  http://purl.org/dc/terms/Location
-dcterms:Location rdf:type owl:Class .
+dcterms:Location rdf:type owl:NamedIndividual .
 
 
 ###  http://purl.org/dc/terms/LocationPeriodOrJurisdiction
-dcterms:LocationPeriodOrJurisdiction rdf:type owl:Class .
+dcterms:LocationPeriodOrJurisdiction rdf:type owl:NamedIndividual .
+
+
+###  http://purl.org/dc/terms/MESH
+dcterms:MESH rdf:type owl:NamedIndividual ;
+             rdfs:comment "The set of labeled concepts specified by the Medical Subject Headings."@en ;
+             rdfs:isDefinedBy dcterms: ;
+             rdfs:label "MeSH"@en ;
+             rdfs:seeAlso <http://www.nlm.nih.gov/mesh/meshhome.html> .
 
 
 ###  http://purl.org/dc/terms/MediaType
-dcterms:MediaType rdf:type owl:Class .
+dcterms:MediaType rdf:type owl:NamedIndividual .
 
 
 ###  http://purl.org/dc/terms/MediaTypeOrExtent
-dcterms:MediaTypeOrExtent rdf:type owl:Class .
+dcterms:MediaTypeOrExtent rdf:type owl:NamedIndividual .
 
 
 ###  http://purl.org/dc/terms/MethodOfAccrual
-dcterms:MethodOfAccrual rdf:type owl:Class .
+dcterms:MethodOfAccrual rdf:type owl:NamedIndividual .
 
 
 ###  http://purl.org/dc/terms/MethodOfInstruction
-dcterms:MethodOfInstruction rdf:type owl:Class .
+dcterms:MethodOfInstruction rdf:type owl:NamedIndividual .
+
+
+###  http://purl.org/dc/terms/NLM
+dcterms:NLM rdf:type owl:NamedIndividual ;
+            rdfs:comment "The set of conceptual resources specified by the National Library of Medicine Classification."@en ;
+            rdfs:isDefinedBy dcterms: ;
+            rdfs:label "NLM"@en ;
+            rdfs:seeAlso <http://wwwcf.nlm.nih.gov/class/> .
+
+
+###  http://purl.org/dc/terms/Period
+dcterms:Period rdf:type owl:NamedIndividual .
 
 
 ###  http://purl.org/dc/terms/PeriodOfTime
-dcterms:PeriodOfTime rdf:type owl:Class .
+dcterms:PeriodOfTime rdf:type owl:NamedIndividual .
 
 
 ###  http://purl.org/dc/terms/PhysicalMedium
-dcterms:PhysicalMedium rdf:type owl:Class .
+dcterms:PhysicalMedium rdf:type owl:NamedIndividual .
 
 
 ###  http://purl.org/dc/terms/PhysicalResource
-dcterms:PhysicalResource rdf:type owl:Class .
+dcterms:PhysicalResource rdf:type owl:NamedIndividual .
+
+
+###  http://purl.org/dc/terms/Point
+dcterms:Point rdf:type owl:NamedIndividual .
 
 
 ###  http://purl.org/dc/terms/Policy
-dcterms:Policy rdf:type owl:Class .
+dcterms:Policy rdf:type owl:NamedIndividual .
 
 
 ###  http://purl.org/dc/terms/ProvenanceStatement
-dcterms:ProvenanceStatement rdf:type owl:Class .
+dcterms:ProvenanceStatement rdf:type owl:NamedIndividual .
+
+
+###  http://purl.org/dc/terms/RFC1766
+dcterms:RFC1766 rdf:type owl:NamedIndividual .
+
+
+###  http://purl.org/dc/terms/RFC3066
+dcterms:RFC3066 rdf:type owl:NamedIndividual .
+
+
+###  http://purl.org/dc/terms/RFC4646
+dcterms:RFC4646 rdf:type owl:NamedIndividual .
+
+
+###  http://purl.org/dc/terms/RFC5646
+dcterms:RFC5646 rdf:type owl:NamedIndividual .
 
 
 ###  http://purl.org/dc/terms/RightsStatement
-dcterms:RightsStatement rdf:type owl:Class .
+dcterms:RightsStatement rdf:type owl:NamedIndividual .
 
 
 ###  http://purl.org/dc/terms/SizeOrDuration
-dcterms:SizeOrDuration rdf:type owl:Class .
+dcterms:SizeOrDuration rdf:type owl:NamedIndividual .
 
 
 ###  http://purl.org/dc/terms/Standard
-dcterms:Standard rdf:type owl:Class .
+dcterms:Standard rdf:type owl:NamedIndividual .
+
+
+###  http://purl.org/dc/terms/TGN
+dcterms:TGN rdf:type owl:NamedIndividual ;
+            rdfs:comment "The set of places specified by the Getty Thesaurus of Geographic Names."@en ;
+            rdfs:isDefinedBy dcterms: ;
+            rdfs:label "TGN"@en ;
+            rdfs:seeAlso <http://www.getty.edu/research/tools/vocabulary/tgn/index.html> .
+
+
+###  http://purl.org/dc/terms/UDC
+dcterms:UDC rdf:type owl:NamedIndividual ;
+            rdfs:comment "The set of conceptual resources specified by the Universal Decimal Classification."@en ;
+            rdfs:isDefinedBy dcterms: ;
+            rdfs:label "UDC"@en ;
+            rdfs:seeAlso <http://www.udcc.org/> .
+
+
+###  http://purl.org/dc/terms/URI
+dcterms:URI rdf:type owl:NamedIndividual .
+
+
+###  http://purl.org/dc/terms/W3CDTF
+dcterms:W3CDTF rdf:type owl:NamedIndividual .
+
+
+###  http://purl.org/dc/terms/abstract
+dcterms:abstract rdf:type owl:NamedIndividual ;
+                 rdfs:comment "A summary of the resource."@en ;
+                 rdfs:isDefinedBy dcterms: ;
+                 rdfs:label "Abstract"@en .
+
+
+###  http://purl.org/dc/terms/accessRights
+dcterms:accessRights rdf:type owl:NamedIndividual ;
+                     rdfs:comment "Information about who access the resource or an indication of its security status."@en ;
+                     rdfs:isDefinedBy dcterms: ;
+                     rdfs:label "Access Rights"@en .
+
+
+###  http://purl.org/dc/terms/accrualMethod
+dcterms:accrualMethod rdf:type owl:NamedIndividual .
+
+
+###  http://purl.org/dc/terms/accrualPeriodicity
+dcterms:accrualPeriodicity rdf:type owl:NamedIndividual .
+
+
+###  http://purl.org/dc/terms/accrualPolicy
+dcterms:accrualPolicy rdf:type owl:NamedIndividual .
+
+
+###  http://purl.org/dc/terms/alternative
+dcterms:alternative rdf:type owl:NamedIndividual .
+
+
+###  http://purl.org/dc/terms/audience
+dcterms:audience rdf:type owl:NamedIndividual ;
+                 rdfs:comment "A class of agents for whom the resource is intended or useful."@en ;
+                 rdfs:isDefinedBy dcterms: ;
+                 rdfs:label "Audience"@en .
+
+
+###  http://purl.org/dc/terms/available
+dcterms:available rdf:type owl:NamedIndividual .
+
+
+###  http://purl.org/dc/terms/bibliographicCitation
+dcterms:bibliographicCitation rdf:type owl:NamedIndividual .
+
+
+###  http://purl.org/dc/terms/conformsTo
+dcterms:conformsTo rdf:type owl:NamedIndividual ;
+                   rdfs:comment "An established standard to which the described resource conforms."@en ;
+                   rdfs:isDefinedBy dcterms: ;
+                   rdfs:label "Conforms To"@en .
+
+
+###  http://purl.org/dc/terms/contributor
+dcterms:contributor rdf:type owl:NamedIndividual ;
+                    rdfs:comment "An entity responsible for making contributions to the resource."@en ;
+                    rdfs:isDefinedBy dcterms: ;
+                    rdfs:label "Contributor"@en .
+
+
+###  http://purl.org/dc/terms/coverage
+dcterms:coverage rdf:type owl:NamedIndividual ;
+                 <http://purl.org/dc/dcam/rangeIncludes> dcterms:Period ;
+                 rdfs:comment "The spatial or temporal topic of the resource, spatial applicability of the resource, or jurisdiction under which the resource is relevant."@en ;
+                 rdfs:isDefinedBy dcterms: ;
+                 rdfs:label "Coverage"@en .
+
+
+###  http://purl.org/dc/terms/created
+dcterms:created rdf:type owl:NamedIndividual .
+
+
+###  http://purl.org/dc/terms/creator
+dcterms:creator rdf:type owl:NamedIndividual ;
+                rdfs:comment "An entity responsible for making the resource."@en ;
+                rdfs:isDefinedBy dcterms: ;
+                rdfs:label "Creator"@en .
+
+
+###  http://purl.org/dc/terms/date
+dcterms:date rdf:type owl:NamedIndividual .
+
+
+###  http://purl.org/dc/terms/dateAccepted
+dcterms:dateAccepted rdf:type owl:NamedIndividual .
+
+
+###  http://purl.org/dc/terms/dateCopyrighted
+dcterms:dateCopyrighted rdf:type owl:NamedIndividual .
+
+
+###  http://purl.org/dc/terms/dateSubmitted
+dcterms:dateSubmitted rdf:type owl:NamedIndividual .
+
+
+###  http://purl.org/dc/terms/description
+dcterms:description rdf:type owl:NamedIndividual .
+
+
+###  http://purl.org/dc/terms/educationLevel
+dcterms:educationLevel rdf:type owl:NamedIndividual ;
+                       rdfs:comment "A class of agents, defined in terms of progression through an educational or training context, for which the described resource is intended."@en ;
+                       rdfs:isDefinedBy dcterms: ;
+                       rdfs:label "Audience Education Level"@en .
+
+
+###  http://purl.org/dc/terms/extent
+dcterms:extent rdf:type owl:NamedIndividual ;
+               rdfs:comment "The size or duration of the resource."@en ;
+               rdfs:isDefinedBy dcterms: ;
+               rdfs:label "Extent"@en .
+
+
+###  http://purl.org/dc/terms/format
+dcterms:format rdf:type owl:NamedIndividual ;
+               <http://purl.org/dc/dcam/rangeIncludes> dcterms:Extent ;
+               rdfs:comment "The file format, physical medium, or dimensions of the resource."@en ;
+               rdfs:isDefinedBy dcterms: ;
+               rdfs:label "Format"@en .
+
+
+###  http://purl.org/dc/terms/hasFormat
+dcterms:hasFormat rdf:type owl:NamedIndividual ;
+                  rdfs:comment "A related resource that is substantially the same as the pre-existing described resource, but in another format."@en ;
+                  rdfs:isDefinedBy dcterms: ;
+                  rdfs:label "Has Format"@en .
+
+
+###  http://purl.org/dc/terms/hasPart
+dcterms:hasPart rdf:type owl:NamedIndividual ;
+                rdfs:comment "A related resource that is included either physically or logically in the described resource."@en ;
+                rdfs:isDefinedBy dcterms: ;
+                rdfs:label "Has Part"@en .
+
+
+###  http://purl.org/dc/terms/hasVersion
+dcterms:hasVersion rdf:type owl:NamedIndividual ;
+                   rdfs:comment "A related resource that is a version, edition, or adaptation of the described resource."@en ;
+                   rdfs:isDefinedBy dcterms: ;
+                   rdfs:label "Has Version"@en .
+
+
+###  http://purl.org/dc/terms/identifier
+dcterms:identifier rdf:type owl:NamedIndividual .
+
+
+###  http://purl.org/dc/terms/instructionalMethod
+dcterms:instructionalMethod rdf:type owl:NamedIndividual ;
+                            rdfs:comment "A process, used to engender knowledge, attitudes and skills, that the described resource is designed to support."@en ;
+                            rdfs:isDefinedBy dcterms: ;
+                            rdfs:label "Instructional Method"@en .
+
+
+###  http://purl.org/dc/terms/isFormatOf
+dcterms:isFormatOf rdf:type owl:NamedIndividual ;
+                   rdfs:comment "A pre-existing related resource that is substantially the same as the described resource, but in another format."@en ;
+                   rdfs:isDefinedBy dcterms: ;
+                   rdfs:label "Is Format Of"@en .
+
+
+###  http://purl.org/dc/terms/isPartOf
+dcterms:isPartOf rdf:type owl:NamedIndividual ;
+                 rdfs:comment "A related resource in which the described resource is physically or logically included."@en ;
+                 rdfs:isDefinedBy dcterms: ;
+                 rdfs:label "Is Part Of"@en .
+
+
+###  http://purl.org/dc/terms/isReferencedBy
+dcterms:isReferencedBy rdf:type owl:NamedIndividual ;
+                       rdfs:comment "A related resource that references, cites, or otherwise points to the described resource."@en ;
+                       rdfs:isDefinedBy dcterms: ;
+                       rdfs:label "Is Referenced By"@en .
+
+
+###  http://purl.org/dc/terms/isReplacedBy
+dcterms:isReplacedBy rdf:type owl:NamedIndividual ;
+                     rdfs:comment "A related resource that supplants, displaces, or supersedes the described resource."@en ;
+                     rdfs:isDefinedBy dcterms: ;
+                     rdfs:label "Is Replaced By"@en .
+
+
+###  http://purl.org/dc/terms/isRequiredBy
+dcterms:isRequiredBy rdf:type owl:NamedIndividual ;
+                     rdfs:comment "A related resource that requires the described resource to support its function, delivery, or coherence."@en ;
+                     rdfs:isDefinedBy dcterms: ;
+                     rdfs:label "Is Required By"@en .
+
+
+###  http://purl.org/dc/terms/isVersionOf
+dcterms:isVersionOf rdf:type owl:NamedIndividual ;
+                    rdfs:comment "A related resource of which the described resource is a version, edition, or adaptation."@en ;
+                    rdfs:isDefinedBy dcterms: ;
+                    rdfs:label "Is Version Of"@en .
+
+
+###  http://purl.org/dc/terms/issued
+dcterms:issued rdf:type owl:NamedIndividual .
+
+
+###  http://purl.org/dc/terms/language
+dcterms:language rdf:type owl:NamedIndividual ;
+                 rdfs:comment "A language of the resource."@en ;
+                 rdfs:isDefinedBy dcterms: ;
+                 rdfs:label "Language"@en .
+
+
+###  http://purl.org/dc/terms/license
+dcterms:license rdf:type owl:NamedIndividual ;
+                rdfs:comment "A legal document giving official permission to do something with the resource."@en ;
+                rdfs:isDefinedBy dcterms: ;
+                rdfs:label "License"@en .
+
+
+###  http://purl.org/dc/terms/mediator
+dcterms:mediator rdf:type owl:NamedIndividual ;
+                 rdfs:comment "An entity that mediates access to the resource."@en ;
+                 rdfs:isDefinedBy dcterms: ;
+                 rdfs:label "Mediator"@en .
+
+
+###  http://purl.org/dc/terms/medium
+dcterms:medium rdf:type owl:NamedIndividual ;
+               rdfs:comment "The material or physical carrier of the resource."@en ;
+               rdfs:isDefinedBy dcterms: ;
+               rdfs:label "Medium"@en .
+
+
+###  http://purl.org/dc/terms/modified
+dcterms:modified rdf:type owl:NamedIndividual .
+
+
+###  http://purl.org/dc/terms/provenance
+dcterms:provenance rdf:type owl:NamedIndividual ;
+                   rdfs:comment "A statement of any changes in ownership and custody of the resource since its creation that are significant for its authenticity, integrity, and interpretation."@en ;
+                   rdfs:isDefinedBy dcterms: ;
+                   rdfs:label "Provenance"@en .
+
+
+###  http://purl.org/dc/terms/publisher
+dcterms:publisher rdf:type owl:NamedIndividual .
+
+
+###  http://purl.org/dc/terms/references
+dcterms:references rdf:type owl:NamedIndividual ;
+                   rdfs:comment "A related resource that is referenced, cited, or otherwise pointed to by the described resource."@en ;
+                   rdfs:isDefinedBy dcterms: ;
+                   rdfs:label "References"@en .
+
+
+###  http://purl.org/dc/terms/relation
+dcterms:relation rdf:type owl:NamedIndividual ;
+                 rdfs:comment "A related resource."@en ;
+                 rdfs:isDefinedBy dcterms: ;
+                 rdfs:label "Relation"@en .
+
+
+###  http://purl.org/dc/terms/replaces
+dcterms:replaces rdf:type owl:NamedIndividual ;
+                 rdfs:comment "A related resource that is supplanted, displaced, or superseded by the described resource."@en ;
+                 rdfs:isDefinedBy dcterms: ;
+                 rdfs:label "Replaces"@en .
+
+
+###  http://purl.org/dc/terms/requires
+dcterms:requires rdf:type owl:NamedIndividual ;
+                 rdfs:comment "A related resource that is required by the described resource to support its function, delivery, or coherence."@en ;
+                 rdfs:isDefinedBy dcterms: ;
+                 rdfs:label "Requires"@en .
+
+
+###  http://purl.org/dc/terms/rights
+dcterms:rights rdf:type owl:NamedIndividual ;
+               rdfs:comment "Information about rights held in and over the resource."@en ;
+               rdfs:isDefinedBy dcterms: ;
+               rdfs:label "Rights"@en .
+
+
+###  http://purl.org/dc/terms/rightsHolder
+dcterms:rightsHolder rdf:type owl:NamedIndividual ;
+                     rdfs:comment "A person or organization owning or managing rights over the resource."@en ;
+                     rdfs:isDefinedBy dcterms: ;
+                     rdfs:label "Rights Holder"@en .
+
+
+###  http://purl.org/dc/terms/source
+dcterms:source rdf:type owl:NamedIndividual ;
+               rdfs:comment "A related resource from which the described resource is derived."@en ;
+               rdfs:isDefinedBy dcterms: ;
+               rdfs:label "Source"@en .
+
+
+###  http://purl.org/dc/terms/spatial
+dcterms:spatial rdf:type owl:NamedIndividual ;
+                rdfs:comment "Spatial characteristics of the resource."@en ;
+                rdfs:isDefinedBy dcterms: ;
+                rdfs:label "Spatial Coverage"@en .
+
+
+###  http://purl.org/dc/terms/subject
+dcterms:subject rdf:type owl:NamedIndividual ;
+                rdfs:comment "A topic of the resource."@en ;
+                rdfs:isDefinedBy dcterms: ;
+                rdfs:label "Subject"@en .
+
+
+###  http://purl.org/dc/terms/tableOfContents
+dcterms:tableOfContents rdf:type owl:NamedIndividual ;
+                        rdfs:comment "A list of subunits of the resource."@en ;
+                        rdfs:isDefinedBy dcterms: ;
+                        rdfs:label "Table Of Contents"@en .
+
+
+###  http://purl.org/dc/terms/temporal
+dcterms:temporal rdf:type owl:NamedIndividual ;
+                 rdfs:comment "Temporal characteristics of the resource."@en ;
+                 rdfs:isDefinedBy dcterms: ;
+                 rdfs:label "Temporal Coverage"@en .
+
+
+###  http://purl.org/dc/terms/title
+dcterms:title rdf:type owl:NamedIndividual .
+
+
+###  http://purl.org/dc/terms/type
+dcterms:type rdf:type owl:NamedIndividual ;
+             rdfs:comment "The nature or genre of the resource."@en ;
+             rdfs:isDefinedBy dcterms: ;
+             rdfs:label "Type"@en .
+
+
+###  http://purl.org/dc/terms/valid
+dcterms:valid rdf:type owl:NamedIndividual .
+
+
+#################################################################
+#    Annotations
+#################################################################
+
+dcterms:Box rdfs:comment "The set of regions in space defined by their geographic coordinates according to the DCMI Box Encoding Scheme."@en ;
+            rdfs:isDefinedBy dcterms: ;
+            rdfs:label "DCMI Box"@en ;
+            rdfs:seeAlso <https://www.dublincore.org/specifications/dublin-core/dcmi-box/> .
+
+
+dcterms:ISO3166 rdfs:comment "The set of codes listed in ISO 3166-1 for the representation of names of countries."@en ;
+                rdfs:isDefinedBy dcterms: ;
+                rdfs:label "ISO 3166"@en ;
+                rdfs:seeAlso <http://www.iso.org/iso/en/prods-services/iso3166ma/02iso-3166-code-lists/list-en1.html> .
+
+
+dcterms:ISO639-2 rdfs:seeAlso <http://lcweb.loc.gov/standards/iso639-2/langhome.html> ;
+                 rdfs:comment "The three-letter alphabetic codes listed in ISO639-2 for the representation of names of languages."@en ;
+                 rdfs:isDefinedBy dcterms: ;
+                 rdfs:label "ISO 639-2"@en .
+
+
+dcterms:ISO639-3 rdfs:comment "The set of three-letter codes listed in ISO 639-3 for the representation of names of languages."@en ;
+                 rdfs:label "ISO 639-3"@en ;
+                 rdfs:isDefinedBy dcterms: ;
+                 rdfs:seeAlso <http://www.sil.org/iso639-3/> .
+
+
+dcterms:Period rdfs:seeAlso <https://www.dublincore.org/specifications/dublin-core/dcmi-period/> ;
+               rdfs:comment "The set of time intervals defined by their limits according to the DCMI Period Encoding Scheme."@en ;
+               rdfs:label "DCMI Period"@en ;
+               rdfs:isDefinedBy dcterms: .
+
+
+dcterms:Point rdfs:comment "The set of points in space defined by their geographic coordinates according to the DCMI Point Encoding Scheme."@en ;
+              rdfs:label "DCMI Point"@en ;
+              rdfs:seeAlso <https://www.dublincore.org/specifications/dublin-core/dcmi-point/> ;
+              rdfs:isDefinedBy dcterms: .
+
+
+dcterms:RFC1766 rdfs:isDefinedBy dcterms: ;
+                rdfs:comment "The set of tags, constructed according to RFC 1766, for the identification of languages."@en ;
+                rdfs:seeAlso <http://www.ietf.org/rfc/rfc1766.txt> ;
+                rdfs:label "RFC 1766"@en .
+
+
+dcterms:RFC3066 rdfs:label "RFC 3066"@en ;
+                rdfs:isDefinedBy dcterms: ;
+                rdfs:comment "The set of tags constructed according to RFC 3066 for the identification of languages."@en ;
+                rdfs:seeAlso <http://www.ietf.org/rfc/rfc3066.txt> .
+
+
+dcterms:RFC4646 rdfs:seeAlso <http://www.ietf.org/rfc/rfc4646.txt> ;
+                rdfs:isDefinedBy dcterms: ;
+                rdfs:comment "The set of tags constructed according to RFC 4646 for the identification of languages."@en ;
+                rdfs:label "RFC 4646"@en .
+
+
+dcterms:RFC5646 rdfs:seeAlso <http://www.ietf.org/rfc/rfc5646.txt> ;
+                rdfs:comment "The set of tags constructed according to RFC 5646 for the identification of languages."@en ;
+                rdfs:label "RFC 5646"@en ;
+                rdfs:isDefinedBy dcterms: .
+
+
+dcterms:URI rdfs:comment "The set of identifiers constructed according to the generic syntax for Uniform Resource Identifiers as specified by the Internet Engineering Task Force."@en ;
+            rdfs:isDefinedBy dcterms: ;
+            rdfs:seeAlso <http://www.ietf.org/rfc/rfc3986.txt> ;
+            rdfs:label "URI"@en .
+
+
+dcterms:W3CDTF rdfs:label "W3C-DTF"@en ;
+               rdfs:comment "The set of dates and times constructed according to the W3C Date and Time Formats Specification."@en ;
+               rdfs:isDefinedBy dcterms: ;
+               rdfs:seeAlso <http://www.w3.org/TR/NOTE-datetime> .
 
 
 ###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

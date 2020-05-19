@@ -607,6 +607,12 @@ xsd:date rdf:type rdfs:Datatype .
 #    Individuals
 #################################################################
 
+###  http://plasma-mds.org/qptdat#AtmosphericPressure
+:AtmosphericPressure rdf:type owl:NamedIndividual ,
+                              :Pressure ;
+                     :pressureValue "1 bar" .
+
+
 ###  http://plasma-mds.org/qptdat#CorrelationOfHelicalityExperiment
 :CorrelationOfHelicalityExperiment rdf:type owl:NamedIndividual ,
                                             :PlasmaExperiment .
@@ -622,9 +628,23 @@ xsd:date rdf:type rdfs:Datatype .
                  :StateOfMatter .
 
 
+###  http://plasma-mds.org/qptdat#PressureKINPenIND
+:PressureKINPenIND rdf:type owl:NamedIndividual ,
+                            :Pressure ;
+                   :pressureMax "2 bar" ;
+                   :pressureMin "1 bar" .
+
+
 ###  http://plasma-mds.org/qptdat#Solid
 :Solid rdf:type owl:NamedIndividual ,
                 :StateOfMatter .
+
+
+###  http://plasma-mds.org/qptdat#VoltageFeedPlasmaskop
+:VoltageFeedPlasmaskop rdf:type owl:NamedIndividual ,
+                                :AC ;
+                       :frequencyMax "200 kHz" ;
+                       :frequencyMin "10 kHz" .
 
 
 ###  http://plasma-mds.org/qptdat#bioactiveSurfaces
@@ -640,14 +660,18 @@ xsd:date rdf:type rdfs:Datatype .
 ###  http://plasma-mds.org/qptdat#hairIINePlasma
 :hairIINePlasma rdf:type owl:NamedIndividual ,
                          :PlasmaJet ,
-                         :Source .
+                         :Source ;
+                :specifiedBy :AtmosphericPressure ,
+                             :voltageFeedHairLiNePlasma .
 
 
 ###  http://plasma-mds.org/qptdat#helixJet
 :helixJet rdf:type owl:NamedIndividual ,
                    :Helix ,
                    :PlasmaJet ,
-                   :Source .
+                   :Source ;
+          :specifiedBy :AtmosphericPressure ,
+                       :voltageFeedHelixJet .
 
 
 ###  http://plasma-mds.org/qptdat#kINPen
@@ -670,7 +694,9 @@ xsd:date rdf:type rdfs:Datatype .
 
 ###  http://plasma-mds.org/qptdat#miniMIP
 :miniMIP rdf:type owl:NamedIndividual ,
-                  :Source .
+                  :Source ;
+         :specifiedBy :AtmosphericPressure ,
+                      :voltageFeedMiniMIP .
 
 
 ###  http://plasma-mds.org/qptdat#ntAPPJ
@@ -678,7 +704,8 @@ xsd:date rdf:type rdfs:Datatype .
                  :PlasmaJet ,
                  :Source ;
         :isSourceOf :CorrelationOfHelicalityExperiment ;
-        :specifiedBy :voltageFeedKINPen .
+        :specifiedBy :AtmosphericPressure ,
+                     :voltageFeedKINPen .
 
 
 ###  http://plasma-mds.org/qptdat#plasmaChemicalProcesses
@@ -695,25 +722,78 @@ xsd:date rdf:type rdfs:Datatype .
 :plasmaskop rdf:type owl:NamedIndividual ,
                      :CCP ,
                      :PlasmaJet ,
-                     :Source .
+                     :Source ;
+            :specifiedBy :AtmosphericPressure ,
+                         :VoltageFeedPlasmaskop .
 
 
 ###  http://plasma-mds.org/qptdat#pressureKINPen
-:pressureKINPen rdf:type owl:NamedIndividual ;
+:pressureKINPen rdf:type owl:NamedIndividual ,
+                         :Specification ;
                 :pressureMax "3 bar" ;
                 :pressureMin "1 bar" .
+
+
+###  http://plasma-mds.org/qptdat#pressureVDBD
+:pressureVDBD rdf:type owl:NamedIndividual ,
+                       :Pressure ;
+              :pressureMax "1000 mbar" ;
+              :pressureMin "100 mbar" .
 
 
 ###  http://plasma-mds.org/qptdat#vDBD
 :vDBD rdf:type owl:NamedIndividual ,
                :DBD ,
-               :Source .
+               :Source ;
+      :specifiedBy :pressureVDBD ,
+                   :voltageFeedVDBD ,
+                   :voltageFeedVDBD1 .
+
+
+###  http://plasma-mds.org/qptdat#voltageFeedHairLiNePlasma
+:voltageFeedHairLiNePlasma rdf:type owl:NamedIndividual ,
+                                    :PulsedAC ;
+                           :frequencyValue "1 kHz" .
+
+
+###  http://plasma-mds.org/qptdat#voltageFeedHelixJet
+:voltageFeedHelixJet rdf:type owl:NamedIndividual ,
+                              :AC ;
+                     :frequencyValue "13.56 MHz" ,
+                                     "27.12 MHz" .
 
 
 ###  http://plasma-mds.org/qptdat#voltageFeedKINPen
 :voltageFeedKINPen rdf:type owl:NamedIndividual ,
                             :AC ;
                    :frequencyValue "1 MHz" .
+
+
+###  http://plasma-mds.org/qptdat#voltageFeedMiniMIP
+:voltageFeedMiniMIP rdf:type owl:NamedIndividual ,
+                             :AC ;
+                    :frequencyValue "2.45 GHz" .
+
+
+###  http://plasma-mds.org/qptdat#voltageFeedVDBD
+:voltageFeedVDBD rdf:type owl:NamedIndividual ,
+                          :AC ;
+                 :frequencyMax "133 kHz" ;
+                 :frequencyMin "7 kHz" .
+
+
+###  http://plasma-mds.org/qptdat#voltageFeedVDBD1
+:voltageFeedVDBD1 rdf:type owl:NamedIndividual ,
+                           :AC ;
+                  :frequencyMax "2 MHz" ;
+                  :frequencyMin "1 MHz" .
+
+
+###  http://plasma-mds.org/qptdat#voltageFeedntAPPJ
+:voltageFeedntAPPJ rdf:type owl:NamedIndividual ,
+                            :AC ;
+                   :frequencyValue "13 MHz" ,
+                                   "27 MHz" .
 
 
 ###  http://plasma-mds.org/qptdat#welding

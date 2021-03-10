@@ -83,857 +83,594 @@ xsd:date rdf:type rdfs:Datatype .
 #    Object Properties
 #################################################################
 
-###  http://plasma-mds.org/qptdat#actsOn
-:actsOn rdf:type owl:ObjectProperty ;
-        rdfs:subPropertyOf owl:topObjectProperty ;
-        rdfs:domain :Plasma ;
-        rdfs:range :Target .
+###  http://plasma-mds.org/qptdat/source#actsOn
+<http://plasma-mds.org/qptdat/source#actsOn> rdf:type owl:ObjectProperty ;
+                                             rdfs:subPropertyOf owl:topObjectProperty ;
+                                             rdfs:domain <http://plasma-mds.org/qptdat/source#Plasma> ;
+                                             rdfs:range <http://plasma-mds.org/qptdat/source#Target> .
 
 
-###  http://plasma-mds.org/qptdat#application
-:application rdf:type owl:ObjectProperty ;
-             rdfs:subPropertyOf owl:topObjectProperty ;
-             rdfs:domain :Source ;
-             rdfs:range :Application .
+###  http://plasma-mds.org/qptdat/source#application
+<http://plasma-mds.org/qptdat/source#application> rdf:type owl:ObjectProperty ;
+                                                  rdfs:subPropertyOf owl:topObjectProperty ;
+                                                  rdfs:domain :Source ;
+                                                  rdfs:range <http://plasma-mds.org/qptdat/source#Application> .
 
 
-###  http://plasma-mds.org/qptdat#consistsOf
-:consistsOf rdf:type owl:ObjectProperty ;
-            rdfs:domain :Medium ;
-            rdfs:range :Gas .
+###  http://plasma-mds.org/qptdat/source#consistsOf
+<http://plasma-mds.org/qptdat/source#consistsOf> rdf:type owl:ObjectProperty ;
+                                                 rdfs:domain <http://plasma-mds.org/qptdat/source#Medium> ;
+                                                 rdfs:range <http://plasma-mds.org/qptdat/source#Gas> .
 
 
-###  http://plasma-mds.org/qptdat#gatheredBy
-:gatheredBy rdf:type owl:ObjectProperty ;
-            rdfs:subPropertyOf owl:topObjectProperty ;
-            rdfs:domain :Resource ;
-            rdfs:range :DiagnosticMethod .
+###  http://plasma-mds.org/qptdat/source#gatheredBy
+<http://plasma-mds.org/qptdat/source#gatheredBy> rdf:type owl:ObjectProperty ;
+                                                 rdfs:subPropertyOf owl:topObjectProperty ;
+                                                 rdfs:domain <http://plasma-mds.org/qptdat/source#Resource> ;
+                                                 rdfs:range <http://plasma-mds.org/qptdat/source#DiagnosticMethod> .
 
 
-###  http://plasma-mds.org/qptdat#generatedBy
-:generatedBy rdf:type owl:ObjectProperty ;
-             rdfs:subPropertyOf owl:topObjectProperty ;
-             rdfs:domain :Plasma ;
-             rdfs:range :Source .
+###  http://plasma-mds.org/qptdat/source#generatedBy
+<http://plasma-mds.org/qptdat/source#generatedBy> rdf:type owl:ObjectProperty ;
+                                                  rdfs:subPropertyOf owl:topObjectProperty ;
+                                                  rdfs:domain <http://plasma-mds.org/qptdat/source#Plasma> ;
+                                                  rdfs:range :Source .
 
 
-###  http://plasma-mds.org/qptdat#generatedIn
-:generatedIn rdf:type owl:ObjectProperty ;
-             rdfs:subPropertyOf owl:topObjectProperty ;
-             rdfs:domain :Plasma ;
-             rdfs:range :Medium .
+###  http://plasma-mds.org/qptdat/source#generatedIn
+<http://plasma-mds.org/qptdat/source#generatedIn> rdf:type owl:ObjectProperty ;
+                                                  rdfs:subPropertyOf owl:topObjectProperty ;
+                                                  rdfs:domain <http://plasma-mds.org/qptdat/source#Plasma> ;
+                                                  rdfs:range <http://plasma-mds.org/qptdat/source#Medium> .
 
 
-###  http://plasma-mds.org/qptdat#geometry
-:geometry rdf:type owl:ObjectProperty ;
-          rdfs:subPropertyOf owl:topObjectProperty ;
-          rdfs:domain :Source ;
-          rdfs:range :SourceGeometry .
+###  http://plasma-mds.org/qptdat/source#geometry
+<http://plasma-mds.org/qptdat/source#geometry> rdf:type owl:ObjectProperty ;
+                                               rdfs:subPropertyOf owl:topObjectProperty ;
+                                               rdfs:domain :Source ;
+                                               rdfs:range <http://plasma-mds.org/qptdat/source#SourceGeometry> .
 
 
-###  http://plasma-mds.org/qptdat#investigatedBy
-:investigatedBy rdf:type owl:ObjectProperty ;
-                rdfs:subPropertyOf owl:topObjectProperty ;
-                rdfs:domain :Medium ;
-                rdfs:range :PlasmaExperiment .
+###  http://plasma-mds.org/qptdat/source#investigatedBy
+<http://plasma-mds.org/qptdat/source#investigatedBy> rdf:type owl:ObjectProperty ;
+                                                     rdfs:subPropertyOf owl:topObjectProperty ;
+                                                     rdfs:domain <http://plasma-mds.org/qptdat/source#Medium> ;
+                                                     rdfs:range <http://plasma-mds.org/qptdat/source#PlasmaExperiment> .
 
 
-###  http://plasma-mds.org/qptdat#investigatedWith
-:investigatedWith rdf:type owl:ObjectProperty ;
-                  rdfs:domain :PlasmaExperiment ;
-                  rdfs:range :DiagnosticMethod .
+###  http://plasma-mds.org/qptdat/source#investigatedWith
+<http://plasma-mds.org/qptdat/source#investigatedWith> rdf:type owl:ObjectProperty ;
+                                                       rdfs:domain <http://plasma-mds.org/qptdat/source#PlasmaExperiment> ;
+                                                       rdfs:range <http://plasma-mds.org/qptdat/source#DiagnosticMethod> .
 
 
-###  http://plasma-mds.org/qptdat#isMediumOf
-:isMediumOf rdf:type owl:ObjectProperty ;
-            rdfs:subPropertyOf :partOf .
+###  http://plasma-mds.org/qptdat/source#isMediumOf
+<http://plasma-mds.org/qptdat/source#isMediumOf> rdf:type owl:ObjectProperty ;
+                                                 rdfs:subPropertyOf <http://plasma-mds.org/qptdat/source#partOf> .
 
 
-###  http://plasma-mds.org/qptdat#isSourceOf
-:isSourceOf rdf:type owl:ObjectProperty ;
-            rdfs:subPropertyOf :partOf .
+###  http://plasma-mds.org/qptdat/source#isSourceOf
+<http://plasma-mds.org/qptdat/source#isSourceOf> rdf:type owl:ObjectProperty ;
+                                                 rdfs:subPropertyOf <http://plasma-mds.org/qptdat/source#partOf> .
 
 
-###  http://plasma-mds.org/qptdat#isTargetOf
-:isTargetOf rdf:type owl:ObjectProperty ;
-            rdfs:subPropertyOf :partOf ;
-            rdfs:domain :Target ;
-            rdfs:range :PlasmaExperiment .
+###  http://plasma-mds.org/qptdat/source#isTargetOf
+<http://plasma-mds.org/qptdat/source#isTargetOf> rdf:type owl:ObjectProperty ;
+                                                 rdfs:subPropertyOf <http://plasma-mds.org/qptdat/source#partOf> ;
+                                                 rdfs:domain <http://plasma-mds.org/qptdat/source#Target> ;
+                                                 rdfs:range <http://plasma-mds.org/qptdat/source#PlasmaExperiment> .
 
 
-###  http://plasma-mds.org/qptdat#partOf
-:partOf rdf:type owl:ObjectProperty ;
-        rdfs:subPropertyOf owl:topObjectProperty .
+###  http://plasma-mds.org/qptdat/source#partOf
+<http://plasma-mds.org/qptdat/source#partOf> rdf:type owl:ObjectProperty ;
+                                             rdfs:subPropertyOf owl:topObjectProperty .
 
 
-###  http://plasma-mds.org/qptdat#size
-:size rdf:type owl:ObjectProperty ;
-      rdfs:subPropertyOf owl:topObjectProperty ;
-      rdfs:domain :Target ;
-      rdfs:range :Size .
+###  http://plasma-mds.org/qptdat/source#size
+<http://plasma-mds.org/qptdat/source#size> rdf:type owl:ObjectProperty ;
+                                           rdfs:subPropertyOf owl:topObjectProperty ;
+                                           rdfs:domain <http://plasma-mds.org/qptdat/source#Target> ;
+                                           rdfs:range <http://plasma-mds.org/qptdat/source#Size> .
 
 
-###  http://plasma-mds.org/qptdat#specifiedBy
-:specifiedBy rdf:type owl:ObjectProperty ;
-             rdfs:subPropertyOf owl:topObjectProperty ;
-             rdfs:domain :Source ;
-             rdfs:range :Specification .
+###  http://plasma-mds.org/qptdat/source#specifiedBy
+<http://plasma-mds.org/qptdat/source#specifiedBy> rdf:type owl:ObjectProperty ;
+                                                  rdfs:subPropertyOf owl:topObjectProperty ;
+                                                  rdfs:domain :Source ;
+                                                  rdfs:range <http://plasma-mds.org/qptdat/source#Specification> .
 
 
-###  http://plasma-mds.org/qptdat#state
-:state rdf:type owl:ObjectProperty ;
-       rdfs:subPropertyOf owl:topObjectProperty ;
-       rdfs:domain :Target ;
-       rdfs:range :StateOfMatter .
+###  http://plasma-mds.org/qptdat/source#state
+<http://plasma-mds.org/qptdat/source#state> rdf:type owl:ObjectProperty ;
+                                            rdfs:subPropertyOf owl:topObjectProperty ;
+                                            rdfs:domain <http://plasma-mds.org/qptdat/source#Target> ;
+                                            rdfs:range <http://plasma-mds.org/qptdat/source#StateOfMatter> .
 
 
-###  http://plasma-mds.org/qptdat#surface
-:surface rdf:type owl:ObjectProperty ;
-         rdfs:subPropertyOf owl:topObjectProperty ;
-         rdfs:domain :Target ;
-         rdfs:range :Surface .
+###  http://plasma-mds.org/qptdat/source#surface
+<http://plasma-mds.org/qptdat/source#surface> rdf:type owl:ObjectProperty ;
+                                              rdfs:subPropertyOf owl:topObjectProperty ;
+                                              rdfs:domain <http://plasma-mds.org/qptdat/source#Target> ;
+                                              rdfs:range <http://plasma-mds.org/qptdat/source#Surface> .
 
 
-###  http://plasma-mds.org/qptdat#usesDevice
-:usesDevice rdf:type owl:ObjectProperty ;
-            rdfs:domain :DiagnosticMethod ;
-            rdfs:range :DiagnosticDevice .
+###  http://plasma-mds.org/qptdat/source#usesDevice
+<http://plasma-mds.org/qptdat/source#usesDevice> rdf:type owl:ObjectProperty ;
+                                                 rdfs:domain <http://plasma-mds.org/qptdat/source#DiagnosticMethod> ;
+                                                 rdfs:range <http://plasma-mds.org/qptdat/source#DiagnosticDevice> .
 
 
 #################################################################
 #    Data properties
 #################################################################
 
-###  http://plasma-mds.org/qptdat#amplitudeVoltage
-:amplitudeVoltage rdf:type owl:DatatypeProperty ;
-                  rdfs:subPropertyOf owl:topDataProperty ;
-                  rdfs:domain :AC ;
-                  rdfs:range xsd:float .
+###  http://plasma-mds.org/qptdat/source#amplitudeVoltage
+<http://plasma-mds.org/qptdat/source#amplitudeVoltage> rdf:type owl:DatatypeProperty ;
+                                                       rdfs:subPropertyOf owl:topDataProperty ;
+                                                       rdfs:domain <http://plasma-mds.org/qptdat/source#AC> ;
+                                                       rdfs:range xsd:float .
 
 
-###  http://plasma-mds.org/qptdat#appliedVoltage
-:appliedVoltage rdf:type owl:DatatypeProperty ;
-                rdfs:subPropertyOf owl:topDataProperty ;
-                rdfs:domain :DC ;
-                rdfs:range xsd:float .
+###  http://plasma-mds.org/qptdat/source#appliedVoltage
+<http://plasma-mds.org/qptdat/source#appliedVoltage> rdf:type owl:DatatypeProperty ;
+                                                     rdfs:subPropertyOf owl:topDataProperty ;
+                                                     rdfs:domain <http://plasma-mds.org/qptdat/source#DC> ;
+                                                     rdfs:range xsd:float .
 
 
-###  http://plasma-mds.org/qptdat#dataType
-:dataType rdf:type owl:DatatypeProperty ;
-          rdfs:subPropertyOf owl:topDataProperty ;
-          rdfs:domain :Resource ;
-          rdfs:range xsd:string .
+###  http://plasma-mds.org/qptdat/source#dataType
+<http://plasma-mds.org/qptdat/source#dataType> rdf:type owl:DatatypeProperty ;
+                                               rdfs:subPropertyOf owl:topDataProperty ;
+                                               rdfs:domain <http://plasma-mds.org/qptdat/source#Resource> ;
+                                               rdfs:range xsd:string .
 
 
-###  http://plasma-mds.org/qptdat#dutyCycle
-:dutyCycle rdf:type owl:DatatypeProperty ;
-           rdfs:subPropertyOf owl:topDataProperty ;
-           rdfs:domain :AC ;
-           rdfs:range xsd:float .
+###  http://plasma-mds.org/qptdat/source#dutyCycle
+<http://plasma-mds.org/qptdat/source#dutyCycle> rdf:type owl:DatatypeProperty ;
+                                                rdfs:subPropertyOf owl:topDataProperty ;
+                                                rdfs:domain <http://plasma-mds.org/qptdat/source#AC> ;
+                                                rdfs:range xsd:float .
 
 
-###  http://plasma-mds.org/qptdat#fileType
-:fileType rdf:type owl:DatatypeProperty ;
-          rdfs:subPropertyOf owl:topDataProperty ;
-          rdfs:domain :Resource ;
-          rdfs:range xsd:string .
+###  http://plasma-mds.org/qptdat/source#fileType
+<http://plasma-mds.org/qptdat/source#fileType> rdf:type owl:DatatypeProperty ;
+                                               rdfs:subPropertyOf owl:topDataProperty ;
+                                               rdfs:domain <http://plasma-mds.org/qptdat/source#Resource> ;
+                                               rdfs:range xsd:string .
 
 
-###  http://plasma-mds.org/qptdat#frequencyMax
-:frequencyMax rdf:type owl:DatatypeProperty ;
-              rdfs:subPropertyOf owl:topDataProperty ;
-              rdfs:domain :AC ;
-              rdfs:range xsd:float .
+###  http://plasma-mds.org/qptdat/source#frequencyMax
+<http://plasma-mds.org/qptdat/source#frequencyMax> rdf:type owl:DatatypeProperty ;
+                                                   rdfs:subPropertyOf owl:topDataProperty ;
+                                                   rdfs:domain <http://plasma-mds.org/qptdat/source#AC> ;
+                                                   rdfs:range xsd:float .
 
 
-###  http://plasma-mds.org/qptdat#frequencyMin
-:frequencyMin rdf:type owl:DatatypeProperty ;
-              rdfs:subPropertyOf owl:topDataProperty ;
-              rdfs:domain :AC ;
-              rdfs:range xsd:float .
+###  http://plasma-mds.org/qptdat/source#frequencyMin
+<http://plasma-mds.org/qptdat/source#frequencyMin> rdf:type owl:DatatypeProperty ;
+                                                   rdfs:subPropertyOf owl:topDataProperty ;
+                                                   rdfs:domain <http://plasma-mds.org/qptdat/source#AC> ;
+                                                   rdfs:range xsd:float .
 
 
-###  http://plasma-mds.org/qptdat#frequencyValue
-:frequencyValue rdf:type owl:DatatypeProperty ;
-                rdfs:subPropertyOf owl:topDataProperty ;
-                rdfs:domain :AC ;
-                rdfs:range xsd:float .
+###  http://plasma-mds.org/qptdat/source#frequencyValue
+<http://plasma-mds.org/qptdat/source#frequencyValue> rdf:type owl:DatatypeProperty ;
+                                                     rdfs:subPropertyOf owl:topDataProperty ;
+                                                     rdfs:domain <http://plasma-mds.org/qptdat/source#AC> ;
+                                                     rdfs:range xsd:float .
 
 
-###  http://plasma-mds.org/qptdat#peakToPeakVoltage
-:peakToPeakVoltage rdf:type owl:DatatypeProperty ;
-                   rdfs:subPropertyOf owl:topDataProperty ;
-                   rdfs:domain :AC ;
-                   rdfs:range xsd:float .
+###  http://plasma-mds.org/qptdat/source#peakToPeakVoltage
+<http://plasma-mds.org/qptdat/source#peakToPeakVoltage> rdf:type owl:DatatypeProperty ;
+                                                        rdfs:subPropertyOf owl:topDataProperty ;
+                                                        rdfs:domain <http://plasma-mds.org/qptdat/source#AC> ;
+                                                        rdfs:range xsd:float .
 
 
-###  http://plasma-mds.org/qptdat#pressureMax
-:pressureMax rdf:type owl:DatatypeProperty ;
-             rdfs:subPropertyOf owl:topDataProperty ;
-             rdfs:domain :Pressure ;
-             rdfs:range xsd:float .
+###  http://plasma-mds.org/qptdat/source#pressureMax
+<http://plasma-mds.org/qptdat/source#pressureMax> rdf:type owl:DatatypeProperty ;
+                                                  rdfs:subPropertyOf owl:topDataProperty ;
+                                                  rdfs:domain <http://plasma-mds.org/qptdat/source#Pressure> ;
+                                                  rdfs:range xsd:float .
 
 
-###  http://plasma-mds.org/qptdat#pressureMin
-:pressureMin rdf:type owl:DatatypeProperty ;
-             rdfs:subPropertyOf owl:topDataProperty ;
-             rdfs:domain :Pressure ;
-             rdfs:range xsd:float .
+###  http://plasma-mds.org/qptdat/source#pressureMin
+<http://plasma-mds.org/qptdat/source#pressureMin> rdf:type owl:DatatypeProperty ;
+                                                  rdfs:subPropertyOf owl:topDataProperty ;
+                                                  rdfs:domain <http://plasma-mds.org/qptdat/source#Pressure> ;
+                                                  rdfs:range xsd:float .
 
 
-###  http://plasma-mds.org/qptdat#pressureValue
-:pressureValue rdf:type owl:DatatypeProperty ;
-               rdfs:subPropertyOf owl:topDataProperty ;
-               rdfs:domain :Pressure ;
-               rdfs:range xsd:float .
+###  http://plasma-mds.org/qptdat/source#pressureValue
+<http://plasma-mds.org/qptdat/source#pressureValue> rdf:type owl:DatatypeProperty ;
+                                                    rdfs:subPropertyOf owl:topDataProperty ;
+                                                    rdfs:domain <http://plasma-mds.org/qptdat/source#Pressure> ;
+                                                    rdfs:range xsd:float .
 
 
-###  http://plasma-mds.org/qptdat#purity
-:purity rdf:type owl:DatatypeProperty ;
-        rdfs:subPropertyOf owl:topDataProperty ;
-        rdfs:domain :Gas ;
-        rdfs:range xsd:integer .
+###  http://plasma-mds.org/qptdat/source#purity
+<http://plasma-mds.org/qptdat/source#purity> rdf:type owl:DatatypeProperty ;
+                                             rdfs:subPropertyOf owl:topDataProperty ;
+                                             rdfs:domain <http://plasma-mds.org/qptdat/source#Gas> ;
+                                             rdfs:range xsd:integer .
 
 
-###  http://plasma-mds.org/qptdat#temperatureMax
-:temperatureMax rdf:type owl:DatatypeProperty ;
-                rdfs:subPropertyOf owl:topDataProperty ;
-                rdfs:domain :Temperature ;
-                rdfs:range xsd:float .
+###  http://plasma-mds.org/qptdat/source#temperatureMax
+<http://plasma-mds.org/qptdat/source#temperatureMax> rdf:type owl:DatatypeProperty ;
+                                                     rdfs:subPropertyOf owl:topDataProperty ;
+                                                     rdfs:domain <http://plasma-mds.org/qptdat/source#Temperature> ;
+                                                     rdfs:range xsd:float .
 
 
-###  http://plasma-mds.org/qptdat#temperatureMin
-:temperatureMin rdf:type owl:DatatypeProperty ;
-                rdfs:subPropertyOf owl:topDataProperty ;
-                rdfs:domain :Temperature ;
-                rdfs:range xsd:float .
+###  http://plasma-mds.org/qptdat/source#temperatureMin
+<http://plasma-mds.org/qptdat/source#temperatureMin> rdf:type owl:DatatypeProperty ;
+                                                     rdfs:subPropertyOf owl:topDataProperty ;
+                                                     rdfs:domain <http://plasma-mds.org/qptdat/source#Temperature> ;
+                                                     rdfs:range xsd:float .
 
 
-###  http://plasma-mds.org/qptdat#temperatureValue
-:temperatureValue rdf:type owl:DatatypeProperty ;
-                  rdfs:subPropertyOf owl:topDataProperty ;
-                  rdfs:domain :Temperature ;
-                  rdfs:range xsd:float .
+###  http://plasma-mds.org/qptdat/source#temperatureValue
+<http://plasma-mds.org/qptdat/source#temperatureValue> rdf:type owl:DatatypeProperty ;
+                                                       rdfs:subPropertyOf owl:topDataProperty ;
+                                                       rdfs:domain <http://plasma-mds.org/qptdat/source#Temperature> ;
+                                                       rdfs:range xsd:float .
 
 
 #################################################################
 #    Classes
 #################################################################
 
-###  http://plasma-mds.org/qptdat#AC
-:AC rdf:type owl:Class ;
-    rdfs:subClassOf :Waveform ;
-    owl:disjointWith :DC .
-
-
-###  http://plasma-mds.org/qptdat#Ammeter
-:Ammeter rdf:type owl:Class ;
-         rdfs:subClassOf :DiagnosticDevice .
-
-
-###  http://plasma-mds.org/qptdat#Application
-:Application rdf:type owl:Class .
-
-
-###  http://plasma-mds.org/qptdat#Arc
-:Arc rdf:type owl:Class ;
-     rdfs:subClassOf :Plasma .
-
-
-###  http://plasma-mds.org/qptdat#AtomProbeTomographe
-:AtomProbeTomographe rdf:type owl:Class ;
-                     rdfs:subClassOf :DiagnosticDevice .
-
-
-###  http://plasma-mds.org/qptdat#AtomProbeTomography
-:AtomProbeTomography rdf:type owl:Class ;
-                     rdfs:subClassOf :Microscope .
-
-
-###  http://plasma-mds.org/qptdat#AtomicForceMicroscope
-:AtomicForceMicroscope rdf:type owl:Class ;
-                       rdfs:subClassOf :Microscope .
-
-
-###  http://plasma-mds.org/qptdat#CCP
-:CCP rdf:type owl:Class ;
-     rdfs:subClassOf :Source ;
-     rdfs:comment "Capacitively coupled plasma system"@en ;
-     rdfs:label "Capacitively coupled plasma system"@en .
-
-
-###  http://plasma-mds.org/qptdat#Camera
-:Camera rdf:type owl:Class ;
-        rdfs:subClassOf :DiagnosticDevice .
-
-
-###  http://plasma-mds.org/qptdat#CarrierGas
-:CarrierGas rdf:type owl:Class ;
-            rdfs:subClassOf :Gas .
-
-
-###  http://plasma-mds.org/qptdat#CollisionSimulation
-:CollisionSimulation rdf:type owl:Class ;
-                     rdfs:subClassOf :SimulationMethod .
-
-
-###  http://plasma-mds.org/qptdat#ComputerSimulation
-:ComputerSimulation rdf:type owl:Class ;
-                    rdfs:subClassOf :PlasmaExperiment .
-
-
-###  http://plasma-mds.org/qptdat#CurrentProbe
-:CurrentProbe rdf:type owl:Class ;
-              rdfs:subClassOf :DiagnosticDevice .
-
-
-###  http://plasma-mds.org/qptdat#DBD
-:DBD rdf:type owl:Class ;
-     rdfs:subClassOf :Source ;
-     rdfs:comment "Discharge involving at least one insulating dielectric barrier between the electrodes"@en ;
-     rdfs:label "Dielectric Barrier Discharge"@en .
-
-
-###  http://plasma-mds.org/qptdat#DC
-:DC rdf:type owl:Class ;
-    rdfs:subClassOf :Waveform .
-
-
-###  http://plasma-mds.org/qptdat#Detector
-:Detector rdf:type owl:Class ;
-          rdfs:subClassOf :DiagnosticDevice .
-
-
-###  http://plasma-mds.org/qptdat#DiagnosticDevice
-:DiagnosticDevice rdf:type owl:Class .
-
-
-###  http://plasma-mds.org/qptdat#DiagnosticMethod
-:DiagnosticMethod rdf:type owl:Class .
-
-
-###  http://plasma-mds.org/qptdat#ElectricalMethod
-:ElectricalMethod rdf:type owl:Class ;
-                  rdfs:subClassOf :ExperimentMethod .
-
-
-###  http://plasma-mds.org/qptdat#ElectrodeShape
-:ElectrodeShape rdf:type owl:Class ;
-                rdfs:subClassOf :SourceGeometry .
-
-
-###  http://plasma-mds.org/qptdat#Ellipsometer
-:Ellipsometer rdf:type owl:Class ;
-              rdfs:subClassOf :DiagnosticDevice .
-
-
-###  http://plasma-mds.org/qptdat#EnergyDispersiveXraySpectroscope
-:EnergyDispersiveXraySpectroscope rdf:type owl:Class ;
-                                  rdfs:subClassOf :Spectroscope .
-
-
-###  http://plasma-mds.org/qptdat#ExperimentMethod
-:ExperimentMethod rdf:type owl:Class ;
-                  rdfs:subClassOf :DiagnosticMethod .
-
-
-###  http://plasma-mds.org/qptdat#FiberOpticThermometer
-:FiberOpticThermometer rdf:type owl:Class ;
-                       rdfs:subClassOf :Thermometer .
-
-
-###  http://plasma-mds.org/qptdat#FourierTransformInfraredSpectrograph
-:FourierTransformInfraredSpectrograph rdf:type owl:Class ;
-                                      rdfs:subClassOf :Spectroscope .
-
-
-###  http://plasma-mds.org/qptdat#Galvanometer
-:Galvanometer rdf:type owl:Class ;
-              rdfs:subClassOf :DiagnosticDevice .
-
-
-###  http://plasma-mds.org/qptdat#Gas
-:Gas rdf:type owl:Class .
-
-
-###  http://plasma-mds.org/qptdat#Helix
-:Helix rdf:type owl:Class ;
-       rdfs:subClassOf :Source .
-
-
-###  http://plasma-mds.org/qptdat#HighSpeedCamera
-:HighSpeedCamera rdf:type owl:Class ;
-                 rdfs:subClassOf :Camera .
-
-
-###  http://plasma-mds.org/qptdat#HighSpeedImaging
-:HighSpeedImaging rdf:type owl:Class ;
-                  rdfs:subClassOf :Imaging .
-
-
-###  http://plasma-mds.org/qptdat#Imaging
-:Imaging rdf:type owl:Class ;
-         rdfs:subClassOf :ExperimentMethod .
-
-
-###  http://plasma-mds.org/qptdat#LabExperiment
-:LabExperiment rdf:type owl:Class ;
-               rdfs:subClassOf :PlasmaExperiment .
-
-
-###  http://plasma-mds.org/qptdat#LangmuirProbe
-:LangmuirProbe rdf:type owl:Class ;
-               rdfs:subClassOf :DiagnosticDevice .
-
-
-###  http://plasma-mds.org/qptdat#Laser
-:Laser rdf:type owl:Class ;
-       rdfs:subClassOf :DiagnosticDevice .
-
-
-###  http://plasma-mds.org/qptdat#MassSpectrometer
-:MassSpectrometer rdf:type owl:Class ;
-                  rdfs:subClassOf :Spectroscope .
-
-
-###  http://plasma-mds.org/qptdat#MechanicalMethod
-:MechanicalMethod rdf:type owl:Class ;
-                  rdfs:subClassOf :ExperimentMethod .
-
-
-###  http://plasma-mds.org/qptdat#Medium
-:Medium rdf:type owl:Class .
-
-
-###  http://plasma-mds.org/qptdat#Microscope
-:Microscope rdf:type owl:Class ;
-            rdfs:subClassOf :DiagnosticDevice .
-
-
-###  http://plasma-mds.org/qptdat#Microwave
-:Microwave rdf:type owl:Class ;
-           rdfs:subClassOf :Plasma .
-
-
-###  http://plasma-mds.org/qptdat#ModellingMethod
-:ModellingMethod rdf:type owl:Class ;
-                 rdfs:subClassOf :DiagnosticMethod .
-
-
-###  http://plasma-mds.org/qptdat#MultipoleResonanceProbe
-:MultipoleResonanceProbe rdf:type owl:Class ;
-                         rdfs:subClassOf :DiagnosticDevice .
-
-
-###  http://plasma-mds.org/qptdat#OpticalEmissionSpectrograph
-:OpticalEmissionSpectrograph rdf:type owl:Class ;
-                             rdfs:subClassOf :Spectroscope .
-
-
-###  http://plasma-mds.org/qptdat#Oscilloscope
-:Oscilloscope rdf:type owl:Class ;
-              rdfs:subClassOf :DiagnosticDevice .
-
-
-###  http://plasma-mds.org/qptdat#ParallelPlate
-:ParallelPlate rdf:type owl:Class ;
-               rdfs:subClassOf :ElectrodeShape .
-
-
-###  http://plasma-mds.org/qptdat#Person
-:Person rdf:type owl:Class .
-
-
-###  http://plasma-mds.org/qptdat#PinToPin
-:PinToPin rdf:type owl:Class ;
-          rdfs:subClassOf :ElectrodeShape .
-
-
-###  http://plasma-mds.org/qptdat#PinToPlate
-:PinToPlate rdf:type owl:Class ;
-            rdfs:subClassOf :ElectrodeShape .
-
-
-###  http://plasma-mds.org/qptdat#Plasma
-:Plasma rdf:type owl:Class .
-
-
-###  http://plasma-mds.org/qptdat#PlasmaExperiment
-:PlasmaExperiment rdf:type owl:Class .
-
-
-###  http://plasma-mds.org/qptdat#PlasmaJet
-:PlasmaJet rdf:type owl:Class ;
-           owl:equivalentClass :PlasmaPen ;
-           rdfs:subClassOf :Source ;
-           rdfs:comment "Capillary plasma source, sometimes in form of a handheld device"@en ;
-           rdfs:label "Plasma jet"@en .
-
-
-###  http://plasma-mds.org/qptdat#PlasmaPen
-:PlasmaPen rdf:type owl:Class ;
-           rdfs:subClassOf :Source .
-
-
-###  http://plasma-mds.org/qptdat#PlasmaTorch
-:PlasmaTorch rdf:type owl:Class ;
-             rdfs:subClassOf :Source .
-
-
-###  http://plasma-mds.org/qptdat#Pressure
-:Pressure rdf:type owl:Class ;
-          rdfs:subClassOf :Specification .
-
-
-###  http://plasma-mds.org/qptdat#Profilometer
-:Profilometer rdf:type owl:Class ;
-              rdfs:subClassOf :DiagnosticDevice .
-
-
-###  http://plasma-mds.org/qptdat#PulsedAC
-:PulsedAC rdf:type owl:Class ;
-          rdfs:subClassOf :AC .
-
-
-###  http://plasma-mds.org/qptdat#PulsedDC
-:PulsedDC rdf:type owl:Class ;
-          rdfs:subClassOf :DC .
-
-
-###  http://plasma-mds.org/qptdat#Pyrometer
-:Pyrometer rdf:type owl:Class ;
-           rdfs:subClassOf :Thermometer .
-
-
-###  http://plasma-mds.org/qptdat#RamanSpectroscope
-:RamanSpectroscope rdf:type owl:Class ;
-                   rdfs:subClassOf :Spectroscope .
-
-
-###  http://plasma-mds.org/qptdat#Resource
-:Resource rdf:type owl:Class .
-
-
-###  http://plasma-mds.org/qptdat#RogowskiCoil
-:RogowskiCoil rdf:type owl:Class ;
-              rdfs:subClassOf :DiagnosticDevice .
-
-
-###  http://plasma-mds.org/qptdat#ScanningDriftTubeApparatus
-:ScanningDriftTubeApparatus rdf:type owl:Class ;
-                            rdfs:subClassOf :Source .
-
-
-###  http://plasma-mds.org/qptdat#ScanningElectronMicroscope
-:ScanningElectronMicroscope rdf:type owl:Class ;
-                            rdfs:subClassOf :Microscope .
-
-
-###  http://plasma-mds.org/qptdat#ScanningTunnelingMicroscope
-:ScanningTunnelingMicroscope rdf:type owl:Class ;
-                             rdfs:subClassOf :Microscope .
-
-
-###  http://plasma-mds.org/qptdat#ShieldingGas
-:ShieldingGas rdf:type owl:Class ;
-              rdfs:subClassOf :Gas .
-
-
-###  http://plasma-mds.org/qptdat#ShuntResistor
-:ShuntResistor rdf:type owl:Class ;
-               rdfs:subClassOf :DiagnosticDevice .
-
-
-###  http://plasma-mds.org/qptdat#SimulationMethod
-:SimulationMethod rdf:type owl:Class ;
-                  rdfs:subClassOf :DiagnosticMethod .
-
-
-###  http://plasma-mds.org/qptdat#Size
-:Size rdf:type owl:Class .
-
-
 ###  http://plasma-mds.org/qptdat#Source
 :Source rdf:type owl:Class .
 
 
-###  http://plasma-mds.org/qptdat#SourceGeometry
-:SourceGeometry rdf:type owl:Class .
+###  http://plasma-mds.org/qptdat/source#AC
+<http://plasma-mds.org/qptdat/source#AC> rdf:type owl:Class .
 
 
-###  http://plasma-mds.org/qptdat#Specification
-:Specification rdf:type owl:Class .
+###  http://plasma-mds.org/qptdat/source#Application
+<http://plasma-mds.org/qptdat/source#Application> rdf:type owl:Class .
 
 
-###  http://plasma-mds.org/qptdat#Spectroscope
-:Spectroscope rdf:type owl:Class ;
-              rdfs:subClassOf :DiagnosticDevice .
+###  http://plasma-mds.org/qptdat/source#Arc
+<http://plasma-mds.org/qptdat/source#Arc> rdf:type owl:Class ;
+                                          rdfs:subClassOf <http://plasma-mds.org/qptdat/source#Plasma> .
 
 
-###  http://plasma-mds.org/qptdat#Spectroscopy
-:Spectroscopy rdf:type owl:Class ;
-              rdfs:subClassOf :ExperimentMethod .
+###  http://plasma-mds.org/qptdat/source#CCP
+<http://plasma-mds.org/qptdat/source#CCP> rdf:type owl:Class .
 
 
-###  http://plasma-mds.org/qptdat#StateOfMatter
-:StateOfMatter rdf:type owl:Class .
+###  http://plasma-mds.org/qptdat/source#CarrierGas
+<http://plasma-mds.org/qptdat/source#CarrierGas> rdf:type owl:Class ;
+                                                 rdfs:subClassOf <http://plasma-mds.org/qptdat/source#Gas> .
 
 
-###  http://plasma-mds.org/qptdat#Surface
-:Surface rdf:type owl:Class .
+###  http://plasma-mds.org/qptdat/source#CollisionSimulation
+<http://plasma-mds.org/qptdat/source#CollisionSimulation> rdf:type owl:Class ;
+                                                          rdfs:subClassOf <http://plasma-mds.org/qptdat/source#SimulationMethod> .
 
 
-###  http://plasma-mds.org/qptdat#Target
-:Target rdf:type owl:Class .
+###  http://plasma-mds.org/qptdat/source#ComputerSimulation
+<http://plasma-mds.org/qptdat/source#ComputerSimulation> rdf:type owl:Class ;
+                                                         rdfs:subClassOf <http://plasma-mds.org/qptdat/source#PlasmaExperiment> .
 
 
-###  http://plasma-mds.org/qptdat#Temperature
-:Temperature rdf:type owl:Class ;
-             rdfs:subClassOf :Specification .
+###  http://plasma-mds.org/qptdat/source#DBD
+<http://plasma-mds.org/qptdat/source#DBD> rdf:type owl:Class .
 
 
-###  http://plasma-mds.org/qptdat#TheoreticalModel
-:TheoreticalModel rdf:type owl:Class ;
-                  rdfs:subClassOf :PlasmaExperiment .
+###  http://plasma-mds.org/qptdat/source#DC
+<http://plasma-mds.org/qptdat/source#DC> rdf:type owl:Class .
 
 
-###  http://plasma-mds.org/qptdat#ThermalImaging
-:ThermalImaging rdf:type owl:Class ;
-                rdfs:subClassOf :Imaging .
+###  http://plasma-mds.org/qptdat/source#DiagnosticDevice
+<http://plasma-mds.org/qptdat/source#DiagnosticDevice> rdf:type owl:Class .
 
 
-###  http://plasma-mds.org/qptdat#ThermographicCamera
-:ThermographicCamera rdf:type owl:Class ;
-                     rdfs:subClassOf :Camera ,
-                                     :Thermometer .
+###  http://plasma-mds.org/qptdat/source#DiagnosticMethod
+<http://plasma-mds.org/qptdat/source#DiagnosticMethod> rdf:type owl:Class .
 
 
-###  http://plasma-mds.org/qptdat#Thermometer
-:Thermometer rdf:type owl:Class ;
-             rdfs:subClassOf :DiagnosticDevice .
+###  http://plasma-mds.org/qptdat/source#ExperimentMethod
+<http://plasma-mds.org/qptdat/source#ExperimentMethod> rdf:type owl:Class ;
+                                                       rdfs:subClassOf <http://plasma-mds.org/qptdat/source#DiagnosticMethod> .
 
 
-###  http://plasma-mds.org/qptdat#TransientRecorder
-:TransientRecorder rdf:type owl:Class ;
-                   rdfs:subClassOf :DiagnosticDevice .
+###  http://plasma-mds.org/qptdat/source#Gas
+<http://plasma-mds.org/qptdat/source#Gas> rdf:type owl:Class .
 
 
-###  http://plasma-mds.org/qptdat#VoltageDifferentialProbe
-:VoltageDifferentialProbe rdf:type owl:Class ;
-                          rdfs:subClassOf :VoltageProbe .
+###  http://plasma-mds.org/qptdat/source#Helix
+<http://plasma-mds.org/qptdat/source#Helix> rdf:type owl:Class .
 
 
-###  http://plasma-mds.org/qptdat#VoltageProbe
-:VoltageProbe rdf:type owl:Class ;
-              rdfs:subClassOf :DiagnosticDevice .
+###  http://plasma-mds.org/qptdat/source#LabExperiment
+<http://plasma-mds.org/qptdat/source#LabExperiment> rdf:type owl:Class ;
+                                                    rdfs:subClassOf <http://plasma-mds.org/qptdat/source#PlasmaExperiment> .
 
 
-###  http://plasma-mds.org/qptdat#Voltmeter
-:Voltmeter rdf:type owl:Class ;
-           rdfs:subClassOf :DiagnosticDevice .
+###  http://plasma-mds.org/qptdat/source#Medium
+<http://plasma-mds.org/qptdat/source#Medium> rdf:type owl:Class .
 
 
-###  http://plasma-mds.org/qptdat#Waveform
-:Waveform rdf:type owl:Class ;
-          rdfs:subClassOf :Specification .
+###  http://plasma-mds.org/qptdat/source#Microwave
+<http://plasma-mds.org/qptdat/source#Microwave> rdf:type owl:Class ;
+                                                rdfs:subClassOf <http://plasma-mds.org/qptdat/source#Plasma> .
+
+
+###  http://plasma-mds.org/qptdat/source#ModellingMethod
+<http://plasma-mds.org/qptdat/source#ModellingMethod> rdf:type owl:Class ;
+                                                      rdfs:subClassOf <http://plasma-mds.org/qptdat/source#DiagnosticMethod> .
+
+
+###  http://plasma-mds.org/qptdat/source#Person
+<http://plasma-mds.org/qptdat/source#Person> rdf:type owl:Class .
+
+
+###  http://plasma-mds.org/qptdat/source#Plasma
+<http://plasma-mds.org/qptdat/source#Plasma> rdf:type owl:Class .
+
+
+###  http://plasma-mds.org/qptdat/source#PlasmaExperiment
+<http://plasma-mds.org/qptdat/source#PlasmaExperiment> rdf:type owl:Class .
+
+
+###  http://plasma-mds.org/qptdat/source#PlasmaJet
+<http://plasma-mds.org/qptdat/source#PlasmaJet> rdf:type owl:Class .
+
+
+###  http://plasma-mds.org/qptdat/source#Pressure
+<http://plasma-mds.org/qptdat/source#Pressure> rdf:type owl:Class .
+
+
+###  http://plasma-mds.org/qptdat/source#PulsedAC
+<http://plasma-mds.org/qptdat/source#PulsedAC> rdf:type owl:Class .
+
+
+###  http://plasma-mds.org/qptdat/source#Resource
+<http://plasma-mds.org/qptdat/source#Resource> rdf:type owl:Class .
+
+
+###  http://plasma-mds.org/qptdat/source#ShieldingGas
+<http://plasma-mds.org/qptdat/source#ShieldingGas> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <http://plasma-mds.org/qptdat/source#Gas> .
+
+
+###  http://plasma-mds.org/qptdat/source#SimulationMethod
+<http://plasma-mds.org/qptdat/source#SimulationMethod> rdf:type owl:Class ;
+                                                       rdfs:subClassOf <http://plasma-mds.org/qptdat/source#DiagnosticMethod> .
+
+
+###  http://plasma-mds.org/qptdat/source#Size
+<http://plasma-mds.org/qptdat/source#Size> rdf:type owl:Class .
+
+
+###  http://plasma-mds.org/qptdat/source#SourceGeometry
+<http://plasma-mds.org/qptdat/source#SourceGeometry> rdf:type owl:Class .
+
+
+###  http://plasma-mds.org/qptdat/source#Specification
+<http://plasma-mds.org/qptdat/source#Specification> rdf:type owl:Class .
+
+
+###  http://plasma-mds.org/qptdat/source#StateOfMatter
+<http://plasma-mds.org/qptdat/source#StateOfMatter> rdf:type owl:Class .
+
+
+###  http://plasma-mds.org/qptdat/source#Surface
+<http://plasma-mds.org/qptdat/source#Surface> rdf:type owl:Class .
+
+
+###  http://plasma-mds.org/qptdat/source#Target
+<http://plasma-mds.org/qptdat/source#Target> rdf:type owl:Class .
+
+
+###  http://plasma-mds.org/qptdat/source#Temperature
+<http://plasma-mds.org/qptdat/source#Temperature> rdf:type owl:Class .
+
+
+###  http://plasma-mds.org/qptdat/source#TheoreticalModel
+<http://plasma-mds.org/qptdat/source#TheoreticalModel> rdf:type owl:Class ;
+                                                       rdfs:subClassOf <http://plasma-mds.org/qptdat/source#PlasmaExperiment> .
 
 
 #################################################################
 #    Individuals
 #################################################################
 
-###  http://plasma-mds.org/qptdat#AtmosphericPressure
-:AtmosphericPressure rdf:type owl:NamedIndividual ,
-                              :Pressure ;
-                     :pressureValue "1 bar" .
+###  http://plasma-mds.org/qptdat/source#AtmosphericPressure
+<http://plasma-mds.org/qptdat/source#AtmosphericPressure> rdf:type owl:NamedIndividual ,
+                                                                   <http://plasma-mds.org/qptdat/source#Pressure> ;
+                                                          <http://plasma-mds.org/qptdat/source#pressureValue> "1 bar" .
 
 
-###  http://plasma-mds.org/qptdat#CorrelationOfHelicalityExperiment
-:CorrelationOfHelicalityExperiment rdf:type owl:NamedIndividual ,
-                                            :PlasmaExperiment .
+###  http://plasma-mds.org/qptdat/source#CorrelationOfHelicalityExperiment
+<http://plasma-mds.org/qptdat/source#CorrelationOfHelicalityExperiment> rdf:type owl:NamedIndividual ,
+                                                                                 <http://plasma-mds.org/qptdat/source#PlasmaExperiment> .
 
 
-###  http://plasma-mds.org/qptdat#Gas
-:Gas rdf:type owl:NamedIndividual ,
-              :StateOfMatter .
+###  http://plasma-mds.org/qptdat/source#Gas
+<http://plasma-mds.org/qptdat/source#Gas> rdf:type owl:NamedIndividual ,
+                                                   <http://plasma-mds.org/qptdat/source#StateOfMatter> .
 
 
-###  http://plasma-mds.org/qptdat#Liquid
-:Liquid rdf:type owl:NamedIndividual ,
-                 :StateOfMatter .
+###  http://plasma-mds.org/qptdat/source#Liquid
+<http://plasma-mds.org/qptdat/source#Liquid> rdf:type owl:NamedIndividual ,
+                                                      <http://plasma-mds.org/qptdat/source#StateOfMatter> .
 
 
-###  http://plasma-mds.org/qptdat#PressureKINPenIND
-:PressureKINPenIND rdf:type owl:NamedIndividual ,
-                            :Pressure ;
-                   :pressureMax "2 bar" ;
-                   :pressureMin "1 bar" .
+###  http://plasma-mds.org/qptdat/source#PressureKINPenIND
+<http://plasma-mds.org/qptdat/source#PressureKINPenIND> rdf:type owl:NamedIndividual ,
+                                                                 <http://plasma-mds.org/qptdat/source#Pressure> ;
+                                                        <http://plasma-mds.org/qptdat/source#pressureMax> "2 bar" ;
+                                                        <http://plasma-mds.org/qptdat/source#pressureMin> "1 bar" .
 
 
-###  http://plasma-mds.org/qptdat#Solid
-:Solid rdf:type owl:NamedIndividual ,
-                :StateOfMatter .
+###  http://plasma-mds.org/qptdat/source#Solid
+<http://plasma-mds.org/qptdat/source#Solid> rdf:type owl:NamedIndividual ,
+                                                     <http://plasma-mds.org/qptdat/source#StateOfMatter> .
 
 
-###  http://plasma-mds.org/qptdat#VoltageFeedPlasmaskop
-:VoltageFeedPlasmaskop rdf:type owl:NamedIndividual ,
-                                :AC ;
-                       :frequencyMax "200 kHz" ;
-                       :frequencyMin "10 kHz" .
+###  http://plasma-mds.org/qptdat/source#VoltageFeedPlasmaskop
+<http://plasma-mds.org/qptdat/source#VoltageFeedPlasmaskop> rdf:type owl:NamedIndividual ,
+                                                                     <http://plasma-mds.org/qptdat/source#AC> ;
+                                                            <http://plasma-mds.org/qptdat/source#frequencyMax> "200 kHz" ;
+                                                            <http://plasma-mds.org/qptdat/source#frequencyMin> "10 kHz" .
 
 
-###  http://plasma-mds.org/qptdat#bioactiveSurfaces
-:bioactiveSurfaces rdf:type owl:NamedIndividual ,
-                            :Application .
+###  http://plasma-mds.org/qptdat/source#bioactiveSurfaces
+<http://plasma-mds.org/qptdat/source#bioactiveSurfaces> rdf:type owl:NamedIndividual ,
+                                                                 <http://plasma-mds.org/qptdat/source#Application> .
 
 
-###  http://plasma-mds.org/qptdat#decontamination
-:decontamination rdf:type owl:NamedIndividual ,
-                          :Application .
+###  http://plasma-mds.org/qptdat/source#decontamination
+<http://plasma-mds.org/qptdat/source#decontamination> rdf:type owl:NamedIndividual ,
+                                                               <http://plasma-mds.org/qptdat/source#Application> .
 
 
-###  http://plasma-mds.org/qptdat#hairIINePlasma
-:hairIINePlasma rdf:type owl:NamedIndividual ,
-                         :PlasmaJet ,
-                         :Source ;
-                :specifiedBy :AtmosphericPressure ,
-                             :voltageFeedHairLiNePlasma .
+###  http://plasma-mds.org/qptdat/source#hairIINePlasma
+<http://plasma-mds.org/qptdat/source#hairIINePlasma> rdf:type owl:NamedIndividual ,
+                                                              :Source ,
+                                                              <http://plasma-mds.org/qptdat/source#PlasmaJet> ;
+                                                     <http://plasma-mds.org/qptdat/source#specifiedBy> <http://plasma-mds.org/qptdat/source#AtmosphericPressure> ,
+                                                                                                       <http://plasma-mds.org/qptdat/source#voltageFeedHairLiNePlasma> .
 
 
-###  http://plasma-mds.org/qptdat#helixJet
-:helixJet rdf:type owl:NamedIndividual ,
-                   :Helix ,
-                   :PlasmaJet ,
-                   :Source ;
-          :specifiedBy :AtmosphericPressure ,
-                       :voltageFeedHelixJet .
+###  http://plasma-mds.org/qptdat/source#helixJet
+<http://plasma-mds.org/qptdat/source#helixJet> rdf:type owl:NamedIndividual ,
+                                                        :Source ,
+                                                        <http://plasma-mds.org/qptdat/source#Helix> ,
+                                                        <http://plasma-mds.org/qptdat/source#PlasmaJet> ;
+                                               <http://plasma-mds.org/qptdat/source#specifiedBy> <http://plasma-mds.org/qptdat/source#AtmosphericPressure> ,
+                                                                                                 <http://plasma-mds.org/qptdat/source#voltageFeedHelixJet> .
 
 
-###  http://plasma-mds.org/qptdat#kINPen
-:kINPen rdf:type owl:NamedIndividual ,
-                 :PlasmaJet ,
-                 :Source ;
-        :specifiedBy :pressureKINPen ,
-                     :voltageFeedKINPen .
+###  http://plasma-mds.org/qptdat/source#kINPen
+<http://plasma-mds.org/qptdat/source#kINPen> rdf:type owl:NamedIndividual ,
+                                                      :Source ,
+                                                      <http://plasma-mds.org/qptdat/source#PlasmaJet> ;
+                                             <http://plasma-mds.org/qptdat/source#specifiedBy> <http://plasma-mds.org/qptdat/source#pressureKINPen> ,
+                                                                                               <http://plasma-mds.org/qptdat/source#voltageFeedKINPen> .
 
 
-###  http://plasma-mds.org/qptdat#materialSurfaces
-:materialSurfaces rdf:type owl:NamedIndividual ,
-                           :Application .
+###  http://plasma-mds.org/qptdat/source#materialSurfaces
+<http://plasma-mds.org/qptdat/source#materialSurfaces> rdf:type owl:NamedIndividual ,
+                                                                <http://plasma-mds.org/qptdat/source#Application> .
 
 
-###  http://plasma-mds.org/qptdat#millerAutoAxcess450
-:millerAutoAxcess450 rdf:type owl:NamedIndividual ,
-                              :Source .
+###  http://plasma-mds.org/qptdat/source#millerAutoAxcess450
+<http://plasma-mds.org/qptdat/source#millerAutoAxcess450> rdf:type owl:NamedIndividual ,
+                                                                   :Source .
 
 
-###  http://plasma-mds.org/qptdat#miniMIP
-:miniMIP rdf:type owl:NamedIndividual ,
-                  :Source ;
-         :specifiedBy :AtmosphericPressure ,
-                      :voltageFeedMiniMIP .
+###  http://plasma-mds.org/qptdat/source#miniMIP
+<http://plasma-mds.org/qptdat/source#miniMIP> rdf:type owl:NamedIndividual ,
+                                                       :Source ;
+                                              <http://plasma-mds.org/qptdat/source#specifiedBy> <http://plasma-mds.org/qptdat/source#AtmosphericPressure> ,
+                                                                                                <http://plasma-mds.org/qptdat/source#voltageFeedMiniMIP> .
 
 
-###  http://plasma-mds.org/qptdat#ntAPPJ
-:ntAPPJ rdf:type owl:NamedIndividual ,
-                 :PlasmaJet ,
-                 :Source ;
-        :isSourceOf :CorrelationOfHelicalityExperiment ;
-        :specifiedBy :AtmosphericPressure ,
-                     :voltageFeedKINPen .
+###  http://plasma-mds.org/qptdat/source#ntAPPJ
+<http://plasma-mds.org/qptdat/source#ntAPPJ> rdf:type owl:NamedIndividual ,
+                                                      :Source ,
+                                                      <http://plasma-mds.org/qptdat/source#PlasmaJet> ;
+                                             <http://plasma-mds.org/qptdat/source#isSourceOf> <http://plasma-mds.org/qptdat/source#CorrelationOfHelicalityExperiment> ;
+                                             <http://plasma-mds.org/qptdat/source#specifiedBy> <http://plasma-mds.org/qptdat/source#AtmosphericPressure> ,
+                                                                                               <http://plasma-mds.org/qptdat/source#voltageFeedKINPen> .
 
 
-###  http://plasma-mds.org/qptdat#plasmaChemicalProcesses
-:plasmaChemicalProcesses rdf:type owl:NamedIndividual ,
-                                  :Application .
+###  http://plasma-mds.org/qptdat/source#plasmaChemicalProcesses
+<http://plasma-mds.org/qptdat/source#plasmaChemicalProcesses> rdf:type owl:NamedIndividual ,
+                                                                       <http://plasma-mds.org/qptdat/source#Application> .
 
 
-###  http://plasma-mds.org/qptdat#plasmaMedicine
-:plasmaMedicine rdf:type owl:NamedIndividual ,
-                         :Application .
+###  http://plasma-mds.org/qptdat/source#plasmaMedicine
+<http://plasma-mds.org/qptdat/source#plasmaMedicine> rdf:type owl:NamedIndividual ,
+                                                              <http://plasma-mds.org/qptdat/source#Application> .
 
 
-###  http://plasma-mds.org/qptdat#plasmaskop
-:plasmaskop rdf:type owl:NamedIndividual ,
-                     :CCP ,
-                     :PlasmaJet ,
-                     :Source ;
-            :specifiedBy :AtmosphericPressure ,
-                         :VoltageFeedPlasmaskop .
+###  http://plasma-mds.org/qptdat/source#plasmaskop
+<http://plasma-mds.org/qptdat/source#plasmaskop> rdf:type owl:NamedIndividual ,
+                                                          :Source ,
+                                                          <http://plasma-mds.org/qptdat/source#CCP> ,
+                                                          <http://plasma-mds.org/qptdat/source#PlasmaJet> ;
+                                                 <http://plasma-mds.org/qptdat/source#specifiedBy> <http://plasma-mds.org/qptdat/source#AtmosphericPressure> ,
+                                                                                                   <http://plasma-mds.org/qptdat/source#VoltageFeedPlasmaskop> .
 
 
-###  http://plasma-mds.org/qptdat#pressureKINPen
-:pressureKINPen rdf:type owl:NamedIndividual ,
-                         :Specification ;
-                :pressureMax "3 bar" ;
-                :pressureMin "1 bar" .
+###  http://plasma-mds.org/qptdat/source#pressureKINPen
+<http://plasma-mds.org/qptdat/source#pressureKINPen> rdf:type owl:NamedIndividual ,
+                                                              <http://plasma-mds.org/qptdat/source#Specification> ;
+                                                     <http://plasma-mds.org/qptdat/source#pressureMax> "3 bar" ;
+                                                     <http://plasma-mds.org/qptdat/source#pressureMin> "1 bar" .
 
 
-###  http://plasma-mds.org/qptdat#pressureVDBD
-:pressureVDBD rdf:type owl:NamedIndividual ,
-                       :Pressure ;
-              :pressureMax "1000 mbar" ;
-              :pressureMin "100 mbar" .
+###  http://plasma-mds.org/qptdat/source#pressureVDBD
+<http://plasma-mds.org/qptdat/source#pressureVDBD> rdf:type owl:NamedIndividual ,
+                                                            <http://plasma-mds.org/qptdat/source#Pressure> ;
+                                                   <http://plasma-mds.org/qptdat/source#pressureMax> "1000 mbar" ;
+                                                   <http://plasma-mds.org/qptdat/source#pressureMin> "100 mbar" .
 
 
-###  http://plasma-mds.org/qptdat#vDBD
-:vDBD rdf:type owl:NamedIndividual ,
-               :DBD ,
-               :Source ;
-      :specifiedBy :pressureVDBD ,
-                   :voltageFeedVDBD ,
-                   :voltageFeedVDBD1 .
+###  http://plasma-mds.org/qptdat/source#vDBD
+<http://plasma-mds.org/qptdat/source#vDBD> rdf:type owl:NamedIndividual ,
+                                                    :Source ,
+                                                    <http://plasma-mds.org/qptdat/source#DBD> ;
+                                           <http://plasma-mds.org/qptdat/source#specifiedBy> <http://plasma-mds.org/qptdat/source#pressureVDBD> ,
+                                                                                             <http://plasma-mds.org/qptdat/source#voltageFeedVDBD> ,
+                                                                                             <http://plasma-mds.org/qptdat/source#voltageFeedVDBD1> .
 
 
-###  http://plasma-mds.org/qptdat#voltageFeedHairLiNePlasma
-:voltageFeedHairLiNePlasma rdf:type owl:NamedIndividual ,
-                                    :PulsedAC ;
-                           :frequencyValue "1 kHz" .
+###  http://plasma-mds.org/qptdat/source#voltageFeedHairLiNePlasma
+<http://plasma-mds.org/qptdat/source#voltageFeedHairLiNePlasma> rdf:type owl:NamedIndividual ,
+                                                                         <http://plasma-mds.org/qptdat/source#PulsedAC> ;
+                                                                <http://plasma-mds.org/qptdat/source#frequencyValue> "1 kHz" .
 
 
-###  http://plasma-mds.org/qptdat#voltageFeedHelixJet
-:voltageFeedHelixJet rdf:type owl:NamedIndividual ,
-                              :AC ;
-                     :frequencyValue "13.56 MHz" ,
-                                     "27.12 MHz" .
+###  http://plasma-mds.org/qptdat/source#voltageFeedHelixJet
+<http://plasma-mds.org/qptdat/source#voltageFeedHelixJet> rdf:type owl:NamedIndividual ,
+                                                                   <http://plasma-mds.org/qptdat/source#AC> ;
+                                                          <http://plasma-mds.org/qptdat/source#frequencyValue> "13.56 MHz" ,
+                                                                                                               "27.12 MHz" .
 
 
-###  http://plasma-mds.org/qptdat#voltageFeedKINPen
-:voltageFeedKINPen rdf:type owl:NamedIndividual ,
-                            :AC ;
-                   :frequencyValue "1 MHz" .
+###  http://plasma-mds.org/qptdat/source#voltageFeedKINPen
+<http://plasma-mds.org/qptdat/source#voltageFeedKINPen> rdf:type owl:NamedIndividual ,
+                                                                 <http://plasma-mds.org/qptdat/source#AC> ;
+                                                        <http://plasma-mds.org/qptdat/source#frequencyValue> "1 MHz" .
 
 
-###  http://plasma-mds.org/qptdat#voltageFeedMiniMIP
-:voltageFeedMiniMIP rdf:type owl:NamedIndividual ,
-                             :AC ;
-                    :frequencyValue "2.45 GHz" .
+###  http://plasma-mds.org/qptdat/source#voltageFeedMiniMIP
+<http://plasma-mds.org/qptdat/source#voltageFeedMiniMIP> rdf:type owl:NamedIndividual ,
+                                                                  <http://plasma-mds.org/qptdat/source#AC> ;
+                                                         <http://plasma-mds.org/qptdat/source#frequencyValue> "2.45 GHz" .
 
 
-###  http://plasma-mds.org/qptdat#voltageFeedVDBD
-:voltageFeedVDBD rdf:type owl:NamedIndividual ,
-                          :AC ;
-                 :frequencyMax "133 kHz" ;
-                 :frequencyMin "7 kHz" .
+###  http://plasma-mds.org/qptdat/source#voltageFeedVDBD
+<http://plasma-mds.org/qptdat/source#voltageFeedVDBD> rdf:type owl:NamedIndividual ,
+                                                               <http://plasma-mds.org/qptdat/source#AC> ;
+                                                      <http://plasma-mds.org/qptdat/source#frequencyMax> "133 kHz" ;
+                                                      <http://plasma-mds.org/qptdat/source#frequencyMin> "7 kHz" .
 
 
-###  http://plasma-mds.org/qptdat#voltageFeedVDBD1
-:voltageFeedVDBD1 rdf:type owl:NamedIndividual ,
-                           :AC ;
-                  :frequencyMax "2 MHz" ;
-                  :frequencyMin "1 MHz" .
+###  http://plasma-mds.org/qptdat/source#voltageFeedVDBD1
+<http://plasma-mds.org/qptdat/source#voltageFeedVDBD1> rdf:type owl:NamedIndividual ,
+                                                                <http://plasma-mds.org/qptdat/source#AC> ;
+                                                       <http://plasma-mds.org/qptdat/source#frequencyMax> "2 MHz" ;
+                                                       <http://plasma-mds.org/qptdat/source#frequencyMin> "1 MHz" .
 
 
-###  http://plasma-mds.org/qptdat#voltageFeedntAPPJ
-:voltageFeedntAPPJ rdf:type owl:NamedIndividual ,
-                            :AC ;
-                   :frequencyValue "13 MHz" ,
-                                   "27 MHz" .
+###  http://plasma-mds.org/qptdat/source#voltageFeedntAPPJ
+<http://plasma-mds.org/qptdat/source#voltageFeedntAPPJ> rdf:type owl:NamedIndividual ,
+                                                                 <http://plasma-mds.org/qptdat/source#AC> ;
+                                                        <http://plasma-mds.org/qptdat/source#frequencyValue> "13 MHz" ,
+                                                                                                             "27 MHz" .
 
 
-###  http://plasma-mds.org/qptdat#welding
-:welding rdf:type owl:NamedIndividual ,
-                  :Application .
+###  http://plasma-mds.org/qptdat/source#welding
+<http://plasma-mds.org/qptdat/source#welding> rdf:type owl:NamedIndividual ,
+                                                       <http://plasma-mds.org/qptdat/source#Application> .
 
 
 ###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

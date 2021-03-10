@@ -10,6 +10,16 @@
                                             owl:versionIRI <http://plasma-mds.org/qptdat/diagnostics/v1.0> .
 
 #################################################################
+#    Object Properties
+#################################################################
+
+###  http://plasma-mds.org/qptdat/diagnostics#usesDevice
+:usesDevice rdf:type owl:ObjectProperty ;
+            rdfs:domain <http://plasma-mds.org/qptdat#DiagnosticMethod> ;
+            rdfs:range <http://plasma-mds.org/qptdat#DiagnosticDevice> .
+
+
+#################################################################
 #    Classes
 #################################################################
 
@@ -24,11 +34,6 @@
 ###  http://plasma-mds.org/qptdat#ExperimentMethod
 <http://plasma-mds.org/qptdat#ExperimentMethod> rdf:type owl:Class ;
                                                 rdfs:subClassOf <http://plasma-mds.org/qptdat#DiagnosticMethod> .
-
-
-###  http://plasma-mds.org/qptdat#MechanicalMethod
-<http://plasma-mds.org/qptdat#MechanicalMethod> rdf:type owl:Class ;
-                                                rdfs:subClassOf <http://plasma-mds.org/qptdat#ExperimentMethod> .
 
 
 ###  http://plasma-mds.org/qptdat#ModellingMethod
@@ -64,6 +69,11 @@
 ###  http://plasma-mds.org/qptdat/diagnostics#Camera
 :Camera rdf:type owl:Class ;
         rdfs:subClassOf <http://plasma-mds.org/qptdat#DiagnosticDevice> .
+
+
+###  http://plasma-mds.org/qptdat/diagnostics#CollisionSimulation
+:CollisionSimulation rdf:type owl:Class ;
+                     rdfs:subClassOf <http://plasma-mds.org/qptdat#SimulationMethod> .
 
 
 ###  http://plasma-mds.org/qptdat/diagnostics#CurrentProbe
@@ -134,6 +144,11 @@
 ###  http://plasma-mds.org/qptdat/diagnostics#MassSpectrometer
 :MassSpectrometer rdf:type owl:Class ;
                   rdfs:subClassOf :Spectroscope .
+
+
+###  http://plasma-mds.org/qptdat/diagnostics#MechanicalMethod
+:MechanicalMethod rdf:type owl:Class ;
+                  rdfs:subClassOf <http://plasma-mds.org/qptdat#ExperimentMethod> .
 
 
 ###  http://plasma-mds.org/qptdat/diagnostics#Microscope

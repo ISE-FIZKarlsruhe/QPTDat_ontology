@@ -10,6 +10,119 @@
                                        owl:versionIRI <http://plasma-mds.org/qptdat/source/v1.0> .
 
 #################################################################
+#    Object Properties
+#################################################################
+
+###  http://plasma-mds.org/qptdat/source#geometry
+:geometry rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf owl:topObjectProperty ;
+          rdfs:domain <http://plasma-mds.org/qptdat#Source> ;
+          rdfs:range :SourceGeometry .
+
+
+###  http://plasma-mds.org/qptdat/source#specifiedBy
+:specifiedBy rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             rdfs:domain <http://plasma-mds.org/qptdat#Source> ;
+             rdfs:range :Specification .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://plasma-mds.org/qptdat/source#amplitudeVoltage
+:amplitudeVoltage rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf owl:topDataProperty ;
+                  rdfs:domain :AC ;
+                  rdfs:range xsd:float .
+
+
+###  http://plasma-mds.org/qptdat/source#appliedVoltage
+:appliedVoltage rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf owl:topDataProperty ;
+                rdfs:domain :DC ;
+                rdfs:range xsd:float .
+
+
+###  http://plasma-mds.org/qptdat/source#dutyCycle
+:dutyCycle rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf owl:topDataProperty ;
+           rdfs:domain :AC ;
+           rdfs:range xsd:float .
+
+
+###  http://plasma-mds.org/qptdat/source#frequencyMax
+:frequencyMax rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf owl:topDataProperty ;
+              rdfs:domain :AC ;
+              rdfs:range xsd:float .
+
+
+###  http://plasma-mds.org/qptdat/source#frequencyMin
+:frequencyMin rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf owl:topDataProperty ;
+              rdfs:domain :AC ;
+              rdfs:range xsd:float .
+
+
+###  http://plasma-mds.org/qptdat/source#frequencyValue
+:frequencyValue rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf owl:topDataProperty ;
+                rdfs:domain :AC ;
+                rdfs:range xsd:float .
+
+
+###  http://plasma-mds.org/qptdat/source#peakToPeakVoltage
+:peakToPeakVoltage rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf owl:topDataProperty ;
+                   rdfs:domain :AC ;
+                   rdfs:range xsd:float .
+
+
+###  http://plasma-mds.org/qptdat/source#pressureMax
+:pressureMax rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty ;
+             rdfs:domain :Pressure ;
+             rdfs:range xsd:float .
+
+
+###  http://plasma-mds.org/qptdat/source#pressureMin
+:pressureMin rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty ;
+             rdfs:domain :Pressure ;
+             rdfs:range xsd:float .
+
+
+###  http://plasma-mds.org/qptdat/source#pressureValue
+:pressureValue rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf owl:topDataProperty ;
+               rdfs:domain :Pressure ;
+               rdfs:range xsd:float .
+
+
+###  http://plasma-mds.org/qptdat/source#temperatureMax
+:temperatureMax rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf owl:topDataProperty ;
+                rdfs:domain :Temperature ;
+                rdfs:range xsd:float .
+
+
+###  http://plasma-mds.org/qptdat/source#temperatureMin
+:temperatureMin rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf owl:topDataProperty ;
+                rdfs:domain :Temperature ;
+                rdfs:range xsd:float .
+
+
+###  http://plasma-mds.org/qptdat/source#temperatureValue
+:temperatureValue rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf owl:topDataProperty ;
+                  rdfs:domain :Temperature ;
+                  rdfs:range xsd:float .
+
+
+#################################################################
 #    Classes
 #################################################################
 

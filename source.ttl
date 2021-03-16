@@ -4,6 +4,7 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix qptdat: <http://plasma-mds.org/qptdat#> .
 @base <http://plasma-mds.org/qptdat/source> .
 
 <http://plasma-mds.org/qptdat/source> rdf:type owl:Ontology ;
@@ -16,15 +17,21 @@
 ###  http://plasma-mds.org/qptdat/source#geometry
 :geometry rdf:type owl:ObjectProperty ;
           rdfs:subPropertyOf owl:topObjectProperty ;
-          rdfs:domain <http://plasma-mds.org/qptdat#Source> ;
+          rdfs:domain qptdat:Source ;
           rdfs:range :SourceGeometry .
 
 
 ###  http://plasma-mds.org/qptdat/source#specifiedBy
 :specifiedBy rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf owl:topObjectProperty ;
-             rdfs:domain <http://plasma-mds.org/qptdat#Source> ;
+             rdfs:domain qptdat:Source ;
              rdfs:range :Specification .
+
+
+###  http://wikiba.se/ontology#quantityUnit
+<http://wikiba.se/ontology#quantityUnit> rdf:type owl:ObjectProperty ;
+                                         rdfs:domain <http://wikiba.se/ontology#QuantityValue> ;
+                                         rdfs:range <http://wikiba.se/ontology#Item> .
 
 
 #################################################################
@@ -122,12 +129,30 @@
                   rdfs:range xsd:float .
 
 
+###  http://wikiba.se/ontology#quantityAmount
+<http://wikiba.se/ontology#quantityAmount> rdf:type owl:DatatypeProperty ;
+                                           rdfs:domain <http://wikiba.se/ontology#QuantityValue> ;
+                                           rdfs:range xsd:decimal .
+
+
+###  http://wikiba.se/ontology#quantityLowerBound
+<http://wikiba.se/ontology#quantityLowerBound> rdf:type owl:DatatypeProperty ;
+                                               rdfs:domain <http://wikiba.se/ontology#QuantityValue> ;
+                                               rdfs:range xsd:decimal .
+
+
+###  http://wikiba.se/ontology#quantityUpperBound
+<http://wikiba.se/ontology#quantityUpperBound> rdf:type owl:DatatypeProperty ;
+                                               rdfs:domain <http://wikiba.se/ontology#QuantityValue> ;
+                                               rdfs:range xsd:decimal .
+
+
 #################################################################
 #    Classes
 #################################################################
 
 ###  http://plasma-mds.org/qptdat#Source
-<http://plasma-mds.org/qptdat#Source> rdf:type owl:Class .
+qptdat:Source rdf:type owl:Class .
 
 
 ###  http://plasma-mds.org/qptdat/source#AC
@@ -138,14 +163,14 @@
 
 ###  http://plasma-mds.org/qptdat/source#CCP
 :CCP rdf:type owl:Class ;
-     rdfs:subClassOf <http://plasma-mds.org/qptdat#Source> ;
+     rdfs:subClassOf qptdat:Source ;
      rdfs:comment "Capacitively coupled plasma system"@en ;
      rdfs:label "Capacitively coupled plasma system"@en .
 
 
 ###  http://plasma-mds.org/qptdat/source#DBD
 :DBD rdf:type owl:Class ;
-     rdfs:subClassOf <http://plasma-mds.org/qptdat#Source> ;
+     rdfs:subClassOf qptdat:Source ;
      rdfs:comment "Discharge involving at least one insulating dielectric barrier between the electrodes"@en ;
      rdfs:label "Dielectric Barrier Discharge"@en .
 
@@ -162,7 +187,7 @@
 
 ###  http://plasma-mds.org/qptdat/source#Helix
 :Helix rdf:type owl:Class ;
-       rdfs:subClassOf <http://plasma-mds.org/qptdat#Source> .
+       rdfs:subClassOf qptdat:Source .
 
 
 ###  http://plasma-mds.org/qptdat/source#ParallelPlate
@@ -183,19 +208,19 @@
 ###  http://plasma-mds.org/qptdat/source#PlasmaJet
 :PlasmaJet rdf:type owl:Class ;
            owl:equivalentClass :PlasmaPen ;
-           rdfs:subClassOf <http://plasma-mds.org/qptdat#Source> ;
+           rdfs:subClassOf qptdat:Source ;
            rdfs:comment "Capillary plasma source, sometimes in form of a handheld device"@en ;
            rdfs:label "Plasma jet"@en .
 
 
 ###  http://plasma-mds.org/qptdat/source#PlasmaPen
 :PlasmaPen rdf:type owl:Class ;
-           rdfs:subClassOf <http://plasma-mds.org/qptdat#Source> .
+           rdfs:subClassOf qptdat:Source .
 
 
 ###  http://plasma-mds.org/qptdat/source#PlasmaTorch
 :PlasmaTorch rdf:type owl:Class ;
-             rdfs:subClassOf <http://plasma-mds.org/qptdat#Source> .
+             rdfs:subClassOf qptdat:Source .
 
 
 ###  http://plasma-mds.org/qptdat/source#Pressure
@@ -215,7 +240,7 @@
 
 ###  http://plasma-mds.org/qptdat/source#ScanningDriftTubeApparatus
 :ScanningDriftTubeApparatus rdf:type owl:Class ;
-                            rdfs:subClassOf <http://plasma-mds.org/qptdat#Source> .
+                            rdfs:subClassOf qptdat:Source .
 
 
 ###  http://plasma-mds.org/qptdat/source#SourceGeometry
@@ -234,6 +259,14 @@
 ###  http://plasma-mds.org/qptdat/source#Waveform
 :Waveform rdf:type owl:Class ;
           rdfs:subClassOf :Specification .
+
+
+###  http://wikiba.se/ontology#Item
+<http://wikiba.se/ontology#Item> rdf:type owl:Class .
+
+
+###  http://wikiba.se/ontology#QuantityValue
+<http://wikiba.se/ontology#QuantityValue> rdf:type owl:Class .
 
 
 ###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

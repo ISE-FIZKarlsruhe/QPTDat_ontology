@@ -184,6 +184,35 @@ xsd:date rdf:type rdfs:Datatype .
              rdfs:range :Medium .
 
 
+###  http://plasma-mds.org/qptdat#hasComponent
+:hasComponent rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://plasma-mds.org/qptdat#hasMedium
+:hasMedium rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :hasComponent ;
+           owl:inverseOf :isMediumOf ;
+           rdfs:domain :PlasmaExperiment ;
+           rdfs:range :Medium .
+
+
+###  http://plasma-mds.org/qptdat#hasSource
+:hasSource rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :hasComponent ;
+           owl:inverseOf :isSourceOf ;
+           rdfs:domain :PlasmaExperiment ;
+           rdfs:range :Source .
+
+
+###  http://plasma-mds.org/qptdat#hasTarget
+:hasTarget rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :hasComponent ;
+           owl:inverseOf :isTargetOf ;
+           rdfs:domain :PlasmaExperiment ;
+           rdfs:range :Target .
+
+
 ###  http://plasma-mds.org/qptdat#homepage
 :homepage rdf:type owl:ObjectProperty ;
           rdfs:subPropertyOf <http://xmlns.com/foaf/spec/#term_homepage> ;

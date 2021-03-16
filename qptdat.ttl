@@ -299,12 +299,6 @@ dcterms:isReferencedBy rdf:type owl:ObjectProperty .
 dcterms:license rdf:type owl:ObjectProperty .
 
 
-###  http://wikiba.se/ontology#quantityUnit
-wikibase:quantityUnit rdf:type owl:ObjectProperty ;
-                      rdfs:domain wikibase:QuantityValue ;
-                      rdfs:range wikibase:Item .
-
-
 ###  http://xmlns.com/foaf/spec/#term_homepage
 <http://xmlns.com/foaf/spec/#term_homepage> rdf:type owl:ObjectProperty .
 
@@ -354,24 +348,6 @@ dcterms:created rdf:type owl:DatatypeProperty .
 
 ###  http://purl.org/dc/terms/description
 dcterms:description rdf:type owl:DatatypeProperty .
-
-
-###  http://wikiba.se/ontology#quantityAmount
-wikibase:quantityAmount rdf:type owl:DatatypeProperty ;
-                        rdfs:domain wikibase:QuantityValue ;
-                        rdfs:range xsd:decimal .
-
-
-###  http://wikiba.se/ontology#quantityLowerBound
-wikibase:quantityLowerBound rdf:type owl:DatatypeProperty ;
-                            rdfs:domain wikibase:QuantityValue ;
-                            rdfs:range xsd:decimal .
-
-
-###  http://wikiba.se/ontology#quantityUpperBound
-wikibase:quantityUpperBound rdf:type owl:DatatypeProperty ;
-                            rdfs:domain wikibase:QuantityValue ;
-                            rdfs:range xsd:decimal .
 
 
 #################################################################
@@ -482,14 +458,6 @@ dcterms:LicenseDocument rdf:type owl:Class .
 
 ###  http://purl.org/spar/datacite/Identifier
 <http://purl.org/spar/datacite/Identifier> rdf:type owl:Class .
-
-
-###  http://wikiba.se/ontology#Item
-wikibase:Item rdf:type owl:Class .
-
-
-###  http://wikiba.se/ontology#QuantityValue
-wikibase:QuantityValue rdf:type owl:Class .
 
 
 ###  http://www.w3.org/ns/dcat#Dataset

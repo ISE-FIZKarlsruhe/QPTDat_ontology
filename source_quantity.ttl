@@ -1,0 +1,178 @@
+@prefix : <http://plasma-mds.org/qptdat/source/quantity#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://plasma-mds.org/qptdat/source/quantity> .
+
+<http://plasma-mds.org/qptdat/source/quantity> rdf:type owl:Ontology ;
+                                                owl:versionIRI <http://plasma-mds.org/qptdat/source/quantity/v1.0> .
+                                               
+                                               
+#################################################################
+#    Object properties
+#################################################################
+
+###  http://plasma-mds.org/qptdat/source/quantity#amplitudeVoltage
+<http://plasma-mds.org/qptdat/source/quantity#amplitudeVoltage> rdf:type owl:ObjectProperty ;
+                                                                            rdfs:subPropertyOf owl:topObjectProperty ;
+                                                                            rdfs:domain :AC ;
+                                                                            rdfs:range <http://wikiba.se/ontology#QuantityValue> .
+
+
+###  http://plasma-mds.org/qptdat/source/quantity#appliedVoltage
+<http://plasma-mds.org/qptdat/source/quantity#appliedVoltage> rdf:type owl:ObjectProperty ;
+                                                                          rdfs:subPropertyOf owl:topObjectProperty ;
+                                                                          rdfs:domain :DC ;
+                                                                          rdfs:range <http://wikiba.se/ontology#QuantityValue> .
+
+
+###  http://plasma-mds.org/qptdat/source/quantity#dutyCycle
+<http://plasma-mds.org/qptdat/source/quantity#dutyCycle> rdf:type owl:ObjectProperty ;
+                                                                     rdfs:subPropertyOf owl:topObjectProperty ;
+                                                                     rdfs:domain :AC ;
+                                                                     rdfs:range <http://wikiba.se/ontology#QuantityValue> .
+
+
+###  http://plasma-mds.org/qptdat/source/quantity#frequencyMax
+<http://plasma-mds.org/qptdat/source/quantity#frequencyMax> rdf:type owl:ObjectProperty ;
+                                                                        rdfs:subPropertyOf owl:topObjectProperty ;
+                                                                        rdfs:domain :AC ;
+                                                                        rdfs:range <http://wikiba.se/ontology#QuantityValue> .
+
+
+###  http://plasma-mds.org/qptdat/source/quantity#frequencyMin
+<http://plasma-mds.org/qptdat/source/quantity#frequencyMin> rdf:type owl:ObjectProperty ;
+                                                                        rdfs:subPropertyOf owl:topObjectProperty ;
+                                                                        rdfs:domain :AC ;
+                                                                        rdfs:range <http://wikiba.se/ontology#QuantityValue> .
+
+
+###  http://plasma-mds.org/qptdat/source/quantity#frequencyValue
+<http://plasma-mds.org/qptdat/source/quantity#frequencyValue> rdf:type owl:ObjectProperty ;
+                                                                          rdfs:subPropertyOf owl:topObjectProperty ;
+                                                                          rdfs:domain :AC ;
+                                                                          rdfs:range <http://wikiba.se/ontology#QuantityValue> .
+
+
+###  http://plasma-mds.org/qptdat/source/quantity#peakToPeakVoltage
+<http://plasma-mds.org/qptdat/source/quantity#peakToPeakVoltage> rdf:type owl:ObjectProperty ;
+                                                                             rdfs:subPropertyOf owl:topObjectProperty ;
+                                                                             rdfs:domain :AC ;
+                                                                             rdfs:range <http://wikiba.se/ontology#QuantityValue> .
+
+
+###  http://plasma-mds.org/qptdat/source/quantity#pressureMax
+<http://plasma-mds.org/qptdat/source/quantity#pressureMax> rdf:type owl:ObjectProperty ;
+                                                                       rdfs:subPropertyOf owl:topObjectProperty ;
+                                                                       rdfs:domain :Pressure ;
+                                                                       rdfs:range <http://wikiba.se/ontology#QuantityValue> .
+
+
+###  http://plasma-mds.org/qptdat/source/quantity#pressureMin
+<http://plasma-mds.org/qptdat/source/quantity#pressureMin> rdf:type owl:ObjectProperty ;
+                                                                       rdfs:subPropertyOf owl:topObjectProperty ;
+                                                                       rdfs:domain :Pressure ;
+                                                                       rdfs:range <http://wikiba.se/ontology#QuantityValue> .
+
+
+###  http://plasma-mds.org/qptdat/source/quantity#pressureValue
+<http://plasma-mds.org/qptdat/source/quantity#pressureValue> rdf:type owl:ObjectProperty ;
+                                                                         rdfs:subPropertyOf owl:topObjectProperty ;
+                                                                         rdfs:domain :Pressure ;
+                                                                         rdfs:range <http://wikiba.se/ontology#QuantityValue> .
+
+
+###  http://plasma-mds.org/qptdat/source/quantity#temperatureMax
+<http://plasma-mds.org/qptdat/source/quantity#temperatureMax> rdf:type owl:ObjectProperty ;
+                                                                          rdfs:subPropertyOf owl:topObjectProperty ;
+                                                                          rdfs:domain :Temperature ;
+                                                                          rdfs:range <http://wikiba.se/ontology#QuantityValue> .
+
+
+###  http://plasma-mds.org/qptdat/source/quantity#temperatureMin
+<http://plasma-mds.org/qptdat/source/quantity#temperatureMin> rdf:type owl:ObjectProperty ;
+                                                                          rdfs:subPropertyOf owl:topObjectProperty ;
+                                                                          rdfs:domain :Temperature ;
+                                                                          rdfs:range <http://wikiba.se/ontology#QuantityValue> .
+
+
+###  http://plasma-mds.org/qptdat/source/quantity#temperatureValue
+<http://plasma-mds.org/qptdat/source/quantity#temperatureValue> rdf:type owl:ObjectProperty ;
+                                                                            rdfs:subPropertyOf owl:topObjectProperty ;
+                                                                            rdfs:domain :Temperature ;
+                                                                            rdfs:range <http://wikiba.se/ontology#QuantityValue> .
+
+
+###  http://wikiba.se/ontology#quantityAmount
+<http://wikiba.se/ontology#quantityAmount> rdf:type owl:DatatypeProperty ;
+                                           rdfs:domain <http://wikiba.se/ontology#QuantityValue> ;
+                                           rdfs:range xsd:decimal .
+
+
+###  http://wikiba.se/ontology#quantityLowerBound
+<http://wikiba.se/ontology#quantityLowerBound> rdf:type owl:DatatypeProperty ;
+                                               rdfs:domain <http://wikiba.se/ontology#QuantityValue> ;
+                                               rdfs:range xsd:decimal .
+
+
+###  http://wikiba.se/ontology#quantityUpperBound
+<http://wikiba.se/ontology#quantityUpperBound> rdf:type owl:DatatypeProperty ;
+                                               rdfs:domain <http://wikiba.se/ontology#QuantityValue> ;
+                                               rdfs:range xsd:decimal .
+
+
+###  http://wikiba.se/ontology#quantityUnit
+<http://wikiba.se/ontology#quantityUnit> rdf:type owl:ObjectProperty ;
+                                         rdfs:domain <http://wikiba.se/ontology#QuantityValue> ;
+                                         rdfs:range <http://wikiba.se/ontology#Item> .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://wikiba.se/ontology#quantityAmount
+<http://wikiba.se/ontology#quantityAmount> rdf:type owl:DatatypeProperty ;
+                                           rdfs:domain <http://wikiba.se/ontology#QuantityValue> ;
+                                           rdfs:range xsd:decimal .
+
+
+###  http://wikiba.se/ontology#quantityLowerBound
+<http://wikiba.se/ontology#quantityLowerBound> rdf:type owl:DatatypeProperty ;
+                                               rdfs:domain <http://wikiba.se/ontology#QuantityValue> ;
+                                               rdfs:range xsd:decimal .
+
+
+###  http://wikiba.se/ontology#quantityUpperBound
+<http://wikiba.se/ontology#quantityUpperBound> rdf:type owl:DatatypeProperty ;
+                                               rdfs:domain <http://wikiba.se/ontology#QuantityValue> ;
+                                               rdfs:range xsd:decimal .
+                                               
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://plasma-mds.org/qptdat/source#AC
+:AC rdf:type owl:Class .
+
+
+###  http://plasma-mds.org/qptdat/source#DC
+:DC rdf:type owl:Class .
+
+
+###  http://plasma-mds.org/qptdat/source#Pressure
+:Pressure rdf:type owl:Class .
+
+
+###  http://plasma-mds.org/qptdat/source#Temperature
+:Temperature rdf:type owl:Class .
+
+
+###  http://wikiba.se/ontology#QuantityValue
+<http://wikiba.se/ontology#QuantityValue> rdf:type owl:Class .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

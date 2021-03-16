@@ -27,124 +27,99 @@
              rdfs:domain qptdat:Source ;
              rdfs:range :Specification .
 
-
-###  http://wikiba.se/ontology#quantityUnit
-<http://wikiba.se/ontology#quantityUnit> rdf:type owl:ObjectProperty ;
-                                         rdfs:domain <http://wikiba.se/ontology#QuantityValue> ;
-                                         rdfs:range <http://wikiba.se/ontology#Item> .
-
-
 #################################################################
 #    Data properties
 #################################################################
 
-###  http://plasma-mds.org/qptdat/source#amplitudeVoltage
-:amplitudeVoltage rdf:type owl:DatatypeProperty ;
-                  rdfs:subPropertyOf owl:topDataProperty ;
-                  rdfs:domain :AC ;
-                  rdfs:range xsd:float .
+###  http://plasma-mds.org/qptdat/source/directValue#amplitudeVoltage
+<http://plasma-mds.org/qptdat/source/directValue#amplitudeVoltage> rdf:type owl:DatatypeProperty ;
+                                                                   rdfs:subPropertyOf owl:topDataProperty ;
+                                                                   rdfs:domain :AC ;
+                                                                   rdfs:range xsd:float .
 
 
-###  http://plasma-mds.org/qptdat/source#appliedVoltage
-:appliedVoltage rdf:type owl:DatatypeProperty ;
-                rdfs:subPropertyOf owl:topDataProperty ;
-                rdfs:domain :DC ;
-                rdfs:range xsd:float .
+###  http://plasma-mds.org/qptdat/source/directValue#appliedVoltage
+<http://plasma-mds.org/qptdat/source/directValue#appliedVoltage> rdf:type owl:DatatypeProperty ;
+                                                                 rdfs:subPropertyOf owl:topDataProperty ;
+                                                                 rdfs:domain :DC ;
+                                                                 rdfs:range xsd:float .
 
 
-###  http://plasma-mds.org/qptdat/source#dutyCycle
-:dutyCycle rdf:type owl:DatatypeProperty ;
-           rdfs:subPropertyOf owl:topDataProperty ;
-           rdfs:domain :AC ;
-           rdfs:range xsd:float .
+###  http://plasma-mds.org/qptdat/source/directValue#dutyCycle
+<http://plasma-mds.org/qptdat/source/directValue#dutyCycle> rdf:type owl:DatatypeProperty ;
+                                                            rdfs:subPropertyOf owl:topDataProperty ;
+                                                            rdfs:domain :AC ;
+                                                            rdfs:range xsd:float .
 
 
-###  http://plasma-mds.org/qptdat/source#frequencyMax
-:frequencyMax rdf:type owl:DatatypeProperty ;
-              rdfs:subPropertyOf owl:topDataProperty ;
-              rdfs:domain :AC ;
-              rdfs:range xsd:float .
+###  http://plasma-mds.org/qptdat/source/directValue#frequencyMax
+<http://plasma-mds.org/qptdat/source/directValue#frequencyMax> rdf:type owl:DatatypeProperty ;
+                                                               rdfs:subPropertyOf owl:topDataProperty ;
+                                                               rdfs:domain :AC ;
+                                                               rdfs:range xsd:float .
 
 
-###  http://plasma-mds.org/qptdat/source#frequencyMin
-:frequencyMin rdf:type owl:DatatypeProperty ;
-              rdfs:subPropertyOf owl:topDataProperty ;
-              rdfs:domain :AC ;
-              rdfs:range xsd:float .
+###  http://plasma-mds.org/qptdat/source/directValue#frequencyMin
+<http://plasma-mds.org/qptdat/source/directValue#frequencyMin> rdf:type owl:DatatypeProperty ;
+                                                               rdfs:subPropertyOf owl:topDataProperty ;
+                                                               rdfs:domain :AC ;
+                                                               rdfs:range xsd:float .
 
 
-###  http://plasma-mds.org/qptdat/source#frequencyValue
-:frequencyValue rdf:type owl:DatatypeProperty ;
-                rdfs:subPropertyOf owl:topDataProperty ;
-                rdfs:domain :AC ;
-                rdfs:range xsd:float .
+###  http://plasma-mds.org/qptdat/source/directValue#frequencyValue
+<http://plasma-mds.org/qptdat/source/directValue#frequencyValue> rdf:type owl:DatatypeProperty ;
+                                                                 rdfs:subPropertyOf owl:topDataProperty ;
+                                                                 rdfs:domain :AC ;
+                                                                 rdfs:range xsd:float .
 
 
-###  http://plasma-mds.org/qptdat/source#peakToPeakVoltage
-:peakToPeakVoltage rdf:type owl:DatatypeProperty ;
-                   rdfs:subPropertyOf owl:topDataProperty ;
-                   rdfs:domain :AC ;
-                   rdfs:range xsd:float .
+###  http://plasma-mds.org/qptdat/source/directValue#peakToPeakVoltage
+<http://plasma-mds.org/qptdat/source/directValue#peakToPeakVoltage> rdf:type owl:DatatypeProperty ;
+                                                                    rdfs:subPropertyOf owl:topDataProperty ;
+                                                                    rdfs:domain :AC ;
+                                                                    rdfs:range xsd:float .
 
 
-###  http://plasma-mds.org/qptdat/source#pressureMax
-:pressureMax rdf:type owl:DatatypeProperty ;
-             rdfs:subPropertyOf owl:topDataProperty ;
-             rdfs:domain :Pressure ;
-             rdfs:range xsd:float .
+###  http://plasma-mds.org/qptdat/source/directValue#pressureMax
+<http://plasma-mds.org/qptdat/source/directValue#pressureMax> rdf:type owl:DatatypeProperty ;
+                                                              rdfs:subPropertyOf owl:topDataProperty ;
+                                                              rdfs:domain :Pressure ;
+                                                              rdfs:range xsd:float .
 
 
-###  http://plasma-mds.org/qptdat/source#pressureMin
-:pressureMin rdf:type owl:DatatypeProperty ;
-             rdfs:subPropertyOf owl:topDataProperty ;
-             rdfs:domain :Pressure ;
-             rdfs:range xsd:float .
+###  http://plasma-mds.org/qptdat/source/directValue#pressureMin
+<http://plasma-mds.org/qptdat/source/directValue#pressureMin> rdf:type owl:DatatypeProperty ;
+                                                              rdfs:subPropertyOf owl:topDataProperty ;
+                                                              rdfs:domain :Pressure ;
+                                                              rdfs:range xsd:float .
 
 
-###  http://plasma-mds.org/qptdat/source#pressureValue
-:pressureValue rdf:type owl:DatatypeProperty ;
-               rdfs:subPropertyOf owl:topDataProperty ;
-               rdfs:domain :Pressure ;
-               rdfs:range xsd:float .
+###  http://plasma-mds.org/qptdat/source/directValue#pressureValue
+<http://plasma-mds.org/qptdat/source/directValue#pressureValue> rdf:type owl:DatatypeProperty ;
+                                                                rdfs:subPropertyOf owl:topDataProperty ;
+                                                                rdfs:domain :Pressure ;
+                                                                rdfs:range xsd:float .
 
 
-###  http://plasma-mds.org/qptdat/source#temperatureMax
-:temperatureMax rdf:type owl:DatatypeProperty ;
-                rdfs:subPropertyOf owl:topDataProperty ;
-                rdfs:domain :Temperature ;
-                rdfs:range xsd:float .
+###  http://plasma-mds.org/qptdat/source/directValue#temperatureMax
+<http://plasma-mds.org/qptdat/source/directValue#temperatureMax> rdf:type owl:DatatypeProperty ;
+                                                                 rdfs:subPropertyOf owl:topDataProperty ;
+                                                                 rdfs:domain :Temperature ;
+                                                                 rdfs:range xsd:float .
 
 
-###  http://plasma-mds.org/qptdat/source#temperatureMin
-:temperatureMin rdf:type owl:DatatypeProperty ;
-                rdfs:subPropertyOf owl:topDataProperty ;
-                rdfs:domain :Temperature ;
-                rdfs:range xsd:float .
+###  http://plasma-mds.org/qptdat/source/directValue#temperatureMin
+<http://plasma-mds.org/qptdat/source/directValue#temperatureMin> rdf:type owl:DatatypeProperty ;
+                                                                 rdfs:subPropertyOf owl:topDataProperty ;
+                                                                 rdfs:domain :Temperature ;
+                                                                 rdfs:range xsd:float .
 
 
-###  http://plasma-mds.org/qptdat/source#temperatureValue
-:temperatureValue rdf:type owl:DatatypeProperty ;
-                  rdfs:subPropertyOf owl:topDataProperty ;
-                  rdfs:domain :Temperature ;
-                  rdfs:range xsd:float .
-
-
-###  http://wikiba.se/ontology#quantityAmount
-<http://wikiba.se/ontology#quantityAmount> rdf:type owl:DatatypeProperty ;
-                                           rdfs:domain <http://wikiba.se/ontology#QuantityValue> ;
-                                           rdfs:range xsd:decimal .
-
-
-###  http://wikiba.se/ontology#quantityLowerBound
-<http://wikiba.se/ontology#quantityLowerBound> rdf:type owl:DatatypeProperty ;
-                                               rdfs:domain <http://wikiba.se/ontology#QuantityValue> ;
-                                               rdfs:range xsd:decimal .
-
-
-###  http://wikiba.se/ontology#quantityUpperBound
-<http://wikiba.se/ontology#quantityUpperBound> rdf:type owl:DatatypeProperty ;
-                                               rdfs:domain <http://wikiba.se/ontology#QuantityValue> ;
-                                               rdfs:range xsd:decimal .
+###  http://plasma-mds.org/qptdat/source/directValue#temperatureValue
+<http://plasma-mds.org/qptdat/source/directValue#temperatureValue> rdf:type owl:DatatypeProperty ;
+                                                                   rdfs:subPropertyOf owl:topDataProperty ;
+                                                                   rdfs:domain :Temperature ;
+                                                                   rdfs:range xsd:float .
 
 
 #################################################################
@@ -259,14 +234,6 @@ qptdat:Source rdf:type owl:Class .
 ###  http://plasma-mds.org/qptdat/source#Waveform
 :Waveform rdf:type owl:Class ;
           rdfs:subClassOf :Specification .
-
-
-###  http://wikiba.se/ontology#Item
-<http://wikiba.se/ontology#Item> rdf:type owl:Class .
-
-
-###  http://wikiba.se/ontology#QuantityValue
-<http://wikiba.se/ontology#QuantityValue> rdf:type owl:Class .
 
 
 ###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

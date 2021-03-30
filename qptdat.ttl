@@ -141,7 +141,7 @@ xsd:date rdf:type rdfs:Datatype .
 ###  http://plasma-mds.org/qptdat#consistsOf
 :consistsOf rdf:type owl:ObjectProperty ;
             rdfs:domain :Medium ;
-            rdfs:range :Gas .
+            rdfs:range :Matter .
 
 
 ###  http://plasma-mds.org/qptdat#contributor
@@ -190,6 +190,14 @@ xsd:date rdf:type rdfs:Datatype .
               rdfs:subPropertyOf owl:topObjectProperty .
 
 
+###  http://plasma-mds.org/qptdat#hasDiagnosticMethod
+:hasDiagnosticMethod rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf :hasComponent ;
+                     owl:inverseOf :isDiagnosticMethodOf ;
+                     rdfs:domain :PlasmaExperiment ;
+                     rdfs:range :DiagnosticMethod .
+
+
 ###  http://plasma-mds.org/qptdat#hasMedium
 :hasMedium rdf:type owl:ObjectProperty ;
            rdfs:subPropertyOf :hasComponent ;
@@ -220,10 +228,29 @@ xsd:date rdf:type rdfs:Datatype .
           rdfs:domain <http://www.w3.org/ns/prov#Agent> .
 
 
-###  http://plasma-mds.org/qptdat#investigatedWith
-:investigatedWith rdf:type owl:ObjectProperty ;
-                  rdfs:domain :PlasmaExperiment ;
-                  rdfs:range :DiagnosticMethod .
+###  http://plasma-mds.org/qptdat#investigates
+:investigates rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf owl:topObjectProperty ;
+              rdfs:domain :DiagnosticMethod ;
+              rdfs:range [ rdf:type owl:Class ;
+                           owl:unionOf ( :Medium
+                                         :Source
+                                         :Target
+                                       )
+                         ] .
+
+
+###  http://plasma-mds.org/qptdat#involves
+:involves rdf:type owl:ObjectProperty ;
+          rdfs:domain :PlasmaExperiment ;
+          rdfs:range :Plasma .
+
+
+###  http://plasma-mds.org/qptdat#isDiagnosticMethodOf
+:isDiagnosticMethodOf rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf :partOf ;
+                      rdfs:domain :DiagnosticMethod ;
+                      rdfs:range :PlasmaExperiment .
 
 
 ###  http://plasma-mds.org/qptdat#isMediumOf
@@ -368,11 +395,6 @@ dcterms:description rdf:type owl:DatatypeProperty .
             rdfs:subClassOf :Gas .
 
 
-###  http://plasma-mds.org/qptdat#ComputerSimulation
-:ComputerSimulation rdf:type owl:Class ;
-                    rdfs:subClassOf :PlasmaExperiment .
-
-
 ###  http://plasma-mds.org/qptdat#DiagnosticMethod
 :DiagnosticMethod rdf:type owl:Class .
 
@@ -383,12 +405,17 @@ dcterms:description rdf:type owl:DatatypeProperty .
 
 
 ###  http://plasma-mds.org/qptdat#Gas
-:Gas rdf:type owl:Class .
+:Gas rdf:type owl:Class ;
+     rdfs:subClassOf :Matter .
 
 
-###  http://plasma-mds.org/qptdat#LabExperiment
-:LabExperiment rdf:type owl:Class ;
-               rdfs:subClassOf :PlasmaExperiment .
+###  http://plasma-mds.org/qptdat#Liquid
+:Liquid rdf:type owl:Class ;
+        rdfs:subClassOf :Matter .
+
+
+###  http://plasma-mds.org/qptdat#Matter
+:Matter rdf:type owl:Class .
 
 
 ###  http://plasma-mds.org/qptdat#Medium
@@ -445,11 +472,6 @@ dcterms:description rdf:type owl:DatatypeProperty .
 
 ###  http://plasma-mds.org/qptdat#Target
 :Target rdf:type owl:Class .
-
-
-###  http://plasma-mds.org/qptdat#TheoreticalModel
-:TheoreticalModel rdf:type owl:Class ;
-                  rdfs:subClassOf :PlasmaExperiment .
 
 
 ###  http://purl.org/dc/terms/LicenseDocument

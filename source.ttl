@@ -132,6 +132,7 @@ qptdat:Source rdf:type owl:Class .
 
 ###  http://plasma-mds.org/qptdat/source#AC
 :AC rdf:type owl:Class ;
+    rdfs:label "AC"@en; 
     rdfs:subClassOf :Waveform ;
     owl:disjointWith :DC .
 
@@ -152,31 +153,37 @@ qptdat:Source rdf:type owl:Class .
 
 ###  http://plasma-mds.org/qptdat/source#DC
 :DC rdf:type owl:Class ;
+    rdfs:label "DC"@en ;
     rdfs:subClassOf :Waveform .
 
 
 ###  http://plasma-mds.org/qptdat/source#ElectrodeShape
 :ElectrodeShape rdf:type owl:Class ;
+                rdfs:label "Electrode Shape"@en ;
                 rdfs:subClassOf :SourceGeometry .
 
 
 ###  http://plasma-mds.org/qptdat/source#Helix
 :Helix rdf:type owl:Class ;
+       rdfs:label "Helix"@en ;
        rdfs:subClassOf qptdat:Source .
 
 
 ###  http://plasma-mds.org/qptdat/source#ParallelPlate
 :ParallelPlate rdf:type owl:Class ;
+               rdfs:label "Parallel Plate"@en ;
                rdfs:subClassOf :ElectrodeShape .
 
 
 ###  http://plasma-mds.org/qptdat/source#PinToPin
 :PinToPin rdf:type owl:Class ;
+          rdfs:label "Pin to Pin"@en ;
           rdfs:subClassOf :ElectrodeShape .
 
 
 ###  http://plasma-mds.org/qptdat/source#PinToPlate
 :PinToPlate rdf:type owl:Class ;
+            rdfs:label "Pin to Plate"@en ;
             rdfs:subClassOf :ElectrodeShape .
 
 
@@ -185,54 +192,64 @@ qptdat:Source rdf:type owl:Class .
            owl:equivalentClass :PlasmaPen ;
            rdfs:subClassOf qptdat:Source ;
            rdfs:comment "Capillary plasma source, sometimes in form of a handheld device"@en ;
-           rdfs:label "Plasma jet"@en .
+           rdfs:label "Plasma Jet"@en .
 
 
 ###  http://plasma-mds.org/qptdat/source#PlasmaPen
 :PlasmaPen rdf:type owl:Class ;
+           rdfs:label "Plasma Pen"@en ;
            rdfs:subClassOf qptdat:Source .
 
 
 ###  http://plasma-mds.org/qptdat/source#PlasmaTorch
 :PlasmaTorch rdf:type owl:Class ;
+             rdfs:label "Plasma Torch"@en ;
              rdfs:subClassOf qptdat:Source .
 
 
 ###  http://plasma-mds.org/qptdat/source#Pressure
 :Pressure rdf:type owl:Class ;
+          rdfs:label "Pressure"@en ;
           rdfs:subClassOf :Specification .
 
 
 ###  http://plasma-mds.org/qptdat/source#PulsedAC
 :PulsedAC rdf:type owl:Class ;
+          rdfs:label "Pulsed AC"@en ;
           rdfs:subClassOf :AC .
 
 
 ###  http://plasma-mds.org/qptdat/source#PulsedDC
 :PulsedDC rdf:type owl:Class ;
+          rdfs:label "Pulsed DC"@en ;
           rdfs:subClassOf :DC .
 
 
 ###  http://plasma-mds.org/qptdat/source#ScanningDriftTubeApparatus
 :ScanningDriftTubeApparatus rdf:type owl:Class ;
+                            rdfs:label "Scanning Drift Tube Apparatus"@en ;
                             rdfs:subClassOf qptdat:Source .
 
 
 ###  http://plasma-mds.org/qptdat/source#SourceGeometry
-:SourceGeometry rdf:type owl:Class .
+:SourceGeometry rdf:type owl:Class ;
+                rdfs:label "Source Geometry"@en .
 
 
 ###  http://plasma-mds.org/qptdat/source#Specification
-:Specification rdf:type owl:Class .
+:Specification rdf:type owl:Class ;
+               rdfs:label "Specification"@en .
 
 
 ###  http://plasma-mds.org/qptdat/source#Temperature
 :Temperature rdf:type owl:Class ;
+             rdfs:label "Temperature"@en ;
              rdfs:subClassOf :Specification .
 
 
 ###  http://plasma-mds.org/qptdat/source#Waveform
 :Waveform rdf:type owl:Class ;
+          rdfs:label "Waveform"@en ;
           rdfs:subClassOf :Specification .
 
 

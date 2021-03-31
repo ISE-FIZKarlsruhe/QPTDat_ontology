@@ -382,96 +382,118 @@ dcterms:description rdf:type owl:DatatypeProperty .
 #################################################################
 
 ###  http://plasma-mds.org/qptdat#Application
-:Application rdf:type owl:Class .
+:Application rdf:type owl:Class ;
+             rdfs:label "Application"@en .
 
 
 ###  http://plasma-mds.org/qptdat#Arc
 :Arc rdf:type owl:Class ;
-     rdfs:subClassOf :Plasma .
+     rdfs:subClassOf :Plasma ;
+     rdfs:label "Arc"@en .
 
 
 ###  http://plasma-mds.org/qptdat#CarrierGas
 :CarrierGas rdf:type owl:Class ;
-            rdfs:subClassOf :Gas .
+            rdfs:subClassOf :Gas ;
+            rdfs:label "CarrierGas"@en .
 
 
 ###  http://plasma-mds.org/qptdat#DiagnosticMethod
-:DiagnosticMethod rdf:type owl:Class .
+:DiagnosticMethod rdf:type owl:Class ;
+                  rdfs:label "Diagnostic Method"@en .
 
 
 ###  http://plasma-mds.org/qptdat#ExperimentMethod
 :ExperimentMethod rdf:type owl:Class ;
-                  rdfs:subClassOf :DiagnosticMethod .
+                  rdfs:subClassOf :DiagnosticMethod ;
+                  rdfs:label "Experiment Method"@en .
 
 
 ###  http://plasma-mds.org/qptdat#Gas
 :Gas rdf:type owl:Class ;
-     rdfs:subClassOf :Matter .
+     rdfs:subClassOf :Matter ;
+     rdfs:label "Gas"@en .
 
 
 ###  http://plasma-mds.org/qptdat#Liquid
 :Liquid rdf:type owl:Class ;
-        rdfs:subClassOf :Matter .
+        rdfs:subClassOf :Matter ;
+        rdfs:label "Liquid"@en .
 
 
 ###  http://plasma-mds.org/qptdat#Matter
-:Matter rdf:type owl:Class .
+:Matter rdf:type owl:Class ;
+        rdfs:label "Matter"@en .
 
 
 ###  http://plasma-mds.org/qptdat#Medium
-:Medium rdf:type owl:Class .
+:Medium rdf:type owl:Class ;
+        rdfs:label "Medium"@en .
 
 
 ###  http://plasma-mds.org/qptdat#Microwave
 :Microwave rdf:type owl:Class ;
-           rdfs:subClassOf :Plasma .
+           rdfs:subClassOf :Plasma ;
+           rdfs:label "Microwave"@en .
 
 
 ###  http://plasma-mds.org/qptdat#ModellingMethod
 :ModellingMethod rdf:type owl:Class ;
-                 rdfs:subClassOf :DiagnosticMethod .
+                 rdfs:subClassOf :DiagnosticMethod ;
+                 rdfs:label "Modelling Method"@en .
 
 
 ###  http://plasma-mds.org/qptdat#Plasma
-:Plasma rdf:type owl:Class .
+:Plasma rdf:type owl:Class ;
+        rdfs:label "Plasma"@en .
 
 
 ###  http://plasma-mds.org/qptdat#PlasmaExperiment
-:PlasmaExperiment rdf:type owl:Class .
+:PlasmaExperiment rdf:type owl:Class ;
+                  rdfs:label "Plasma Experiment"@en ,
+                             "Plasma Study"@en .
 
 
 ###  http://plasma-mds.org/qptdat#Resource
-:Resource rdf:type owl:Class .
+:Resource rdf:type owl:Class ;
+          rdfs:label "Resource"@en .
 
 
 ###  http://plasma-mds.org/qptdat#ShieldingGas
 :ShieldingGas rdf:type owl:Class ;
-              rdfs:subClassOf :Gas .
+              rdfs:subClassOf :Gas ;
+              rdfs:label "Shielding Gas"@en .
 
 
 ###  http://plasma-mds.org/qptdat#SimulationMethod
 :SimulationMethod rdf:type owl:Class ;
-                  rdfs:subClassOf :DiagnosticMethod .
+                  rdfs:subClassOf :DiagnosticMethod ;
+                  rdfs:label "Simulation Method"@en .
 
 
 ###  http://plasma-mds.org/qptdat#Size
-:Size rdf:type owl:Class .
+:Size rdf:type owl:Class ;
+      rdfs:label "Size"@en .
 
 
 ###  http://plasma-mds.org/qptdat#Source
-:Source rdf:type owl:Class .
+:Source rdf:type owl:Class ;
+        rdfs:label "Source"@en .
 
 
 ###  http://plasma-mds.org/qptdat#StateOfMatter
-:StateOfMatter rdf:type owl:Class .
+:StateOfMatter rdf:type owl:Class ;
+               rdfs:label "State of Matter"@en .
 
 
 ###  http://plasma-mds.org/qptdat#Surface
-:Surface rdf:type owl:Class .
+:Surface rdf:type owl:Class ;
+         rdfs:label "Surface"@en .
 
 
 ###  http://plasma-mds.org/qptdat#Target
-:Target rdf:type owl:Class .
+:Target rdf:type owl:Class ;
+        rdfs:label "Target"@en .
 
 
 ###  http://purl.org/dc/terms/LicenseDocument

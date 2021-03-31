@@ -51,90 +51,108 @@
 
 ###  http://plasma-mds.org/qptdat/diagnostics#Ammeter
 :Ammeter rdf:type owl:Class ;
+           rdfs:label "Ammeter"@en ;
          rdfs:subClassOf :DiagnosticDevice .
 
 
 ###  http://plasma-mds.org/qptdat/diagnostics#AtomProbeTomographe
 :AtomProbeTomographe rdf:type owl:Class ;
+           rdfs:label "Atom Probe Tomographe"@en ;
                      rdfs:subClassOf :DiagnosticDevice .
 
 
 ###  http://plasma-mds.org/qptdat/diagnostics#AtomProbeTomography
 :AtomProbeTomography rdf:type owl:Class ;
+           rdfs:label "Atom Probe Tomography"@en ;
                      rdfs:subClassOf :Microscope .
 
 
 ###  http://plasma-mds.org/qptdat/diagnostics#AtomicForceMicroscope
 :AtomicForceMicroscope rdf:type owl:Class ;
+           rdfs:label "Atomic Force Microscope"@en ;
                        rdfs:subClassOf :Microscope .
 
 
 ###  http://plasma-mds.org/qptdat/diagnostics#Camera
 :Camera rdf:type owl:Class ;
+           rdfs:label "Camera"@en ;
         rdfs:subClassOf :DiagnosticDevice .
 
 
 ###  http://plasma-mds.org/qptdat/diagnostics#CollisionSimulation
 :CollisionSimulation rdf:type owl:Class ;
+           rdfs:label "Collision Simulation"@en ;
                      rdfs:subClassOf <http://plasma-mds.org/qptdat#SimulationMethod> .
 
 
 ###  http://plasma-mds.org/qptdat/diagnostics#CurrentProbe
 :CurrentProbe rdf:type owl:Class ;
+           rdfs:label "Current Probe"@en ;
               rdfs:subClassOf :DiagnosticDevice .
 
 
 ###  http://plasma-mds.org/qptdat/diagnostics#Detector
 :Detector rdf:type owl:Class ;
+           rdfs:label "Detector"@en ;
           rdfs:subClassOf :DiagnosticDevice .
 
 
 ###  http://plasma-mds.org/qptdat/diagnostics#DiagnosticDevice
-:DiagnosticDevice rdf:type owl:Class .
+:DiagnosticDevice rdf:type owl:Class ;
+           rdfs:label "Diagnostic Device"@en .
 
 
 ###  http://plasma-mds.org/qptdat/diagnostics#ElectricalMethod
 :ElectricalMethod rdf:type owl:Class ;
+           rdfs:label "Electrical Method"@en ;
                   rdfs:subClassOf <http://plasma-mds.org/qptdat#ExperimentMethod> .
 
 
 ###  http://plasma-mds.org/qptdat/diagnostics#Ellipsometer
 :Ellipsometer rdf:type owl:Class ;
+           rdfs:label "Ellipsometer"@en ;
               rdfs:subClassOf :DiagnosticDevice .
 
 
 ###  http://plasma-mds.org/qptdat/diagnostics#EnergyDispersiveXraySpectroscope
 :EnergyDispersiveXraySpectroscope rdf:type owl:Class ;
+           rdfs:label "Energy Dispersive X-Ray Spectroscope"@en ;
                                   rdfs:subClassOf :Spectroscope .
 
 
 ###  http://plasma-mds.org/qptdat/diagnostics#FiberOpticThermometer
 :FiberOpticThermometer rdf:type owl:Class ;
+           rdfs:label "Fiber Optic Thermometer"@en ;
                        rdfs:subClassOf :Thermometer .
 
 
 ###  http://plasma-mds.org/qptdat/diagnostics#FourierTransformInfraredSpectrograph
 :FourierTransformInfraredSpectrograph rdf:type owl:Class ;
+           rdfs:label "Fourier Transform Infrared Spectrograph"@en ;
                                       rdfs:subClassOf :Spectroscope .
 
 
 ###  http://plasma-mds.org/qptdat/diagnostics#Galvanometer
 :Galvanometer rdf:type owl:Class ;
+           rdfs:label "Galvanometer"@en ;
               rdfs:subClassOf :DiagnosticDevice .
 
 
 ###  http://plasma-mds.org/qptdat/diagnostics#HighSpeedCamera
 :HighSpeedCamera rdf:type owl:Class ;
+           rdfs:label "High Speed Camera"@en ;
                  rdfs:subClassOf :Camera .
 
 
 ###  http://plasma-mds.org/qptdat/diagnostics#HighSpeedImaging
 :HighSpeedImaging rdf:type owl:Class ;
+           rdfs:label "High Speed Imaging"@en ;
                   rdfs:subClassOf :Imaging .
 
 
 ###  http://plasma-mds.org/qptdat/diagnostics#Imaging
 :Imaging rdf:type owl:Class ;
+           rdfs:label "Imaging"@en ;
          owl:equivalentClass [ owl:intersectionOf ( <http://plasma-mds.org/qptdat#ExperimentMethod>
                                                     [ rdf:type owl:Restriction ;
                                                       owl:onProperty :usesDevice ;
@@ -148,122 +166,146 @@
 
 ###  http://plasma-mds.org/qptdat/diagnostics#LangmuirProbe
 :LangmuirProbe rdf:type owl:Class ;
+           rdfs:label "Langmuir Probe"@en ;
                rdfs:subClassOf :DiagnosticDevice .
 
 
 ###  http://plasma-mds.org/qptdat/diagnostics#Laser
 :Laser rdf:type owl:Class ;
+           rdfs:label "Laser"@en ;
        rdfs:subClassOf :DiagnosticDevice .
 
 
 ###  http://plasma-mds.org/qptdat/diagnostics#MassSpectrometer
 :MassSpectrometer rdf:type owl:Class ;
+           rdfs:label "Mass Spectrometer"@en ;
                   rdfs:subClassOf :Spectroscope .
 
 
 ###  http://plasma-mds.org/qptdat/diagnostics#MechanicalMethod
 :MechanicalMethod rdf:type owl:Class ;
+           rdfs:label "Mechanical Method"@en ;
                   rdfs:subClassOf <http://plasma-mds.org/qptdat#ExperimentMethod> .
 
 
 ###  http://plasma-mds.org/qptdat/diagnostics#Microscope
 :Microscope rdf:type owl:Class ;
+           rdfs:label "Microscope"@en ;
             rdfs:subClassOf :DiagnosticDevice .
 
 
 ###  http://plasma-mds.org/qptdat/diagnostics#MultipoleResonanceProbe
 :MultipoleResonanceProbe rdf:type owl:Class ;
+           rdfs:label "Multi-pole Resonance Probe"@en ;
                          rdfs:subClassOf :DiagnosticDevice .
 
 
 ###  http://plasma-mds.org/qptdat/diagnostics#OpticalEmissionSpectrograph
 :OpticalEmissionSpectrograph rdf:type owl:Class ;
+           rdfs:label "Optical Emission Spectrograph"@en ;
                              rdfs:subClassOf :Spectroscope .
 
 
 ###  http://plasma-mds.org/qptdat/diagnostics#Oscilloscope
 :Oscilloscope rdf:type owl:Class ;
+           rdfs:label "Oscilloscope"@en ;
               rdfs:subClassOf :DiagnosticDevice .
 
 
 ###  http://plasma-mds.org/qptdat/diagnostics#Profilometer
 :Profilometer rdf:type owl:Class ;
+           rdfs:label "Profilometer"@en ;
               rdfs:subClassOf :DiagnosticDevice .
 
 
 ###  http://plasma-mds.org/qptdat/diagnostics#Pyrometer
 :Pyrometer rdf:type owl:Class ;
+           rdfs:label "Pyrometer"@en ;
            rdfs:subClassOf :Thermometer .
 
 
 ###  http://plasma-mds.org/qptdat/diagnostics#RamanSpectroscope
 :RamanSpectroscope rdf:type owl:Class ;
+           rdfs:label "Raman Spectroscope"@en ;
                    rdfs:subClassOf :Spectroscope .
 
 
 ###  http://plasma-mds.org/qptdat/diagnostics#RogowskiCoil
 :RogowskiCoil rdf:type owl:Class ;
+           rdfs:label "Rogowski Coil"@en ;
               rdfs:subClassOf :DiagnosticDevice .
 
 
 ###  http://plasma-mds.org/qptdat/diagnostics#ScanningElectronMicroscope
 :ScanningElectronMicroscope rdf:type owl:Class ;
+           rdfs:label "Scanning Electron Microscope"@en ;
                             rdfs:subClassOf :Microscope .
 
 
 ###  http://plasma-mds.org/qptdat/diagnostics#ScanningTunnelingMicroscope
 :ScanningTunnelingMicroscope rdf:type owl:Class ;
+           rdfs:label "Scanning Tunneling Microscope"@en ;
                              rdfs:subClassOf :Microscope .
 
 
 ###  http://plasma-mds.org/qptdat/diagnostics#ShuntResistor
 :ShuntResistor rdf:type owl:Class ;
+           rdfs:label "Shunt Resistor"@en ;
                rdfs:subClassOf :DiagnosticDevice .
 
 
 ###  http://plasma-mds.org/qptdat/diagnostics#Spectroscope
 :Spectroscope rdf:type owl:Class ;
+           rdfs:label "Spectroscope"@en ;
               rdfs:subClassOf :DiagnosticDevice .
 
 
 ###  http://plasma-mds.org/qptdat/diagnostics#Spectroscopy
 :Spectroscopy rdf:type owl:Class ;
+           rdfs:label "Spectroscopy"@en ;
               rdfs:subClassOf <http://plasma-mds.org/qptdat#ExperimentMethod> .
 
 
 ###  http://plasma-mds.org/qptdat/diagnostics#ThermalImaging
 :ThermalImaging rdf:type owl:Class ;
+           rdfs:label "Thermal Imaging"@en ;
                 rdfs:subClassOf :Imaging .
 
 
 ###  http://plasma-mds.org/qptdat/diagnostics#ThermographicCamera
 :ThermographicCamera rdf:type owl:Class ;
+           rdfs:label "Thermographic Camera"@en ;
                      rdfs:subClassOf :Camera ,
                                      :Thermometer .
 
 
 ###  http://plasma-mds.org/qptdat/diagnostics#Thermometer
 :Thermometer rdf:type owl:Class ;
+           rdfs:label "Thermometer"@en ;
              rdfs:subClassOf :DiagnosticDevice .
 
 
 ###  http://plasma-mds.org/qptdat/diagnostics#TransientRecorder
 :TransientRecorder rdf:type owl:Class ;
+           rdfs:label "Transient Recorder"@en ;
                    rdfs:subClassOf :DiagnosticDevice .
 
 
 ###  http://plasma-mds.org/qptdat/diagnostics#VoltageDifferentialProbe
 :VoltageDifferentialProbe rdf:type owl:Class ;
+           rdfs:label "Voltage Differential Probe"@en ;
                           rdfs:subClassOf :VoltageProbe .
 
 
 ###  http://plasma-mds.org/qptdat/diagnostics#VoltageProbe
 :VoltageProbe rdf:type owl:Class ;
+           rdfs:label "Voltage Probe"@en ;
               rdfs:subClassOf :DiagnosticDevice .
 
 
 ###  http://plasma-mds.org/qptdat/diagnostics#Voltmeter
 :Voltmeter rdf:type owl:Class ;
+           rdfs:label "Voltmeter"@en ;
            rdfs:subClassOf :DiagnosticDevice .
 
 

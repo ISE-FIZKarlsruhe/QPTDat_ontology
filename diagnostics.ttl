@@ -13,6 +13,13 @@
 #    Object Properties
 #################################################################
 
+###  http://plasma-mds.org/qptdat/diagnostics#usesCamera
+:usesCamera rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf :usesDevice ;
+            rdfs:domain :Imaging ;
+            rdfs:range :Camera .
+
+
 ###  http://plasma-mds.org/qptdat/diagnostics#usesDevice
 :usesDevice rdf:type owl:ObjectProperty ;
             rdfs:domain <http://plasma-mds.org/qptdat#DiagnosticMethod> ;
@@ -128,6 +135,14 @@
 
 ###  http://plasma-mds.org/qptdat/diagnostics#Imaging
 :Imaging rdf:type owl:Class ;
+         owl:equivalentClass [ owl:intersectionOf ( <http://plasma-mds.org/qptdat#ExperimentMethod>
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty :usesDevice ;
+                                                      owl:allValuesFrom :Camera
+                                                    ]
+                                                  ) ;
+                               rdf:type owl:Class
+                             ] ;
          rdfs:subClassOf <http://plasma-mds.org/qptdat#ExperimentMethod> .
 
 

@@ -131,6 +131,20 @@ xsd:date rdf:type rdfs:Datatype .
         rdfs:range :Target .
 
 
+###  http://plasma-mds.org/qptdat#adjust
+:adjust rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf owl:topObjectProperty ;
+        rdfs:domain :Setting ;
+        rdfs:range :Device .
+
+
+###  http://plasma-mds.org/qptdat#adjustable
+:adjustable rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf owl:topObjectProperty ;
+            rdfs:domain :Device ;
+            rdfs:range :Setting .
+
+
 ###  http://plasma-mds.org/qptdat#application
 :application rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf owl:topObjectProperty ;
@@ -154,14 +168,14 @@ xsd:date rdf:type rdfs:Datatype .
 ###  http://plasma-mds.org/qptdat#describedBy
 :describedBy rdf:type owl:ObjectProperty ;
              owl:inverseOf :describes ;
-             rdfs:domain :PlasmaExperiment ;
+             rdfs:domain :PlasmaStudy ;
              rdfs:range <http://www.w3.org/ns/dcat#Dataset> .
 
 
 ###  http://plasma-mds.org/qptdat#describes
 :describes rdf:type owl:ObjectProperty ;
            rdfs:domain <http://www.w3.org/ns/dcat#Dataset> ;
-           rdfs:range :PlasmaExperiment .
+           rdfs:range :PlasmaStudy .
 
 
 ###  http://plasma-mds.org/qptdat#gatheredBy
@@ -175,7 +189,7 @@ xsd:date rdf:type rdfs:Datatype .
 :generatedBy rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf owl:topObjectProperty ;
              rdfs:domain :Plasma ;
-             rdfs:range :Source .
+             rdfs:range <http://plasma-mds.org/qptdat/source#AdjustedSource> .
 
 
 ###  http://plasma-mds.org/qptdat#generatedIn
@@ -194,7 +208,7 @@ xsd:date rdf:type rdfs:Datatype .
 :hasDiagnosticMethod rdf:type owl:ObjectProperty ;
                      rdfs:subPropertyOf :hasComponent ;
                      owl:inverseOf :isDiagnosticMethodOf ;
-                     rdfs:domain :PlasmaExperiment ;
+                     rdfs:domain :PlasmaStudy ;
                      rdfs:range :DiagnosticMethod .
 
 
@@ -202,7 +216,7 @@ xsd:date rdf:type rdfs:Datatype .
 :hasMedium rdf:type owl:ObjectProperty ;
            rdfs:subPropertyOf :hasComponent ;
            owl:inverseOf :isMediumOf ;
-           rdfs:domain :PlasmaExperiment ;
+           rdfs:domain :PlasmaStudy ;
            rdfs:range :Medium .
 
 
@@ -210,15 +224,15 @@ xsd:date rdf:type rdfs:Datatype .
 :hasSource rdf:type owl:ObjectProperty ;
            rdfs:subPropertyOf :hasComponent ;
            owl:inverseOf :isSourceOf ;
-           rdfs:domain :PlasmaExperiment ;
-           rdfs:range :Source .
+           rdfs:domain :PlasmaStudy ;
+           rdfs:range <http://plasma-mds.org/qptdat/source#AdjustedSource> .
 
 
 ###  http://plasma-mds.org/qptdat#hasTarget
 :hasTarget rdf:type owl:ObjectProperty ;
            rdfs:subPropertyOf :hasComponent ;
            owl:inverseOf :isTargetOf ;
-           rdfs:domain :PlasmaExperiment ;
+           rdfs:domain :PlasmaStudy ;
            rdfs:range :Target .
 
 
@@ -242,7 +256,7 @@ xsd:date rdf:type rdfs:Datatype .
 
 ###  http://plasma-mds.org/qptdat#involves
 :involves rdf:type owl:ObjectProperty ;
-          rdfs:domain :PlasmaExperiment ;
+          rdfs:domain :PlasmaStudy ;
           rdfs:range :Plasma .
 
 
@@ -250,14 +264,14 @@ xsd:date rdf:type rdfs:Datatype .
 :isDiagnosticMethodOf rdf:type owl:ObjectProperty ;
                       rdfs:subPropertyOf :partOf ;
                       rdfs:domain :DiagnosticMethod ;
-                      rdfs:range :PlasmaExperiment .
+                      rdfs:range :PlasmaStudy .
 
 
 ###  http://plasma-mds.org/qptdat#isMediumOf
 :isMediumOf rdf:type owl:ObjectProperty ;
             rdfs:subPropertyOf :partOf ;
             rdfs:domain :Medium ;
-            rdfs:range :PlasmaExperiment .
+            rdfs:range :PlasmaStudy .
 
 
 ###  http://plasma-mds.org/qptdat#isReferencedBy
@@ -270,15 +284,15 @@ xsd:date rdf:type rdfs:Datatype .
 ###  http://plasma-mds.org/qptdat#isSourceOf
 :isSourceOf rdf:type owl:ObjectProperty ;
             rdfs:subPropertyOf :partOf ;
-            rdfs:domain :Source ;
-            rdfs:range :PlasmaExperiment .
+            rdfs:domain <http://plasma-mds.org/qptdat/source#AdjustedSource> ;
+            rdfs:range :PlasmaStudy .
 
 
 ###  http://plasma-mds.org/qptdat#isTargetOf
 :isTargetOf rdf:type owl:ObjectProperty ;
             rdfs:subPropertyOf :partOf ;
             rdfs:domain :Target ;
-            rdfs:range :PlasmaExperiment .
+            rdfs:range :PlasmaStudy .
 
 
 ###  http://plasma-mds.org/qptdat#license
@@ -312,6 +326,20 @@ xsd:date rdf:type rdfs:Datatype .
          rdfs:subPropertyOf owl:topObjectProperty ;
          rdfs:domain :Target ;
          rdfs:range :Surface .
+
+
+###  http://plasma-mds.org/qptdat#usesDevice
+:usesDevice rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf owl:topObjectProperty ;
+            rdfs:domain :AdjustedDevice ;
+            rdfs:range :Device .
+
+
+###  http://plasma-mds.org/qptdat#usesSetting
+:usesSetting rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             rdfs:domain :AdjustedDevice ;
+             rdfs:range :Setting .
 
 
 ###  http://purl.org/dc/terms/contributor
@@ -381,9 +409,13 @@ dcterms:description rdf:type owl:DatatypeProperty .
 #    Classes
 #################################################################
 
+###  http://plasma-mds.org/qptdat#AdjustedDevice
+:AdjustedDevice rdf:type owl:Class ;
+                rdfs:subClassOf :Device .
+
+
 ###  http://plasma-mds.org/qptdat#Application
-:Application rdf:type owl:Class ;
-             rdfs:label "Application"@en .
+:Application rdf:type owl:Class .
 
 
 ###  http://plasma-mds.org/qptdat#Arc
@@ -396,6 +428,10 @@ dcterms:description rdf:type owl:DatatypeProperty .
 :CarrierGas rdf:type owl:Class ;
             rdfs:subClassOf :Gas ;
             rdfs:label "CarrierGas"@en .
+
+
+###  http://plasma-mds.org/qptdat#Device
+:Device rdf:type owl:Class .
 
 
 ###  http://plasma-mds.org/qptdat#DiagnosticMethod
@@ -448,15 +484,19 @@ dcterms:description rdf:type owl:DatatypeProperty .
         rdfs:label "Plasma"@en .
 
 
-###  http://plasma-mds.org/qptdat#PlasmaExperiment
-:PlasmaExperiment rdf:type owl:Class ;
-                  rdfs:label "Plasma Experiment"@en ,
-                             "Plasma Study"@en .
+###  http://plasma-mds.org/qptdat#PlasmaStudy
+:PlasmaStudy rdf:type owl:Class ;
+             rdfs:label "Plasma Experiment"@en ,
+                        "Plasma Study"@en .
 
 
 ###  http://plasma-mds.org/qptdat#Resource
 :Resource rdf:type owl:Class ;
           rdfs:label "Resource"@en .
+
+
+###  http://plasma-mds.org/qptdat#Setting
+:Setting rdf:type owl:Class .
 
 
 ###  http://plasma-mds.org/qptdat#ShieldingGas
@@ -478,7 +518,16 @@ dcterms:description rdf:type owl:DatatypeProperty .
 
 ###  http://plasma-mds.org/qptdat#Source
 :Source rdf:type owl:Class ;
+        rdfs:subClassOf :Device ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :adjustable ;
+                          owl:allValuesFrom :SourceSetting
+                        ] ;
         rdfs:label "Source"@en .
+
+
+###  http://plasma-mds.org/qptdat#SourceSetting
+:SourceSetting rdf:type owl:Class .
 
 
 ###  http://plasma-mds.org/qptdat#StateOfMatter
@@ -494,6 +543,10 @@ dcterms:description rdf:type owl:DatatypeProperty .
 ###  http://plasma-mds.org/qptdat#Target
 :Target rdf:type owl:Class ;
         rdfs:label "Target"@en .
+
+
+###  http://plasma-mds.org/qptdat/source#AdjustedSource
+<http://plasma-mds.org/qptdat/source#AdjustedSource> rdf:type owl:Class .
 
 
 ###  http://purl.org/dc/terms/LicenseDocument

@@ -1,16 +1,26 @@
 @prefix : <http://plasma-mds.org/qptdat#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix bfo: <http://purl.obolibrary.org/obo/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix obda: <https://w3id.org/obda/vocabulary#> .
+@prefix qpkg: <http://plasma-mds.org/resource#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix datacite: <http://purl.org/spar/datacite/> .
 @prefix wikibase: <http://wikiba.se/ontology#> .
 @base <http://plasma-mds.org/qptdat> .
 
 <http://plasma-mds.org/qptdat> rdf:type owl:Ontology ;
-                                owl:versionIRI <http://plasma-mds.org/qptdat/v1.0> .
+                                owl:versionIRI <http://plasma-mds.org/qptdat/v1.0> ;
+                                dc:title "QPTDat Ontology"@en ;
+                                dcterms:abstract "The plasma ontology (Plasma-MDS) supports the standardized documentation of research data in the field of plasma physics. In accordance with typical plasma processes and applications, the ontology contains terminologicial knowledge about plasma source, plasma medium, and plasma target. Furthermore, metadata for the respectively applied diagnostic and modelling/simulation methods are represented."@en ;
+                                dcterms:creator qpkg:fabian ,
+                                                qpkg:harald ;
+                                rdfs:label "QPTDat Ontology"@en .
 
 #################################################################
 #    Annotation properties
@@ -22,6 +32,26 @@
 
 ###  http://purl.org/dc/dcam/rangeIncludes
 <http://purl.org/dc/dcam/rangeIncludes> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/title
+dc:title rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/abstract
+dcterms:abstract rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/created
+dcterms:created rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/creator
+dcterms:creator rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/license
+dcterms:license rdf:type owl:AnnotationProperty .
 
 
 ###  http://www.w3.org/2004/02/skos/core#altLabel
@@ -128,80 +158,92 @@ xsd:date rdf:type rdfs:Datatype .
 :actsOn rdf:type owl:ObjectProperty ;
         rdfs:subPropertyOf owl:topObjectProperty ;
         rdfs:domain :Plasma ;
-        rdfs:range :Target .
+        rdfs:range :Target ;
+        rdfs:label "acts on"@en .
 
 
 ###  http://plasma-mds.org/qptdat#adjust
 :adjust rdf:type owl:ObjectProperty ;
         rdfs:subPropertyOf owl:topObjectProperty ;
         rdfs:domain :Setting ;
-        rdfs:range :Device .
+        rdfs:range :Device ;
+        rdfs:label "adjust"@en .
 
 
 ###  http://plasma-mds.org/qptdat#adjustable
 :adjustable rdf:type owl:ObjectProperty ;
             rdfs:subPropertyOf owl:topObjectProperty ;
             rdfs:domain :Device ;
-            rdfs:range :Setting .
+            rdfs:range :Setting ;
+            rdfs:label "adjustable"@en .
 
 
 ###  http://plasma-mds.org/qptdat#application
 :application rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf owl:topObjectProperty ;
              rdfs:domain :Source ;
-             rdfs:range :Application .
+             rdfs:range :Application ;
+             rdfs:label "application"@en .
 
 
 ###  http://plasma-mds.org/qptdat#consistsOf
 :consistsOf rdf:type owl:ObjectProperty ;
             rdfs:domain :Medium ;
-            rdfs:range :Matter .
+            rdfs:range :Matter ;
+            rdfs:label "consists of"@en .
 
 
 ###  http://plasma-mds.org/qptdat#contributor
 :contributor rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf dcterms:contributor ;
              rdfs:domain <http://www.w3.org/ns/dcat#Dataset> ;
-             rdfs:range <http://www.w3.org/ns/prov#Agent> .
+             rdfs:range <http://www.w3.org/ns/prov#Agent> ;
+             rdfs:label "contributor"@en .
 
 
 ###  http://plasma-mds.org/qptdat#describedBy
 :describedBy rdf:type owl:ObjectProperty ;
              owl:inverseOf :describes ;
              rdfs:domain :PlasmaStudy ;
-             rdfs:range <http://www.w3.org/ns/dcat#Dataset> .
+             rdfs:range <http://www.w3.org/ns/dcat#Dataset> ;
+             rdfs:label "described by"@en .
 
 
 ###  http://plasma-mds.org/qptdat#describes
 :describes rdf:type owl:ObjectProperty ;
            rdfs:domain <http://www.w3.org/ns/dcat#Dataset> ;
-           rdfs:range :PlasmaStudy .
+           rdfs:range :PlasmaStudy ;
+           rdfs:label "describes"@en .
 
 
 ###  http://plasma-mds.org/qptdat#gatheredBy
 :gatheredBy rdf:type owl:ObjectProperty ;
             rdfs:subPropertyOf owl:topObjectProperty ;
             rdfs:domain :Resource ;
-            rdfs:range :DiagnosticMethod .
+            rdfs:range :DiagnosticMethod ;
+            rdfs:label "gathered by"@en .
 
 
 ###  http://plasma-mds.org/qptdat#generatedBy
 :generatedBy rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf owl:topObjectProperty ;
              rdfs:domain :Plasma ;
-             rdfs:range <http://plasma-mds.org/qptdat/source#AdjustedSource> .
+             rdfs:range :AdjustedSource ;
+             rdfs:label "generated by"@en .
 
 
 ###  http://plasma-mds.org/qptdat#generatedIn
 :generatedIn rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf owl:topObjectProperty ;
              rdfs:domain :Plasma ;
-             rdfs:range :Medium .
+             rdfs:range :Medium ;
+             rdfs:label "generated in"@en .
 
 
 ###  http://plasma-mds.org/qptdat#hasComponent
 :hasComponent rdf:type owl:ObjectProperty ;
-              rdfs:subPropertyOf owl:topObjectProperty .
+              rdfs:subPropertyOf owl:topObjectProperty ;
+              rdfs:label "has Component"@en .
 
 
 ###  http://plasma-mds.org/qptdat#hasDiagnosticMethod
@@ -209,7 +251,8 @@ xsd:date rdf:type rdfs:Datatype .
                      rdfs:subPropertyOf :hasComponent ;
                      owl:inverseOf :isDiagnosticMethodOf ;
                      rdfs:domain :PlasmaStudy ;
-                     rdfs:range :DiagnosticMethod .
+                     rdfs:range :DiagnosticMethod ;
+                     rdfs:label "has diagnostic Method"@en .
 
 
 ###  http://plasma-mds.org/qptdat#hasMedium
@@ -217,7 +260,8 @@ xsd:date rdf:type rdfs:Datatype .
            rdfs:subPropertyOf :hasComponent ;
            owl:inverseOf :isMediumOf ;
            rdfs:domain :PlasmaStudy ;
-           rdfs:range :Medium .
+           rdfs:range :Medium ;
+           rdfs:label "has Medium"@en .
 
 
 ###  http://plasma-mds.org/qptdat#hasSource
@@ -225,7 +269,8 @@ xsd:date rdf:type rdfs:Datatype .
            rdfs:subPropertyOf :hasComponent ;
            owl:inverseOf :isSourceOf ;
            rdfs:domain :PlasmaStudy ;
-           rdfs:range <http://plasma-mds.org/qptdat/source#AdjustedSource> .
+           rdfs:range :AdjustedSource ;
+           rdfs:label "has Source"@en .
 
 
 ###  http://plasma-mds.org/qptdat#hasTarget
@@ -233,13 +278,15 @@ xsd:date rdf:type rdfs:Datatype .
            rdfs:subPropertyOf :hasComponent ;
            owl:inverseOf :isTargetOf ;
            rdfs:domain :PlasmaStudy ;
-           rdfs:range :Target .
+           rdfs:range :Target ;
+           rdfs:label "has target"@en .
 
 
 ###  http://plasma-mds.org/qptdat#homepage
 :homepage rdf:type owl:ObjectProperty ;
-          rdfs:subPropertyOf <http://xmlns.com/foaf/spec/#term_homepage> ;
-          rdfs:domain <http://www.w3.org/ns/prov#Agent> .
+          rdfs:subPropertyOf foaf:term_homepage ;
+          rdfs:domain <http://www.w3.org/ns/prov#Agent> ;
+          rdfs:label "homepage"@en .
 
 
 ###  http://plasma-mds.org/qptdat#investigates
@@ -251,95 +298,146 @@ xsd:date rdf:type rdfs:Datatype .
                                          :Source
                                          :Target
                                        )
-                         ] .
+                         ] ;
+              rdfs:label "investivates"@en .
 
 
 ###  http://plasma-mds.org/qptdat#involves
 :involves rdf:type owl:ObjectProperty ;
           rdfs:domain :PlasmaStudy ;
-          rdfs:range :Plasma .
+          rdfs:range :Plasma ;
+          rdfs:label "involves"@en .
 
 
 ###  http://plasma-mds.org/qptdat#isDiagnosticMethodOf
 :isDiagnosticMethodOf rdf:type owl:ObjectProperty ;
                       rdfs:subPropertyOf :partOf ;
                       rdfs:domain :DiagnosticMethod ;
-                      rdfs:range :PlasmaStudy .
+                      rdfs:range :PlasmaStudy ;
+                      rdfs:label "is diagnostic method of "@en .
 
 
 ###  http://plasma-mds.org/qptdat#isMediumOf
 :isMediumOf rdf:type owl:ObjectProperty ;
             rdfs:subPropertyOf :partOf ;
             rdfs:domain :Medium ;
-            rdfs:range :PlasmaStudy .
+            rdfs:range :PlasmaStudy ;
+            rdfs:label "is medium of"@en .
 
 
 ###  http://plasma-mds.org/qptdat#isReferencedBy
 :isReferencedBy rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf dcterms:isReferencedBy ;
                 rdfs:domain <http://www.w3.org/ns/dcat#Dataset> ;
-                rdfs:range <http://purl.org/spar/datacite/Identifier> .
+                rdfs:range datacite:Identifier ;
+                rdfs:label "is referenced by"@en .
 
 
 ###  http://plasma-mds.org/qptdat#isSourceOf
 :isSourceOf rdf:type owl:ObjectProperty ;
             rdfs:subPropertyOf :partOf ;
-            rdfs:domain <http://plasma-mds.org/qptdat/source#AdjustedSource> ;
-            rdfs:range :PlasmaStudy .
+            rdfs:domain :AdjustedSource ;
+            rdfs:range :PlasmaStudy ;
+            rdfs:label "is source of"@en .
 
 
 ###  http://plasma-mds.org/qptdat#isTargetOf
 :isTargetOf rdf:type owl:ObjectProperty ;
             rdfs:subPropertyOf :partOf ;
             rdfs:domain :Target ;
-            rdfs:range :PlasmaStudy .
+            rdfs:range :PlasmaStudy ;
+            rdfs:label "is target of"@en .
 
 
 ###  http://plasma-mds.org/qptdat#license
 :license rdf:type owl:ObjectProperty ;
          rdfs:subPropertyOf dcterms:license ;
          rdfs:domain <http://www.w3.org/ns/dcat#Dataset> ;
-         rdfs:range dcterms:LicenseDocument .
+         rdfs:range dcterms:LicenseDocument ;
+         rdfs:label "license"@en .
 
 
 ###  http://plasma-mds.org/qptdat#partOf
 :partOf rdf:type owl:ObjectProperty ;
-        rdfs:subPropertyOf owl:topObjectProperty .
+        rdfs:subPropertyOf owl:topObjectProperty ;
+        rdfs:label "part of"@en .
 
 
 ###  http://plasma-mds.org/qptdat#size
 :size rdf:type owl:ObjectProperty ;
       rdfs:subPropertyOf owl:topObjectProperty ;
       rdfs:domain :Target ;
-      rdfs:range :Size .
+      rdfs:range :Size ;
+      rdfs:label "size"@en .
 
 
 ###  http://plasma-mds.org/qptdat#state
 :state rdf:type owl:ObjectProperty ;
        rdfs:subPropertyOf owl:topObjectProperty ;
        rdfs:domain :Target ;
-       rdfs:range :StateOfMatter .
+       rdfs:range :StateOfMatter ;
+       rdfs:label "state"@en .
 
 
 ###  http://plasma-mds.org/qptdat#surface
 :surface rdf:type owl:ObjectProperty ;
          rdfs:subPropertyOf owl:topObjectProperty ;
          rdfs:domain :Target ;
-         rdfs:range :Surface .
+         rdfs:range :Surface ;
+         rdfs:label "surface"@en .
+
+
+###  http://plasma-mds.org/qptdat#usesCamera
+:usesCamera rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf :usesDevice ;
+            rdfs:domain :Imaging ;
+            rdfs:range :Camera .
 
 
 ###  http://plasma-mds.org/qptdat#usesDevice
 :usesDevice rdf:type owl:ObjectProperty ;
             rdfs:subPropertyOf owl:topObjectProperty ;
-            rdfs:domain :AdjustedDevice ;
-            rdfs:range :Device .
+            rdfs:domain :AdjustedDevice ,
+                        :DiagnosticMethod ;
+            rdfs:range :Device ,
+                       :DiagnosticDevice ;
+            rdfs:label "uses device"@en .
 
 
 ###  http://plasma-mds.org/qptdat#usesSetting
 :usesSetting rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf owl:topObjectProperty ;
              rdfs:domain :AdjustedDevice ;
-             rdfs:range :Setting .
+             rdfs:range :Setting ;
+             rdfs:label "uses setting"@en .
+
+
+###  http://plasma-mds.org/qptdat#usesSource
+:usesSource rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf :usesSetting ;
+            rdfs:domain :AdjustedSource ;
+            rdfs:range :Source .
+
+
+###  http://plasma-mds.org/qptdat#usesSourceSetting
+:usesSourceSetting rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf :usesDevice ;
+                   rdfs:domain :AdjustedSource ;
+                   rdfs:range :SourceSetting .
+
+
+###  http://plasma-mds.org/qptdat/source#geometry
+<http://plasma-mds.org/qptdat/source#geometry> rdf:type owl:ObjectProperty ;
+                                               rdfs:subPropertyOf owl:topObjectProperty ;
+                                               rdfs:domain :Source ;
+                                               rdfs:range :SourceGeometry .
+
+
+###  http://plasma-mds.org/qptdat/source#specifiedBy
+<http://plasma-mds.org/qptdat/source#specifiedBy> rdf:type owl:ObjectProperty ;
+                                                  rdfs:subPropertyOf owl:topObjectProperty ;
+                                                  rdfs:domain :Source ;
+                                                  rdfs:range :SourceSetting .
 
 
 ###  http://purl.org/dc/terms/contributor
@@ -354,8 +452,8 @@ dcterms:isReferencedBy rdf:type owl:ObjectProperty .
 dcterms:license rdf:type owl:ObjectProperty .
 
 
-###  http://xmlns.com/foaf/spec/#term_homepage
-<http://xmlns.com/foaf/spec/#term_homepage> rdf:type owl:ObjectProperty .
+###  http://xmlns.com/foaf/0.1/term_homepage
+foaf:term_homepage rdf:type owl:ObjectProperty .
 
 
 #################################################################
@@ -366,35 +464,131 @@ dcterms:license rdf:type owl:ObjectProperty .
 :created rdf:type owl:DatatypeProperty ;
          rdfs:subPropertyOf dcterms:created ;
          rdfs:domain <http://www.w3.org/ns/dcat#Dataset> ;
-         rdfs:range xsd:date .
+         rdfs:range xsd:date ;
+         rdfs:label "created"@en .
 
 
 ###  http://plasma-mds.org/qptdat#dataType
 :dataType rdf:type owl:DatatypeProperty ;
           rdfs:subPropertyOf owl:topDataProperty ;
           rdfs:domain :Resource ;
-          rdfs:range xsd:string .
+          rdfs:range xsd:string ;
+          rdfs:label "datatype"@en .
 
 
 ###  http://plasma-mds.org/qptdat#description
 :description rdf:type owl:DatatypeProperty ;
              rdfs:subPropertyOf dcterms:description ;
              rdfs:domain <http://www.w3.org/ns/dcat#Dataset> ;
-             rdfs:range rdfs:Literal .
+             rdfs:range rdfs:Literal ;
+             rdfs:label "description"@en .
 
 
 ###  http://plasma-mds.org/qptdat#fileType
 :fileType rdf:type owl:DatatypeProperty ;
           rdfs:subPropertyOf owl:topDataProperty ;
           rdfs:domain :Resource ;
-          rdfs:range xsd:string .
+          rdfs:range xsd:string ;
+          rdfs:label "file type"@en .
 
 
 ###  http://plasma-mds.org/qptdat#purity
 :purity rdf:type owl:DatatypeProperty ;
         rdfs:subPropertyOf owl:topDataProperty ;
         rdfs:domain :Gas ;
-        rdfs:range xsd:integer .
+        rdfs:range xsd:integer ;
+        rdfs:label "purity"@en .
+
+
+###  http://plasma-mds.org/qptdat/source/directValue#amplitudeVoltage
+<http://plasma-mds.org/qptdat/source/directValue#amplitudeVoltage> rdf:type owl:DatatypeProperty ;
+                                                                   rdfs:subPropertyOf owl:topDataProperty ;
+                                                                   rdfs:domain :AC ;
+                                                                   rdfs:range xsd:float .
+
+
+###  http://plasma-mds.org/qptdat/source/directValue#appliedVoltage
+<http://plasma-mds.org/qptdat/source/directValue#appliedVoltage> rdf:type owl:DatatypeProperty ;
+                                                                 rdfs:subPropertyOf owl:topDataProperty ;
+                                                                 rdfs:domain :DC ;
+                                                                 rdfs:range xsd:float .
+
+
+###  http://plasma-mds.org/qptdat/source/directValue#dutyCycle
+<http://plasma-mds.org/qptdat/source/directValue#dutyCycle> rdf:type owl:DatatypeProperty ;
+                                                            rdfs:subPropertyOf owl:topDataProperty ;
+                                                            rdfs:domain :AC ;
+                                                            rdfs:range xsd:float .
+
+
+###  http://plasma-mds.org/qptdat/source/directValue#frequencyMax
+<http://plasma-mds.org/qptdat/source/directValue#frequencyMax> rdf:type owl:DatatypeProperty ;
+                                                               rdfs:subPropertyOf owl:topDataProperty ;
+                                                               rdfs:domain :AC ;
+                                                               rdfs:range xsd:float .
+
+
+###  http://plasma-mds.org/qptdat/source/directValue#frequencyMin
+<http://plasma-mds.org/qptdat/source/directValue#frequencyMin> rdf:type owl:DatatypeProperty ;
+                                                               rdfs:subPropertyOf owl:topDataProperty ;
+                                                               rdfs:domain :AC ;
+                                                               rdfs:range xsd:float .
+
+
+###  http://plasma-mds.org/qptdat/source/directValue#frequencyValue
+<http://plasma-mds.org/qptdat/source/directValue#frequencyValue> rdf:type owl:DatatypeProperty ;
+                                                                 rdfs:subPropertyOf owl:topDataProperty ;
+                                                                 rdfs:domain :AC ;
+                                                                 rdfs:range xsd:float .
+
+
+###  http://plasma-mds.org/qptdat/source/directValue#peakToPeakVoltage
+<http://plasma-mds.org/qptdat/source/directValue#peakToPeakVoltage> rdf:type owl:DatatypeProperty ;
+                                                                    rdfs:subPropertyOf owl:topDataProperty ;
+                                                                    rdfs:domain :AC ;
+                                                                    rdfs:range xsd:float .
+
+
+###  http://plasma-mds.org/qptdat/source/directValue#pressureMax
+<http://plasma-mds.org/qptdat/source/directValue#pressureMax> rdf:type owl:DatatypeProperty ;
+                                                              rdfs:subPropertyOf owl:topDataProperty ;
+                                                              rdfs:domain :Pressure ;
+                                                              rdfs:range xsd:float .
+
+
+###  http://plasma-mds.org/qptdat/source/directValue#pressureMin
+<http://plasma-mds.org/qptdat/source/directValue#pressureMin> rdf:type owl:DatatypeProperty ;
+                                                              rdfs:subPropertyOf owl:topDataProperty ;
+                                                              rdfs:domain :Pressure ;
+                                                              rdfs:range xsd:float .
+
+
+###  http://plasma-mds.org/qptdat/source/directValue#pressureValue
+<http://plasma-mds.org/qptdat/source/directValue#pressureValue> rdf:type owl:DatatypeProperty ;
+                                                                rdfs:subPropertyOf owl:topDataProperty ;
+                                                                rdfs:domain :Pressure ;
+                                                                rdfs:range xsd:float .
+
+
+###  http://plasma-mds.org/qptdat/source/directValue#temperatureMax
+<http://plasma-mds.org/qptdat/source/directValue#temperatureMax> rdf:type owl:DatatypeProperty ;
+                                                                 rdfs:subPropertyOf owl:topDataProperty ;
+                                                                 rdfs:domain :Temperature ;
+                                                                 rdfs:range xsd:float .
+
+
+###  http://plasma-mds.org/qptdat/source/directValue#temperatureMin
+<http://plasma-mds.org/qptdat/source/directValue#temperatureMin> rdf:type owl:DatatypeProperty ;
+                                                                 rdfs:subPropertyOf owl:topDataProperty ;
+                                                                 rdfs:domain :Temperature ;
+                                                                 rdfs:range xsd:float .
+
+
+###  http://plasma-mds.org/qptdat/source/directValue#temperatureValue
+<http://plasma-mds.org/qptdat/source/directValue#temperatureValue> rdf:type owl:DatatypeProperty ;
+                                                                   rdfs:subPropertyOf owl:topDataProperty ;
+                                                                   rdfs:domain :Temperature ;
+                                                                   rdfs:range xsd:float .
 
 
 ###  http://purl.org/dc/terms/created
@@ -409,13 +603,34 @@ dcterms:description rdf:type owl:DatatypeProperty .
 #    Classes
 #################################################################
 
+###  http://plasma-mds.org/qptdat#AC
+:AC rdf:type owl:Class ;
+    rdfs:subClassOf :Waveform ;
+    rdfs:label "AC"@en .
+
+
 ###  http://plasma-mds.org/qptdat#AdjustedDevice
 :AdjustedDevice rdf:type owl:Class ;
-                rdfs:subClassOf :Device .
+                rdfs:subClassOf :Device ;
+                rdfs:label "adjusted device"@en .
+
+
+###  http://plasma-mds.org/qptdat#AdjustedSource
+:AdjustedSource rdf:type owl:Class ;
+                rdfs:subClassOf :AdjustedDevice ,
+                                :Source .
+
+
+###  http://plasma-mds.org/qptdat#Ammeter
+:Ammeter rdf:type owl:Class ;
+         rdfs:subClassOf :DiagnosticDevice ;
+         rdfs:label "Ammeter"@en .
 
 
 ###  http://plasma-mds.org/qptdat#Application
-:Application rdf:type owl:Class .
+:Application rdf:type owl:Class ;
+             rdfs:label "Application"@en ,
+                        "application"@en .
 
 
 ###  http://plasma-mds.org/qptdat#Arc
@@ -424,19 +639,117 @@ dcterms:description rdf:type owl:DatatypeProperty .
      rdfs:label "Arc"@en .
 
 
+###  http://plasma-mds.org/qptdat#AtomProbeTomographe
+:AtomProbeTomographe rdf:type owl:Class ;
+                     rdfs:subClassOf :DiagnosticDevice ;
+                     rdfs:label "Atom Probe Tomographe"@en .
+
+
+###  http://plasma-mds.org/qptdat#AtomProbeTomography
+:AtomProbeTomography rdf:type owl:Class ;
+                     rdfs:subClassOf :Microscope ;
+                     rdfs:label "Atom Probe Tomography"@en .
+
+
+###  http://plasma-mds.org/qptdat#AtomicForceMicroscope
+:AtomicForceMicroscope rdf:type owl:Class ;
+                       rdfs:subClassOf :Microscope ;
+                       rdfs:label "Atomic Force Microscope"@en .
+
+
+###  http://plasma-mds.org/qptdat#CCP
+:CCP rdf:type owl:Class ;
+     rdfs:subClassOf :Source ;
+     rdfs:comment "Capacitively coupled plasma system"@en ;
+     rdfs:label "Capacitively coupled plasma system"@en .
+
+
+###  http://plasma-mds.org/qptdat#Camera
+:Camera rdf:type owl:Class ;
+        rdfs:subClassOf :DiagnosticDevice ;
+        rdfs:label "Camera"@en .
+
+
 ###  http://plasma-mds.org/qptdat#CarrierGas
 :CarrierGas rdf:type owl:Class ;
             rdfs:subClassOf :Gas ;
-            rdfs:label "CarrierGas"@en .
+            rdfs:label "Carrier gas"@en .
+
+
+###  http://plasma-mds.org/qptdat#CollisionSimulation
+:CollisionSimulation rdf:type owl:Class ;
+                     rdfs:subClassOf :SimulationMethod ;
+                     rdfs:label "Collision Simulation"@en .
+
+
+###  http://plasma-mds.org/qptdat#Configuration
+:Configuration rdf:type owl:Class ;
+               rdfs:label "Configuration"@en .
+
+
+###  http://plasma-mds.org/qptdat#CurrentProbe
+:CurrentProbe rdf:type owl:Class ;
+              rdfs:subClassOf :DiagnosticDevice ;
+              rdfs:label "Current Probe"@en .
+
+
+###  http://plasma-mds.org/qptdat#DBD
+:DBD rdf:type owl:Class ;
+     rdfs:subClassOf :Source ;
+     rdfs:comment "Discharge involving at least one insulating dielectric barrier between the electrodes"@en ;
+     rdfs:label "Dielectric Barrier Discharge"@en .
+
+
+###  http://plasma-mds.org/qptdat#DC
+:DC rdf:type owl:Class ;
+    rdfs:subClassOf :Waveform ;
+    rdfs:label "DC"@en .
+
+
+###  http://plasma-mds.org/qptdat#Detector
+:Detector rdf:type owl:Class ;
+          rdfs:subClassOf :DiagnosticDevice ;
+          rdfs:label "Detector"@en .
 
 
 ###  http://plasma-mds.org/qptdat#Device
-:Device rdf:type owl:Class .
+:Device rdf:type owl:Class ;
+        rdfs:label "Device"@en .
+
+
+###  http://plasma-mds.org/qptdat#DiagnosticDevice
+:DiagnosticDevice rdf:type owl:Class ;
+                  rdfs:subClassOf :Device ;
+                  rdfs:label "Diagnostic Device"@en .
 
 
 ###  http://plasma-mds.org/qptdat#DiagnosticMethod
 :DiagnosticMethod rdf:type owl:Class ;
                   rdfs:label "Diagnostic Method"@en .
+
+
+###  http://plasma-mds.org/qptdat#ElectricalMethod
+:ElectricalMethod rdf:type owl:Class ;
+                  rdfs:subClassOf :ExperimentMethod ;
+                  rdfs:label "Electrical Method"@en .
+
+
+###  http://plasma-mds.org/qptdat#ElectrodeShape
+:ElectrodeShape rdf:type owl:Class ;
+                rdfs:subClassOf :SourceGeometry ;
+                rdfs:label "Electrode Shape"@en .
+
+
+###  http://plasma-mds.org/qptdat#Ellipsometer
+:Ellipsometer rdf:type owl:Class ;
+              rdfs:subClassOf :DiagnosticDevice ;
+              rdfs:label "Ellipsometer"@en .
+
+
+###  http://plasma-mds.org/qptdat#EnergyDispersiveXraySpectroscope
+:EnergyDispersiveXraySpectroscope rdf:type owl:Class ;
+                                  rdfs:subClassOf :Spectroscope ;
+                                  rdfs:label "Energy Dispersive X-Ray Spectroscope"@en .
 
 
 ###  http://plasma-mds.org/qptdat#ExperimentMethod
@@ -445,10 +758,72 @@ dcterms:description rdf:type owl:DatatypeProperty .
                   rdfs:label "Experiment Method"@en .
 
 
+###  http://plasma-mds.org/qptdat#FiberOpticThermometer
+:FiberOpticThermometer rdf:type owl:Class ;
+                       rdfs:subClassOf :Thermometer ;
+                       rdfs:label "Fiber Optic Thermometer"@en .
+
+
+###  http://plasma-mds.org/qptdat#FourierTransformInfraredSpectrograph
+:FourierTransformInfraredSpectrograph rdf:type owl:Class ;
+                                      rdfs:subClassOf :Spectroscope ;
+                                      rdfs:label "Fourier Transform Infrared Spectrograph"@en .
+
+
+###  http://plasma-mds.org/qptdat#Galvanometer
+:Galvanometer rdf:type owl:Class ;
+              rdfs:subClassOf :DiagnosticDevice ;
+              rdfs:label "Galvanometer"@en .
+
+
 ###  http://plasma-mds.org/qptdat#Gas
 :Gas rdf:type owl:Class ;
      rdfs:subClassOf :Matter ;
      rdfs:label "Gas"@en .
+
+
+###  http://plasma-mds.org/qptdat#Helix
+:Helix rdf:type owl:Class ;
+       rdfs:subClassOf :Source ;
+       rdfs:label "Helix"@en .
+
+
+###  http://plasma-mds.org/qptdat#HighSpeedCamera
+:HighSpeedCamera rdf:type owl:Class ;
+                 rdfs:subClassOf :Camera ;
+                 rdfs:label "High Speed Camera"@en .
+
+
+###  http://plasma-mds.org/qptdat#HighSpeedImaging
+:HighSpeedImaging rdf:type owl:Class ;
+                  rdfs:subClassOf :Imaging ;
+                  rdfs:label "High Speed Imaging"@en .
+
+
+###  http://plasma-mds.org/qptdat#Imaging
+:Imaging rdf:type owl:Class ;
+         owl:equivalentClass [ owl:intersectionOf ( :ExperimentMethod
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty :usesDevice ;
+                                                      owl:allValuesFrom :Camera
+                                                    ]
+                                                  ) ;
+                               rdf:type owl:Class
+                             ] ;
+         rdfs:subClassOf :ExperimentMethod ;
+         rdfs:label "Imaging"@en .
+
+
+###  http://plasma-mds.org/qptdat#LangmuirProbe
+:LangmuirProbe rdf:type owl:Class ;
+               rdfs:subClassOf :DiagnosticDevice ;
+               rdfs:label "Langmuir Probe"@en .
+
+
+###  http://plasma-mds.org/qptdat#Laser
+:Laser rdf:type owl:Class ;
+       rdfs:subClassOf :DiagnosticDevice ;
+       rdfs:label "Laser"@en .
 
 
 ###  http://plasma-mds.org/qptdat#Liquid
@@ -457,14 +832,32 @@ dcterms:description rdf:type owl:DatatypeProperty .
         rdfs:label "Liquid"@en .
 
 
+###  http://plasma-mds.org/qptdat#MassSpectrometer
+:MassSpectrometer rdf:type owl:Class ;
+                  rdfs:subClassOf :Spectroscope ;
+                  rdfs:label "Mass Spectrometer"@en .
+
+
 ###  http://plasma-mds.org/qptdat#Matter
 :Matter rdf:type owl:Class ;
         rdfs:label "Matter"@en .
 
 
+###  http://plasma-mds.org/qptdat#MechanicalMethod
+:MechanicalMethod rdf:type owl:Class ;
+                  rdfs:subClassOf :ExperimentMethod ;
+                  rdfs:label "Mechanical Method"@en .
+
+
 ###  http://plasma-mds.org/qptdat#Medium
 :Medium rdf:type owl:Class ;
         rdfs:label "Medium"@en .
+
+
+###  http://plasma-mds.org/qptdat#Microscope
+:Microscope rdf:type owl:Class ;
+            rdfs:subClassOf :DiagnosticDevice ;
+            rdfs:label "Microscope"@en .
 
 
 ###  http://plasma-mds.org/qptdat#Microwave
@@ -479,9 +872,59 @@ dcterms:description rdf:type owl:DatatypeProperty .
                  rdfs:label "Modelling Method"@en .
 
 
+###  http://plasma-mds.org/qptdat#MultipoleResonanceProbe
+:MultipoleResonanceProbe rdf:type owl:Class ;
+                         rdfs:subClassOf :DiagnosticDevice ;
+                         rdfs:label "Multi-pole Resonance Probe"@en .
+
+
+###  http://plasma-mds.org/qptdat#OpticalEmissionSpectrograph
+:OpticalEmissionSpectrograph rdf:type owl:Class ;
+                             rdfs:subClassOf :Spectroscope ;
+                             rdfs:label "Optical Emission Spectrograph"@en .
+
+
+###  http://plasma-mds.org/qptdat#Oscilloscope
+:Oscilloscope rdf:type owl:Class ;
+              rdfs:subClassOf :DiagnosticDevice ;
+              rdfs:label "Oscilloscope"@en .
+
+
+###  http://plasma-mds.org/qptdat#ParallelPlate
+:ParallelPlate rdf:type owl:Class ;
+               rdfs:subClassOf :ElectrodeShape ;
+               rdfs:label "Parallel Plate"@en .
+
+
+###  http://plasma-mds.org/qptdat#PinToPin
+:PinToPin rdf:type owl:Class ;
+          rdfs:subClassOf :ElectrodeShape ;
+          rdfs:label "Pin to Pin"@en .
+
+
+###  http://plasma-mds.org/qptdat#PinToPlate
+:PinToPlate rdf:type owl:Class ;
+            rdfs:subClassOf :ElectrodeShape ;
+            rdfs:label "Pin to Plate"@en .
+
+
 ###  http://plasma-mds.org/qptdat#Plasma
 :Plasma rdf:type owl:Class ;
         rdfs:label "Plasma"@en .
+
+
+###  http://plasma-mds.org/qptdat#PlasmaJet
+:PlasmaJet rdf:type owl:Class ;
+           owl:equivalentClass :PlasmaPen ;
+           rdfs:subClassOf :Source ;
+           rdfs:comment "Capillary plasma source, sometimes in form of a handheld device"@en ;
+           rdfs:label "Plasma Jet"@en .
+
+
+###  http://plasma-mds.org/qptdat#PlasmaPen
+:PlasmaPen rdf:type owl:Class ;
+           rdfs:subClassOf :Source ;
+           rdfs:label "Plasma Pen"@en .
 
 
 ###  http://plasma-mds.org/qptdat#PlasmaStudy
@@ -490,19 +933,92 @@ dcterms:description rdf:type owl:DatatypeProperty .
                         "Plasma Study"@en .
 
 
+###  http://plasma-mds.org/qptdat#PlasmaTorch
+:PlasmaTorch rdf:type owl:Class ;
+             rdfs:subClassOf :Source ;
+             rdfs:label "Plasma Torch"@en .
+
+
+###  http://plasma-mds.org/qptdat#Pressure
+:Pressure rdf:type owl:Class ;
+          rdfs:subClassOf :SourceSetting ;
+          rdfs:label "Pressure"@en .
+
+
+###  http://plasma-mds.org/qptdat#Profilometer
+:Profilometer rdf:type owl:Class ;
+              rdfs:subClassOf :DiagnosticDevice ;
+              rdfs:label "Profilometer"@en .
+
+
+###  http://plasma-mds.org/qptdat#PulsedAC
+:PulsedAC rdf:type owl:Class ;
+          rdfs:subClassOf :AC ;
+          rdfs:label "Pulsed AC"@en .
+
+
+###  http://plasma-mds.org/qptdat#PulsedDC
+:PulsedDC rdf:type owl:Class ;
+          rdfs:subClassOf :DC ;
+          rdfs:label "Pulsed DC"@en .
+
+
+###  http://plasma-mds.org/qptdat#Pyrometer
+:Pyrometer rdf:type owl:Class ;
+           rdfs:subClassOf :Thermometer ;
+           rdfs:label "Pyrometer"@en .
+
+
+###  http://plasma-mds.org/qptdat#RamanSpectroscope
+:RamanSpectroscope rdf:type owl:Class ;
+                   rdfs:subClassOf :Spectroscope ;
+                   rdfs:label "Raman Spectroscope"@en .
+
+
 ###  http://plasma-mds.org/qptdat#Resource
 :Resource rdf:type owl:Class ;
           rdfs:label "Resource"@en .
 
 
+###  http://plasma-mds.org/qptdat#RogowskiCoil
+:RogowskiCoil rdf:type owl:Class ;
+              rdfs:subClassOf :DiagnosticDevice ;
+              rdfs:label "Rogowski Coil"@en .
+
+
+###  http://plasma-mds.org/qptdat#ScanningDriftTubeApparatus
+:ScanningDriftTubeApparatus rdf:type owl:Class ;
+                            rdfs:subClassOf :Source ;
+                            rdfs:label "Scanning Drift Tube Apparatus"@en .
+
+
+###  http://plasma-mds.org/qptdat#ScanningElectronMicroscope
+:ScanningElectronMicroscope rdf:type owl:Class ;
+                            rdfs:subClassOf :Microscope ;
+                            rdfs:label "Scanning Electron Microscope"@en .
+
+
+###  http://plasma-mds.org/qptdat#ScanningTunnelingMicroscope
+:ScanningTunnelingMicroscope rdf:type owl:Class ;
+                             rdfs:subClassOf :Microscope ;
+                             rdfs:label "Scanning Tunneling Microscope"@en .
+
+
 ###  http://plasma-mds.org/qptdat#Setting
-:Setting rdf:type owl:Class .
+:Setting rdf:type owl:Class ;
+         rdfs:label "Setting"@en .
 
 
 ###  http://plasma-mds.org/qptdat#ShieldingGas
 :ShieldingGas rdf:type owl:Class ;
               rdfs:subClassOf :Gas ;
               rdfs:label "Shielding Gas"@en .
+
+
+###  http://plasma-mds.org/qptdat#ShuntResistor
+:ShuntResistor rdf:type owl:Class ;
+               rdfs:subClassOf :DiagnosticDevice ;
+               rdfs:label "Shunt Resistor"@en .
 
 
 ###  http://plasma-mds.org/qptdat#SimulationMethod
@@ -526,8 +1042,33 @@ dcterms:description rdf:type owl:DatatypeProperty .
         rdfs:label "Source"@en .
 
 
+###  http://plasma-mds.org/qptdat#SourceGeometry
+:SourceGeometry rdf:type owl:Class ;
+                rdfs:subClassOf :Configuration ;
+                rdfs:label "Source Geometry"@en .
+
+
 ###  http://plasma-mds.org/qptdat#SourceSetting
-:SourceSetting rdf:type owl:Class .
+:SourceSetting rdf:type owl:Class ;
+               rdfs:subClassOf :Setting ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :adjust ;
+                                 owl:allValuesFrom :SourceSetting
+                               ] ;
+               rdfs:label "Specification"@en ,
+                          "source setting"@en .
+
+
+###  http://plasma-mds.org/qptdat#Spectroscope
+:Spectroscope rdf:type owl:Class ;
+              rdfs:subClassOf :DiagnosticDevice ;
+              rdfs:label "Spectroscope"@en .
+
+
+###  http://plasma-mds.org/qptdat#Spectroscopy
+:Spectroscopy rdf:type owl:Class ;
+              rdfs:subClassOf :ExperimentMethod ;
+              rdfs:label "Spectroscopy"@en .
 
 
 ###  http://plasma-mds.org/qptdat#StateOfMatter
@@ -545,8 +1086,59 @@ dcterms:description rdf:type owl:DatatypeProperty .
         rdfs:label "Target"@en .
 
 
-###  http://plasma-mds.org/qptdat/source#AdjustedSource
-<http://plasma-mds.org/qptdat/source#AdjustedSource> rdf:type owl:Class .
+###  http://plasma-mds.org/qptdat#Temperature
+:Temperature rdf:type owl:Class ;
+             rdfs:subClassOf :SourceSetting ;
+             rdfs:label "Temperature"@en .
+
+
+###  http://plasma-mds.org/qptdat#ThermalImaging
+:ThermalImaging rdf:type owl:Class ;
+                rdfs:subClassOf :Imaging ;
+                rdfs:label "Thermal Imaging"@en .
+
+
+###  http://plasma-mds.org/qptdat#ThermographicCamera
+:ThermographicCamera rdf:type owl:Class ;
+                     rdfs:subClassOf :Camera ,
+                                     :Thermometer ;
+                     rdfs:label "Thermographic Camera"@en .
+
+
+###  http://plasma-mds.org/qptdat#Thermometer
+:Thermometer rdf:type owl:Class ;
+             rdfs:subClassOf :DiagnosticDevice ;
+             rdfs:label "Thermometer"@en .
+
+
+###  http://plasma-mds.org/qptdat#TransientRecorder
+:TransientRecorder rdf:type owl:Class ;
+                   rdfs:subClassOf :DiagnosticDevice ;
+                   rdfs:label "Transient Recorder"@en .
+
+
+###  http://plasma-mds.org/qptdat#VoltageDifferentialProbe
+:VoltageDifferentialProbe rdf:type owl:Class ;
+                          rdfs:subClassOf :VoltageProbe ;
+                          rdfs:label "Voltage Differential Probe"@en .
+
+
+###  http://plasma-mds.org/qptdat#VoltageProbe
+:VoltageProbe rdf:type owl:Class ;
+              rdfs:subClassOf :DiagnosticDevice ;
+              rdfs:label "Voltage Probe"@en .
+
+
+###  http://plasma-mds.org/qptdat#Voltmeter
+:Voltmeter rdf:type owl:Class ;
+           rdfs:subClassOf :DiagnosticDevice ;
+           rdfs:label "Voltmeter"@en .
+
+
+###  http://plasma-mds.org/qptdat#Waveform
+:Waveform rdf:type owl:Class ;
+          rdfs:subClassOf :SourceSetting ;
+          rdfs:label "Waveform"@en .
 
 
 ###  http://purl.org/dc/terms/LicenseDocument
@@ -554,105 +1146,30 @@ dcterms:LicenseDocument rdf:type owl:Class .
 
 
 ###  http://purl.org/spar/datacite/Identifier
-<http://purl.org/spar/datacite/Identifier> rdf:type owl:Class .
+datacite:Identifier rdf:type owl:Class .
 
 
 ###  http://www.w3.org/ns/dcat#Dataset
-<http://www.w3.org/ns/dcat#Dataset> rdf:type owl:Class ;
-                                    rdfs:comment "1つのエージェントによって公開またはキュレートされ、1つ以上の形式でアクセスまたはダウンロードできるデータの集合。"@ja ,
-                                                 "A collection of data, published or curated by a single source, and available for access or download in one or more representations."@en ,
-                                                 "En samling af data, udgivet eller udvalgt og arrangeret af en enkelt kilde og som er til råde for adgang til eller download af i en eller flere repræsentationer."@da ,
-                                                 "Kolekce dat poskytovaná či řízená jedním zdrojem, která je k dispozici pro přístup či stažení v jednom či více formátech."@cs ,
-                                                 "Raccolta di dati, pubblicati o curati da un'unica fonte, disponibili per l'accesso o il download in uno o più formati."@it ,
-                                                 "Una colección de datos, publicados o conservados por una única fuente, y disponibles para ser accedidos o descargados en uno o más formatos."@es ,
-                                                 "Une collection de données, publiée ou élaborée par une seule source, et disponible pour accès ou téléchargement dans un ou plusieurs formats."@fr ,
-                                                 "Μία συλλογή από δεδομένα, δημοσιευμένη ή επιμελημένη από μία και μόνο πηγή, διαθέσιμη δε προς πρόσβαση ή μεταφόρτωση σε μία ή περισσότερες μορφές."@el ,
-                                                 "قائمة بيانات منشورة أو مجموعة من قبل مصدر ما و متاح الوصول إليها أو تحميلها"@ar ;
-                                    rdfs:isDefinedBy <http://www.w3.org/TR/vocab-dcat/> ;
-                                    rdfs:label "Conjunto de datos"@es ,
-                                               "Dataset"@en ,
-                                               "Dataset"@it ,
-                                               "Datasæt"@da ,
-                                               "Datová sada"@cs ,
-                                               "Jeu de données"@fr ,
-                                               "Σύνολο Δεδομένων"@el ,
-                                               "قائمة بيانات"@ar ,
-                                               "データセット"@ja ;
-                                    <http://www.w3.org/2004/02/skos/core#altLabel> "Datasamling"@da ;
-                                    <http://www.w3.org/2004/02/skos/core#changeNote> "2018-02 - odstraněno tvrzení o podtřídě dctype:Dataset, jelikož rozsah dcat:Dataset zahrnuje několik dalších typů ze slovníku dctype."@cs ,
-                                                                                     "2018-02 - se eliminó el axioma de subclase con dctype:Dataset porque el alcance de dcat:Dataset incluye muchos otros tipos del vocabulario dctype."@es ,
-                                                                                     "2018-02 - sottoclasse di dctype:Dataset rimosso perché l'ambito di dcat:Dataset include diversi altri tipi dal vocabolario dctype."@it ,
-                                                                                     "2018-02 - subclass of dctype:Dataset removed because scope of dcat:Dataset includes several other types from the dctype vocabulary."@en ,
-                                                                                     "2018-02 - subklasse af dctype:Dataset fjernet da scope af dcat:Dataset omfatter flere forskellige typer fra dctype-vokabularet."@da ;
-                                    <http://www.w3.org/2004/02/skos/core#definition> "1つのエージェントによって公開またはキュレートされ、1つ以上の形式でアクセスまたはダウンロードできるデータの集合。"@ja ,
-                                                                                     "A collection of data, published or curated by a single source, and available for access or download in one or more represenations."@en ,
-                                                                                     "En samling a data, udgivet eller udvalgt og arrangeret af en enkelt kilde og som der er adgang til i en eller flere repræsentationer."@da ,
-                                                                                     "Kolekce dat poskytovaná či řízená jedním zdrojem, která je k dispozici pro přístup či stažení v jednom či více formátech."@cs ,
-                                                                                     "Raccolta di dati, pubblicati o curati da un'unica fonte, disponibili per l'accesso o il download in uno o più formati."@it ,
-                                                                                     "Una colección de datos, publicados o conservados por una única fuente, y disponibles para ser accedidos o descargados en uno o más formatos."@es ,
-                                                                                     "Une collection de données, publiée ou élaborée par une seule source, et disponible pour accès ou téléchargement dans un ou plusieurs formats."@fr ,
-                                                                                     "Μία συλλογή από δεδομένα, δημοσιευμένη ή επιμελημένη από μία και μόνο πηγή, διαθέσιμη δε προς πρόσβαση ή μεταφόρτωση σε μία ή περισσότερες μορφές."@el ,
-                                                                                     "قائمة بيانات منشورة أو مجموعة من قبل مصدر ما و متاح الوصول إليها أو تحميلها"@ar ;
-                                    <http://www.w3.org/2004/02/skos/core#editorialNote> "2020-03-16 A new scopenote added and need to be translated"@en ;
-                                    <http://www.w3.org/2004/02/skos/core#scopeNote> "Cette classe représente le jeu de données publié par le fournisseur de données. Dans les cas où une distinction est nécessaire entre le jeu de donénes et son entrée dans le catalogue, la classe registre de données peut être utilisée pour ce dernier."@fr ,
-                                                                                    "Denne klasse beskriver det konceptuelle datasæt. En eller flere repræsentationer kan være tilgængelige med forskellige skematiske opsætninger, formater eller serialiseringer."@da ,
-                                                                                    "Denne klasse repræsenterer det konkrete datasæt som det udgives af datasætleverandøren. I de tilfælde hvor det er nødvendigt at skelne mellem det konkrete datasæt og dets registrering i kataloget (fordi metadata såsom ændringsdato og vedligeholder er forskellige), så kan klassen katalogpost anvendes. "@da ,
-                                                                                    "Esta clase representa el conjunto de datos publicados. En los casos donde es necesario distinguir entre el conjunto de datos y su entrada en el catálogo de datos, se debe utilizar la clase 'registro del catálogo'."@es ,
-                                                                                    "Questa classe descrive il dataset dal punto di vista concettuale. Possono essere disponibili una o più rappresentazioni, con diversi layout e formati schematici o serializzazioni."@it ,
-                                                                                    "Questa classe rappresenta il dataset come pubblicato dall’editore. Nel caso in cui sia necessario operare  una distinzione fra i metadati originali del dataset e il record dei metadati ad esso associato nel catalogo (ad esempio, per distinguere la data di modifica del dataset da quella del dataset nel catalogo) si può impiegare la classe catalog record."@it ,
-                                                                                    "Tato třída reprezentuje datovou sadu tak, jak je publikována poskytovatelem dat. V případě potřeby rozlišení datové sady a jejího katalogizačního záznamu (jelikož metadata jako datum modifikace se mohou lišit) pro něj může být použita třída \"katalogizační záznam\"."@cs ,
-                                                                                    "The notion of dataset in DCAT is broad and inclusive, with the intention of accommodating resource types arising from all communities. Data comes in many forms including numbers, text, pixels, imagery, sound and other multi-media, and potentially other types, any of which might be collected into a dataset."@en ,
-                                                                                    "This class describes the conceptual dataset. One or more representations might be available, with differing schematic layouts and formats or serializations."@en ,
-                                                                                    "This class represents the actual dataset as published by the dataset provider. In cases where a distinction between the actual dataset and its entry in the catalog is necessary (because metadata such as modification date and maintainer might differ), the catalog record class can be used for the latter."@en ,
-                                                                                    "Η κλάση αυτή αναπαριστά το σύνολο δεδομένων αυτό καθ'εαυτό, όπως έχει δημοσιευθεί από τον εκδότη. Σε περιπτώσεις όπου είναι απαραίτητος ο διαχωρισμός μεταξύ του συνόλου δεδομένων και της καταγραφής αυτού στον κατάλογο (γιατί μεταδεδομένα όπως η ημερομηνία αλλαγής και ο συντηρητής μπορεί να διαφέρουν) η κλάση της καταγραφής καταλόγου μπορεί να χρησιμοποιηθεί για το τελευταίο."@el ,
-                                                                                    "このクラスは、データセットの公開者が公開する実際のデータセットを表わします。カタログ内の実際のデータセットとそのエントリーとの区別が必要な場合（修正日と維持者などのメタデータが異なるかもしれないので）は、後者にcatalog recordというクラスを使用できます。"@ja .
+<http://www.w3.org/ns/dcat#Dataset> rdf:type owl:Class .
 
 
 ###  http://www.w3.org/ns/prov#Agent
-<http://www.w3.org/ns/prov#Agent> rdf:type owl:Class ;
-                                  rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
-                                  rdfs:label "Agent" ;
-                                  <http://www.w3.org/ns/prov#category> "starting-point" ;
-                                  <http://www.w3.org/ns/prov#component> "agents-responsibility" ;
-                                  <http://www.w3.org/ns/prov#definition> "An agent is something that bears some form of responsibility for an activity taking place, for the existence of an entity, or for another agent's activity. "@en ;
-                                  <http://www.w3.org/ns/prov#dm> "http://www.w3.org/TR/2013/REC-prov-dm-20130430/#term-agent"^^xsd:anyURI ;
-                                  <http://www.w3.org/ns/prov#n> "http://www.w3.org/TR/2013/REC-prov-n-20130430/#expression-Agent"^^xsd:anyURI .
+<http://www.w3.org/ns/prov#Agent> rdf:type owl:Class .
 
 
 ###  http://www.w3.org/ns/prov#Organization
 <http://www.w3.org/ns/prov#Organization> rdf:type owl:Class ;
-                                         rdfs:subClassOf <http://www.w3.org/ns/prov#Agent> ;
-                                         rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
-                                         rdfs:label "Organization" ;
-                                         <http://www.w3.org/ns/prov#category> "expanded" ;
-                                         <http://www.w3.org/ns/prov#component> "agents-responsibility" ;
-                                         <http://www.w3.org/ns/prov#definition> "An organization is a social or legal institution such as a company, society, etc." ;
-                                         <http://www.w3.org/ns/prov#dm> "http://www.w3.org/TR/2013/REC-prov-dm-20130430/#term-agent"^^xsd:anyURI ;
-                                         <http://www.w3.org/ns/prov#n> "http://www.w3.org/TR/2013/REC-prov-n-20130430/#expression-types"^^xsd:anyURI .
+                                         rdfs:subClassOf <http://www.w3.org/ns/prov#Agent> .
 
 
 ###  http://www.w3.org/ns/prov#Person
 <http://www.w3.org/ns/prov#Person> rdf:type owl:Class ;
-                                   rdfs:subClassOf <http://www.w3.org/ns/prov#Agent> ;
-                                   rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
-                                   rdfs:label "Person" ;
-                                   <http://www.w3.org/ns/prov#category> "expanded" ;
-                                   <http://www.w3.org/ns/prov#component> "agents-responsibility" ;
-                                   <http://www.w3.org/ns/prov#definition> "Person agents are people."@en ;
-                                   <http://www.w3.org/ns/prov#dm> "http://www.w3.org/TR/2013/REC-prov-dm-20130430/#term-agent"^^xsd:anyURI ;
-                                   <http://www.w3.org/ns/prov#n> "http://www.w3.org/TR/2013/REC-prov-n-20130430/#expression-types"^^xsd:anyURI .
+                                   rdfs:subClassOf <http://www.w3.org/ns/prov#Agent> .
 
 
 ###  http://www.w3.org/ns/prov#SoftwareAgent
 <http://www.w3.org/ns/prov#SoftwareAgent> rdf:type owl:Class ;
-                                          rdfs:subClassOf <http://www.w3.org/ns/prov#Agent> ;
-                                          rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
-                                          rdfs:label "SoftwareAgent" ;
-                                          <http://www.w3.org/ns/prov#category> "expanded" ;
-                                          <http://www.w3.org/ns/prov#component> "agents-responsibility" ;
-                                          <http://www.w3.org/ns/prov#definition> "A software agent is running software."@en ;
-                                          <http://www.w3.org/ns/prov#dm> "http://www.w3.org/TR/2013/REC-prov-dm-20130430/#term-agent"^^xsd:anyURI ;
-                                          <http://www.w3.org/ns/prov#n> "http://www.w3.org/TR/2013/REC-prov-n-20130430/#expression-types"^^xsd:anyURI .
+                                          rdfs:subClassOf <http://www.w3.org/ns/prov#Agent> .
 
 
 ###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

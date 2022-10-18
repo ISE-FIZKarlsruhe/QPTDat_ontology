@@ -1,6 +1,6 @@
 @prefix : <http://plasma-mds.org/qptdat#> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
-@prefix bfo: <http://purl.obolibrary.org/obo/> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
@@ -16,6 +16,7 @@
 
 <http://plasma-mds.org/qptdat> rdf:type owl:Ontology ;
                                 owl:versionIRI <http://plasma-mds.org/qptdat/v1.0> ;
+                                owl:imports <http://purl.obolibrary.org/obo/bfo/2.0/bfo.owl> ;
                                 dc:title "QPTDat Ontology"@en ;
                                 dcterms:abstract "The plasma ontology (Plasma-MDS) supports the standardized documentation of research data in the field of plasma physics. In accordance with typical plasma processes and applications, the ontology contains terminologicial knowledge about plasma source, plasma medium, and plasma target. Furthermore, metadata for the respectively applied diagnostic and modelling/simulation methods are represented."@en ;
                                 dcterms:creator qpkg:fabian ,
@@ -684,6 +685,7 @@ dcterms:description rdf:type owl:DatatypeProperty .
 
 ###  http://plasma-mds.org/qptdat#Configuration
 :Configuration rdf:type owl:Class ;
+               rdfs:subClassOf obo:BFO_0000019 ;
                rdfs:label "Configuration"@en .
 
 
@@ -706,6 +708,11 @@ dcterms:description rdf:type owl:DatatypeProperty .
     rdfs:label "DC"@en .
 
 
+###  http://plasma-mds.org/qptdat#Dataset
+:Dataset rdf:type owl:Class ;
+         rdfs:subClassOf <http://www.w3.org/ns/dcat#Dataset> .
+
+
 ###  http://plasma-mds.org/qptdat#Detector
 :Detector rdf:type owl:Class ;
           rdfs:subClassOf :DiagnosticDevice ;
@@ -714,6 +721,7 @@ dcterms:description rdf:type owl:DatatypeProperty .
 
 ###  http://plasma-mds.org/qptdat#Device
 :Device rdf:type owl:Class ;
+        rdfs:subClassOf obo:BFO_0000030 ;
         rdfs:label "Device"@en .
 
 
@@ -725,6 +733,7 @@ dcterms:description rdf:type owl:DatatypeProperty .
 
 ###  http://plasma-mds.org/qptdat#DiagnosticMethod
 :DiagnosticMethod rdf:type owl:Class ;
+                  rdfs:subClassOf obo:BFO_0000015 ;
                   rdfs:label "Diagnostic Method"@en .
 
 
@@ -851,6 +860,7 @@ dcterms:description rdf:type owl:DatatypeProperty .
 
 ###  http://plasma-mds.org/qptdat#Medium
 :Medium rdf:type owl:Class ;
+        rdfs:subClassOf obo:BFO_0000030 ;
         rdfs:label "Medium"@en .
 
 
@@ -929,6 +939,7 @@ dcterms:description rdf:type owl:DatatypeProperty .
 
 ###  http://plasma-mds.org/qptdat#PlasmaStudy
 :PlasmaStudy rdf:type owl:Class ;
+             rdfs:subClassOf obo:BFO_0000015 ;
              rdfs:label "Plasma Experiment"@en ,
                         "Plasma Study"@en .
 
@@ -977,6 +988,7 @@ dcterms:description rdf:type owl:DatatypeProperty .
 
 ###  http://plasma-mds.org/qptdat#Resource
 :Resource rdf:type owl:Class ;
+          rdfs:subClassOf obo:BFO_0000031 ;
           rdfs:label "Resource"@en .
 
 
@@ -1006,6 +1018,7 @@ dcterms:description rdf:type owl:DatatypeProperty .
 
 ###  http://plasma-mds.org/qptdat#Setting
 :Setting rdf:type owl:Class ;
+         rdfs:subClassOf obo:BFO_0000019 ;
          rdfs:label "Setting"@en .
 
 
@@ -1083,6 +1096,7 @@ dcterms:description rdf:type owl:DatatypeProperty .
 
 ###  http://plasma-mds.org/qptdat#Target
 :Target rdf:type owl:Class ;
+        rdfs:subClassOf obo:BFO_0000030 ;
         rdfs:label "Target"@en .
 
 

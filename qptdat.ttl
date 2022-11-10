@@ -7,6 +7,7 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix obda: <https://w3id.org/obda/vocabulary#> .
+@prefix orkg: <http://orkg.org/core#> .
 @prefix qpkg: <http://plasma-mds.org/resource#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
@@ -245,6 +246,12 @@ xsd:date rdf:type rdfs:Datatype .
                   rdfs:subPropertyOf owl:topObjectProperty ;
                   rdfs:domain :Device ;
                   rdfs:range :Configuration ;
+                  owl:propertyChainAxiom ( :hasConfiguration
+                                           :hasSubConfiguration
+                                         ) ,
+                                         ( :usesDevice
+                                           :hasConfiguration
+                                         ) ;
                   rdfs:label "has configuration"@en .
 
 
@@ -275,6 +282,12 @@ xsd:date rdf:type rdfs:Datatype .
            rdfs:label "has Source"@en .
 
 
+###  http://plasma-mds.org/qptdat#hasSubConfiguration
+:hasSubConfiguration rdf:type owl:ObjectProperty ;
+                     rdfs:domain :Configuration_Collection ;
+                     rdfs:range :Configuration .
+
+
 ###  http://plasma-mds.org/qptdat#hasTarget
 :hasTarget rdf:type owl:ObjectProperty ;
            rdfs:subPropertyOf :hasComponent ;
@@ -288,8 +301,15 @@ xsd:date rdf:type rdfs:Datatype .
 :has_application rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf owl:topObjectProperty ;
                  rdfs:domain :Source ;
-                 rdfs:range :Application ;
+                 rdfs:range :ResearchField ;
                  rdfs:label "has application field"@en .
+
+
+###  http://plasma-mds.org/qptdat#has_researchField
+:has_researchField rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf owl:topObjectProperty ;
+                   rdfs:domain :PlasmaStudy ;
+                   rdfs:range :ResearchField .
 
 
 ###  http://plasma-mds.org/qptdat#homepage
@@ -407,16 +427,14 @@ xsd:date rdf:type rdfs:Datatype .
 ###  http://plasma-mds.org/qptdat#usesDevice
 :usesDevice rdf:type owl:ObjectProperty ;
             rdfs:subPropertyOf owl:topObjectProperty ;
-            rdfs:domain :AdjustedDevice ,
-                        :DiagnosticMethod ;
-            rdfs:range :Device ,
-                       :DiagnosticDevice ;
+            rdfs:domain :AdjustedDevice ;
+            rdfs:range :Device ;
             rdfs:label "uses device"@en .
 
 
 ###  http://plasma-mds.org/qptdat#usesSetting
 :usesSetting rdf:type owl:ObjectProperty ;
-             rdfs:subPropertyOf owl:topObjectProperty ;
+             rdfs:subPropertyOf :hasConfiguration ;
              rdfs:domain :AdjustedDevice ;
              rdfs:range :Setting ;
              rdfs:label "uses setting"@en .
@@ -438,7 +456,7 @@ xsd:date rdf:type rdfs:Datatype .
 
 ###  http://plasma-mds.org/qptdat/source#geometry
 <http://plasma-mds.org/qptdat/source#geometry> rdf:type owl:ObjectProperty ;
-                                               rdfs:subPropertyOf owl:topObjectProperty ;
+                                               rdfs:subPropertyOf :hasConfiguration ;
                                                rdfs:domain :Source ;
                                                rdfs:range :SourceGeometry .
 
@@ -502,12 +520,29 @@ foaf:term_homepage rdf:type owl:ObjectProperty .
           rdfs:label "file type"@en .
 
 
+###  http://plasma-mds.org/qptdat#maxValue
+:maxValue rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf owl:topDataProperty ;
+          rdfs:domain :Range .
+
+
+###  http://plasma-mds.org/qptdat#minValue
+:minValue rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf owl:topDataProperty ;
+          rdfs:domain :Range .
+
+
 ###  http://plasma-mds.org/qptdat#purity
 :purity rdf:type owl:DatatypeProperty ;
         rdfs:subPropertyOf owl:topDataProperty ;
         rdfs:domain :Gas ;
         rdfs:range xsd:integer ;
         rdfs:label "purity"@en .
+
+
+###  http://plasma-mds.org/qptdat#value
+:value rdf:type owl:DatatypeProperty ;
+       rdfs:subPropertyOf owl:topDataProperty .
 
 
 ###  http://plasma-mds.org/qptdat/source/directValue#amplitudeVoltage
@@ -613,6 +648,22 @@ dcterms:description rdf:type owl:DatatypeProperty .
 #    Classes
 #################################################################
 
+###  http://orkg.org/core#ResearchField
+orkg:ResearchField rdf:type owl:Class .
+
+
+###  http://orkg.org/core#ResearchMaterial
+orkg:ResearchMaterial rdf:type owl:Class .
+
+
+###  http://orkg.org/core#ResearchMethod
+orkg:ResearchMethod rdf:type owl:Class .
+
+
+###  http://orkg.org/core#ResearchResult
+orkg:ResearchResult rdf:type owl:Class .
+
+
 ###  http://plasma-mds.org/qptdat#AC
 :AC rdf:type owl:Class ;
     rdfs:subClassOf :Waveform ;
@@ -635,14 +686,6 @@ dcterms:description rdf:type owl:DatatypeProperty .
 :Ammeter rdf:type owl:Class ;
          rdfs:subClassOf :DiagnosticDevice ;
          rdfs:label "Ammeter"@en .
-
-
-###  http://plasma-mds.org/qptdat#Application
-:Application rdf:type owl:Class ;
-             rdfs:subClassOf <http://orkg.org/core#ResearchField> ,
-                             obo:BFO_0000030 ;
-             rdfs:label "Application"@en ,
-                        "application"@en .
 
 
 ###  http://plasma-mds.org/qptdat#Arc
@@ -700,6 +743,11 @@ dcterms:description rdf:type owl:DatatypeProperty .
                rdfs:label "Configuration"@en .
 
 
+###  http://plasma-mds.org/qptdat#Configuration_Collection
+:Configuration_Collection rdf:type owl:Class ;
+                          rdfs:subClassOf :Configuration .
+
+
 ###  http://plasma-mds.org/qptdat#CurrentProbe
 :CurrentProbe rdf:type owl:Class ;
               rdfs:subClassOf :DiagnosticDevice ;
@@ -721,7 +769,7 @@ dcterms:description rdf:type owl:DatatypeProperty .
 
 ###  http://plasma-mds.org/qptdat#Dataset
 :Dataset rdf:type owl:Class ;
-         rdfs:subClassOf <http://orkg.org/core#ResearchResult> ,
+         rdfs:subClassOf orkg:ResearchResult ,
                          obo:BFO_0000031 ,
                          <http://www.w3.org/ns/dcat#Dataset> .
 
@@ -734,7 +782,7 @@ dcterms:description rdf:type owl:DatatypeProperty .
 
 ###  http://plasma-mds.org/qptdat#Device
 :Device rdf:type owl:Class ;
-        rdfs:subClassOf <http://orkg.org/core#ResearchMaterial> ,
+        rdfs:subClassOf orkg:ResearchMaterial ,
                         obo:BFO_0000030 ;
         rdfs:label "Device"@en .
 
@@ -837,6 +885,11 @@ dcterms:description rdf:type owl:DatatypeProperty .
          rdfs:label "Imaging"@en .
 
 
+###  http://plasma-mds.org/qptdat#InletPressure
+:InletPressure rdf:type owl:Class ;
+               rdfs:subClassOf :Pressure .
+
+
 ###  http://plasma-mds.org/qptdat#LangmuirProbe
 :LangmuirProbe rdf:type owl:Class ;
                rdfs:subClassOf :DiagnosticDevice ;
@@ -869,7 +922,7 @@ dcterms:description rdf:type owl:DatatypeProperty .
 
 ###  http://plasma-mds.org/qptdat#Matter
 :Matter rdf:type owl:Class ;
-        rdfs:subClassOf <http://orkg.org/core#ResearchMaterial> ,
+        rdfs:subClassOf orkg:ResearchMaterial ,
                         obo:BFO_0000030 ;
         rdfs:label "Matter"@en .
 
@@ -882,7 +935,7 @@ dcterms:description rdf:type owl:DatatypeProperty .
 
 ###  http://plasma-mds.org/qptdat#Medium
 :Medium rdf:type owl:Class ;
-        rdfs:subClassOf <http://orkg.org/core#ResearchMaterial> ,
+        rdfs:subClassOf orkg:ResearchMaterial ,
                         obo:BFO_0000030 ;
         rdfs:label "Medium"@en .
 
@@ -963,7 +1016,7 @@ dcterms:description rdf:type owl:DatatypeProperty .
 
 ###  http://plasma-mds.org/qptdat#PlasmaStudy
 :PlasmaStudy rdf:type owl:Class ;
-             rdfs:subClassOf <http://orkg.org/core#ResearchMethod> ,
+             rdfs:subClassOf orkg:ResearchMethod ,
                              obo:BFO_0000015 ;
              rdfs:label "Plasma Experiment"@en ,
                         "Plasma Study"@en .
@@ -973,6 +1026,11 @@ dcterms:description rdf:type owl:DatatypeProperty .
 :PlasmaTorch rdf:type owl:Class ;
              rdfs:subClassOf :Source ;
              rdfs:label "Plasma Torch"@en .
+
+
+###  http://plasma-mds.org/qptdat#Power
+:Power rdf:type owl:Class ;
+       rdfs:subClassOf :SourceSetting .
 
 
 ###  http://plasma-mds.org/qptdat#Pressure
@@ -1011,6 +1069,19 @@ dcterms:description rdf:type owl:DatatypeProperty .
                    rdfs:label "Raman Spectroscope"@en .
 
 
+###  http://plasma-mds.org/qptdat#Range
+:Range rdf:type owl:Class ;
+       rdfs:subClassOf obo:BFO_0000019 .
+
+
+###  http://plasma-mds.org/qptdat#ResearchField
+:ResearchField rdf:type owl:Class ;
+               rdfs:subClassOf orkg:ResearchField ,
+                               obo:BFO_0000030 ;
+               rdfs:label "Research Field"@en ;
+               <http://www.w3.org/2004/02/skos/core#altLabel> "Application Field"@en .
+
+
 ###  http://plasma-mds.org/qptdat#Resource
 :Resource rdf:type owl:Class ;
           rdfs:subClassOf obo:BFO_0000031 ;
@@ -1043,7 +1114,7 @@ dcterms:description rdf:type owl:DatatypeProperty .
 
 ###  http://plasma-mds.org/qptdat#Setting
 :Setting rdf:type owl:Class ;
-         rdfs:subClassOf obo:BFO_0000019 ;
+         rdfs:subClassOf :Configuration ;
          rdfs:label "Setting"@en .
 
 
@@ -1124,7 +1195,7 @@ dcterms:description rdf:type owl:DatatypeProperty .
 
 ###  http://plasma-mds.org/qptdat#Target
 :Target rdf:type owl:Class ;
-        rdfs:subClassOf <http://orkg.org/core#ResearchMaterial> ,
+        rdfs:subClassOf orkg:ResearchMaterial ,
                         obo:BFO_0000030 ;
         rdfs:label "Target"@en .
 
@@ -1213,6 +1284,16 @@ datacite:Identifier rdf:type owl:Class .
 ###  http://www.w3.org/ns/prov#SoftwareAgent
 <http://www.w3.org/ns/prov#SoftwareAgent> rdf:type owl:Class ;
                                           rdfs:subClassOf <http://www.w3.org/ns/prov#Agent> .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://plasma-mds.org/qptdat#atmospheric_pressure
+:atmospheric_pressure rdf:type owl:NamedIndividual ,
+                               :Pressure ;
+                      :value "1.0"^^xsd:double .
 
 
 ###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

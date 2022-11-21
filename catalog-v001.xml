@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <uri id="Imports Wizard Entry" name="http://plasma-mds.org/qptdat_source/v1.0" uri="source.ttl"/>
     <uri id="Imports Wizard Entry" name="http://plasma-mds.org/qptdat/v1.0" uri="qptdat.ttl"/>
     <uri id="Imports Wizard Entry" name="http://orkg.org/core/0.0.1" uri="third-party/orkg-core.ttl"/>
     <uri id="Imports Wizard Entry" name="http://purl.obolibrary.org/obo/bfo/2.0/bfo.owl" uri="https://raw.githubusercontent.com/BFO-ontology/BFO/master/releases/2.0/bfo.owl"/>

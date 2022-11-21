@@ -235,6 +235,14 @@ xsd:date rdf:type rdfs:Datatype .
              rdfs:label "generated in"@en .
 
 
+###  http://plasma-mds.org/qptdat#hasApplicationField
+:hasApplicationField rdf:type owl:ObjectProperty ;
+                     rdfs:domain :Source ;
+                     owl:propertyChainAxiom ( :hasApplicationField
+                                              :isSubfieldOf
+                                            ) .
+
+
 ###  http://plasma-mds.org/qptdat#hasComponent
 :hasComponent rdf:type owl:ObjectProperty ;
               rdfs:subPropertyOf owl:topObjectProperty ;
@@ -295,6 +303,12 @@ xsd:date rdf:type rdfs:Datatype .
            rdfs:domain :PlasmaStudy ;
            rdfs:range :Target ;
            rdfs:label "has target"@en .
+
+
+###  http://plasma-mds.org/qptdat#hasTopic
+:hasTopic rdf:type owl:ObjectProperty ;
+          rdfs:domain :Source ;
+          rdfs:range :Topic .
 
 
 ###  http://plasma-mds.org/qptdat#has_application
@@ -371,6 +385,13 @@ xsd:date rdf:type rdfs:Datatype .
             rdfs:label "is source of"@en .
 
 
+###  http://plasma-mds.org/qptdat#isSubfieldOf
+:isSubfieldOf rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf owl:topObjectProperty ;
+              rdfs:domain :ApplicationField ;
+              rdfs:range :ApplicationField .
+
+
 ###  http://plasma-mds.org/qptdat#isTargetOf
 :isTargetOf rdf:type owl:ObjectProperty ;
             rdfs:subPropertyOf :partOf ;
@@ -417,13 +438,6 @@ xsd:date rdf:type rdfs:Datatype .
          rdfs:label "surface"@en .
 
 
-###  http://plasma-mds.org/qptdat#usesCamera
-:usesCamera rdf:type owl:ObjectProperty ;
-            rdfs:subPropertyOf :usesDevice ;
-            rdfs:domain :Imaging ;
-            rdfs:range :Camera .
-
-
 ###  http://plasma-mds.org/qptdat#usesDevice
 :usesDevice rdf:type owl:ObjectProperty ;
             rdfs:subPropertyOf owl:topObjectProperty ;
@@ -445,13 +459,6 @@ xsd:date rdf:type rdfs:Datatype .
             rdfs:subPropertyOf :usesSetting ;
             rdfs:domain :AdjustedSource ;
             rdfs:range :Source .
-
-
-###  http://plasma-mds.org/qptdat#usesSourceSetting
-:usesSourceSetting rdf:type owl:ObjectProperty ;
-                   rdfs:subPropertyOf :usesDevice ;
-                   rdfs:domain :AdjustedSource ;
-                   rdfs:range :SourceSetting .
 
 
 ###  http://plasma-mds.org/qptdat/source#geometry
@@ -688,6 +695,11 @@ orkg:ResearchResult rdf:type owl:Class .
          rdfs:label "Ammeter"@en .
 
 
+###  http://plasma-mds.org/qptdat#ApplicationField
+:ApplicationField rdf:type owl:Class ;
+                  rdfs:subClassOf obo:BFO_0000019 .
+
+
 ###  http://plasma-mds.org/qptdat#Arc
 :Arc rdf:type owl:Class ;
      rdfs:subClassOf :Plasma ;
@@ -839,6 +851,11 @@ orkg:ResearchResult rdf:type owl:Class .
 :FourierTransformInfraredSpectrograph rdf:type owl:Class ;
                                       rdfs:subClassOf :Spectroscope ;
                                       rdfs:label "Fourier Transform Infrared Spectrograph"@en .
+
+
+###  http://plasma-mds.org/qptdat#Frequency
+:Frequency rdf:type owl:Class ;
+           rdfs:subClassOf :SourceSetting .
 
 
 ###  http://plasma-mds.org/qptdat#Galvanometer
@@ -1018,8 +1035,8 @@ orkg:ResearchResult rdf:type owl:Class .
 :PlasmaStudy rdf:type owl:Class ;
              rdfs:subClassOf orkg:ResearchMethod ,
                              obo:BFO_0000015 ;
-             rdfs:label "Plasma Experiment"@en ,
-                        "Plasma Study"@en .
+             rdfs:label "Plasma Study"@en ;
+             <http://www.w3.org/2004/02/skos/core#altLabel> "Plasma Experiment"@en .
 
 
 ###  http://plasma-mds.org/qptdat#PlasmaTorch
@@ -1225,6 +1242,11 @@ orkg:ResearchResult rdf:type owl:Class .
              rdfs:label "Thermometer"@en .
 
 
+###  http://plasma-mds.org/qptdat#Topic
+:Topic rdf:type owl:Class ;
+       rdfs:subClassOf obo:BFO_0000019 .
+
+
 ###  http://plasma-mds.org/qptdat#TransientRecorder
 :TransientRecorder rdf:type owl:Class ;
                    rdfs:subClassOf :DiagnosticDevice ;
@@ -1290,10 +1312,138 @@ datacite:Identifier rdf:type owl:Class .
 #    Individuals
 #################################################################
 
+###  http://plasma-mds.org/qptdat#airFiltering_field
+:airFiltering_field rdf:type owl:NamedIndividual ,
+                             :ApplicationField .
+
+
 ###  http://plasma-mds.org/qptdat#atmospheric_pressure
 :atmospheric_pressure rdf:type owl:NamedIndividual ,
                                :Pressure ;
                       :value "1.0"^^xsd:double .
+
+
+###  http://plasma-mds.org/qptdat#atomicLayerDeposition_field
+:atomicLayerDeposition_field rdf:type owl:NamedIndividual ,
+                                      :ApplicationField .
+
+
+###  http://plasma-mds.org/qptdat#bioactiveSurface_topic
+:bioactiveSurface_topic rdf:type owl:NamedIndividual ,
+                                 :Topic ;
+                        rdfs:label "Bioactive Surfaces"@en .
+
+
+###  http://plasma-mds.org/qptdat#biologicalDecontamination_field
+:biologicalDecontamination_field rdf:type owl:NamedIndividual ,
+                                          :ApplicationField ;
+                                 :isSubfieldOf :decontamination_field .
+
+
+###  http://plasma-mds.org/qptdat#decontamination_field
+:decontamination_field rdf:type owl:NamedIndividual ,
+                                :ApplicationField .
+
+
+###  http://plasma-mds.org/qptdat#decontamination_topic
+:decontamination_topic rdf:type owl:NamedIndividual ,
+                                :Topic ;
+                       rdfs:label "Decontamination"@en .
+
+
+###  http://plasma-mds.org/qptdat#fineCleanding_field
+:fineCleanding_field rdf:type owl:NamedIndividual ,
+                              :ApplicationField .
+
+
+###  http://plasma-mds.org/qptdat#fluxCoredWelding_field
+:fluxCoredWelding_field rdf:type owl:NamedIndividual ,
+                                 :ApplicationField ;
+                        :isSubfieldOf :welding_field .
+
+
+###  http://plasma-mds.org/qptdat#gasMetalArcWelding_field
+:gasMetalArcWelding_field rdf:type owl:NamedIndividual ,
+                                   :ApplicationField ;
+                          :isSubfieldOf :welding_field .
+
+
+###  http://plasma-mds.org/qptdat#liquidTreatment_field
+:liquidTreatment_field rdf:type owl:NamedIndividual ,
+                                :ApplicationField .
+
+
+###  http://plasma-mds.org/qptdat#magWelding_field
+:magWelding_field rdf:type owl:NamedIndividual ,
+                           :ApplicationField ;
+                  :isSubfieldOf :welding_field .
+
+
+###  http://plasma-mds.org/qptdat#materials_topic
+:materials_topic rdf:type owl:NamedIndividual ,
+                          :Topic ;
+                 rdfs:label "Materials / Surfaces"@en .
+
+
+###  http://plasma-mds.org/qptdat#migWelding_field
+:migWelding_field rdf:type owl:NamedIndividual ,
+                           :ApplicationField ;
+                  :isSubfieldOf :welding_field .
+
+
+###  http://plasma-mds.org/qptdat#plasmaChemicalProcesses_topic
+:plasmaChemicalProcesses_topic rdf:type owl:NamedIndividual ,
+                                        :Topic ;
+                               rdfs:label "Plasma Chemical Processes"@en .
+
+
+###  http://plasma-mds.org/qptdat#plasmaEnhancedChemicalVaporDeposition_field
+:plasmaEnhancedChemicalVaporDeposition_field rdf:type owl:NamedIndividual ,
+                                                      :ApplicationField .
+
+
+###  http://plasma-mds.org/qptdat#plasmaMedicine_topic
+:plasmaMedicine_topic rdf:type owl:NamedIndividual ,
+                               :Topic ;
+                      rdfs:label "Plasma Medicine"@en .
+
+
+###  http://plasma-mds.org/qptdat#pulsedMagWelding_field
+:pulsedMagWelding_field rdf:type owl:NamedIndividual ,
+                                 :ApplicationField ;
+                        :isSubfieldOf :magWelding_field .
+
+
+###  http://plasma-mds.org/qptdat#pulsedMigWelding_field
+:pulsedMigWelding_field rdf:type owl:NamedIndividual ,
+                                 :ApplicationField ;
+                        :isSubfieldOf :migWelding_field .
+
+
+###  http://plasma-mds.org/qptdat#reactiveIonEtching
+:reactiveIonEtching rdf:type owl:NamedIndividual ,
+                             :ApplicationField .
+
+
+###  http://plasma-mds.org/qptdat#reactiveSpeciesGeneration_field
+:reactiveSpeciesGeneration_field rdf:type owl:NamedIndividual ,
+                                          :ApplicationField .
+
+
+###  http://plasma-mds.org/qptdat#surfaceTreatment_field
+:surfaceTreatment_field rdf:type owl:NamedIndividual ,
+                                 :ApplicationField .
+
+
+###  http://plasma-mds.org/qptdat#welding_field
+:welding_field rdf:type owl:NamedIndividual ,
+                        :ApplicationField .
+
+
+###  http://plasma-mds.org/qptdat#welding_topic
+:welding_topic rdf:type owl:NamedIndividual ,
+                        :Topic ;
+               rdfs:label "Welding / Switching"@en .
 
 
 ###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

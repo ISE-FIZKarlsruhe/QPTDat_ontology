@@ -182,7 +182,8 @@ xsd:date a rdfs:Datatype .
 	rdfs:subPropertyOf owl:topObjectProperty ;
 	rdfs:domain :Setting ;
 	rdfs:range :Device ;
-	rdfs:label "adjust"@en .
+	rdfs:label "adjust"@en ;
+	owl:deprecated "true"^^xsd:boolean .
 # 
 # http://plasma-mds.org/qptdat#adjustable
 
@@ -190,7 +191,8 @@ xsd:date a rdfs:Datatype .
 	rdfs:subPropertyOf owl:topObjectProperty ;
 	rdfs:domain :Device ;
 	rdfs:range :Setting ;
-	rdfs:label "adjustable"@en .
+	rdfs:label "adjustable"@en ;
+	owl:deprecated "true"^^xsd:boolean .
 # 
 # http://plasma-mds.org/qptdat#consistsOf
 
@@ -309,6 +311,11 @@ _:genid5 a rdf:List ;
 	rdfs:range :DiagnosticMethod ;
 	rdfs:label "has diagnostic Method"@en .
 # 
+# http://plasma-mds.org/qptdat#hasMeasurmentUnit
+
+:hasMeasurmentUnit a owl:ObjectProperty ;
+	rdfs:domain :Configuration .
+# 
 # http://plasma-mds.org/qptdat#hasMedium
 
 :hasMedium a owl:ObjectProperty ;
@@ -316,7 +323,21 @@ _:genid5 a rdf:List ;
 	owl:inverseOf :isMediumOf ;
 	rdfs:domain :PlasmaStudy ;
 	rdfs:range :Medium ;
-	rdfs:label "has Medium"@en .
+	owl:propertyChainAxiom _:genid9 .
+
+_:genid9 a rdf:List ;
+	rdf:first :hasSource ;
+	rdf:rest _:genid8 .
+
+_:genid8 a rdf:List ;
+	rdf:first :hasConfiguration ;
+	rdf:rest _:genid7 .
+
+_:genid7 a rdf:List ;
+	rdf:first :usesMedium ;
+	rdf:rest rdf:nil .
+
+:hasMedium rdfs:label "has Medium"@en .
 # 
 # http://plasma-mds.org/qptdat#hasRange
 
@@ -380,20 +401,20 @@ _:genid5 a rdf:List ;
 :investigates a owl:ObjectProperty ;
 	rdfs:subPropertyOf owl:topObjectProperty ;
 	rdfs:domain :DiagnosticMethod ;
-	rdfs:range _:genid7 .
+	rdfs:range _:genid10 .
 
-_:genid7 a owl:Class ;
-	owl:unionOf _:genid10 .
+_:genid10 a owl:Class ;
+	owl:unionOf _:genid13 .
 
-_:genid10 a rdf:List ;
+_:genid13 a rdf:List ;
 	rdf:first :Medium ;
-	rdf:rest _:genid9 .
+	rdf:rest _:genid12 .
 
-_:genid9 a rdf:List ;
+_:genid12 a rdf:List ;
 	rdf:first :Source ;
-	rdf:rest _:genid8 .
+	rdf:rest _:genid11 .
 
-_:genid8 a rdf:List ;
+_:genid11 a rdf:List ;
 	rdf:first :Target ;
 	rdf:rest rdf:nil .
 
@@ -498,13 +519,20 @@ _:genid8 a rdf:List ;
 	rdfs:range :Device ;
 	rdfs:label "uses device"@en .
 # 
+# http://plasma-mds.org/qptdat#usesMedium
+
+:usesMedium a owl:ObjectProperty ;
+	rdfs:domain :MediumConfiguration ;
+	rdfs:range :Medium .
+# 
 # http://plasma-mds.org/qptdat#usesSetting
 
 :usesSetting a owl:ObjectProperty ;
 	rdfs:subPropertyOf :hasConfiguration ;
 	rdfs:domain :AdjustedDevice ;
 	rdfs:range :Setting ;
-	rdfs:label "uses setting"@en .
+	rdfs:label "uses setting"@en ;
+	owl:deprecated "true"^^xsd:boolean .
 # 
 # http://plasma-mds.org/qptdat#usesSource
 
@@ -594,7 +622,8 @@ foaf:term_homepage a owl:ObjectProperty .
 
 :hasValue a owl:DatatypeProperty ;
 	rdfs:subPropertyOf <http://www.w3.org/ns/prov#value> ;
-	rdfs:domain :NumericalConfiguration .
+	rdfs:domain :NumericalConfiguration ;
+	owl:deprecated "true"^^xsd:boolean .
 # 
 # http://plasma-mds.org/qptdat#maxValue
 
@@ -619,8 +648,7 @@ foaf:term_homepage a owl:ObjectProperty .
 # http://plasma-mds.org/qptdat#value
 
 :value a owl:DatatypeProperty ;
-	rdfs:subPropertyOf <http://www.w3.org/ns/prov#value> ;
-	owl:deprecated "true"^^xsd:boolean .
+	rdfs:subPropertyOf <http://www.w3.org/ns/prov#value> .
 # 
 # http://plasma-mds.org/qptdat/source/directValue#amplitudeVoltage
 
@@ -749,7 +777,7 @@ orkg:ResearchResult a owl:Class .
 # http://plasma-mds.org/qptdat#AC
 
 :AC a owl:Class ;
-	rdfs:subClassOf :Waveform .
+	rdfs:subClassOf :Voltage_Feed .
 # 
 # http://plasma-mds.org/qptdat#AdjustedDevice
 
@@ -762,6 +790,11 @@ orkg:ResearchResult a owl:Class .
 :Ammeter a owl:Class ;
 	rdfs:subClassOf :DiagnosticDevice ;
 	rdfs:label "Ammeter"@en .
+# 
+# http://plasma-mds.org/qptdat#Amplitude
+
+:Amplitude a owl:Class ;
+	rdfs:subClassOf :NumericalConfiguration .
 # 
 # http://plasma-mds.org/qptdat#ApplicationField
 
@@ -849,7 +882,7 @@ orkg:ResearchResult a owl:Class .
 # http://plasma-mds.org/qptdat#DC
 
 :DC a owl:Class ;
-	rdfs:subClassOf :Waveform .
+	rdfs:subClassOf :Voltage_Feed .
 # 
 # http://plasma-mds.org/qptdat#Dataset
 
@@ -877,7 +910,7 @@ orkg:ResearchResult a owl:Class .
 # http://plasma-mds.org/qptdat#DiagnosticMethod
 
 :DiagnosticMethod a owl:Class ;
-	rdfs:subClassOf obo:BFO_0000015 , <http://www.w3.org/ns/prov#Activity> , <http://www.w3.org/ns/prov#Entity> ;
+	rdfs:subClassOf obo:BFO_0000015 , <http://www.w3.org/ns/prov#Plan> ;
 	rdfs:label "Diagnostic Method"@en .
 # 
 # http://plasma-mds.org/qptdat#ElectricalMethod
@@ -909,6 +942,12 @@ orkg:ResearchResult a owl:Class .
 :ExperimentMethod a owl:Class ;
 	rdfs:subClassOf :DiagnosticMethod ;
 	rdfs:label "Experiment Method"@en .
+# 
+# http://plasma-mds.org/qptdat#ExperimentalStep
+
+:ExperimentalStep a owl:Class ;
+	rdfs:subClassOf obo:BFO_0000015 , <http://www.w3.org/ns/prov#Plan> ;
+	rdfs:label "Experimental Step" .
 # 
 # http://plasma-mds.org/qptdat#FiberOpticThermometer
 
@@ -960,24 +999,24 @@ orkg:ResearchResult a owl:Class .
 # http://plasma-mds.org/qptdat#Imaging
 
 :Imaging a owl:Class ;
-	owl:equivalentClass _:genid11 .
+	owl:equivalentClass _:genid14 .
 
-_:genid11 owl:intersectionOf _:genid14 .
+_:genid14 owl:intersectionOf _:genid17 .
 
-_:genid14 a rdf:List ;
+_:genid17 a rdf:List ;
 	rdf:first :ExperimentMethod ;
-	rdf:rest _:genid12 .
+	rdf:rest _:genid15 .
 
-_:genid12 a rdf:List ;
-	rdf:first _:genid13 .
+_:genid15 a rdf:List ;
+	rdf:first _:genid16 .
 
-_:genid13 a owl:Restriction ;
+_:genid16 a owl:Restriction ;
 	owl:onProperty :usesDevice ;
 	owl:allValuesFrom :Camera .
 
-_:genid12 rdf:rest rdf:nil .
+_:genid15 rdf:rest rdf:nil .
 
-_:genid11 a owl:Class .
+_:genid14 a owl:Class .
 
 :Imaging rdfs:subClassOf :ExperimentMethod ;
 	rdfs:label "Imaging"@en .
@@ -1034,6 +1073,11 @@ _:genid11 a owl:Class .
 	rdfs:subClassOf orkg:ResearchMaterial , obo:BFO_0000030 , <http://www.w3.org/ns/prov#Entity> ;
 	rdfs:label "Medium"@en .
 # 
+# http://plasma-mds.org/qptdat#MediumConfiguration
+
+:MediumConfiguration a owl:Class ;
+	rdfs:subClassOf :Configuration .
+# 
 # http://plasma-mds.org/qptdat#Microscope
 
 :Microscope a owl:Class ;
@@ -1061,139 +1105,139 @@ _:genid11 a owl:Class .
 # http://plasma-mds.org/qptdat#NumericalConfiguration
 
 :NumericalConfiguration a owl:Class ;
-	rdfs:subClassOf :Configuration , _:genid15 .
+	rdfs:subClassOf :Configuration , _:genid18 .
 
-_:genid15 owl:intersectionOf _:genid31 .
+_:genid18 owl:intersectionOf _:genid34 .
 
-_:genid31 a rdf:List ;
-	rdf:first _:genid32 .
+_:genid34 a rdf:List ;
+	rdf:first _:genid35 .
 
-_:genid32 a owl:Class ;
-	owl:unionOf _:genid39 .
+_:genid35 a owl:Class ;
+	owl:unionOf _:genid42 .
 
-_:genid39 a rdf:List ;
-	rdf:first _:genid40 .
+_:genid42 a rdf:List ;
+	rdf:first _:genid43 .
 
-_:genid40 owl:intersectionOf _:genid43 .
+_:genid43 owl:intersectionOf _:genid46 .
 
-_:genid43 a rdf:List ;
-	rdf:first _:genid44 .
+_:genid46 a rdf:List ;
+	rdf:first _:genid47 .
 
-_:genid44 a owl:Restriction ;
+_:genid47 a owl:Restriction ;
 	owl:onProperty :hasRange ;
 	owl:cardinality "0"^^xsd:nonNegativeInteger .
 
-_:genid43 rdf:rest _:genid41 .
+_:genid46 rdf:rest _:genid44 .
 
-_:genid41 a rdf:List ;
-	rdf:first _:genid42 .
+_:genid44 a rdf:List ;
+	rdf:first _:genid45 .
 
-_:genid42 a owl:Restriction ;
-	owl:onProperty :hasValue ;
+_:genid45 a owl:Restriction ;
+	owl:onProperty :value ;
 	owl:cardinality "1"^^xsd:nonNegativeInteger .
 
-_:genid41 rdf:rest rdf:nil .
+_:genid44 rdf:rest rdf:nil .
 
-_:genid40 a owl:Class .
+_:genid43 a owl:Class .
 
-_:genid39 rdf:rest _:genid33 .
+_:genid42 rdf:rest _:genid36 .
 
-_:genid33 a rdf:List ;
-	rdf:first _:genid34 .
+_:genid36 a rdf:List ;
+	rdf:first _:genid37 .
 
-_:genid34 owl:intersectionOf _:genid37 .
+_:genid37 owl:intersectionOf _:genid40 .
 
-_:genid37 a rdf:List ;
-	rdf:first _:genid38 .
+_:genid40 a rdf:List ;
+	rdf:first _:genid41 .
 
-_:genid38 a owl:Restriction ;
+_:genid41 a owl:Restriction ;
 	owl:onProperty :hasRange ;
 	owl:cardinality "1"^^xsd:nonNegativeInteger .
 
-_:genid37 rdf:rest _:genid35 .
+_:genid40 rdf:rest _:genid38 .
 
-_:genid35 a rdf:List ;
-	rdf:first _:genid36 .
+_:genid38 a rdf:List ;
+	rdf:first _:genid39 .
 
-_:genid36 a owl:Restriction ;
-	owl:onProperty :hasValue ;
+_:genid39 a owl:Restriction ;
+	owl:onProperty :value ;
 	owl:cardinality "0"^^xsd:nonNegativeInteger .
 
-_:genid35 rdf:rest rdf:nil .
+_:genid38 rdf:rest rdf:nil .
 
-_:genid34 a owl:Class .
+_:genid37 a owl:Class .
 
-_:genid33 rdf:rest rdf:nil .
+_:genid36 rdf:rest rdf:nil .
 
-_:genid31 rdf:rest _:genid16 .
-
-_:genid16 a rdf:List ;
-	rdf:first _:genid17 .
-
-_:genid17 a owl:Class ;
-	owl:complementOf _:genid18 .
-
-_:genid18 owl:intersectionOf _:genid25 .
-
-_:genid25 a rdf:List ;
-	rdf:first _:genid26 .
-
-_:genid26 owl:intersectionOf _:genid29 .
-
-_:genid29 a rdf:List ;
-	rdf:first _:genid30 .
-
-_:genid30 a owl:Restriction ;
-	owl:onProperty :hasRange ;
-	owl:cardinality "0"^^xsd:nonNegativeInteger .
-
-_:genid29 rdf:rest _:genid27 .
-
-_:genid27 a rdf:List ;
-	rdf:first _:genid28 .
-
-_:genid28 a owl:Restriction ;
-	owl:onProperty :hasValue ;
-	owl:cardinality "1"^^xsd:nonNegativeInteger .
-
-_:genid27 rdf:rest rdf:nil .
-
-_:genid26 a owl:Class .
-
-_:genid25 rdf:rest _:genid19 .
+_:genid34 rdf:rest _:genid19 .
 
 _:genid19 a rdf:List ;
 	rdf:first _:genid20 .
 
-_:genid20 owl:intersectionOf _:genid23 .
+_:genid20 a owl:Class ;
+	owl:complementOf _:genid21 .
 
-_:genid23 a rdf:List ;
-	rdf:first _:genid24 .
+_:genid21 owl:intersectionOf _:genid28 .
 
-_:genid24 a owl:Restriction ;
+_:genid28 a rdf:List ;
+	rdf:first _:genid29 .
+
+_:genid29 owl:intersectionOf _:genid32 .
+
+_:genid32 a rdf:List ;
+	rdf:first _:genid33 .
+
+_:genid33 a owl:Restriction ;
+	owl:onProperty :hasRange ;
+	owl:cardinality "0"^^xsd:nonNegativeInteger .
+
+_:genid32 rdf:rest _:genid30 .
+
+_:genid30 a rdf:List ;
+	rdf:first _:genid31 .
+
+_:genid31 a owl:Restriction ;
+	owl:onProperty :value ;
+	owl:cardinality "1"^^xsd:nonNegativeInteger .
+
+_:genid30 rdf:rest rdf:nil .
+
+_:genid29 a owl:Class .
+
+_:genid28 rdf:rest _:genid22 .
+
+_:genid22 a rdf:List ;
+	rdf:first _:genid23 .
+
+_:genid23 owl:intersectionOf _:genid26 .
+
+_:genid26 a rdf:List ;
+	rdf:first _:genid27 .
+
+_:genid27 a owl:Restriction ;
 	owl:onProperty :hasRange ;
 	owl:cardinality "1"^^xsd:nonNegativeInteger .
 
-_:genid23 rdf:rest _:genid21 .
+_:genid26 rdf:rest _:genid24 .
 
-_:genid21 a rdf:List ;
-	rdf:first _:genid22 .
+_:genid24 a rdf:List ;
+	rdf:first _:genid25 .
 
-_:genid22 a owl:Restriction ;
-	owl:onProperty :hasValue ;
+_:genid25 a owl:Restriction ;
+	owl:onProperty :value ;
 	owl:cardinality "0"^^xsd:nonNegativeInteger .
 
-_:genid21 rdf:rest rdf:nil .
+_:genid24 rdf:rest rdf:nil .
 
-_:genid20 a owl:Class .
+_:genid23 a owl:Class .
+
+_:genid22 rdf:rest rdf:nil .
+
+_:genid21 a owl:Class .
 
 _:genid19 rdf:rest rdf:nil .
 
 _:genid18 a owl:Class .
-
-_:genid16 rdf:rest rdf:nil .
-
-_:genid15 a owl:Class .
 # 
 # http://plasma-mds.org/qptdat#OpticalEmissionSpectrograph
 
@@ -1248,7 +1292,7 @@ _:genid15 a owl:Class .
 # http://plasma-mds.org/qptdat#PlasmaStudy
 
 :PlasmaStudy a owl:Class ;
-	rdfs:subClassOf orkg:ResearchMethod , obo:BFO_0000015 , <http://www.w3.org/ns/prov#Activity> , <http://www.w3.org/ns/prov#Entity> ;
+	rdfs:subClassOf orkg:ResearchMethod , obo:BFO_0000015 , <http://www.w3.org/ns/prov#Plan> ;
 	rdfs:label "Plasma Study"@en ;
 	<http://www.w3.org/2004/02/skos/core#altLabel> "Plasma Experiment"@en .
 # 
@@ -1392,9 +1436,9 @@ _:genid15 a owl:Class .
 # http://plasma-mds.org/qptdat#SourceSetting
 
 :SourceSetting a owl:Class ;
-	rdfs:subClassOf :Setting , _:genid45 .
+	rdfs:subClassOf :Setting , _:genid48 .
 
-_:genid45 a owl:Restriction ;
+_:genid48 a owl:Restriction ;
 	owl:onProperty :adjust ;
 	owl:allValuesFrom :SourceSetting .
 
@@ -1454,6 +1498,11 @@ _:genid45 a owl:Restriction ;
 	rdfs:subClassOf :DiagnosticDevice ;
 	rdfs:label "Thermometer"@en .
 # 
+# http://plasma-mds.org/qptdat#Time
+
+:Time a owl:Class ;
+	rdfs:subClassOf :NumericalConfiguration .
+# 
 # http://plasma-mds.org/qptdat#Topic
 
 :Topic a owl:Class ;
@@ -1477,6 +1526,11 @@ _:genid45 a owl:Restriction ;
 	rdfs:subClassOf :DiagnosticDevice ;
 	rdfs:label "Voltage Probe"@en .
 # 
+# http://plasma-mds.org/qptdat#Voltage_Feed
+
+:Voltage_Feed a owl:Class ;
+	rdfs:subClassOf :Configuration .
+# 
 # http://plasma-mds.org/qptdat#Voltmeter
 
 :Voltmeter a owl:Class ;
@@ -1486,8 +1540,353 @@ _:genid45 a owl:Restriction ;
 # http://plasma-mds.org/qptdat#Waveform
 
 :Waveform a owl:Class ;
-	rdfs:subClassOf :Configuration ;
-	rdfs:label "Waveform"@en .
+	rdfs:subClassOf :Configuration_Collection , _:genid49 .
+
+_:genid49 owl:intersectionOf _:genid54 .
+
+_:genid54 a rdf:List ;
+	rdf:first _:genid55 .
+
+_:genid55 a owl:Restriction ;
+	owl:onProperty :hasSubConfiguration ;
+	owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onClass :Amplitude .
+
+_:genid54 rdf:rest _:genid52 .
+
+_:genid52 a rdf:List ;
+	rdf:first _:genid53 .
+
+_:genid53 a owl:Restriction ;
+	owl:onProperty :hasSubConfiguration ;
+	owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onClass :Frequency .
+
+_:genid52 rdf:rest _:genid50 .
+
+_:genid50 a rdf:List ;
+	rdf:first _:genid51 .
+
+_:genid51 a owl:Restriction ;
+	owl:onProperty :hasSubConfiguration ;
+	owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onClass :offset .
+
+_:genid50 rdf:rest rdf:nil .
+
+_:genid49 a owl:Class .
+
+:Waveform rdfs:label "Waveform"@en .
+# 
+# http://plasma-mds.org/qptdat#Wavelength
+
+:Wavelength a owl:Class ;
+	rdfs:subClassOf :NumericalConfiguration .
+# 
+# http://plasma-mds.org/qptdat#dutyCycle
+
+:dutyCycle a owl:Class ;
+	rdfs:subClassOf :NumericalConfiguration .
+# 
+# http://plasma-mds.org/qptdat#highFrequency
+
+:highFrequency a owl:Class ;
+	owl:equivalentClass _:genid56 .
+
+_:genid56 owl:intersectionOf _:genid64 .
+
+_:genid64 a rdf:List ;
+	rdf:first :Frequency ;
+	rdf:rest _:genid57 .
+
+_:genid57 a rdf:List ;
+	rdf:first _:genid58 .
+
+_:genid58 a owl:Restriction ;
+	owl:onProperty :value ;
+	owl:someValuesFrom _:genid59 .
+
+_:genid59 a rdfs:Datatype ;
+	owl:onDatatype xsd:double ;
+	owl:withRestrictions _:genid62 .
+
+_:genid62 a rdf:List ;
+	rdf:first _:genid63 .
+
+_:genid63 xsd:minInclusive "300000.0"^^xsd:double .
+
+_:genid62 rdf:rest _:genid60 .
+
+_:genid60 a rdf:List ;
+	rdf:first _:genid61 .
+
+_:genid61 xsd:maxInclusive "3.0E8"^^xsd:double .
+
+_:genid60 rdf:rest rdf:nil .
+
+_:genid57 rdf:rest rdf:nil .
+
+_:genid56 a owl:Class .
+
+:highFrequency rdfs:subClassOf :Frequency .
+# 
+# http://plasma-mds.org/qptdat#highPressure
+
+:highPressure a owl:Class ;
+	rdfs:subClassOf :Pressure .
+# 
+# http://plasma-mds.org/qptdat#highTemperature
+
+:highTemperature a owl:Class ;
+	rdfs:subClassOf :Temperature .
+# 
+# http://plasma-mds.org/qptdat#lowFrequency
+
+:lowFrequency a owl:Class ;
+	owl:equivalentClass _:genid65 .
+
+_:genid65 owl:intersectionOf _:genid71 .
+
+_:genid71 a rdf:List ;
+	rdf:first :Frequency ;
+	rdf:rest _:genid66 .
+
+_:genid66 a rdf:List ;
+	rdf:first _:genid67 .
+
+_:genid67 a owl:Restriction ;
+	owl:onProperty :value ;
+	owl:someValuesFrom _:genid68 .
+
+_:genid68 a rdfs:Datatype ;
+	owl:onDatatype xsd:double ;
+	owl:withRestrictions _:genid69 .
+
+_:genid69 a rdf:List ;
+	rdf:first _:genid70 .
+
+_:genid70 xsd:maxInclusive "300000.0"^^xsd:double .
+
+_:genid69 rdf:rest rdf:nil .
+
+_:genid66 rdf:rest rdf:nil .
+
+_:genid65 a owl:Class .
+
+:lowFrequency rdfs:subClassOf :Frequency .
+# 
+# http://plasma-mds.org/qptdat#lowPressure
+
+:lowPressure a owl:Class ;
+	rdfs:subClassOf :Pressure .
+# 
+# http://plasma-mds.org/qptdat#lowTemperature
+
+:lowTemperature a owl:Class ;
+	rdfs:subClassOf :Temperature .
+# 
+# http://plasma-mds.org/qptdat#mediumPressure
+
+:mediumPressure a owl:Class ;
+	rdfs:subClassOf :Pressure .
+# 
+# http://plasma-mds.org/qptdat#microwave
+
+:microwave a owl:Class ;
+	owl:equivalentClass _:genid72 .
+
+_:genid72 owl:intersectionOf _:genid78 .
+
+_:genid78 a rdf:List ;
+	rdf:first :Frequency ;
+	rdf:rest _:genid73 .
+
+_:genid73 a rdf:List ;
+	rdf:first _:genid74 .
+
+_:genid74 a owl:Restriction ;
+	owl:onProperty :value ;
+	owl:someValuesFrom _:genid75 .
+
+_:genid75 a rdfs:Datatype ;
+	owl:onDatatype xsd:double ;
+	owl:withRestrictions _:genid76 .
+
+_:genid76 a rdf:List ;
+	rdf:first _:genid77 .
+
+_:genid77 xsd:minInclusive "300000.0"^^xsd:double .
+
+_:genid76 rdf:rest rdf:nil .
+
+_:genid73 rdf:rest rdf:nil .
+
+_:genid72 a owl:Class .
+
+:microwave rdfs:subClassOf :Frequency .
+# 
+# http://plasma-mds.org/qptdat#moderatePressure
+
+:moderatePressure a owl:Class ;
+	rdfs:subClassOf :Pressure .
+# 
+# http://plasma-mds.org/qptdat#offset
+
+:offset a owl:Class ;
+	rdfs:subClassOf :NumericalConfiguration .
+# 
+# http://plasma-mds.org/qptdat#pulseWaveform
+
+:pulseWaveform a owl:Class ;
+	rdfs:subClassOf :Waveform , _:genid79 .
+
+_:genid79 owl:intersectionOf _:genid82 .
+
+_:genid82 a rdf:List ;
+	rdf:first _:genid83 .
+
+_:genid83 a owl:Class ;
+	owl:unionOf _:genid86 .
+
+_:genid86 a rdf:List ;
+	rdf:first _:genid87 .
+
+_:genid87 a owl:Restriction ;
+	owl:onProperty :hasSubConfiguration ;
+	owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onClass :dutyCycle .
+
+_:genid86 rdf:rest _:genid84 .
+
+_:genid84 a rdf:List ;
+	rdf:first _:genid85 .
+
+_:genid85 a owl:Restriction ;
+	owl:onProperty :hasSubConfiguration ;
+	owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onClass :pulseWidth .
+
+_:genid84 rdf:rest rdf:nil .
+
+_:genid82 rdf:rest _:genid80 .
+
+_:genid80 a rdf:List ;
+	rdf:first _:genid81 .
+
+_:genid81 a owl:Restriction ;
+	owl:onProperty :hasSubConfiguration ;
+	owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onClass :riseTime .
+
+_:genid80 rdf:rest rdf:nil .
+
+_:genid79 a owl:Class .
+# 
+# http://plasma-mds.org/qptdat#pulseWidth
+
+:pulseWidth a owl:Class ;
+	rdfs:subClassOf :NumericalConfiguration .
+# 
+# http://plasma-mds.org/qptdat#radioFrequency
+
+:radioFrequency a owl:Class ;
+	owl:equivalentClass _:genid88 .
+
+_:genid88 owl:intersectionOf _:genid96 .
+
+_:genid96 a rdf:List ;
+	rdf:first :Frequency ;
+	rdf:rest _:genid89 .
+
+_:genid89 a rdf:List ;
+	rdf:first _:genid90 .
+
+_:genid90 a owl:Restriction ;
+	owl:onProperty :value ;
+	owl:someValuesFrom _:genid91 .
+
+_:genid91 a rdfs:Datatype ;
+	owl:onDatatype xsd:double ;
+	owl:withRestrictions _:genid94 .
+
+_:genid94 a rdf:List ;
+	rdf:first _:genid95 .
+
+_:genid95 xsd:minInclusive "1000000.0"^^xsd:double .
+
+_:genid94 rdf:rest _:genid92 .
+
+_:genid92 a rdf:List ;
+	rdf:first _:genid93 .
+
+_:genid93 xsd:maxInclusive "1.0E8"^^xsd:double .
+
+_:genid92 rdf:rest rdf:nil .
+
+_:genid89 rdf:rest rdf:nil .
+
+_:genid88 a owl:Class .
+
+:radioFrequency rdfs:subClassOf :Frequency .
+# 
+# http://plasma-mds.org/qptdat#rampWaveform
+
+:rampWaveform a owl:Class ;
+	rdfs:subClassOf :Waveform , _:genid97 .
+
+_:genid97 a owl:Restriction ;
+	owl:onProperty :hasSubConfiguration ;
+	owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onClass :symmetry .
+# 
+# http://plasma-mds.org/qptdat#riseTime
+
+:riseTime a owl:Class ;
+	rdfs:subClassOf :NumericalConfiguration .
+# 
+# http://plasma-mds.org/qptdat#sineWaveform
+
+:sineWaveform a owl:Class ;
+	rdfs:subClassOf :Waveform .
+# 
+# http://plasma-mds.org/qptdat#squareWaveform
+
+:squareWaveform a owl:Class ;
+	rdfs:subClassOf :Waveform , _:genid98 .
+
+_:genid98 owl:intersectionOf _:genid101 .
+
+_:genid101 a rdf:List ;
+	rdf:first _:genid102 .
+
+_:genid102 a owl:Restriction ;
+	owl:onProperty :hasSubConfiguration ;
+	owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onClass :dutyCycle .
+
+_:genid101 rdf:rest _:genid99 .
+
+_:genid99 a rdf:List ;
+	rdf:first _:genid100 .
+
+_:genid100 a owl:Restriction ;
+	owl:onProperty :hasSubConfiguration ;
+	owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onClass :pulseWidth .
+
+_:genid99 rdf:rest rdf:nil .
+
+_:genid98 a owl:Class .
+# 
+# http://plasma-mds.org/qptdat#symmetry
+
+:symmetry a owl:Class ;
+	rdfs:subClassOf :NumericalConfiguration .
+# 
+# http://plasma-mds.org/qptdat#vacuum
+
+:vacuum a owl:Class ;
+	rdfs:subClassOf :Pressure .
 # 
 # http://purl.org/dc/terms/LicenseDocument
 

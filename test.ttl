@@ -11,7 +11,7 @@
 <http://qptdat.plasma-mds.org/test_ontology> rdf:type owl:Ontology ;
                                      owl:versionIRI <http://qptdat.plasma-mds.org/test_ontology/v1.0> ;
                                      owl:imports <http://qptdat.plasma-mds.org/ontology/v1.0> ,
-                                                 <http://qptdat.plasma-mds.org/ontology_source/v1.0> .
+                                                 <http://qptdat.plasma-mds.org/source_ontology/v1.0> .
 
 #################################################################
 #    Object Properties

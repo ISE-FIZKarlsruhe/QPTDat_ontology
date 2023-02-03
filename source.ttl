@@ -1,14 +1,14 @@
 @prefix : <http://qptdat.plasma-mds.org/source_ontology/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix qpt: <http://qptdat.plasma-mds.org/ontology/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix qptdat: <http://qptdat.plasma-mds.org/ontology/> .
 
 <http://qptdat.plasma-mds.org/source_ontology> a owl:Ontology ;
-	owl:versionIRI <http://qptdat.plasma-mds.org/source_ontology/v1.0> ;
-	owl:imports <http://qptdat.plasma-mds.org/ontology/v1.0> ;
+	owl:versionIRI :v1.0 ;
+	owl:imports qpt:v1.0 ;
 	<http://purl.org/dc/elements/1.1/title> "QTPDat Source Ontology"@en .
 # 
 # 
@@ -21,7 +21,7 @@
 # 
 # http://qptdat.plasma-mds.org/ontology/hasApplicationField
 
-qptdat:hasApplicationField rdfs:range qptdat:ApplicationField .
+qpt:hasApplicationField rdfs:range qpt:ApplicationField .
 # 
 # 
 # 
@@ -34,17 +34,17 @@ qptdat:hasApplicationField rdfs:range qptdat:ApplicationField .
 # 
 # http://qptdat.plasma-mds.org/ontology/ApplicationField
 
-qptdat:ApplicationField <http://www.w3.org/ns/prov#editorialNote> "This class is not well diferentiated between the qptdat:Topic."@en .
+qpt:ApplicationField <http://www.w3.org/ns/prov#editorialNote> "This class is not well diferentiated between the qptdat:Topic."@en .
 # 
 # http://qptdat.plasma-mds.org/source_ontology/ArgonMixture
 
 :ArgonMixture a owl:Class ;
-	rdfs:subClassOf qptdat:Medium .
+	rdfs:subClassOf qpt:Medium .
 # 
 # http://qptdat.plasma-mds.org/source_ontology/aura_wave_sairem
 
 :aura_wave_sairem a owl:Class ;
-	rdfs:subClassOf qptdat:Source , _:genid1 .
+	rdfs:subClassOf qpt:Source , _:genid1 .
 
 _:genid1 owl:intersectionOf _:genid6 .
 
@@ -52,8 +52,8 @@ _:genid6 a rdf:List ;
 	rdf:first _:genid7 .
 
 _:genid7 a owl:Restriction ;
-	owl:onProperty qptdat:hasApplicationField ;
-	owl:hasValue qptdat:biologicalDecontamination_field .
+	owl:onProperty qpt:hasApplicationField ;
+	owl:hasValue qpt:biologicalDecontamination_field .
 
 _:genid6 rdf:rest _:genid4 .
 
@@ -61,8 +61,8 @@ _:genid4 a rdf:List ;
 	rdf:first _:genid5 .
 
 _:genid5 a owl:Restriction ;
-	owl:onProperty qptdat:hasApplicationField ;
-	owl:hasValue qptdat:reactiveSpeciesGeneration_field .
+	owl:onProperty qpt:hasApplicationField ;
+	owl:hasValue qpt:reactiveSpeciesGeneration_field .
 
 _:genid4 rdf:rest _:genid2 .
 
@@ -70,8 +70,8 @@ _:genid2 a rdf:List ;
 	rdf:first _:genid3 .
 
 _:genid3 a owl:Restriction ;
-	owl:onProperty qptdat:hasApplicationField ;
-	owl:hasValue qptdat:surfaceTreatment_field .
+	owl:onProperty qpt:hasApplicationField ;
+	owl:hasValue qpt:surfaceTreatment_field .
 
 _:genid2 rdf:rest rdf:nil .
 
@@ -85,8 +85,8 @@ _:genid11 a rdf:List ;
 	rdf:first _:genid12 .
 
 _:genid12 a owl:Restriction ;
-	owl:onProperty qptdat:hasTopic ;
-	owl:hasValue qptdat:materials_topic .
+	owl:onProperty qpt:hasTopic ;
+	owl:hasValue qpt:materials_topic .
 
 _:genid11 rdf:rest _:genid9 .
 
@@ -94,8 +94,8 @@ _:genid9 a rdf:List ;
 	rdf:first _:genid10 .
 
 _:genid10 a owl:Restriction ;
-	owl:onProperty qptdat:hasTopic ;
-	owl:hasValue qptdat:plasmaChemicalProcesses_topic .
+	owl:onProperty qpt:hasTopic ;
+	owl:hasValue qpt:plasmaChemicalProcesses_topic .
 
 _:genid9 rdf:rest rdf:nil .
 
@@ -111,7 +111,7 @@ AURA-WAVE is designed to be used equally in R&D laboratories and industry for a 
 # http://qptdat.plasma-mds.org/source_ontology/biofilm_jet
 
 :biofilm_jet a owl:Class ;
-	rdfs:subClassOf qptdat:PlasmaJet , _:genid13 .
+	rdfs:subClassOf qpt:PlasmaJet , _:genid13 .
 
 _:genid13 owl:intersectionOf _:genid16 .
 
@@ -119,8 +119,8 @@ _:genid16 a rdf:List ;
 	rdf:first _:genid17 .
 
 _:genid17 a owl:Restriction ;
-	owl:onProperty qptdat:hasTopic ;
-	owl:hasValue qptdat:bioactiveSurface_topic .
+	owl:onProperty qpt:hasTopic ;
+	owl:hasValue qpt:bioactiveSurface_topic .
 
 _:genid16 rdf:rest _:genid14 .
 
@@ -128,8 +128,8 @@ _:genid14 a rdf:List ;
 	rdf:first _:genid15 .
 
 _:genid15 a owl:Restriction ;
-	owl:onProperty qptdat:hasTopic ;
-	owl:hasValue qptdat:decontamination_topic .
+	owl:onProperty qpt:hasTopic ;
+	owl:hasValue qpt:decontamination_topic .
 
 _:genid14 rdf:rest rdf:nil .
 
@@ -141,7 +141,7 @@ _:genid13 a owl:Class .
 # http://qptdat.plasma-mds.org/source_ontology/hairline_plasma_jet_hairlineplasma
 
 :hairline_plasma_jet_hairlineplasma a owl:Class ;
-	rdfs:subClassOf qptdat:PlasmaJet , _:genid18 .
+	rdfs:subClassOf qpt:PlasmaJet , _:genid18 .
 
 _:genid18 owl:intersectionOf _:genid23 .
 
@@ -149,8 +149,8 @@ _:genid23 a rdf:List ;
 	rdf:first _:genid24 .
 
 _:genid24 a owl:Restriction ;
-	owl:onProperty qptdat:hasTopic ;
-	owl:hasValue qptdat:decontamination_topic .
+	owl:onProperty qpt:hasTopic ;
+	owl:hasValue qpt:decontamination_topic .
 
 _:genid23 rdf:rest _:genid21 .
 
@@ -158,8 +158,8 @@ _:genid21 a rdf:List ;
 	rdf:first _:genid22 .
 
 _:genid22 a owl:Restriction ;
-	owl:onProperty qptdat:hasTopic ;
-	owl:hasValue qptdat:materials_topic .
+	owl:onProperty qpt:hasTopic ;
+	owl:hasValue qpt:materials_topic .
 
 _:genid21 rdf:rest _:genid19 .
 
@@ -167,8 +167,8 @@ _:genid19 a rdf:List ;
 	rdf:first _:genid20 .
 
 _:genid20 a owl:Restriction ;
-	owl:onProperty qptdat:hasTopic ;
-	owl:hasValue qptdat:plasmaMedicine_topic .
+	owl:onProperty qpt:hasTopic ;
+	owl:hasValue qpt:plasmaMedicine_topic .
 
 _:genid19 rdf:rest rdf:nil .
 
@@ -177,8 +177,8 @@ _:genid18 a owl:Class .
 :hairline_plasma_jet_hairlineplasma rdfs:subClassOf _:genid25 .
 
 _:genid25 a owl:Restriction ;
-	owl:onProperty qptdat:hasConfiguration ;
-	owl:hasValue qptdat:atmospheric_pressure .
+	owl:onProperty qpt:hasConfiguration ;
+	owl:hasValue qpt:atmospheric_pressure .
 
 :hairline_plasma_jet_hairlineplasma rdfs:comment "The hairline plasma jet (hairlINePlasma) is a cold atmospheric pressure plasma source mainly for biological and medical applications. hairlINePlasma uses the physical effect of negative dc corona discharges and produces a nanosecond self-pulsed microplasma with a very thin plasma filament. The Plasma filament has a diameter of about 30 µm and a length of up to 3 cm. Due to this geometrical features, hairlINePlasma is particularly suitable for the treatment of microscopic cavities and the localized functionalization of conductive surfaces. The low plasma temperature allows the treatment of human skin without any heating or painful irritation."@en ;
 	rdfs:label "Hairline plasma jet"@en ;
@@ -187,7 +187,7 @@ _:genid25 a owl:Restriction ;
 # http://qptdat.plasma-mds.org/source_ontology/helixjet
 
 :helixjet a owl:Class ;
-	rdfs:subClassOf qptdat:PlasmaJet , _:genid26 .
+	rdfs:subClassOf qpt:PlasmaJet , _:genid26 .
 
 _:genid26 owl:intersectionOf _:genid58 .
 
@@ -195,7 +195,7 @@ _:genid58 a rdf:List ;
 	rdf:first _:genid59 .
 
 _:genid59 a owl:Restriction ;
-	owl:onProperty qptdat:hasConfiguration ;
+	owl:onProperty qpt:hasConfiguration ;
 	owl:allValuesFrom _:genid60 .
 
 _:genid60 a owl:Class ;
@@ -207,7 +207,7 @@ _:genid63 a rdf:List ;
 _:genid64 owl:intersectionOf _:genid75 .
 
 _:genid75 a rdf:List ;
-	rdf:first qptdat:Frequency ;
+	rdf:first qpt:Frequency ;
 	rdf:rest _:genid65 .
 
 _:genid65 a rdf:List ;
@@ -220,7 +220,7 @@ _:genid71 a rdf:List ;
 	rdf:first _:genid72 .
 
 _:genid72 a owl:Restriction ;
-	owl:onProperty qptdat:value ;
+	owl:onProperty qpt:value ;
 	owl:allValuesFrom _:genid73 .
 
 _:genid73 a rdfs:Datatype ;
@@ -236,7 +236,7 @@ _:genid67 a rdf:List ;
 	rdf:first _:genid68 .
 
 _:genid68 a owl:Restriction ;
-	owl:onProperty qptdat:value ;
+	owl:onProperty qpt:value ;
 	owl:allValuesFrom _:genid69 .
 
 _:genid69 a rdfs:Datatype ;
@@ -258,7 +258,7 @@ _:genid61 a rdf:List ;
 	rdf:first _:genid62 .
 
 _:genid62 a owl:Class ;
-	owl:complementOf qptdat:Frequency .
+	owl:complementOf qpt:Frequency .
 
 _:genid61 rdf:rest rdf:nil .
 
@@ -268,7 +268,7 @@ _:genid44 a rdf:List ;
 	rdf:first _:genid45 .
 
 _:genid45 a owl:Restriction ;
-	owl:onProperty qptdat:hasConfiguration ;
+	owl:onProperty qpt:hasConfiguration ;
 	owl:allValuesFrom _:genid46 .
 
 _:genid46 a owl:Class ;
@@ -280,7 +280,7 @@ _:genid49 a rdf:List ;
 _:genid50 owl:intersectionOf _:genid57 .
 
 _:genid57 a rdf:List ;
-	rdf:first qptdat:MediumConfiguration ;
+	rdf:first qpt:MediumConfiguration ;
 	rdf:rest _:genid51 .
 
 _:genid51 a rdf:List ;
@@ -293,7 +293,7 @@ _:genid55 a rdf:List ;
 	rdf:first _:genid56 .
 
 _:genid56 a owl:Restriction ;
-	owl:onProperty qptdat:usesMedium ;
+	owl:onProperty qpt:usesMedium ;
 	owl:allValuesFrom :ArgonMixture .
 
 _:genid55 rdf:rest _:genid53 .
@@ -302,7 +302,7 @@ _:genid53 a rdf:List ;
 	rdf:first _:genid54 .
 
 _:genid54 a owl:Restriction ;
-	owl:onProperty qptdat:usesMedium ;
+	owl:onProperty qpt:usesMedium ;
 	owl:hasValue :argon .
 
 _:genid53 rdf:rest rdf:nil .
@@ -317,7 +317,7 @@ _:genid47 a rdf:List ;
 	rdf:first _:genid48 .
 
 _:genid48 a owl:Class ;
-	owl:complementOf qptdat:MediumConfiguration .
+	owl:complementOf qpt:MediumConfiguration .
 
 _:genid47 rdf:rest rdf:nil .
 
@@ -327,7 +327,7 @@ _:genid29 a rdf:List ;
 	rdf:first _:genid30 .
 
 _:genid30 a owl:Restriction ;
-	owl:onProperty qptdat:hasConfiguration ;
+	owl:onProperty qpt:hasConfiguration ;
 	owl:allValuesFrom _:genid31 .
 
 _:genid31 a owl:Class ;
@@ -339,14 +339,14 @@ _:genid34 a rdf:List ;
 _:genid35 owl:intersectionOf _:genid43 .
 
 _:genid43 a rdf:List ;
-	rdf:first qptdat:Power ;
+	rdf:first qpt:Power ;
 	rdf:rest _:genid36 .
 
 _:genid36 a rdf:List ;
 	rdf:first _:genid37 .
 
 _:genid37 a owl:Restriction ;
-	owl:onProperty qptdat:value ;
+	owl:onProperty qpt:value ;
 	owl:allValuesFrom _:genid38 .
 
 _:genid38 a rdfs:Datatype ;
@@ -377,7 +377,7 @@ _:genid32 a rdf:List ;
 	rdf:first _:genid33 .
 
 _:genid33 a owl:Class ;
-	owl:complementOf qptdat:Power .
+	owl:complementOf qpt:Power .
 
 _:genid32 rdf:rest rdf:nil .
 
@@ -387,8 +387,8 @@ _:genid27 a rdf:List ;
 	rdf:first _:genid28 .
 
 _:genid28 a owl:Restriction ;
-	owl:onProperty qptdat:hasConfiguration ;
-	owl:hasValue qptdat:atmospheric_pressure .
+	owl:onProperty qpt:hasConfiguration ;
+	owl:hasValue qpt:atmospheric_pressure .
 
 _:genid27 rdf:rest rdf:nil .
 
@@ -397,8 +397,8 @@ _:genid26 a owl:Class .
 :helixjet rdfs:subClassOf _:genid76 .
 
 _:genid76 a owl:Restriction ;
-	owl:onProperty qptdat:hasTopic ;
-	owl:hasValue qptdat:materials_topic .
+	owl:onProperty qpt:hasTopic ;
+	owl:hasValue qpt:materials_topic .
 
 :helixjet rdfs:comment "The HelixJet is a capacitively coupled radio-frequency (RF) plasma source operating at atmospheric pressure. The RF power is applied to two double helix electrodes. The electrodes are placed outside a quartz tube fed by the working gas. The HelixJet has unique features highly relevant for practical applications. The innovative double helix electrode design enables extremely stable and homogeneous plasma conditions at low gas flow rates. This plays a crucial role for the quality and reproducibility of several applications, e.g. PECVD of SiO₂ with a large footprint diameter or plasma microprinting of polymeric profiles (e.g. polyamide)."@en ;
 	rdfs:label "HelixJet"@en .
@@ -406,7 +406,7 @@ _:genid76 a owl:Restriction ;
 # http://qptdat.plasma-mds.org/source_ontology/ion_wind_dbd
 
 :ion_wind_dbd a owl:Class ;
-	rdfs:subClassOf qptdat:DBD , _:genid77 .
+	rdfs:subClassOf qpt:DBD , _:genid77 .
 
 _:genid77 owl:intersectionOf _:genid82 .
 
@@ -414,8 +414,8 @@ _:genid82 a rdf:List ;
 	rdf:first _:genid83 .
 
 _:genid83 a owl:Restriction ;
-	owl:onProperty qptdat:hasApplicationField ;
-	owl:hasValue qptdat:airFiltering_field .
+	owl:onProperty qpt:hasApplicationField ;
+	owl:hasValue qpt:airFiltering_field .
 
 _:genid82 rdf:rest _:genid80 .
 
@@ -423,8 +423,8 @@ _:genid80 a rdf:List ;
 	rdf:first _:genid81 .
 
 _:genid81 a owl:Restriction ;
-	owl:onProperty qptdat:hasApplicationField ;
-	owl:hasValue qptdat:decontamination_field .
+	owl:onProperty qpt:hasApplicationField ;
+	owl:hasValue qpt:decontamination_field .
 
 _:genid80 rdf:rest _:genid78 .
 
@@ -432,8 +432,8 @@ _:genid78 a rdf:List ;
 	rdf:first _:genid79 .
 
 _:genid79 a owl:Restriction ;
-	owl:onProperty qptdat:hasApplicationField ;
-	owl:hasValue qptdat:reactiveSpeciesGeneration_field .
+	owl:onProperty qpt:hasApplicationField ;
+	owl:hasValue qpt:reactiveSpeciesGeneration_field .
 
 _:genid78 rdf:rest rdf:nil .
 
@@ -447,8 +447,8 @@ _:genid87 a rdf:List ;
 	rdf:first _:genid88 .
 
 _:genid88 a owl:Restriction ;
-	owl:onProperty qptdat:hasTopic ;
-	owl:hasValue qptdat:decontamination_topic .
+	owl:onProperty qpt:hasTopic ;
+	owl:hasValue qpt:decontamination_topic .
 
 _:genid87 rdf:rest _:genid85 .
 
@@ -456,8 +456,8 @@ _:genid85 a rdf:List ;
 	rdf:first _:genid86 .
 
 _:genid86 a owl:Restriction ;
-	owl:onProperty qptdat:hasTopic ;
-	owl:hasValue qptdat:plasmaChemicalProcesses_topic .
+	owl:onProperty qpt:hasTopic ;
+	owl:hasValue qpt:plasmaChemicalProcesses_topic .
 
 _:genid85 rdf:rest rdf:nil .
 
@@ -471,7 +471,7 @@ The Ion Wind DBD has proven decontamination, disinfection and odor reduction cap
 # http://qptdat.plasma-mds.org/source_ontology/kinpen_ind
 
 :kinpen_ind a owl:Class ;
-	rdfs:subClassOf qptdat:PlasmaJet , _:genid89 .
+	rdfs:subClassOf qpt:PlasmaJet , _:genid89 .
 
 _:genid89 owl:intersectionOf _:genid94 .
 
@@ -479,7 +479,7 @@ _:genid94 a rdf:List ;
 	rdf:first _:genid95 .
 
 _:genid95 a owl:Restriction ;
-	owl:onProperty qptdat:hasConfiguration ;
+	owl:onProperty qpt:hasConfiguration ;
 	owl:allValuesFrom _:genid96 .
 
 _:genid96 a owl:Class ;
@@ -491,14 +491,14 @@ _:genid99 a rdf:List ;
 _:genid100 owl:intersectionOf _:genid108 .
 
 _:genid108 a rdf:List ;
-	rdf:first qptdat:InletPressure ;
+	rdf:first qpt:InletPressure ;
 	rdf:rest _:genid101 .
 
 _:genid101 a rdf:List ;
 	rdf:first _:genid102 .
 
 _:genid102 a owl:Restriction ;
-	owl:onProperty qptdat:value ;
+	owl:onProperty qpt:value ;
 	owl:allValuesFrom _:genid103 .
 
 _:genid103 a rdfs:Datatype ;
@@ -529,7 +529,7 @@ _:genid97 a rdf:List ;
 	rdf:first _:genid98 .
 
 _:genid98 a owl:Class ;
-	owl:complementOf qptdat:InletPressure .
+	owl:complementOf qpt:InletPressure .
 
 _:genid97 rdf:rest rdf:nil .
 
@@ -539,7 +539,7 @@ _:genid92 a rdf:List ;
 	rdf:first _:genid93 .
 
 _:genid93 a owl:Restriction ;
-	owl:onProperty qptdat:hasConfiguration ;
+	owl:onProperty qpt:hasConfiguration ;
 	owl:hasValue :kinpen_frequency .
 
 _:genid92 rdf:rest _:genid90 .
@@ -548,7 +548,7 @@ _:genid90 a rdf:List ;
 	rdf:first _:genid91 .
 
 _:genid91 a owl:Restriction ;
-	owl:onProperty qptdat:hasConfiguration ;
+	owl:onProperty qpt:hasConfiguration ;
 	owl:hasValue :kinpen_power .
 
 _:genid90 rdf:rest rdf:nil .
@@ -563,8 +563,8 @@ _:genid114 a rdf:List ;
 	rdf:first _:genid115 .
 
 _:genid115 a owl:Restriction ;
-	owl:onProperty qptdat:hasApplicationField ;
-	owl:hasValue qptdat:decontamination_field .
+	owl:onProperty qpt:hasApplicationField ;
+	owl:hasValue qpt:decontamination_field .
 
 _:genid114 rdf:rest _:genid112 .
 
@@ -572,8 +572,8 @@ _:genid112 a rdf:List ;
 	rdf:first _:genid113 .
 
 _:genid113 a owl:Restriction ;
-	owl:onProperty qptdat:hasApplicationField ;
-	owl:hasValue qptdat:fineCleanding_field .
+	owl:onProperty qpt:hasApplicationField ;
+	owl:hasValue qpt:fineCleanding_field .
 
 _:genid112 rdf:rest _:genid110 .
 
@@ -581,8 +581,8 @@ _:genid110 a rdf:List ;
 	rdf:first _:genid111 .
 
 _:genid111 a owl:Restriction ;
-	owl:onProperty qptdat:hasApplicationField ;
-	owl:hasValue qptdat:surfaceTreatment_field .
+	owl:onProperty qpt:hasApplicationField ;
+	owl:hasValue qpt:surfaceTreatment_field .
 
 _:genid110 rdf:rest rdf:nil .
 
@@ -596,8 +596,8 @@ _:genid121 a rdf:List ;
 	rdf:first _:genid122 .
 
 _:genid122 a owl:Restriction ;
-	owl:onProperty qptdat:hasTopic ;
-	owl:hasValue qptdat:bioactiveSurface_topic .
+	owl:onProperty qpt:hasTopic ;
+	owl:hasValue qpt:bioactiveSurface_topic .
 
 _:genid121 rdf:rest _:genid119 .
 
@@ -605,8 +605,8 @@ _:genid119 a rdf:List ;
 	rdf:first _:genid120 .
 
 _:genid120 a owl:Restriction ;
-	owl:onProperty qptdat:hasTopic ;
-	owl:hasValue qptdat:decontamination_topic .
+	owl:onProperty qpt:hasTopic ;
+	owl:hasValue qpt:decontamination_topic .
 
 _:genid119 rdf:rest _:genid117 .
 
@@ -614,8 +614,8 @@ _:genid117 a rdf:List ;
 	rdf:first _:genid118 .
 
 _:genid118 a owl:Restriction ;
-	owl:onProperty qptdat:hasTopic ;
-	owl:hasValue qptdat:materials_topic .
+	owl:onProperty qpt:hasTopic ;
+	owl:hasValue qpt:materials_topic .
 
 _:genid117 rdf:rest rdf:nil .
 
@@ -628,7 +628,7 @@ More information is provided by neoplas control GmbH."""@en , "kINPen® IND"@en 
 # http://qptdat.plasma-mds.org/source_ontology/miller_auto_axcess_450
 
 :miller_auto_axcess_450 a owl:Class ;
-	rdfs:subClassOf qptdat:Source , _:genid123 .
+	rdfs:subClassOf qpt:Source , _:genid123 .
 
 _:genid123 owl:intersectionOf _:genid130 .
 
@@ -636,8 +636,8 @@ _:genid130 a rdf:List ;
 	rdf:first _:genid131 .
 
 _:genid131 a owl:Restriction ;
-	owl:onProperty qptdat:hasApplicationField ;
-	owl:hasValue qptdat:fluxCoredWelding_field .
+	owl:onProperty qpt:hasApplicationField ;
+	owl:hasValue qpt:fluxCoredWelding_field .
 
 _:genid130 rdf:rest _:genid128 .
 
@@ -645,8 +645,8 @@ _:genid128 a rdf:List ;
 	rdf:first _:genid129 .
 
 _:genid129 a owl:Restriction ;
-	owl:onProperty qptdat:hasApplicationField ;
-	owl:hasValue qptdat:gasMetalArcWelding_field .
+	owl:onProperty qpt:hasApplicationField ;
+	owl:hasValue qpt:gasMetalArcWelding_field .
 
 _:genid128 rdf:rest _:genid126 .
 
@@ -654,8 +654,8 @@ _:genid126 a rdf:List ;
 	rdf:first _:genid127 .
 
 _:genid127 a owl:Restriction ;
-	owl:onProperty qptdat:hasApplicationField ;
-	owl:hasValue qptdat:pulsedMagWelding_field .
+	owl:onProperty qpt:hasApplicationField ;
+	owl:hasValue qpt:pulsedMagWelding_field .
 
 _:genid126 rdf:rest _:genid124 .
 
@@ -663,8 +663,8 @@ _:genid124 a rdf:List ;
 	rdf:first _:genid125 .
 
 _:genid125 a owl:Restriction ;
-	owl:onProperty qptdat:hasApplicationField ;
-	owl:hasValue qptdat:pulsedMigWelding_field .
+	owl:onProperty qpt:hasApplicationField ;
+	owl:hasValue qpt:pulsedMigWelding_field .
 
 _:genid124 rdf:rest rdf:nil .
 
@@ -673,8 +673,8 @@ _:genid123 a owl:Class .
 :miller_auto_axcess_450 rdfs:subClassOf _:genid132 .
 
 _:genid132 a owl:Restriction ;
-	owl:onProperty qptdat:hasTopic ;
-	owl:hasValue qptdat:welding_topic .
+	owl:onProperty qpt:hasTopic ;
+	owl:hasValue qpt:welding_topic .
 
 :miller_auto_axcess_450 rdfs:comment "This plasma source is a commercial welding power source produced by Miller Electric Manufacturing Co., Appleton / USA. This welding system is precise, digitally controlled and software-driven. Several different wire feeding and operator interface options are available and configurable to desired application. The welding system allows a simple method that controls arc length for pulse processes and wetting action and allows changing weld programs to take advantage of up to eight programs of Multi-MIG welding process capabilities. Through changing shielding gas and associated program, the power source can work at different welding process, eg. MIG welding and MAG welding."@en ;
 	rdfs:label "Miller Auto-Axcess™ 450"@en .
@@ -682,11 +682,11 @@ _:genid132 a owl:Restriction ;
 # http://qptdat.plasma-mds.org/source_ontology/minimip
 
 :minimip a owl:Class ;
-	rdfs:subClassOf qptdat:Source , _:genid133 .
+	rdfs:subClassOf qpt:Source , _:genid133 .
 
 _:genid133 a owl:Restriction ;
-	owl:onProperty qptdat:hasTopic ;
-	owl:hasValue qptdat:decontamination_topic .
+	owl:onProperty qpt:hasTopic ;
+	owl:hasValue qpt:decontamination_topic .
 
 :minimip rdfs:comment """Due to its high degree of flexibility, the microwave plasma source MiniMIP is suitable for various different applications and experiments. The plasma can be ignited in both pure argon and pure helium, and furthermore, an admixture of molecular gases to can be used to provide an optimal matching of the process chemistry to the requirements of the specific application. Moreover, the wide operating range with regards to gas flow and microwave power along with the inherent high plasma temperature are essential prerequisites for various applications in decontamination, ultra-fine cleaning and activation of surfaces as well as real-time sample preparation speciation analysis approaches. These properties make the MiniMIP plasma source a powerful tool in production and analytic application fields of industry and research.
 
@@ -696,15 +696,15 @@ More information is provided by neoplas control GmbH."""@en ;
 # http://qptdat.plasma-mds.org/source_ontology/neoplasMixture
 
 :neoplasMixture a owl:Class ;
-	rdfs:subClassOf qptdat:Medium .
+	rdfs:subClassOf qpt:Medium .
 # 
 # http://qptdat.plasma-mds.org/source_ontology/non_thermal_atmospheric_pressure_plasma_jet_ntappj
 
 :non_thermal_atmospheric_pressure_plasma_jet_ntappj a owl:Class ;
-	rdfs:subClassOf qptdat:PlasmaJet , _:genid134 .
+	rdfs:subClassOf qpt:PlasmaJet , _:genid134 .
 
 _:genid134 a owl:Restriction ;
-	owl:onProperty qptdat:hasConfiguration ;
+	owl:onProperty qpt:hasConfiguration ;
 	owl:allValuesFrom _:genid135 .
 
 _:genid135 a owl:Class ;
@@ -716,7 +716,7 @@ _:genid138 a rdf:List ;
 _:genid139 owl:intersectionOf _:genid150 .
 
 _:genid150 a rdf:List ;
-	rdf:first qptdat:MediumConfiguration ;
+	rdf:first qpt:MediumConfiguration ;
 	rdf:rest _:genid140 .
 
 _:genid140 a rdf:List ;
@@ -729,7 +729,7 @@ _:genid148 a rdf:List ;
 	rdf:first _:genid149 .
 
 _:genid149 a owl:Restriction ;
-	owl:onProperty qptdat:usesMedium ;
+	owl:onProperty qpt:usesMedium ;
 	owl:hasValue :argon .
 
 _:genid148 rdf:rest _:genid146 .
@@ -738,7 +738,7 @@ _:genid146 a rdf:List ;
 	rdf:first _:genid147 .
 
 _:genid147 a owl:Restriction ;
-	owl:onProperty qptdat:usesMedium ;
+	owl:onProperty qpt:usesMedium ;
 	owl:hasValue :helium .
 
 _:genid146 rdf:rest _:genid144 .
@@ -747,7 +747,7 @@ _:genid144 a rdf:List ;
 	rdf:first _:genid145 .
 
 _:genid145 a owl:Restriction ;
-	owl:onProperty qptdat:usesMedium ;
+	owl:onProperty qpt:usesMedium ;
 	owl:hasValue :krypton .
 
 _:genid144 rdf:rest _:genid142 .
@@ -756,7 +756,7 @@ _:genid142 a rdf:List ;
 	rdf:first _:genid143 .
 
 _:genid143 a owl:Restriction ;
-	owl:onProperty qptdat:usesMedium ;
+	owl:onProperty qpt:usesMedium ;
 	owl:hasValue :neon .
 
 _:genid142 rdf:rest rdf:nil .
@@ -771,14 +771,14 @@ _:genid136 a rdf:List ;
 	rdf:first _:genid137 .
 
 _:genid137 a owl:Class ;
-	owl:complementOf qptdat:MediumConfiguration .
+	owl:complementOf qpt:MediumConfiguration .
 
 _:genid136 rdf:rest rdf:nil .
 
 :non_thermal_atmospheric_pressure_plasma_jet_ntappj rdfs:subClassOf _:genid151 .
 
 _:genid151 a owl:Restriction ;
-	owl:onProperty qptdat:hasConfiguration ;
+	owl:onProperty qpt:hasConfiguration ;
 	owl:allValuesFrom _:genid152 .
 
 _:genid152 a owl:Class ;
@@ -790,14 +790,14 @@ _:genid155 a rdf:List ;
 _:genid156 owl:intersectionOf _:genid164 .
 
 _:genid164 a rdf:List ;
-	rdf:first qptdat:MediumConfiguration ;
+	rdf:first qpt:MediumConfiguration ;
 	rdf:rest _:genid157 .
 
 _:genid157 a rdf:List ;
 	rdf:first _:genid158 .
 
 _:genid158 a owl:Restriction ;
-	owl:onProperty qptdat:usesMedium ;
+	owl:onProperty qpt:usesMedium ;
 	owl:allValuesFrom _:genid159 .
 
 _:genid159 a owl:Class ;
@@ -829,15 +829,15 @@ _:genid153 a rdf:List ;
 	rdf:first _:genid154 .
 
 _:genid154 a owl:Class ;
-	owl:complementOf qptdat:MediumConfiguration .
+	owl:complementOf qpt:MediumConfiguration .
 
 _:genid153 rdf:rest rdf:nil .
 
 :non_thermal_atmospheric_pressure_plasma_jet_ntappj rdfs:subClassOf _:genid165 .
 
 _:genid165 a owl:Restriction ;
-	owl:onProperty qptdat:hasTopic ;
-	owl:hasValue qptdat:materials_topic .
+	owl:onProperty qpt:hasTopic ;
+	owl:hasValue qpt:materials_topic .
 
 :non_thermal_atmospheric_pressure_plasma_jet_ntappj rdfs:comment "The non-thermal atmospheric pressure plasma jet (ntAPPJ) is composed of a quartz capillary with an inner diameter of 4 mm and an outer diameter of 6 mm. The plasma jet operates at a high frequency of 27.12 MHz in pure noble gases (helium, neon, argon, krypton) at flow rates between 0.1 and 2 slm. Small molecular gas admixtures or organic vapors can be added to the carrier gas. Two outer ring electrodes (width 5 mm, distance 5 mm) are adjusted concentrically with the capillary axis. Filaments in different configurations are generated in the active plasma region between both electrodes. The applied power ranges from 4 to 20 W. An inner capillary can be used to inject a precursor into the effluent."@en ;
 	rdfs:label "Non-thermal atmospheric pressure plasma jet"@en ;
@@ -846,11 +846,11 @@ _:genid165 a owl:Restriction ;
 # http://qptdat.plasma-mds.org/source_ontology/plasmaskop_jet
 
 :plasmaskop_jet a owl:Class ;
-	rdfs:subClassOf qptdat:PlasmaJet , _:genid166 .
+	rdfs:subClassOf qpt:PlasmaJet , _:genid166 .
 
 _:genid166 a owl:Restriction ;
-	owl:onProperty qptdat:hasTopic ;
-	owl:hasValue qptdat:plasmaMedicine_topic .
+	owl:onProperty qpt:hasTopic ;
+	owl:hasValue qpt:plasmaMedicine_topic .
 
 :plasmaskop_jet rdfs:comment """The Plasmaskop Jet has originally been designed to be inserted into the working channel of a conventional endoscope. It has a tube-like character, is flexible, very thin and generates a biologically active jet plasma at the gas outlet. The device consists of an inner plastic tube, a ceramic nozzle, an outer plastic tube and a metal wire. The inner plastic tube is plugged upon the thin end of the ceramic nozzle. In order to provide high voltage at the end of the tube and at the same time maintain tube flexibility the metal wire is coiled around the inner tube. The outer plastic tube is placed coaxially over the inner tube. Thus, two gas channels are created. Through the inner tube helium or neon feed gas is provided with moderate flow rates of up to 300 sccm. The resulting gap between the inner and the outer tube is used to bring a second gas (CO₂) to the gas nozzle that acts as shielding gas. Due to the use of feed and shielding gas a stable plasma jet is generated even in hollow bodies. The original development was funded by the German Federal Ministry of Education and Research (BMBF) under the grant numbers: 13GW0052C and 03Z22DN12.
 
@@ -860,7 +860,7 @@ Due to the small dimensions, the high flexibility and the capability to work in 
 # http://qptdat.plasma-mds.org/source_ontology/venturi_dbd_vdbd
 
 :venturi_dbd_vdbd a owl:Class ;
-	rdfs:subClassOf qptdat:DBD , _:genid167 .
+	rdfs:subClassOf qpt:DBD , _:genid167 .
 
 _:genid167 owl:intersectionOf _:genid170 .
 
@@ -868,8 +868,8 @@ _:genid170 a rdf:List ;
 	rdf:first _:genid171 .
 
 _:genid171 a owl:Restriction ;
-	owl:onProperty qptdat:hasApplicationField ;
-	owl:hasValue qptdat:liquidTreatment_field .
+	owl:onProperty qpt:hasApplicationField ;
+	owl:hasValue qpt:liquidTreatment_field .
 
 _:genid170 rdf:rest _:genid168 .
 
@@ -877,8 +877,8 @@ _:genid168 a rdf:List ;
 	rdf:first _:genid169 .
 
 _:genid169 a owl:Restriction ;
-	owl:onProperty qptdat:hasApplicationField ;
-	owl:hasValue qptdat:reactiveSpeciesGeneration_field .
+	owl:onProperty qpt:hasApplicationField ;
+	owl:hasValue qpt:reactiveSpeciesGeneration_field .
 
 _:genid168 rdf:rest rdf:nil .
 
@@ -892,8 +892,8 @@ _:genid177 a rdf:List ;
 	rdf:first _:genid178 .
 
 _:genid178 a owl:Restriction ;
-	owl:onProperty qptdat:hasTopic ;
-	owl:hasValue qptdat:decontamination_topic .
+	owl:onProperty qpt:hasTopic ;
+	owl:hasValue qpt:decontamination_topic .
 
 _:genid177 rdf:rest _:genid175 .
 
@@ -901,8 +901,8 @@ _:genid175 a rdf:List ;
 	rdf:first _:genid176 .
 
 _:genid176 a owl:Restriction ;
-	owl:onProperty qptdat:hasTopic ;
-	owl:hasValue qptdat:plasmaChemicalProcesses_topic .
+	owl:onProperty qpt:hasTopic ;
+	owl:hasValue qpt:plasmaChemicalProcesses_topic .
 
 _:genid175 rdf:rest _:genid173 .
 
@@ -910,8 +910,8 @@ _:genid173 a rdf:List ;
 	rdf:first _:genid174 .
 
 _:genid174 a owl:Restriction ;
-	owl:onProperty qptdat:hasTopic ;
-	owl:hasValue qptdat:plasmaMedicine_topic .
+	owl:onProperty qpt:hasTopic ;
+	owl:hasValue qpt:plasmaMedicine_topic .
 
 _:genid173 rdf:rest rdf:nil .
 
@@ -934,39 +934,39 @@ The system is available in different implementations adapted to the requirements
 # 
 # http://qptdat.plasma-mds.org/ontology/atmospheric_pressure
 
-qptdat:atmospheric_pressure a qptdat:Pressure .
+qpt:atmospheric_pressure a qpt:Pressure .
 # 
 # http://qptdat.plasma-mds.org/source_ontology/air
 
-:air a owl:NamedIndividual , qptdat:Medium .
+:air a owl:NamedIndividual , qpt:Medium .
 # 
 # http://qptdat.plasma-mds.org/source_ontology/argon
 
-:argon a owl:NamedIndividual , qptdat:Medium , :ArgonMixture .
+:argon a owl:NamedIndividual , qpt:Medium , :ArgonMixture .
 # 
 # http://qptdat.plasma-mds.org/source_ontology/helium
 
-:helium a owl:NamedIndividual , qptdat:Medium .
+:helium a owl:NamedIndividual , qpt:Medium .
 # 
 # http://qptdat.plasma-mds.org/source_ontology/kinpen_electrode_geometry
 
-:kinpen_electrode_geometry a owl:NamedIndividual , qptdat:PinToPlate .
+:kinpen_electrode_geometry a owl:NamedIndividual , qpt:PinToPlate .
 # 
 # http://qptdat.plasma-mds.org/source_ontology/kinpen_frequency
 
-:kinpen_frequency a owl:NamedIndividual , qptdat:Configuration .
+:kinpen_frequency a owl:NamedIndividual , qpt:Configuration .
 # 
 # http://qptdat.plasma-mds.org/source_ontology/kinpen_power
 
-:kinpen_power a owl:NamedIndividual , qptdat:Configuration .
+:kinpen_power a owl:NamedIndividual , qpt:Configuration .
 # 
 # http://qptdat.plasma-mds.org/source_ontology/krypton
 
-:krypton a owl:NamedIndividual , qptdat:Medium .
+:krypton a owl:NamedIndividual , qpt:Medium .
 # 
 # http://qptdat.plasma-mds.org/source_ontology/neon
 
-:neon a owl:NamedIndividual , qptdat:Medium .
+:neon a owl:NamedIndividual , qpt:Medium .
 # 
 # 
 # 
@@ -978,7 +978,7 @@ qptdat:atmospheric_pressure a qptdat:Pressure .
 # 
 # 
 
-qptdat:Topic rdfs:comment "The topic is the field in which a plasma source is used."@en ;
+qpt:Topic rdfs:comment "The topic is the field in which a plasma source is used."@en ;
 	<http://www.w3.org/ns/prov#editorialNote> "This class is not well diferentiated between the qptdat:ApplicationField."@en .
 # 
 # Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

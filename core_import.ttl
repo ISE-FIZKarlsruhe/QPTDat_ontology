@@ -339,7 +339,7 @@ p-plan:isOutputVarOf rdf:type owl:ObjectProperty .
 
 ###  http://qptdat.plasma-mds.org/ontology/hasSubConfiguration
 :hasSubConfiguration rdf:type owl:ObjectProperty ;
-                     rdfs:domain :Configuration_Collection ;
+                     rdfs:domain :ConfigurationCollection ;
                      rdfs:range :Configuration .
 
 
@@ -601,7 +601,7 @@ datacite:Identifier rdf:type owl:Class .
 
 ###  http://qptdat.plasma-mds.org/ontology/AC
 :AC rdf:type owl:Class ;
-    rdfs:subClassOf :Voltage_Feed .
+    rdfs:subClassOf :VoltageFeed .
 
 
 ###  http://qptdat.plasma-mds.org/ontology/AccessLevel
@@ -691,8 +691,8 @@ datacite:Identifier rdf:type owl:Class .
                rdfs:label "Configuration"@en .
 
 
-###  http://qptdat.plasma-mds.org/ontology/Configuration_Collection
-:Configuration_Collection rdf:type owl:Class ;
+###  http://qptdat.plasma-mds.org/ontology/ConfigurationCollection
+:ConfigurationCollection rdf:type owl:Class ;
                           rdfs:subClassOf :Configuration ,
                                           <http://www.w3.org/ns/prov#Collection> .
 
@@ -712,7 +712,7 @@ datacite:Identifier rdf:type owl:Class .
 
 ###  http://qptdat.plasma-mds.org/ontology/DC
 :DC rdf:type owl:Class ;
-    rdfs:subClassOf :Voltage_Feed .
+    rdfs:subClassOf :VoltageFeed .
 
 
 ###  http://qptdat.plasma-mds.org/ontology/Dataset
@@ -928,8 +928,21 @@ datacite:Identifier rdf:type owl:Class .
 
 ###  http://qptdat.plasma-mds.org/ontology/Microwave
 :Microwave rdf:type owl:Class ;
-           rdfs:subClassOf :Plasma ;
-           rdfs:label "Microwave"@en .
+           rdfs:label "Microwave"@en ;
+           owl:equivalentClass [ owl:intersectionOf ( :Frequency
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty :value ;
+                                                        owl:someValuesFrom [ rdf:type rdfs:Datatype ;
+                                                                             owl:onDatatype xsd:double ;
+                                                                             owl:withRestrictions ( [ xsd:minInclusive "300000.0"^^xsd:double
+                                                                                                    ]
+                                                                                                  )
+                                                                           ]
+                                                      ]
+                                                    ) ;
+                                 rdf:type owl:Class
+                               ] ;
+           rdfs:subClassOf :Frequency .
 
 
 ###  http://qptdat.plasma-mds.org/ontology/ModellingMethod
@@ -1305,8 +1318,8 @@ datacite:Identifier rdf:type owl:Class .
               rdfs:label "Voltage Probe"@en .
 
 
-###  http://qptdat.plasma-mds.org/ontology/Voltage_Feed
-:Voltage_Feed rdf:type owl:Class ;
+###  http://qptdat.plasma-mds.org/ontology/VoltageFeed
+:VoltageFeed rdf:type owl:Class ;
               rdfs:subClassOf :Configuration .
 
 
@@ -1318,7 +1331,7 @@ datacite:Identifier rdf:type owl:Class .
 
 ###  http://qptdat.plasma-mds.org/ontology/Waveform
 :Waveform rdf:type owl:Class ;
-          rdfs:subClassOf :Configuration_Collection ,
+          rdfs:subClassOf :ConfigurationCollection ,
                           [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
                                                    owl:onProperty :hasSubConfiguration ;
                                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
@@ -1332,7 +1345,7 @@ datacite:Identifier rdf:type owl:Class .
                                                  [ rdf:type owl:Restriction ;
                                                    owl:onProperty :hasSubConfiguration ;
                                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                   owl:onClass :offset
+                                                   owl:onClass :Offset
                                                  ]
                                                ) ;
                             rdf:type owl:Class
@@ -1346,13 +1359,13 @@ datacite:Identifier rdf:type owl:Class .
             rdfs:subClassOf :NumericalConfiguration .
 
 
-###  http://qptdat.plasma-mds.org/ontology/dutyCycle
-:dutyCycle rdf:type owl:Class ;
+###  http://qptdat.plasma-mds.org/ontology/DutyCycle
+:DutyCycle rdf:type owl:Class ;
            rdfs:subClassOf :NumericalConfiguration .
 
 
-###  http://qptdat.plasma-mds.org/ontology/highFrequency
-:highFrequency rdf:type owl:Class ;
+###  http://qptdat.plasma-mds.org/ontology/HighFrequency
+:HighFrequency rdf:type owl:Class ;
                owl:equivalentClass [ owl:intersectionOf ( :Frequency
                                                           [ rdf:type owl:Restriction ;
                                                             owl:onProperty :value ;
@@ -1371,18 +1384,18 @@ datacite:Identifier rdf:type owl:Class .
                rdfs:subClassOf :Frequency .
 
 
-###  http://qptdat.plasma-mds.org/ontology/highPressure
-:highPressure rdf:type owl:Class ;
+###  http://qptdat.plasma-mds.org/ontology/HighPressure
+:HighPressure rdf:type owl:Class ;
               rdfs:subClassOf :Pressure .
 
 
-###  http://qptdat.plasma-mds.org/ontology/highTemperature
-:highTemperature rdf:type owl:Class ;
+###  http://qptdat.plasma-mds.org/ontology/HighTemperature
+:HighTemperature rdf:type owl:Class ;
                  rdfs:subClassOf :Temperature .
 
 
-###  http://qptdat.plasma-mds.org/ontology/lowFrequency
-:lowFrequency rdf:type owl:Class ;
+###  http://qptdat.plasma-mds.org/ontology/LowFrequency
+:LowFrequency rdf:type owl:Class ;
               owl:equivalentClass [ owl:intersectionOf ( :Frequency
                                                          [ rdf:type owl:Restriction ;
                                                            owl:onProperty :value ;
@@ -1399,82 +1412,65 @@ datacite:Identifier rdf:type owl:Class .
               rdfs:subClassOf :Frequency .
 
 
-###  http://qptdat.plasma-mds.org/ontology/lowPressure
-:lowPressure rdf:type owl:Class ;
+###  http://qptdat.plasma-mds.org/ontology/LowPressure
+:LowPressure rdf:type owl:Class ;
              rdfs:subClassOf :Pressure .
 
 
-###  http://qptdat.plasma-mds.org/ontology/lowTemperature
-:lowTemperature rdf:type owl:Class ;
+###  http://qptdat.plasma-mds.org/ontology/LowTemperature
+:LowTemperature rdf:type owl:Class ;
                 rdfs:subClassOf :Temperature .
 
 
-###  http://qptdat.plasma-mds.org/ontology/mediumPressure
-:mediumPressure rdf:type owl:Class ;
+###  http://qptdat.plasma-mds.org/ontology/MediumPressure
+:MediumPressure rdf:type owl:Class ;
                 rdfs:subClassOf :Pressure .
 
 
-###  http://qptdat.plasma-mds.org/ontology/microwave
-:microwave rdf:type owl:Class ;
-           owl:equivalentClass [ owl:intersectionOf ( :Frequency
-                                                      [ rdf:type owl:Restriction ;
-                                                        owl:onProperty :value ;
-                                                        owl:someValuesFrom [ rdf:type rdfs:Datatype ;
-                                                                             owl:onDatatype xsd:double ;
-                                                                             owl:withRestrictions ( [ xsd:minInclusive "300000.0"^^xsd:double
-                                                                                                    ]
-                                                                                                  )
-                                                                           ]
-                                                      ]
-                                                    ) ;
-                                 rdf:type owl:Class
-                               ] ;
-           rdfs:subClassOf :Frequency .
 
-
-###  http://qptdat.plasma-mds.org/ontology/moderatePressure
-:moderatePressure rdf:type owl:Class ;
+###  http://qptdat.plasma-mds.org/ontology/ModeratePressure
+:ModeratePressure rdf:type owl:Class ;
                   rdfs:subClassOf :Pressure .
 
 
-###  http://qptdat.plasma-mds.org/ontology/offset
-:offset rdf:type owl:Class ;
+###  http://qptdat.plasma-mds.org/ontology/Offset
+:Offset rdf:type owl:Class ;
         rdfs:subClassOf :NumericalConfiguration .
 
 
-###  http://qptdat.plasma-mds.org/ontology/pulseWaveform
-:pulseWaveform rdf:type owl:Class ;
+###  http://qptdat.plasma-mds.org/ontology/PulseWaveform
+:PulseWaveform rdf:type owl:Class ;
                rdfs:subClassOf :Waveform ,
                                [ owl:intersectionOf ( [ rdf:type owl:Class ;
                                                         owl:unionOf ( [ rdf:type owl:Restriction ;
                                                                         owl:onProperty :hasSubConfiguration ;
                                                                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                        owl:onClass :dutyCycle
+                                                                        owl:onClass :DutyCycle
                                                                       ]
                                                                       [ rdf:type owl:Restriction ;
                                                                         owl:onProperty :hasSubConfiguration ;
                                                                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                        owl:onClass :pulseWidth
+                                                                        owl:onClass :PulseWidth
                                                                       ]
                                                                     )
                                                       ]
                                                       [ rdf:type owl:Restriction ;
                                                         owl:onProperty :hasSubConfiguration ;
                                                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                        owl:onClass :riseTime
+                                                        owl:onClass :RiseTime
                                                       ]
                                                     ) ;
                                  rdf:type owl:Class
                                ] .
 
 
-###  http://qptdat.plasma-mds.org/ontology/pulseWidth
-:pulseWidth rdf:type owl:Class ;
+###  http://qptdat.plasma-mds.org/ontology/PulseWidth
+:PulseWidth rdf:type owl:Class ;
             rdfs:subClassOf :NumericalConfiguration .
 
 
-###  http://qptdat.plasma-mds.org/ontology/radioFrequency
-:radioFrequency rdf:type owl:Class ;
+###  http://qptdat.plasma-mds.org/ontology/RadioFrequency
+:RadioFrequency rdf:type owl:Class ;
                 owl:equivalentClass [ owl:intersectionOf ( :Frequency
                                                            [ rdf:type owl:Restriction ;
                                                              owl:onProperty :value ;
@@ -1493,51 +1489,51 @@ datacite:Identifier rdf:type owl:Class .
                 rdfs:subClassOf :Frequency .
 
 
-###  http://qptdat.plasma-mds.org/ontology/rampWaveform
-:rampWaveform rdf:type owl:Class ;
+###  http://qptdat.plasma-mds.org/ontology/RampWaveform
+:RampWaveform rdf:type owl:Class ;
               rdfs:subClassOf :Waveform ,
                               [ rdf:type owl:Restriction ;
                                 owl:onProperty :hasSubConfiguration ;
                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                owl:onClass :symmetry
+                                owl:onClass :Symmetry
                               ] .
 
 
-###  http://qptdat.plasma-mds.org/ontology/riseTime
-:riseTime rdf:type owl:Class ;
+###  http://qptdat.plasma-mds.org/ontology/RiseTime
+:RiseTime rdf:type owl:Class ;
           rdfs:subClassOf :NumericalConfiguration .
 
 
-###  http://qptdat.plasma-mds.org/ontology/sineWaveform
-:sineWaveform rdf:type owl:Class ;
+###  http://qptdat.plasma-mds.org/ontology/SineWaveform
+:SineWaveform rdf:type owl:Class ;
               rdfs:subClassOf :Waveform .
 
 
-###  http://qptdat.plasma-mds.org/ontology/squareWaveform
-:squareWaveform rdf:type owl:Class ;
+###  http://qptdat.plasma-mds.org/ontology/SquareWaveform
+:SquareWaveform rdf:type owl:Class ;
                 rdfs:subClassOf :Waveform ,
                                 [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
                                                          owl:onProperty :hasSubConfiguration ;
                                                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                         owl:onClass :dutyCycle
+                                                         owl:onClass :DutyCycle
                                                        ]
                                                        [ rdf:type owl:Restriction ;
                                                          owl:onProperty :hasSubConfiguration ;
                                                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                         owl:onClass :pulseWidth
+                                                         owl:onClass :PulseWidth
                                                        ]
                                                      ) ;
                                   rdf:type owl:Class
                                 ] .
 
 
-###  http://qptdat.plasma-mds.org/ontology/symmetry
-:symmetry rdf:type owl:Class ;
+###  http://qptdat.plasma-mds.org/ontology/Symmetry
+:Symmetry rdf:type owl:Class ;
           rdfs:subClassOf :NumericalConfiguration .
 
 
-###  http://qptdat.plasma-mds.org/ontology/vacuum
-:vacuum rdf:type owl:Class ;
+###  http://qptdat.plasma-mds.org/ontology/Vacuum
+:Vacuum rdf:type owl:Class ;
         rdfs:subClassOf :Pressure .
 
 
@@ -1565,55 +1561,46 @@ datacite:Identifier rdf:type owl:Class .
 #    Individuals
 #################################################################
 
-###  http://qptdat.plasma-mds.org/ontology/AC
-:AC rdf:type owl:NamedIndividual ,
-             :CategoricalConfiguration .
 
-
-###  http://qptdat.plasma-mds.org/ontology/BasicResearchPlasmaStudyTag
-:BasicResearchPlasmaStudyTag rdf:type owl:NamedIndividual ,
+###  http://qptdat.plasma-mds.org/ontology/basicResearchPlasmaStudyTag
+:basicResearchPlasmaStudyTag rdf:type owl:NamedIndividual ,
                                       :PlasmaStudyTag ;
                              rdfs:label "Basic Research"@en .
 
 
-###  http://qptdat.plasma-mds.org/ontology/BenchmarkDataPlasmaStudyTag
-:BenchmarkDataPlasmaStudyTag rdf:type owl:NamedIndividual ,
+###  http://qptdat.plasma-mds.org/ontology/benchmarkDataPlasmaStudyTag
+:benchmarkDataPlasmaStudyTag rdf:type owl:NamedIndividual ,
                                       :PlasmaStudyTag ;
                              rdfs:label "Benchmark Data"@en .
 
 
-###  http://qptdat.plasma-mds.org/ontology/DC
-:DC rdf:type owl:NamedIndividual ,
-             :CategoricalConfiguration .
-
-
-###  http://qptdat.plasma-mds.org/ontology/ModelValidationPlasmaStudyTag
-:ModelValidationPlasmaStudyTag rdf:type owl:NamedIndividual ,
+###  http://qptdat.plasma-mds.org/ontology/modelValidationPlasmaStudyTag
+:modelValidationPlasmaStudyTag rdf:type owl:NamedIndividual ,
                                         :PlasmaStudyTag ;
-                               :isSubPlasmaStudyTagOf :PlasmaModellingPlasmaStudyTag ;
+                               :isSubPlasmaStudyTagOf :plasmaModellingPlasmaStudyTag ;
                                rdfs:label "Model Validation"@en .
 
 
-###  http://qptdat.plasma-mds.org/ontology/PlasmaModellingPlasmaStudyTag
-:PlasmaModellingPlasmaStudyTag rdf:type owl:NamedIndividual ,
+###  http://qptdat.plasma-mds.org/ontology/plasmaModellingPlasmaStudyTag
+:plasmaModellingPlasmaStudyTag rdf:type owl:NamedIndividual ,
                                         :PlasmaStudyTag ;
                                rdfs:label "Plasma Modelling/Simulation"@en .
 
 
-###  http://qptdat.plasma-mds.org/ontology/SelfControllingMechanismPlasmaStudyTag
-:SelfControllingMechanismPlasmaStudyTag rdf:type owl:NamedIndividual ,
+###  http://qptdat.plasma-mds.org/ontology/selfControllingMechanismPlasmaStudyTag
+:selfControllingMechanismPlasmaStudyTag rdf:type owl:NamedIndividual ,
                                                  :PlasmaStudyTag ;
                                         rdfs:label "self-controlling mechanism"@en .
 
 
-###  http://qptdat.plasma-mds.org/ontology/SelfOrganizationPlasmaStudyTag
-:SelfOrganizationPlasmaStudyTag rdf:type owl:NamedIndividual ,
+###  http://qptdat.plasma-mds.org/ontology/selfOrganizationPlasmaStudyTag
+:selfOrganizationPlasmaStudyTag rdf:type owl:NamedIndividual ,
                                          :PlasmaStudyTag ;
                                 rdfs:label "Self-organization"@en .
 
 
-###  http://qptdat.plasma-mds.org/ontology/UnifideDescriptionPlasmaStudyTag
-:UnifideDescriptionPlasmaStudyTag rdf:type owl:NamedIndividual ,
+###  http://qptdat.plasma-mds.org/ontology/unifiedDescriptionPlasmaStudyTag
+:unifiedDescriptionPlasmaStudyTag rdf:type owl:NamedIndividual ,
                                            :PlasmaStudyTag ;
                                   rdfs:label "Unified Description"@en .
 

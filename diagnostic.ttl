@@ -1,0 +1,15 @@
+
+
+###  http://qptdat.plasma-mds.org/ontology/Ammeter
+:Ammeter rdf:type owl:Class ;
+         rdfs:subClassOf :DiagnosticDevice ;
+         rdfs:label "Ammeter"@en .
+
+
+###  http://qptdat.plasma-mds.org/ontology/AtomProbeTomographe
+:AtomProbeTomographe rdf:type owl:Class ;
+                     rdfs:subClassOf :DiagnosticDevice ;
+                     rdfs:label "Atom Probe Tomographe"@en .
+
+
+

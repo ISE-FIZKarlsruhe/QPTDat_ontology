@@ -14,1456 +14,1752 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix datacite: <http://purl.org/spar/datacite/> .
 @prefix wikibase: <http://wikiba.se/ontology#> .
-@base <http://qptdat.plasma-mds.org/ontology> .
 
-<http://qptdat.plasma-mds.org/ontology> rdf:type owl:Ontology ;
-                                         owl:versionIRI :v1.0 ;
-                                         dc:title "QPTDat Ontology"@en ;
-                                         dcterms:creator qptkg:e1 ,
-                                                         qptkg:e2 ;
-                                         rdfs:comment "The plasma ontology (Plasma-MDS) supports the standardized documentation of research data in the field of plasma physics. In accordance with typical plasma processes and applications, the ontology contains terminologicial knowledge about plasma source, plasma medium, and plasma target. Furthermore, metadata for the respectively applied diagnostic and modelling/simulation methods are represented."@en ;
-                                         rdfs:label "QPTDat Ontology"@en .
-
-#################################################################
-#    Annotation properties
-#################################################################
-
-###  http://purl.org/dc/dcam/domainIncludes
-<http://purl.org/dc/dcam/domainIncludes> rdf:type owl:AnnotationProperty .
-
-
-###  http://purl.org/dc/dcam/rangeIncludes
-<http://purl.org/dc/dcam/rangeIncludes> rdf:type owl:AnnotationProperty .
-
-
-###  http://purl.org/dc/elements/1.1/title
-dc:title rdf:type owl:AnnotationProperty .
-
-
-###  http://purl.org/dc/terms/abstract
-dcterms:abstract rdf:type owl:AnnotationProperty .
-
-
-###  http://purl.org/dc/terms/created
-dcterms:created rdf:type owl:AnnotationProperty .
-
-
-###  http://purl.org/dc/terms/creator
-dcterms:creator rdf:type owl:AnnotationProperty .
-
-
-###  http://purl.org/dc/terms/license
-dcterms:license rdf:type owl:AnnotationProperty .
-
-
-###  http://qptdat.plasma-mds.org/ontology/studyAbstract
-:studyAbstract rdf:type owl:AnnotationProperty ;
-               rdfs:subPropertyOf rdfs:comment .
-
-
-###  http://qptdat.plasma-mds.org/ontology/studyTitle
-:studyTitle rdf:type owl:AnnotationProperty ;
-            rdfs:subPropertyOf rdfs:label .
-
-
-###  http://www.w3.org/2004/02/skos/core#altLabel
-<http://www.w3.org/2004/02/skos/core#altLabel> rdf:type owl:AnnotationProperty .
-
-
-###  http://www.w3.org/2004/02/skos/core#changeNote
-<http://www.w3.org/2004/02/skos/core#changeNote> rdf:type owl:AnnotationProperty .
-
-
-###  http://www.w3.org/2004/02/skos/core#definition
-<http://www.w3.org/2004/02/skos/core#definition> rdf:type owl:AnnotationProperty .
-
-
-###  http://www.w3.org/2004/02/skos/core#editorialNote
-<http://www.w3.org/2004/02/skos/core#editorialNote> rdf:type owl:AnnotationProperty .
-
-
-###  http://www.w3.org/2004/02/skos/core#scopeNote
-<http://www.w3.org/2004/02/skos/core#scopeNote> rdf:type owl:AnnotationProperty .
-
-
-###  http://www.w3.org/ns/prov#category
-<http://www.w3.org/ns/prov#category> rdf:type owl:AnnotationProperty .
-
-
-###  http://www.w3.org/ns/prov#component
-<http://www.w3.org/ns/prov#component> rdf:type owl:AnnotationProperty .
-
-
-###  http://www.w3.org/ns/prov#definition
-<http://www.w3.org/ns/prov#definition> rdf:type owl:AnnotationProperty .
-
-
-###  http://www.w3.org/ns/prov#dm
-<http://www.w3.org/ns/prov#dm> rdf:type owl:AnnotationProperty .
-
-
-###  http://www.w3.org/ns/prov#n
-<http://www.w3.org/ns/prov#n> rdf:type owl:AnnotationProperty .
-
-
-#################################################################
-#    Datatypes
-#################################################################
-
-###  http://purl.org/dc/terms/Box
-dcterms:Box rdf:type rdfs:Datatype .
-
-
-###  http://purl.org/dc/terms/ISO3166
-dcterms:ISO3166 rdf:type rdfs:Datatype .
-
-
-###  http://purl.org/dc/terms/ISO639-2
-dcterms:ISO639-2 rdf:type rdfs:Datatype .
-
-
-###  http://purl.org/dc/terms/ISO639-3
-dcterms:ISO639-3 rdf:type rdfs:Datatype .
-
-
-###  http://purl.org/dc/terms/Period
-dcterms:Period rdf:type rdfs:Datatype .
-
-
-###  http://purl.org/dc/terms/Point
-dcterms:Point rdf:type rdfs:Datatype .
-
-
-###  http://purl.org/dc/terms/RFC1766
-dcterms:RFC1766 rdf:type rdfs:Datatype .
-
-
-###  http://purl.org/dc/terms/RFC3066
-dcterms:RFC3066 rdf:type rdfs:Datatype .
-
-
-###  http://purl.org/dc/terms/RFC4646
-dcterms:RFC4646 rdf:type rdfs:Datatype .
-
-
-###  http://purl.org/dc/terms/RFC5646
-dcterms:RFC5646 rdf:type rdfs:Datatype .
-
-
-###  http://purl.org/dc/terms/URI
-dcterms:URI rdf:type rdfs:Datatype .
-
-
-###  http://purl.org/dc/terms/W3CDTF
-dcterms:W3CDTF rdf:type rdfs:Datatype .
-
-
-###  http://www.w3.org/2001/XMLSchema#date
-xsd:date rdf:type rdfs:Datatype .
-
-
-#################################################################
-#    Object Properties
-#################################################################
-
-###  http://orkg.org/core#utilizes
-orkg:utilizes rdf:type owl:ObjectProperty .
-
-
-###  http://orkg.org/core#yields
-orkg:yields rdf:type owl:ObjectProperty .
-
-
-###  http://purl.org/dc/terms/contributor
-dcterms:contributor rdf:type owl:ObjectProperty .
-
-
-###  http://purl.org/dc/terms/isReferencedBy
-dcterms:isReferencedBy rdf:type owl:ObjectProperty .
-
-
-###  http://purl.org/dc/terms/license
-dcterms:license rdf:type owl:ObjectProperty .
-
-
-###  http://purl.org/net/p-plan#hasInputVar
-p-plan:hasInputVar rdf:type owl:ObjectProperty .
-
-
-###  http://purl.org/net/p-plan#hasOutputVar
-p-plan:hasOutputVar rdf:type owl:ObjectProperty .
-
-
-###  http://purl.org/net/p-plan#isInputVarOf
-p-plan:isInputVarOf rdf:type owl:ObjectProperty .
-
-
-###  http://purl.org/net/p-plan#isOutputVarOf
-p-plan:isOutputVarOf rdf:type owl:ObjectProperty .
-
-
-###  http://qptdat.plasma-mds.org/ontology/author
-:author rdf:type owl:ObjectProperty ;
-        rdfs:subPropertyOf dcterms:contributor ;
-        rdfs:domain :Dataset ;
-        rdfs:range :Person ;
-        rdfs:label ""@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/composedOf
-:composedOf rdf:type owl:ObjectProperty ;
-            rdfs:subPropertyOf owl:topObjectProperty ;
-            rdfs:domain :Material ;
-            rdfs:range :ChemicalCompound ;
-            rdfs:label ""@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/contact
-:contact rdf:type owl:ObjectProperty ;
-         rdfs:subPropertyOf <http://www.w3.org/ns/prov#wasAttributedTo> ;
-         rdfs:domain :Source ;
-         rdfs:range <http://www.w3.org/ns/prov#Agent> ;
-         rdfs:label ""@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/contributor
-:contributor rdf:type owl:ObjectProperty ;
-             rdfs:subPropertyOf dcterms:contributor ;
-             rdfs:domain :PlasmaStudy ;
-             rdfs:range :Person ;
-             rdfs:label "contributor"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/doi
-:doi rdf:type owl:ObjectProperty ;
-     rdfs:subPropertyOf owl:topObjectProperty ;
-     rdfs:domain :Dataset ;
-     rdfs:range :Doi ;
-     rdfs:label ""@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/hasAccessLevel
-:hasAccessLevel rdf:type owl:ObjectProperty ;
-                rdfs:subPropertyOf owl:topObjectProperty ;
-                rdfs:label ""@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/hasApplicationField
-:hasApplicationField rdf:type owl:ObjectProperty ;
-                     rdfs:domain :Source ;
-                     rdfs:range :ResearchTopic ;
-                     owl:propertyChainAxiom ( :hasApplicationField
-                                              :isSubResearchTopicOf
-                                            ) ;
-                     rdfs:label ""@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/hasConfiguration
-:hasConfiguration rdf:type owl:ObjectProperty ;
-                  rdfs:subPropertyOf owl:topObjectProperty ;
-                  rdfs:domain :Device ;
-                  rdfs:range :Configuration ;
-                  owl:propertyChainAxiom ( :hasConfiguration
-                                           :hasSubConfiguration
-                                         ) ,
-                                         ( :usesDevice
-                                           :hasConfiguration
-                                         ) ;
-                  rdfs:label "has configuration"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/hasExperimentalStep
-:hasExperimentalStep rdf:type owl:ObjectProperty ;
-                     owl:inverseOf :isExperimentalStepOf ;
-                     rdfs:domain :PlasmaStudy ;
-                     rdfs:range :ExperimentalStep .
-
-
-###  http://qptdat.plasma-mds.org/ontology/hasInputVar
-:hasInputVar rdf:type owl:ObjectProperty ;
-             rdfs:subPropertyOf orkg:utilizes ,
-                                p-plan:hasInputVar ;
-             owl:inverseOf :isInputVarOf ;
-             rdfs:domain :ExperimentalStep ;
-             rdfs:range :Variable ;
-             owl:propertyChainAxiom ( :hasInputVar
-                                      :hasConfiguration
-                                      :usesMedium
-                                    ) .
-
-
-###  http://qptdat.plasma-mds.org/ontology/hasOutputVar
-:hasOutputVar rdf:type owl:ObjectProperty ;
-              rdfs:subPropertyOf p-plan:hasOutputVar ;
-              owl:inverseOf :isOutputVarOf ;
-              rdfs:domain :ExperimentalStep ;
-              rdfs:range :Variable .
-
-
-###  http://qptdat.plasma-mds.org/ontology/hasPlasmaStudyTag
-:hasPlasmaStudyTag rdf:type owl:ObjectProperty ;
-                   rdfs:domain :PlasmaStudy ;
-                   rdfs:range :PlasmaStudyTag .
-
-
-###  http://qptdat.plasma-mds.org/ontology/hasRange
-:hasRange rdf:type owl:ObjectProperty ;
-          rdfs:domain :NumericalConfiguration ;
-          rdfs:range :Range .
-
-
-###  http://qptdat.plasma-mds.org/ontology/hasResearchTopic
-:hasResearchTopic rdf:type owl:ObjectProperty ;
-                  rdfs:domain [ rdf:type owl:Class ;
-                                owl:unionOf ( :PlasmaStudy
-                                              :Source
-                                            )
-                              ] ;
-                  rdfs:range :ResearchTopic .
-
-
-###  http://qptdat.plasma-mds.org/ontology/hasSubConfiguration
-:hasSubConfiguration rdf:type owl:ObjectProperty ;
-                     rdfs:domain :ConfigurationCollection ;
-                     rdfs:range :Configuration .
-
-
-###  http://qptdat.plasma-mds.org/ontology/isExperimentalStepOf
-:isExperimentalStepOf rdf:type owl:ObjectProperty ;
-                      rdfs:domain :ExperimentalStep ;
-                      rdfs:range :PlasmaStudy .
-
-
-###  http://qptdat.plasma-mds.org/ontology/isInputVarOf
-:isInputVarOf rdf:type owl:ObjectProperty ;
-              rdfs:subPropertyOf p-plan:isInputVarOf ;
-              rdfs:domain :Variable ;
-              rdfs:range :ExperimentalStep .
-
-
-###  http://qptdat.plasma-mds.org/ontology/isOutputVarOf
-:isOutputVarOf rdf:type owl:ObjectProperty ;
-               rdfs:subPropertyOf p-plan:isOutputVarOf ;
-               rdfs:domain :Variable ;
-               rdfs:range :ExperimentalStep .
-
-
-###  http://qptdat.plasma-mds.org/ontology/isReferencedBy
-:isReferencedBy rdf:type owl:ObjectProperty ;
-                rdfs:subPropertyOf dcterms:isReferencedBy ;
-                rdfs:domain <http://www.w3.org/ns/dcat#Dataset> ;
-                rdfs:range datacite:Identifier ;
-                rdfs:label "is referenced by"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/isSubPlasmaStudyTagOf
-:isSubPlasmaStudyTagOf rdf:type owl:ObjectProperty ;
-                       rdfs:domain :PlasmaStudyTag ;
-                       rdfs:range :PlasmaStudyTag .
-
-
-###  http://qptdat.plasma-mds.org/ontology/isSubResearchTopicOf
-:isSubResearchTopicOf rdf:type owl:ObjectProperty ;
-                      rdfs:subPropertyOf owl:topObjectProperty ;
-                      rdfs:domain :ResearchTopic ;
-                      rdfs:range :ResearchTopic .
-
-
-###  http://qptdat.plasma-mds.org/ontology/isSupplementing
-:isSupplementing rdf:type owl:ObjectProperty ;
-                 rdfs:domain :Dataset ;
-                 rdfs:range :Publication .
-
-
-###  http://qptdat.plasma-mds.org/ontology/license
-:license rdf:type owl:ObjectProperty ;
-         rdfs:subPropertyOf dcterms:license ;
-         rdfs:domain :Dataset ;
-         rdfs:range :LicenseDocument ;
-         rdfs:label "license"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/measuredIn
-:measuredIn rdf:type owl:ObjectProperty ;
-            rdfs:domain :Configuration ;
-            rdfs:range :MeasurementUnit .
-
-
-###  http://qptdat.plasma-mds.org/ontology/size
-:size rdf:type owl:ObjectProperty ;
-      rdfs:subPropertyOf owl:topObjectProperty ;
-      rdfs:domain :Target ;
-      rdfs:range :Size ;
-      rdfs:label "size"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/state
-:state rdf:type owl:ObjectProperty ;
-       rdfs:subPropertyOf owl:topObjectProperty ;
-       rdfs:domain :Target ;
-       rdfs:range :StateOfMatter ;
-       rdfs:label "state"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/surface
-:surface rdf:type owl:ObjectProperty ;
-         rdfs:subPropertyOf owl:topObjectProperty ;
-         rdfs:domain :Target ;
-         rdfs:range :Surface ;
-         rdfs:label "surface"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/usesDevice
-:usesDevice rdf:type owl:ObjectProperty ;
-            rdfs:subPropertyOf owl:topObjectProperty ;
-            rdfs:domain :AdjustedDevice ;
-            rdfs:range :Device ;
-            rdfs:label "uses device"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/usesMedium
-:usesMedium rdf:type owl:ObjectProperty ;
-            rdfs:domain :MediumConfiguration ;
-            rdfs:range :Medium .
-
-
-###  http://qptdat.plasma-mds.org/ontology/wasDevelopedBy
-:wasDevelopedBy rdf:type owl:ObjectProperty ;
-                rdfs:subPropertyOf <http://www.w3.org/ns/prov#wasAttributedTo> ;
-                rdfs:domain :Source ;
-                rdfs:range <http://www.w3.org/ns/prov#Agent> .
-
-
-###  http://www.w3.org/ns/prov#wasAttributedTo
-<http://www.w3.org/ns/prov#wasAttributedTo> rdf:type owl:ObjectProperty .
-
-
-#################################################################
-#    Data properties
-#################################################################
-
-###  http://qptdat.plasma-mds.org/ontology/lowerLimit
-:lowerLimit rdf:type owl:DatatypeProperty ;
-            rdfs:subPropertyOf <http://www.w3.org/ns/prov#value> ;
-            rdfs:domain :Range ;
-            rdfs:range xsd:decimal ;
-            rdfs:comment "The lower limit of the range, including the value. "@en ;
-            rdfs:label "lower limit"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/publicationDate
-:publicationDate rdf:type owl:DatatypeProperty ;
-                 rdfs:domain <http://www.w3.org/ns/dcat#Dataset> ;
-                 rdfs:range xsd:date ;
-                 rdfs:comment "A date of publication of the dataset."@en ;
-                 rdfs:label "publication date"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/studyAbstract
-:studyAbstract rdf:type owl:DatatypeProperty ;
-               rdfs:domain :PlasmaStudy ;
-               rdfs:range rdfs:Literal .
-
-
-###  http://qptdat.plasma-mds.org/ontology/studyTitle
-:studyTitle rdf:type owl:DatatypeProperty ;
-            rdfs:domain :PlasmaStudy ;
-            rdfs:range rdfs:Literal .
-
-
-###  http://qptdat.plasma-mds.org/ontology/upperLimit
-:upperLimit rdf:type owl:DatatypeProperty ;
-            rdfs:subPropertyOf <http://www.w3.org/ns/prov#value> ;
-            rdfs:domain :Range ;
-            rdfs:range xsd:decimal ;
-            rdfs:comment "The upper limit of the range, including the value."@en ;
-            rdfs:label "upper limit"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/value
-:value rdf:type owl:DatatypeProperty ;
-       rdfs:subPropertyOf <http://www.w3.org/ns/prov#value> ;
-       rdfs:domain :NumericalConfiguration ;
-       rdfs:range xsd:decimal ;
-       rdfs:comment "The numerical value of the configuration."@en ;
-       rdfs:label "value"@en .
-
-
-###  http://www.w3.org/ns/prov#value
-<http://www.w3.org/ns/prov#value> rdf:type owl:DatatypeProperty .
-
-
-#################################################################
-#    Classes
-#################################################################
-
-###  http://orkg.org/core#ResearchField
-orkg:ResearchField rdf:type owl:Class .
-
-
-###  http://orkg.org/core#ResearchMaterial
-orkg:ResearchMaterial rdf:type owl:Class .
-
-
-###  http://orkg.org/core#ResearchMethod
-orkg:ResearchMethod rdf:type owl:Class .
-
-
-###  http://orkg.org/core#ResearchResult
-orkg:ResearchResult rdf:type owl:Class .
-
-
-###  http://purl.obolibrary.org/obo/BFO_0000015
-obo:BFO_0000015 rdf:type owl:Class .
-
-
-###  http://purl.obolibrary.org/obo/BFO_0000019
-obo:BFO_0000019 rdf:type owl:Class .
-
-
-###  http://purl.obolibrary.org/obo/BFO_0000030
-obo:BFO_0000030 rdf:type owl:Class .
-
-
-###  http://purl.obolibrary.org/obo/BFO_0000031
-obo:BFO_0000031 rdf:type owl:Class .
-
-
-###  http://purl.org/dc/terms/LicenseDocument
-dcterms:LicenseDocument rdf:type owl:Class .
-
-
-###  http://purl.org/net/p-plan#Plan
-p-plan:Plan rdf:type owl:Class .
-
-
-###  http://purl.org/net/p-plan#Step
-p-plan:Step rdf:type owl:Class .
-
-
-###  http://purl.org/spar/datacite/Identifier
-datacite:Identifier rdf:type owl:Class .
-
-
-###  http://qptdat.plasma-mds.org/ontology/AC
-:AC rdf:type owl:Class ;
-    rdfs:subClassOf :VoltageFeed ;
-    rdfs:label "AC"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/AccessLevel
-:AccessLevel rdf:type owl:Class .
-
-
-###  http://qptdat.plasma-mds.org/ontology/AdjustedDevice
-:AdjustedDevice rdf:type owl:Class ;
-                rdfs:subClassOf :Device ;
-                rdfs:comment "A device which uses another device."@en ;
-                rdfs:label "adjusted device"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/Amplitude
-:Amplitude rdf:type owl:Class ;
-           rdfs:subClassOf :NumericalConfiguration .
-
-
-###  http://qptdat.plasma-mds.org/ontology/Arc
-:Arc rdf:type owl:Class ;
-     rdfs:subClassOf :Plasma ;
-     rdfs:label "Arc"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/CCP
-:CCP rdf:type owl:Class ;
-     rdfs:subClassOf :Source ;
-     rdfs:comment "Capacitively coupled plasma system"@en ;
-     rdfs:label "Capacitively coupled plasma system"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/CarrierGas
-:CarrierGas rdf:type owl:Class ;
-            rdfs:subClassOf :Gas ;
-            rdfs:label "Carrier gas"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/CategoricalConfiguration
-:CategoricalConfiguration rdf:type owl:Class ;
-                          rdfs:subClassOf :Configuration .
-
-
-###  http://qptdat.plasma-mds.org/ontology/ChemicalCompound
-:ChemicalCompound rdf:type owl:Class .
-
-
-###  http://qptdat.plasma-mds.org/ontology/Configuration
-:Configuration rdf:type owl:Class ;
-               rdfs:subClassOf obo:BFO_0000019 ,
-                               <http://www.w3.org/ns/prov#Entity> ;
-               rdfs:label "Configuration"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/ConfigurationCollection
-:ConfigurationCollection rdf:type owl:Class ;
-                         rdfs:subClassOf :Configuration ,
-                                         <http://www.w3.org/ns/prov#Collection> .
-
-
-###  http://qptdat.plasma-mds.org/ontology/DBD
-:DBD rdf:type owl:Class ;
-     rdfs:subClassOf :Source ;
-     rdfs:comment "Discharge involving at least one insulating dielectric barrier between the electrodes"@en ;
-     rdfs:label "Dielectric Barrier Discharge"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/DC
-:DC rdf:type owl:Class ;
-    rdfs:subClassOf :VoltageFeed ;
-    rdfs:label "DC"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/Dataset
-:Dataset rdf:type owl:Class ;
-         rdfs:subClassOf orkg:ResearchResult ,
-                         obo:BFO_0000031 ,
-                         <http://www.w3.org/ns/dcat#Dataset> ,
-                         <http://www.w3.org/ns/prov#Entity> ;
-         rdfs:label "Dataset"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/Device
-:Device rdf:type owl:Class ;
-        rdfs:subClassOf orkg:ResearchMaterial ,
-                        obo:BFO_0000030 ,
-                        :Variable ,
-                        <http://www.w3.org/ns/prov#Entity> ;
-        rdfs:comment "This class is an"@en ;
-        rdfs:label "Device"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/DiagnosticDevice
-:DiagnosticDevice rdf:type owl:Class ;
-                  rdfs:subClassOf :Device ;
-                  rdfs:comment "A diagnostic device is a device that is used in a diagnostic method to produce measurments."@en ;
-                  rdfs:label "Diagnostic Device"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/DiagnosticMethod
-:DiagnosticMethod rdf:type owl:Class ;
-                  rdfs:subClassOf obo:BFO_0000015 ,
-                                  p-plan:Step ,
-                                  <http://www.w3.org/ns/prov#Plan> ;
-                  rdfs:label "Diagnostic Method"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/Doi
-:Doi rdf:type owl:Class .
-
-
-###  http://qptdat.plasma-mds.org/ontology/DutyCycle
-:DutyCycle rdf:type owl:Class ;
-           rdfs:subClassOf :NumericalConfiguration .
-
-
-###  http://qptdat.plasma-mds.org/ontology/ElectrodeShape
-:ElectrodeShape rdf:type owl:Class ;
-                rdfs:subClassOf :SourceGeometry ;
-                rdfs:label "Electrode Shape"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/ExperimentMethod
-:ExperimentMethod rdf:type owl:Class ;
-                  rdfs:subClassOf :DiagnosticMethod ;
-                  rdfs:label "Experiment Method"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/ExperimentalStep
-:ExperimentalStep rdf:type owl:Class ;
-                  rdfs:subClassOf obo:BFO_0000015 ,
-                                  p-plan:Step ,
-                                  <http://www.w3.org/ns/prov#Plan> ;
-                  rdfs:label "Experimental Step" .
-
-
-###  http://qptdat.plasma-mds.org/ontology/Frequency
-:Frequency rdf:type owl:Class ;
-           rdfs:subClassOf :NumericalConfiguration .
-
-
-###  http://qptdat.plasma-mds.org/ontology/Gas
-:Gas rdf:type owl:Class ;
-     rdfs:subClassOf :Matter ;
-     rdfs:label "Gas"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/Helix
-:Helix rdf:type owl:Class ;
-       rdfs:subClassOf :Source ;
-       rdfs:comment "Helix"@en ;
-       rdfs:label "Helix"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/HighFrequency
-:HighFrequency rdf:type owl:Class ;
-               owl:equivalentClass [ owl:intersectionOf ( :Frequency
-                                                          [ rdf:type owl:Restriction ;
-                                                            owl:onProperty :value ;
-                                                            owl:someValuesFrom [ rdf:type rdfs:Datatype ;
-                                                                                 owl:onDatatype xsd:decimal ;
-                                                                                 owl:withRestrictions ( [ xsd:minInclusive 300000.0
-                                                                                                        ]
-                                                                                                        [ xsd:maxInclusive 3.0E8
-                                                                                                        ]
-                                                                                                      )
-                                                                               ]
-                                                          ]
-                                                        ) ;
-                                     rdf:type owl:Class
-                                   ] ;
-               rdfs:subClassOf :Frequency .
-
-
-###  http://qptdat.plasma-mds.org/ontology/HighPressure
-:HighPressure rdf:type owl:Class ;
-              rdfs:subClassOf :Pressure .
-
-
-###  http://qptdat.plasma-mds.org/ontology/HighTemperature
-:HighTemperature rdf:type owl:Class ;
-                 rdfs:subClassOf :Temperature .
-
-
-###  http://qptdat.plasma-mds.org/ontology/InletPressure
-:InletPressure rdf:type owl:Class ;
-               rdfs:subClassOf :Pressure .
-
-
-###  http://qptdat.plasma-mds.org/ontology/LicenseDocument
-:LicenseDocument rdf:type owl:Class ;
-                 rdfs:subClassOf obo:BFO_0000031 ,
-                                 dcterms:LicenseDocument ,
-                                 <http://www.w3.org/ns/prov#Entity> ;
-                 rdfs:label "License Document"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/Liquid
-:Liquid rdf:type owl:Class ;
-        rdfs:subClassOf :Matter ;
-        rdfs:label "Liquid"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/LowFrequency
-:LowFrequency rdf:type owl:Class ;
-              owl:equivalentClass [ owl:intersectionOf ( :Frequency
-                                                         [ rdf:type owl:Restriction ;
-                                                           owl:onProperty :value ;
-                                                           owl:someValuesFrom [ rdf:type rdfs:Datatype ;
-                                                                                owl:onDatatype xsd:decimal ;
-                                                                                owl:withRestrictions ( [ xsd:maxInclusive 300000.0
-                                                                                                       ]
-                                                                                                     )
-                                                                              ]
-                                                         ]
-                                                       ) ;
-                                    rdf:type owl:Class
-                                  ] ;
-              rdfs:subClassOf :Frequency .
-
-
-###  http://qptdat.plasma-mds.org/ontology/LowPressure
-:LowPressure rdf:type owl:Class ;
-             rdfs:subClassOf :Pressure .
-
-
-###  http://qptdat.plasma-mds.org/ontology/LowTemperature
-:LowTemperature rdf:type owl:Class ;
-                rdfs:subClassOf :Temperature .
-
-
-###  http://qptdat.plasma-mds.org/ontology/Material
-:Material rdf:type owl:Class ;
-          rdfs:subClassOf :Variable .
-
-
-###  http://qptdat.plasma-mds.org/ontology/Matter
-:Matter rdf:type owl:Class ;
-        rdfs:subClassOf orkg:ResearchMaterial ,
-                        obo:BFO_0000030 ;
-        rdfs:label "Matter"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/MeasurementUnit
-:MeasurementUnit rdf:type owl:Class .
-
-
-###  http://qptdat.plasma-mds.org/ontology/Medium
-:Medium rdf:type owl:Class ;
-        rdfs:subClassOf orkg:ResearchMaterial ,
-                        obo:BFO_0000030 ,
-                        :Material ,
-                        <http://www.w3.org/ns/prov#Entity> ;
-        rdfs:label "Medium"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/MediumConfiguration
-:MediumConfiguration rdf:type owl:Class ;
-                     rdfs:subClassOf :Configuration ;
-                     rdfs:comment "A medium configuration determines which medium is used."@en ;
-                     rdfs:label "Medium Configuration"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/MediumPressure
-:MediumPressure rdf:type owl:Class ;
-                rdfs:subClassOf :Pressure .
-
-
-###  http://qptdat.plasma-mds.org/ontology/Microwave
-:Microwave rdf:type owl:Class ;
-           owl:equivalentClass [ owl:intersectionOf ( :Frequency
-                                                      [ rdf:type owl:Restriction ;
-                                                        owl:onProperty :value ;
-                                                        owl:someValuesFrom [ rdf:type rdfs:Datatype ;
-                                                                             owl:onDatatype xsd:decimal ;
-                                                                             owl:withRestrictions ( [ xsd:minInclusive 300000.0
-                                                                                                    ]
-                                                                                                  )
-                                                                           ]
-                                                      ]
-                                                    ) ;
-                                 rdf:type owl:Class
-                               ] ;
-           rdfs:subClassOf :Frequency ;
-           rdfs:label "Microwave"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/ModellingMethod
-:ModellingMethod rdf:type owl:Class ;
-                 rdfs:subClassOf :DiagnosticMethod ;
-                 rdfs:label "Modelling Method"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/ModeratePressure
-:ModeratePressure rdf:type owl:Class ;
-                  rdfs:subClassOf :Pressure .
-
-
-###  http://qptdat.plasma-mds.org/ontology/NumericalConfiguration
-:NumericalConfiguration rdf:type owl:Class ;
-                        rdfs:subClassOf :Configuration ,
-                                        [ owl:intersectionOf ( [ rdf:type owl:Class ;
-                                                                 owl:unionOf ( [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                                                                        owl:onProperty :hasRange ;
-                                                                                                        owl:cardinality "0"^^xsd:nonNegativeInteger
-                                                                                                      ]
-                                                                                                      [ rdf:type owl:Restriction ;
-                                                                                                        owl:onProperty :value ;
-                                                                                                        owl:cardinality "1"^^xsd:nonNegativeInteger
-                                                                                                      ]
-                                                                                                    ) ;
-                                                                                 rdf:type owl:Class
-                                                                               ]
-                                                                               [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                                                                        owl:onProperty :hasRange ;
-                                                                                                        owl:cardinality "1"^^xsd:nonNegativeInteger
-                                                                                                      ]
-                                                                                                      [ rdf:type owl:Restriction ;
-                                                                                                        owl:onProperty :value ;
-                                                                                                        owl:cardinality "0"^^xsd:nonNegativeInteger
-                                                                                                      ]
-                                                                                                    ) ;
-                                                                                 rdf:type owl:Class
-                                                                               ]
-                                                                             )
-                                                               ]
-                                                               [ rdf:type owl:Class ;
-                                                                 owl:complementOf [ owl:intersectionOf ( [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                                                                                                  owl:onProperty :hasRange ;
-                                                                                                                                  owl:cardinality "0"^^xsd:nonNegativeInteger
-                                                                                                                                ]
-                                                                                                                                [ rdf:type owl:Restriction ;
-                                                                                                                                  owl:onProperty :value ;
-                                                                                                                                  owl:cardinality "1"^^xsd:nonNegativeInteger
-                                                                                                                                ]
-                                                                                                                              ) ;
-                                                                                                           rdf:type owl:Class
-                                                                                                         ]
-                                                                                                         [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                                                                                                  owl:onProperty :hasRange ;
-                                                                                                                                  owl:cardinality "1"^^xsd:nonNegativeInteger
-                                                                                                                                ]
-                                                                                                                                [ rdf:type owl:Restriction ;
-                                                                                                                                  owl:onProperty :value ;
-                                                                                                                                  owl:cardinality "0"^^xsd:nonNegativeInteger
-                                                                                                                                ]
-                                                                                                                              ) ;
-                                                                                                           rdf:type owl:Class
-                                                                                                         ]
-                                                                                                       ) ;
-                                                                                    rdf:type owl:Class
-                                                                                  ]
-                                                               ]
-                                                             ) ;
-                                          rdf:type owl:Class
-                                        ] ;
-                        rdfs:comment "A numerical configuration"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/Offset
-:Offset rdf:type owl:Class ;
-        rdfs:subClassOf :NumericalConfiguration .
-
-
-###  http://qptdat.plasma-mds.org/ontology/ParallelPlate
-:ParallelPlate rdf:type owl:Class ;
-               rdfs:subClassOf :ElectrodeShape ;
-               rdfs:label "Parallel Plate"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/Person
-:Person rdf:type owl:Class .
-
-
-###  http://qptdat.plasma-mds.org/ontology/PinToPin
-:PinToPin rdf:type owl:Class ;
-          rdfs:subClassOf :ElectrodeShape ;
-          rdfs:label "Pin to Pin"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/PinToPlate
-:PinToPlate rdf:type owl:Class ;
-            rdfs:subClassOf :ElectrodeShape ;
-            rdfs:label "Pin to Plate"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/Plasma
-:Plasma rdf:type owl:Class ;
-        rdfs:subClassOf obo:BFO_0000030 ;
-        rdfs:label "Plasma"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/PlasmaJet
-:PlasmaJet rdf:type owl:Class ;
-           owl:equivalentClass :PlasmaPen ;
-           rdfs:subClassOf :Source ;
-           rdfs:comment "Capillary plasma source, sometimes in form of a handheld device"@en ;
-           rdfs:label "Plasma Jet"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/PlasmaPen
-:PlasmaPen rdf:type owl:Class ;
-           rdfs:subClassOf :Source ;
-           rdfs:label "Plasma Pen"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/PlasmaStudy
-:PlasmaStudy rdf:type owl:Class ;
-             rdfs:subClassOf orkg:ResearchMethod ,
-                             obo:BFO_0000015 ,
-                             p-plan:Plan ,
-                             :ExperimentalStep ;
-             rdfs:label "Plasma Study"@en ;
-             <http://www.w3.org/2004/02/skos/core#altLabel> "Plasma Experiment"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/PlasmaStudyTag
-:PlasmaStudyTag rdf:type owl:Class ;
-                rdfs:comment "A (closed) vocabulary to annotate plasma studies with keywords that might be helpful in retrieving studies, e.g. basic research."@en ;
-                rdfs:label "Plasma Study Tag"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/PlasmaTorch
-:PlasmaTorch rdf:type owl:Class ;
-             rdfs:subClassOf :Source ;
-             rdfs:label "Plasma Torch"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/Power
-:Power rdf:type owl:Class ;
-       rdfs:subClassOf :NumericalConfiguration .
-
-
-###  http://qptdat.plasma-mds.org/ontology/Pressure
-:Pressure rdf:type owl:Class ;
-          rdfs:subClassOf :NumericalConfiguration ;
-          rdfs:label "Pressure"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/Publication
-:Publication rdf:type owl:Class ;
-             rdfs:subClassOf obo:BFO_0000031 ,
-                             <http://www.w3.org/ns/prov#Entity> .
-
-
-###  http://qptdat.plasma-mds.org/ontology/PulseWaveform
-:PulseWaveform rdf:type owl:Class ;
-               rdfs:subClassOf :Waveform ,
-                               [ owl:intersectionOf ( [ rdf:type owl:Class ;
-                                                        owl:unionOf ( [ rdf:type owl:Restriction ;
-                                                                        owl:onProperty :hasSubConfiguration ;
-                                                                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                        owl:onClass :DutyCycle
-                                                                      ]
-                                                                      [ rdf:type owl:Restriction ;
-                                                                        owl:onProperty :hasSubConfiguration ;
-                                                                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                        owl:onClass :PulseWidth
-                                                                      ]
-                                                                    )
-                                                      ]
-                                                      [ rdf:type owl:Restriction ;
-                                                        owl:onProperty :hasSubConfiguration ;
-                                                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                        owl:onClass :RiseTime
-                                                      ]
-                                                    ) ;
-                                 rdf:type owl:Class
-                               ] .
-
-
-###  http://qptdat.plasma-mds.org/ontology/PulseWidth
-:PulseWidth rdf:type owl:Class ;
-            rdfs:subClassOf :NumericalConfiguration .
-
-
-###  http://qptdat.plasma-mds.org/ontology/PulsedAC
-:PulsedAC rdf:type owl:Class ;
-          rdfs:subClassOf :AC ;
-          rdfs:label "Pulsed AC"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/PulsedDC
-:PulsedDC rdf:type owl:Class ;
-          rdfs:subClassOf :DC ;
-          rdfs:label "Pulsed DC"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/RadioFrequency
-:RadioFrequency rdf:type owl:Class ;
-                owl:equivalentClass [ owl:intersectionOf ( :Frequency
-                                                           [ rdf:type owl:Restriction ;
-                                                             owl:onProperty :value ;
-                                                             owl:someValuesFrom [ rdf:type rdfs:Datatype ;
-                                                                                  owl:onDatatype xsd:decimal ;
-                                                                                  owl:withRestrictions ( [ xsd:minInclusive 1000000.0
-                                                                                                         ]
-                                                                                                         [ xsd:maxInclusive 1.0E8
-                                                                                                         ]
-                                                                                                       )
-                                                                                ]
-                                                           ]
-                                                         ) ;
-                                      rdf:type owl:Class
-                                    ] ;
-                rdfs:subClassOf :Frequency .
-
-
-###  http://qptdat.plasma-mds.org/ontology/RampWaveform
-:RampWaveform rdf:type owl:Class ;
-              rdfs:subClassOf :Waveform ,
-                              [ rdf:type owl:Restriction ;
-                                owl:onProperty :hasSubConfiguration ;
-                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                owl:onClass :Symmetry
-                              ] .
-
-
-###  http://qptdat.plasma-mds.org/ontology/Range
-:Range rdf:type owl:Class ;
-       rdfs:subClassOf obo:BFO_0000019 ,
-                       <http://www.w3.org/ns/prov#Entity> ;
-       rdfs:comment "closed interval"@en ;
-       rdfs:label "Range"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/ReactorVolume
-:ReactorVolume rdf:type owl:Class ;
-               rdfs:subClassOf :Configuration ;
-               rdfs:label "Reactor Volume"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/ResearchTopic
-:ResearchTopic rdf:type owl:Class ;
-               rdfs:subClassOf obo:BFO_0000019 ,
-                               <http://www.w3.org/ns/prov#Entity> ;
-               rdfs:label "research topic"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/Resource
-:Resource rdf:type owl:Class ;
-          rdfs:subClassOf obo:BFO_0000031 ,
-                          <http://www.w3.org/ns/prov#Entity> ;
-          rdfs:label "Resource"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/RiseTime
-:RiseTime rdf:type owl:Class ;
-          rdfs:subClassOf :NumericalConfiguration .
-
-
-###  http://qptdat.plasma-mds.org/ontology/ScanningDriftTubeApparatus
-:ScanningDriftTubeApparatus rdf:type owl:Class ;
-                            rdfs:subClassOf :Source ;
-                            rdfs:label "Scanning Drift Tube Apparatus"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/ShieldingGas
-:ShieldingGas rdf:type owl:Class ;
-              rdfs:subClassOf :Gas ;
-              rdfs:label "Shielding Gas"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/SimulationMethod
-:SimulationMethod rdf:type owl:Class ;
-                  rdfs:subClassOf :DiagnosticMethod ;
-                  rdfs:label "Simulation Method"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/SineWaveform
-:SineWaveform rdf:type owl:Class ;
-              rdfs:subClassOf :Waveform .
-
-
-###  http://qptdat.plasma-mds.org/ontology/Size
-:Size rdf:type owl:Class ;
-      rdfs:subClassOf obo:BFO_0000019 ,
-                      <http://www.w3.org/ns/prov#Entity> ;
-      rdfs:label "Size"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/Source
-:Source rdf:type owl:Class ;
-        rdfs:subClassOf :Device ;
-        rdfs:comment "A plasma source generates a plasma."@en ;
-        rdfs:label "Source"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/SourceGeometry
-:SourceGeometry rdf:type owl:Class ;
-                rdfs:subClassOf :Configuration ;
-                rdfs:label "Source Geometry"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/SquareWaveform
-:SquareWaveform rdf:type owl:Class ;
-                rdfs:subClassOf :Waveform ,
-                                [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                         owl:onProperty :hasSubConfiguration ;
-                                                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                         owl:onClass :DutyCycle
-                                                       ]
-                                                       [ rdf:type owl:Restriction ;
-                                                         owl:onProperty :hasSubConfiguration ;
-                                                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                         owl:onClass :PulseWidth
-                                                       ]
-                                                     ) ;
-                                  rdf:type owl:Class
-                                ] .
-
-
-###  http://qptdat.plasma-mds.org/ontology/StateOfMatter
-:StateOfMatter rdf:type owl:Class ;
-               rdfs:subClassOf obo:BFO_0000019 ,
-                               <http://www.w3.org/ns/prov#Entity> ;
-               rdfs:label "State of Matter"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/Surface
-:Surface rdf:type owl:Class ;
-         rdfs:subClassOf obo:BFO_0000019 ,
-                         <http://www.w3.org/ns/prov#Entity> ;
-         rdfs:label "Surface"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/Symmetry
-:Symmetry rdf:type owl:Class ;
-          rdfs:subClassOf :NumericalConfiguration .
-
-
-###  http://qptdat.plasma-mds.org/ontology/Target
-:Target rdf:type owl:Class ;
-        rdfs:subClassOf orkg:ResearchMaterial ,
-                        obo:BFO_0000030 ,
-                        :Material ,
-                        <http://www.w3.org/ns/prov#Entity> ;
-        rdfs:comment "A target is the entity on which a plasma acts on."@en ;
-        rdfs:label "Target"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/Temperature
-:Temperature rdf:type owl:Class ;
-             rdfs:subClassOf :NumericalConfiguration ;
-             rdfs:label "Temperature"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/Time
-:Time rdf:type owl:Class ;
-      rdfs:subClassOf :NumericalConfiguration .
-
-
-###  http://qptdat.plasma-mds.org/ontology/Vacuum
-:Vacuum rdf:type owl:Class ;
-        rdfs:subClassOf :Pressure .
-
-
-###  http://qptdat.plasma-mds.org/ontology/Variable
-:Variable rdf:type owl:Class .
-
-
-###  http://qptdat.plasma-mds.org/ontology/VoltageFeed
-:VoltageFeed rdf:type owl:Class ;
-             rdfs:subClassOf :Configuration .
-
-
-###  http://qptdat.plasma-mds.org/ontology/Waveform
-:Waveform rdf:type owl:Class ;
-          rdfs:subClassOf :ConfigurationCollection ,
-                          [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                   owl:onProperty :hasSubConfiguration ;
-                                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                   owl:onClass :Amplitude
-                                                 ]
-                                                 [ rdf:type owl:Restriction ;
-                                                   owl:onProperty :hasSubConfiguration ;
-                                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                   owl:onClass :Frequency
-                                                 ]
-                                                 [ rdf:type owl:Restriction ;
-                                                   owl:onProperty :hasSubConfiguration ;
-                                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                   owl:onClass :Offset
-                                                 ]
-                                               ) ;
-                            rdf:type owl:Class
-                          ] ;
-          rdfs:comment "A waveform is a collection of configurations to describe a waveform. As such it has an amplitude, frequency and offset."@en ;
-          rdfs:label "Waveform"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/Wavelength
-:Wavelength rdf:type owl:Class ;
-            rdfs:subClassOf :NumericalConfiguration .
-
-
-###  http://www.w3.org/ns/dcat#Dataset
-<http://www.w3.org/ns/dcat#Dataset> rdf:type owl:Class .
-
-
-###  http://www.w3.org/ns/prov#Agent
-<http://www.w3.org/ns/prov#Agent> rdf:type owl:Class .
-
-
-###  http://www.w3.org/ns/prov#Collection
-<http://www.w3.org/ns/prov#Collection> rdf:type owl:Class .
-
-
-###  http://www.w3.org/ns/prov#Entity
-<http://www.w3.org/ns/prov#Entity> rdf:type owl:Class .
-
-
-###  http://www.w3.org/ns/prov#Plan
-<http://www.w3.org/ns/prov#Plan> rdf:type owl:Class .
-
-
-#################################################################
-#    Individuals
-#################################################################
-
-###  http://qptdat.plasma-mds.org/ontology/airFilteringResearchTopic
-:airFilteringResearchTopic rdf:type owl:NamedIndividual ,
-                                    :ResearchTopic ;
-                           rdfs:label "air filtering"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/atomicLayerDepositionResearchTopic
-:atomicLayerDepositionResearchTopic rdf:type owl:NamedIndividual ,
-                                             :ResearchTopic ;
-                                    rdfs:label "atomic layer deposition"@en ;
-                                    <http://www.w3.org/2004/02/skos/core#altLabel> "ALD"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/basicResearchPlasmaStudyTag
-:basicResearchPlasmaStudyTag rdf:type owl:NamedIndividual ,
-                                      :PlasmaStudyTag ;
-                             rdfs:label "Basic Research"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/benchmarkDataPlasmaStudyTag
-:benchmarkDataPlasmaStudyTag rdf:type owl:NamedIndividual ,
-                                      :PlasmaStudyTag ;
-                             rdfs:label "Benchmark Data"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/bioactiveSurfacesResearchTopic
-:bioactiveSurfacesResearchTopic rdf:type owl:NamedIndividual ,
-                                         :ResearchTopic ;
-                                :isSubResearchTopicOf :surfaceTreatmentResearchTopic ;
-                                rdfs:label "bioactive surfaces"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/biologicalDecontaminationResearchTopic
-:biologicalDecontaminationResearchTopic rdf:type owl:NamedIndividual ,
-                                                 :ResearchTopic ;
-                                        :isSubResearchTopicOf :decontaminationResearchTopic ;
-                                        rdfs:label "biological decontamination"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/decontaminationResearchTopic
-:decontaminationResearchTopic rdf:type owl:NamedIndividual ,
-                                       :ResearchTopic ;
-                              rdfs:label "Decontamination"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/fineCleaningResearchTopic
-:fineCleaningResearchTopic rdf:type owl:NamedIndividual ,
-                                    :ResearchTopic ;
-                           rdfs:label "fine cleaning"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/fluxCoredWeldingResearchTopic
-:fluxCoredWeldingResearchTopic rdf:type owl:NamedIndividual ,
-                                        :ResearchTopic ;
-                               :isSubResearchTopicOf :weldingResearchTopic ;
-                               rdfs:label "flux cored welding"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/gasMetalArcWeldingResearchTopic
-:gasMetalArcWeldingResearchTopic rdf:type owl:NamedIndividual ,
-                                          :ResearchTopic ;
-                                 :isSubResearchTopicOf :weldingResearchTopic ;
-                                 rdfs:label "gas metal arc welding"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/liquidTreatmentResearchTopic
-:liquidTreatmentResearchTopic rdf:type owl:NamedIndividual ,
-                                       :ResearchTopic ;
-                              rdfs:label "liquid treatment"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/magWeldingResearchTopic
-:magWeldingResearchTopic rdf:type owl:NamedIndividual ,
-                                  :ResearchTopic ;
-                         :isSubResearchTopicOf :weldingResearchTopic ;
-                         rdfs:label "MAG welding"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/materialsResearchTopic
-:materialsResearchTopic rdf:type owl:NamedIndividual ,
-                                 :ResearchTopic ;
-                        rdfs:label "materials / surfaces"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/migWeldingResearchTopic
-:migWeldingResearchTopic rdf:type owl:NamedIndividual ,
-                                  :ResearchTopic ;
-                         :isSubResearchTopicOf :weldingResearchTopic ;
-                         rdfs:label "MIG welding"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/modelValidationPlasmaStudyTag
-:modelValidationPlasmaStudyTag rdf:type owl:NamedIndividual ,
-                                        :PlasmaStudyTag ;
-                               :isSubPlasmaStudyTagOf :plasmaModellingPlasmaStudyTag ;
-                               rdfs:label "Model Validation"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/plasmaChemicalProcessesResearchTopic
-:plasmaChemicalProcessesResearchTopic rdf:type owl:NamedIndividual ,
-                                               :ResearchTopic ;
-                                      rdfs:label "plasma chemical processes"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/plasmaEnhancedChemicalVaporDepositionResearchTopic
-:plasmaEnhancedChemicalVaporDepositionResearchTopic rdf:type owl:NamedIndividual ,
-                                                             :ResearchTopic ;
-                                                    rdfs:label "plasma enhanced chemical vapor deposition"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/plasmaMedicineResearchTopic
-:plasmaMedicineResearchTopic rdf:type owl:NamedIndividual ,
-                                      :ResearchTopic ;
-                             rdfs:label "plasma medicine"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/plasmaModellingPlasmaStudyTag
-:plasmaModellingPlasmaStudyTag rdf:type owl:NamedIndividual ,
-                                        :PlasmaStudyTag ;
-                               rdfs:label "Plasma Modelling/Simulation"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/publicAccessLevel
-:publicAccessLevel rdf:type owl:NamedIndividual ,
-                            :AccessLevel ;
-                   rdfs:comment "The dataset is publicialy avalible."@en ;
-                   rdfs:label "Public"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/pulsedMagWeldingResearchTopic
-:pulsedMagWeldingResearchTopic rdf:type owl:NamedIndividual ,
-                                        :ResearchTopic ;
-                               :isSubResearchTopicOf :magWeldingResearchTopic ;
-                               rdfs:label "pulsed MAG welding"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/pulsedMigWeldingResearchTopic
-:pulsedMigWeldingResearchTopic rdf:type owl:NamedIndividual ,
-                                        :ResearchTopic ;
-                               :isSubResearchTopicOf :migWeldingResearchTopic ;
-                               rdfs:label "pulsed MIG welding"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/reactiveIonEtchingResearchTopic
-:reactiveIonEtchingResearchTopic rdf:type owl:NamedIndividual ,
-                                          :ResearchTopic ;
-                                 rdfs:label "reactive ion etching"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/reactiveSpeciesGenerationResearchTopic
-:reactiveSpeciesGenerationResearchTopic rdf:type owl:NamedIndividual ,
-                                                 :ResearchTopic ;
-                                        rdfs:label "reactive species generation"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/selfControllingMechanismPlasmaStudyTag
-:selfControllingMechanismPlasmaStudyTag rdf:type owl:NamedIndividual ,
-                                                 :PlasmaStudyTag ;
-                                        rdfs:label "self-controlling mechanism"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/selfOrganizationPlasmaStudyTag
-:selfOrganizationPlasmaStudyTag rdf:type owl:NamedIndividual ,
-                                         :PlasmaStudyTag ;
-                                rdfs:label "Self-organization"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/surfaceTreatmentResearchTopic
-:surfaceTreatmentResearchTopic rdf:type owl:NamedIndividual ,
-                                        :ResearchTopic ;
-                               :isSubResearchTopicOf :materialsResearchTopic ;
-                               rdfs:label "surface treatment"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/unifiedDescriptionPlasmaStudyTag
-:unifiedDescriptionPlasmaStudyTag rdf:type owl:NamedIndividual ,
-                                           :PlasmaStudyTag ;
-                                  rdfs:label "Unified Description"@en .
-
-
-###  http://qptdat.plasma-mds.org/ontology/weldingResearchTopic
-:weldingResearchTopic rdf:type owl:NamedIndividual ,
-                               :ResearchTopic ;
-                      rdfs:label "welding / switching"@en .
-
-
-#################################################################
-#    Annotations
-#################################################################
+<http://qptdat.plasma-mds.org/ontology> a owl:Ontology ;
+	owl:versionIRI :v1.0 ;
+	dc:title "QPTDat Ontology"@en ;
+	dcterms:creator qptkg:e1 , qptkg:e2 ;
+	rdfs:comment "The plasma ontology (Plasma-MDS) supports the standardized documentation of research data in the field of plasma physics. In accordance with typical plasma processes and applications, the ontology contains terminologicial knowledge about plasma source, plasma medium, and plasma target. Furthermore, metadata for the respectively applied diagnostic and modelling/simulation methods are represented."@en ;
+	rdfs:label "QPTDat Ontology"@en .
+# 
+# 
+# #################################################################
+# #
+# #    Annotation properties
+# #
+# #################################################################
+# 
+# 
+# http://purl.org/dc/dcam/domainIncludes
+
+<http://purl.org/dc/dcam/domainIncludes> a owl:AnnotationProperty .
+# 
+# http://purl.org/dc/dcam/rangeIncludes
+
+<http://purl.org/dc/dcam/rangeIncludes> a owl:AnnotationProperty .
+# 
+# http://purl.org/dc/elements/1.1/title
+
+dc:title a owl:AnnotationProperty .
+# 
+# http://purl.org/dc/terms/abstract
+
+dcterms:abstract a owl:AnnotationProperty .
+# 
+# http://purl.org/dc/terms/created
+
+dcterms:created a owl:AnnotationProperty .
+# 
+# http://purl.org/dc/terms/creator
+
+dcterms:creator a owl:AnnotationProperty .
+# 
+# http://purl.org/dc/terms/license
+
+dcterms:license a owl:AnnotationProperty .
+# 
+# http://qptdat.plasma-mds.org/ontology/studyAbstract
+
+:studyAbstract a owl:AnnotationProperty ;
+	rdfs:subPropertyOf rdfs:comment ;
+	rdfs:range rdfs:Literal ;
+	rdfs:domain :PlasmaStudy .
+# 
+# http://qptdat.plasma-mds.org/ontology/studyTitle
+
+:studyTitle a owl:AnnotationProperty ;
+	rdfs:subPropertyOf rdfs:label ;
+	rdfs:range rdfs:Literal ;
+	rdfs:domain :PlasmaStudy .
+# 
+# http://www.w3.org/2004/02/skos/core#altLabel
+
+<http://www.w3.org/2004/02/skos/core#altLabel> a owl:AnnotationProperty .
+# 
+# http://www.w3.org/2004/02/skos/core#changeNote
+
+<http://www.w3.org/2004/02/skos/core#changeNote> a owl:AnnotationProperty .
+# 
+# http://www.w3.org/2004/02/skos/core#definition
+
+<http://www.w3.org/2004/02/skos/core#definition> a owl:AnnotationProperty .
+# 
+# http://www.w3.org/2004/02/skos/core#editorialNote
+
+<http://www.w3.org/2004/02/skos/core#editorialNote> a owl:AnnotationProperty .
+# 
+# http://www.w3.org/2004/02/skos/core#scopeNote
+
+<http://www.w3.org/2004/02/skos/core#scopeNote> a owl:AnnotationProperty .
+# 
+# http://www.w3.org/ns/prov#category
+
+<http://www.w3.org/ns/prov#category> a owl:AnnotationProperty .
+# 
+# http://www.w3.org/ns/prov#component
+
+<http://www.w3.org/ns/prov#component> a owl:AnnotationProperty .
+# 
+# http://www.w3.org/ns/prov#definition
+
+<http://www.w3.org/ns/prov#definition> a owl:AnnotationProperty .
+# 
+# http://www.w3.org/ns/prov#dm
+
+<http://www.w3.org/ns/prov#dm> a owl:AnnotationProperty .
+# 
+# http://www.w3.org/ns/prov#n
+
+<http://www.w3.org/ns/prov#n> a owl:AnnotationProperty .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Datatypes
+# #
+# #################################################################
+# 
+# 
+# http://purl.org/dc/terms/Box
+
+dcterms:Box a rdfs:Datatype .
+# 
+# http://purl.org/dc/terms/ISO3166
+
+dcterms:ISO3166 a rdfs:Datatype .
+# 
+# http://purl.org/dc/terms/ISO639-2
+
+dcterms:ISO639-2 a rdfs:Datatype .
+# 
+# http://purl.org/dc/terms/ISO639-3
+
+dcterms:ISO639-3 a rdfs:Datatype .
+# 
+# http://purl.org/dc/terms/Period
+
+dcterms:Period a rdfs:Datatype .
+# 
+# http://purl.org/dc/terms/Point
+
+dcterms:Point a rdfs:Datatype .
+# 
+# http://purl.org/dc/terms/RFC1766
+
+dcterms:RFC1766 a rdfs:Datatype .
+# 
+# http://purl.org/dc/terms/RFC3066
+
+dcterms:RFC3066 a rdfs:Datatype .
+# 
+# http://purl.org/dc/terms/RFC4646
+
+dcterms:RFC4646 a rdfs:Datatype .
+# 
+# http://purl.org/dc/terms/RFC5646
+
+dcterms:RFC5646 a rdfs:Datatype .
+# 
+# http://purl.org/dc/terms/URI
+
+dcterms:URI a rdfs:Datatype .
+# 
+# http://purl.org/dc/terms/W3CDTF
+
+dcterms:W3CDTF a rdfs:Datatype .
+# 
+# http://www.w3.org/2001/XMLSchema#date
+
+xsd:date a rdfs:Datatype .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Object Properties
+# #
+# #################################################################
+# 
+# 
+# http://orkg.org/core#utilizes
+
+orkg:utilizes a owl:ObjectProperty .
+# 
+# http://orkg.org/core#yields
+
+orkg:yields a owl:ObjectProperty .
+# 
+# http://purl.org/dc/terms/contributor
+
+dcterms:contributor a owl:ObjectProperty .
+# 
+# http://purl.org/dc/terms/license
+
+dcterms:license a owl:ObjectProperty .
+# 
+# http://purl.org/net/p-plan#hasInputVar
+
+p-plan:hasInputVar a owl:ObjectProperty .
+# 
+# http://purl.org/net/p-plan#hasOutputVar
+
+p-plan:hasOutputVar a owl:ObjectProperty .
+# 
+# http://purl.org/net/p-plan#isInputVarOf
+
+p-plan:isInputVarOf a owl:ObjectProperty .
+# 
+# http://purl.org/net/p-plan#isOutputVarOf
+
+p-plan:isOutputVarOf a owl:ObjectProperty .
+# 
+# http://purl.org/net/p-plan#isStepOfPlan
+
+p-plan:isStepOfPlan a owl:ObjectProperty .
+# 
+# http://purl.org/net/p-plan#isSubPlanOfPlan
+
+p-plan:isSubPlanOfPlan a owl:ObjectProperty .
+# 
+# http://qptdat.plasma-mds.org/ontology/author
+
+:author a owl:ObjectProperty ;
+	rdfs:subPropertyOf dcterms:contributor ;
+	rdfs:domain :Dataset ;
+	rdfs:range :Person ;
+	rdfs:comment "A person, who created the dataset."@en ;
+	rdfs:label "author"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/composedOf
+
+:composedOf a owl:ObjectProperty ;
+	rdfs:subPropertyOf owl:topObjectProperty ;
+	rdfs:domain :Material ;
+	rdfs:range :ChemicalCompound ;
+	rdfs:comment "A chemical compound, that is part of the material."@en ;
+	rdfs:label "composed of"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/configuredBy
+
+:configuredBy a owl:ObjectProperty ;
+	rdfs:subPropertyOf owl:topObjectProperty ;
+	rdfs:domain :Device ;
+	rdfs:range :Configuration ;
+	owl:propertyChainAxiom _:genid2 .
+
+_:genid2 a rdf:List ;
+	rdf:first :configuredBy ;
+	rdf:rest _:genid1 .
+
+_:genid1 a rdf:List ;
+	rdf:first :hasSubConfiguration ;
+	rdf:rest rdf:nil .
+
+:configuredBy owl:propertyChainAxiom _:genid4 .
+
+_:genid4 a rdf:List ;
+	rdf:first :usesDevice ;
+	rdf:rest _:genid3 .
+
+_:genid3 a rdf:List ;
+	rdf:first :configuredBy ;
+	rdf:rest rdf:nil .
+
+:configuredBy rdfs:comment "A configuration of the device."@en ;
+	rdfs:label "configured by"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/contact
+
+:contact a owl:ObjectProperty ;
+	rdfs:subPropertyOf <http://www.w3.org/ns/prov#wasAttributedTo> ;
+	rdfs:domain :Source ;
+	rdfs:range <http://www.w3.org/ns/prov#Agent> ;
+	rdfs:comment "A contact person/organization for the plasma source."@en ;
+	rdfs:label "contact"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/contributor
+
+:contributor a owl:ObjectProperty ;
+	rdfs:subPropertyOf dcterms:contributor ;
+	rdfs:domain :PlasmaStudy ;
+	rdfs:range :Person ;
+	rdfs:comment "A person, who contributed to the plasma study."@en ;
+	rdfs:label "contributor"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/definedBy
+
+:definedBy a owl:ObjectProperty ;
+	rdfs:subPropertyOf owl:topObjectProperty ;
+	rdfs:domain :Material ;
+	rdfs:range :MaterialProperty ;
+	rdfs:comment "A property of the material."@en ;
+	rdfs:label "defined by"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/hasAccessLevel
+
+:hasAccessLevel a owl:ObjectProperty ;
+	rdfs:subPropertyOf owl:topObjectProperty ;
+    rdfs:domain :Dataset ;
+    rdfs:range :AccessLevel ;
+	rdfs:comment "The access level of a dataset."@en ;
+	rdfs:label "has access level"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/hasApplicationField
+
+:hasApplicationField a owl:ObjectProperty ;
+	rdfs:domain :Source ;
+	rdfs:range :ResearchTopic ;
+	owl:propertyChainAxiom _:genid6 .
+
+_:genid6 a rdf:List ;
+	rdf:first :hasApplicationField ;
+	rdf:rest _:genid5 .
+
+_:genid5 a rdf:List ;
+	rdf:first :isSubResearchTopicOf ;
+	rdf:rest rdf:nil .
+
+:hasApplicationField rdfs:comment "A research topic where the plasma source is mostly used. "@en ;
+	rdfs:label "has application field"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/hasExperimentStep
+
+:hasExperimentStep a owl:ObjectProperty ;
+	owl:inverseOf :isExperimentStepOf .
+
+:isExperimentStepOf a owl:ObjectProperty .
+
+:hasExperimentStep rdfs:domain :PlasmaStudy ;
+	rdfs:range :ExperimentStep ;
+	rdfs:comment "A step of the plasma study."@en ;
+	rdfs:label "has experiment step"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/hasInputVar
+
+:hasInputVar a owl:ObjectProperty ;
+	rdfs:subPropertyOf orkg:utilizes , p-plan:hasInputVar ;
+	owl:inverseOf :isInputVarOf ;
+	rdfs:domain :ExperimentStep ;
+	rdfs:range :Variable ;
+	owl:propertyChainAxiom _:genid9 .
+
+_:genid9 a rdf:List ;
+	rdf:first :hasInputVar ;
+	rdf:rest _:genid8 .
+
+_:genid8 a rdf:List ;
+	rdf:first :configuredBy ;
+	rdf:rest _:genid7 .
+
+_:genid7 a rdf:List ;
+	rdf:first :usesMedium ;
+	rdf:rest rdf:nil .
+
+:hasInputVar rdfs:comment "A input variable of the step"@en ;
+	rdfs:label "has input variable"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/hasOutputVar
+
+:hasOutputVar a owl:ObjectProperty ;
+	rdfs:subPropertyOf p-plan:hasOutputVar ;
+	owl:inverseOf :isOutputVarOf ;
+	rdfs:domain :ExperimentStep ;
+	rdfs:range :Variable ;
+	rdfs:comment "A output variable of the step."@en ;
+	rdfs:label "has output variable"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/hasPlasmaStudyTag
+
+:hasPlasmaStudyTag a owl:ObjectProperty ;
+	rdfs:domain :PlasmaStudy ;
+	rdfs:range :PlasmaStudyTag ;
+	owl:propertyChainAxiom _:genid11 .
+
+_:genid11 a rdf:List ;
+	rdf:first :hasPlasmaStudyTag ;
+	rdf:rest _:genid10 .
+
+_:genid10 a rdf:List ;
+	rdf:first :isSubPlasmaStudyTagOf ;
+	rdf:rest rdf:nil .
+
+:hasPlasmaStudyTag rdfs:comment "A closed vocabulary of keywords to mark plasma studies, like basic research, etc. "@en ;
+	rdfs:label "has plasma study tag"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/hasRange
+
+:hasRange a owl:ObjectProperty ;
+	rdfs:domain :NumericalConfiguration ;
+	rdfs:range :Range ;
+	rdfs:comment "A range of values for the numerical configuration."@en ;
+	rdfs:label "has range"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/hasResearchTopic
+
+:hasResearchTopic a owl:ObjectProperty ;
+	rdfs:domain :PlasmaStudy ;
+	rdfs:range :ResearchTopic ;
+	owl:propertyChainAxiom _:genid13 .
+
+_:genid13 a rdf:List ;
+	rdf:first :hasResearchTopic ;
+	rdf:rest _:genid12 .
+
+_:genid12 a rdf:List ;
+	rdf:first :isSubResearchTopicOf ;
+	rdf:rest rdf:nil .
+
+:hasResearchTopic rdfs:comment "A topic related to the plasma study."@en ;
+	rdfs:label "has research topic"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/hasSubConfiguration
+
+:hasSubConfiguration a owl:ObjectProperty ;
+	owl:inverseOf :isSubConfigurationOf ;
+	rdfs:domain :Configuration ;
+	rdfs:range :Configuration ;
+	rdfs:comment "A more specific configuration."@en ;
+	rdfs:label "has subconfiguration"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/hasSubMaterialProperty
+
+:hasSubMaterialProperty a owl:ObjectProperty ;
+	rdfs:subPropertyOf owl:topObjectProperty ;
+	owl:inverseOf :isSubMaterialPropertyOf ;
+	rdfs:domain :MaterialProperty ;
+	rdfs:range :MaterialProperty ;
+	rdfs:comment "A more specific material property."@en ;
+	rdfs:label "has submaterial property"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/identifier
+
+:identifier a owl:ObjectProperty ;
+	rdfs:subPropertyOf owl:topObjectProperty ;
+	rdfs:domain :Dataset ;
+	rdfs:range :Doi ;
+	rdfs:comment "identifies the dataset to an Digital Object Identifier (DOI), and Uniform Resource Name (URN). Persistent identifiers should be provided as HTTP URIs."@en ;
+	rdfs:label "identifier"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/isExperimentStepOf
+
+:isExperimentStepOf rdfs:subPropertyOf p-plan:isStepOfPlan ;
+	rdfs:domain :ExperimentStep ;
+	rdfs:range :PlasmaStudy ;
+	rdfs:comment "A step of the plasma study."@en ;
+	rdfs:label "is experiment step of"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/isInputVarOf
+
+:isInputVarOf a owl:ObjectProperty ;
+	rdfs:subPropertyOf p-plan:isInputVarOf ;
+	rdfs:domain :Variable ;
+	rdfs:range :ExperimentStep ;
+	rdfs:comment "A input variable of the step."@en ;
+	rdfs:label "is input variable of"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/isOutputVarOf
+
+:isOutputVarOf a owl:ObjectProperty ;
+	rdfs:subPropertyOf p-plan:isOutputVarOf ;
+	rdfs:domain :Variable ;
+	rdfs:range :ExperimentStep ;
+	rdfs:comment "A output variable of the step."@en ;
+	rdfs:label "is output variable of"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/isSubConfigurationOf
+
+:isSubConfigurationOf a owl:ObjectProperty ;
+	rdfs:domain :Configuration ;
+	rdfs:range :Configuration ;
+	rdfs:comment "A more specific configuration."@en ;
+	rdfs:label "is sub configuration of"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/isSubExperimentStepOf
+
+:isSubExperimentStepOf a owl:ObjectProperty ;
+	rdfs:subPropertyOf p-plan:isSubPlanOfPlan ;
+	rdfs:domain :ExperimentStep ;
+	rdfs:range :PlasmaStudy ;
+	rdfs:comment "A more detailed step as part of the plasma study."@en ;
+	rdfs:label "is sub experiment step of"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/isSubMaterialPropertyOf
+
+:isSubMaterialPropertyOf a owl:ObjectProperty ;
+	rdfs:subPropertyOf owl:topObjectProperty ;
+	rdfs:domain :MaterialProperty ;
+	rdfs:range :MaterialProperty ;
+	rdfs:comment "A more specific material property than the material property."@en ;
+	rdfs:label "is sub material property of"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/isSubPlasmaStudyTagOf
+
+:isSubPlasmaStudyTagOf a owl:ObjectProperty ;
+	rdfs:domain :PlasmaStudyTag ;
+	rdfs:range :PlasmaStudyTag ;
+	rdfs:comment "A tag that is a subtopic of the plasma study tag."@en ;
+	rdfs:label "is sub plasma study tag of"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/isSubResearchTopicOf
+
+:isSubResearchTopicOf a owl:ObjectProperty ;
+	rdfs:subPropertyOf owl:topObjectProperty ;
+	rdfs:domain :ResearchTopic ;
+	rdfs:range :ResearchTopic ;
+	rdfs:comment "A research topic that is a subtopic of the research topic."@en ;
+	rdfs:label "is sub research topic of"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/isSupplementing
+
+:isSupplementing a owl:ObjectProperty ;
+	rdfs:domain :Dataset ;
+	rdfs:range :Publication ;
+	rdfs:comment "A publication related to the dataset."@en ;
+	rdfs:label "is supplementing"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/license
+
+:license a owl:ObjectProperty ;
+	rdfs:subPropertyOf dcterms:license ;
+	rdfs:domain :Dataset ;
+	rdfs:range :LicenseDocument ;
+	rdfs:comment "A legal document regulating the usage of the dataset."@en ;
+	rdfs:label "license"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/measuredIn
+
+:measuredIn a owl:ObjectProperty ;
+	rdfs:domain :Configuration ;
+	rdfs:range :MeasurementUnit ;
+	rdfs:comment "The measurement unit of the configuration."@en ;
+	rdfs:label "measured in"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/usesDevice
+
+:usesDevice a owl:ObjectProperty ;
+	rdfs:subPropertyOf owl:topObjectProperty ;
+	rdfs:domain :AdjustedDevice ;
+	rdfs:range :Device ;
+	rdfs:comment "The link between a device to another device with already existing settings. This property should enable reusing of devices already connected to specific configurations."@en ;
+	rdfs:label "uses device"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/usesMedium
+
+:usesMedium a owl:ObjectProperty ;
+	rdfs:domain :MediumConfiguration ;
+	rdfs:range :Medium ;
+	rdfs:comment "The link between the medium configuration of a plasma source and a medium."@en ;
+	rdfs:label "uses medium"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/wasDevelopedBy
+
+:wasDevelopedBy a owl:ObjectProperty ;
+	rdfs:subPropertyOf <http://www.w3.org/ns/prov#wasAttributedTo> ;
+	rdfs:domain :Source ;
+	rdfs:range <http://www.w3.org/ns/prov#Agent> ;
+	rdfs:comment "The link of an agent involved in the developement to the plasma source."@en ;
+	rdfs:label "developed by"@en .
+# 
+# http://www.w3.org/ns/prov#wasAttributedTo
+
+<http://www.w3.org/ns/prov#wasAttributedTo> a owl:ObjectProperty .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Data properties
+# #
+# #################################################################
+# 
+# 
+# http://qptdat.plasma-mds.org/ontology/lowerLimit
+
+:lowerLimit a owl:DatatypeProperty ;
+	rdfs:subPropertyOf <http://www.w3.org/ns/prov#value> ;
+	rdfs:domain :Range ;
+	rdfs:range xsd:decimal ;
+	rdfs:comment "The lower limit of the range, including the value. "@en ;
+	rdfs:label "lower limit"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/publicationDate
+
+:publicationDate a owl:DatatypeProperty ;
+	rdfs:domain <http://www.w3.org/ns/dcat#Dataset> ;
+	rdfs:range xsd:date ;
+	rdfs:comment "A date of publication of the dataset."@en ;
+	rdfs:label "publication date"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/studyAbstract
+
+:studyAbstract a owl:DatatypeProperty .
+# 
+# http://qptdat.plasma-mds.org/ontology/studyTitle
+
+:studyTitle a owl:DatatypeProperty .
+# 
+# http://qptdat.plasma-mds.org/ontology/upperLimit
+
+:upperLimit a owl:DatatypeProperty ;
+	rdfs:subPropertyOf <http://www.w3.org/ns/prov#value> ;
+	rdfs:domain :Range ;
+	rdfs:range xsd:decimal ;
+	rdfs:comment "The upper limit of the range, including the value."@en ;
+	rdfs:label "upper limit"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/value
+
+:value a owl:DatatypeProperty ;
+	rdfs:subPropertyOf <http://www.w3.org/ns/prov#value> ;
+	rdfs:domain :NumericalConfiguration ;
+	rdfs:range xsd:decimal ;
+	rdfs:comment "The numerical value of the configuration."@en ;
+	rdfs:label "value"@en .
+# 
+# http://www.w3.org/ns/prov#value
+
+<http://www.w3.org/ns/prov#value> a owl:DatatypeProperty .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Classes
+# #
+# #################################################################
+# 
+# 
+# http://orkg.org/core#ResearchField
+
+orkg:ResearchField a owl:Class .
+# 
+# http://orkg.org/core#ResearchMaterial
+
+orkg:ResearchMaterial a owl:Class .
+# 
+# http://orkg.org/core#ResearchMethod
+
+orkg:ResearchMethod a owl:Class .
+# 
+# http://orkg.org/core#ResearchResult
+
+orkg:ResearchResult a owl:Class .
+# 
+# http://purl.obolibrary.org/obo/BFO_0000015
+
+obo:BFO_0000015 a owl:Class .
+# 
+# http://purl.obolibrary.org/obo/BFO_0000019
+
+obo:BFO_0000019 a owl:Class .
+# 
+# http://purl.obolibrary.org/obo/BFO_0000030
+
+obo:BFO_0000030 a owl:Class .
+# 
+# http://purl.obolibrary.org/obo/BFO_0000031
+
+obo:BFO_0000031 a owl:Class .
+# 
+# http://purl.org/dc/terms/LicenseDocument
+
+dcterms:LicenseDocument a owl:Class .
+# 
+# http://purl.org/net/p-plan#MultiStep
+
+p-plan:MultiStep a owl:Class .
+# 
+# http://purl.org/net/p-plan#Plan
+
+p-plan:Plan a owl:Class .
+# 
+# http://purl.org/net/p-plan#Step
+
+p-plan:Step a owl:Class .
+# 
+# http://purl.org/spar/datacite/Identifier
+
+datacite:Identifier a owl:Class .
+# 
+# http://qptdat.plasma-mds.org/ontology/AC
+
+:AC a owl:Class ;
+	rdfs:subClassOf :VoltageFeed ;
+	rdfs:label "AC"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/AccessLevel
+
+:AccessLevel a owl:Class .
+# 
+# http://qptdat.plasma-mds.org/ontology/AdjustedDevice
+
+:AdjustedDevice a owl:Class ;
+	rdfs:subClassOf :Device ;
+	rdfs:comment "A device which uses another device."@en ;
+	rdfs:label "adjusted device"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/Amplitude
+
+:Amplitude a owl:Class ;
+	rdfs:subClassOf :NumericalConfiguration .
+# 
+# http://qptdat.plasma-mds.org/ontology/Arc
+
+:Arc a owl:Class ;
+	rdfs:subClassOf :Plasma ;
+	rdfs:label "Arc"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/CCP
+
+:CCP a owl:Class ;
+	rdfs:subClassOf :Source ;
+	rdfs:comment "Capacitively coupled plasma system"@en ;
+	rdfs:label "Capacitively coupled plasma system"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/CarrierGas
+
+:CarrierGas a owl:Class ;
+	rdfs:subClassOf :Gas ;
+	rdfs:label "Carrier gas"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/CategoricalConfiguration
+
+:CategoricalConfiguration a owl:Class ;
+	rdfs:subClassOf :Configuration .
+# 
+# http://qptdat.plasma-mds.org/ontology/ChemicalCompound
+
+:ChemicalCompound a owl:Class .
+# 
+# http://qptdat.plasma-mds.org/ontology/Configuration
+
+:Configuration a owl:Class ;
+	rdfs:subClassOf obo:BFO_0000019 , <http://www.w3.org/ns/prov#Entity> ;
+	rdfs:label "Configuration"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/ConfigurationCollection
+
+:ConfigurationCollection a owl:Class ;
+	rdfs:subClassOf :Configuration , <http://www.w3.org/ns/prov#Collection> .
+# 
+# http://qptdat.plasma-mds.org/ontology/DBD
+
+:DBD a owl:Class ;
+	rdfs:subClassOf :Source ;
+	rdfs:comment "Discharge involving at least one insulating dielectric barrier between the electrodes"@en ;
+	rdfs:label "Dielectric Barrier Discharge"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/DC
+
+:DC a owl:Class ;
+	rdfs:subClassOf :VoltageFeed ;
+	rdfs:label "DC"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/Dataset
+
+:Dataset a owl:Class ;
+	rdfs:subClassOf orkg:ResearchResult , obo:BFO_0000031 , <http://www.w3.org/ns/dcat#Dataset> , <http://www.w3.org/ns/prov#Entity> ;
+	rdfs:label "Dataset"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/Device
+
+:Device a owl:Class ;
+	rdfs:subClassOf orkg:ResearchMaterial , obo:BFO_0000030 , :Variable , <http://www.w3.org/ns/prov#Entity> ;
+	rdfs:comment "This class is an"@en ;
+	rdfs:label "Device"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/DiagnosticDevice
+
+:DiagnosticDevice a owl:Class ;
+	rdfs:subClassOf :Device ;
+	rdfs:comment "A diagnostic device is a device that is used in a diagnostic method to produce measurments."@en ;
+	rdfs:label "Diagnostic Device"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/DiagnosticMethod
+
+:DiagnosticMethod a owl:Class ;
+	rdfs:subClassOf obo:BFO_0000015 , p-plan:Step , <http://www.w3.org/ns/prov#Plan> ;
+	rdfs:label "Diagnostic Method"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/Doi
+
+:Doi a owl:Class .
+# 
+# http://qptdat.plasma-mds.org/ontology/DutyCycle
+
+:DutyCycle a owl:Class ;
+	rdfs:subClassOf :NumericalConfiguration .
+# 
+# http://qptdat.plasma-mds.org/ontology/ElectrodeShape
+
+:ElectrodeShape a owl:Class ;
+	rdfs:subClassOf :SourceGeometry ;
+	rdfs:label "Electrode Shape"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/ExperimentMethod
+
+:ExperimentMethod a owl:Class ;
+	rdfs:subClassOf :DiagnosticMethod ;
+	rdfs:label "Experiment Method"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/ExperimentStep
+
+:ExperimentStep a owl:Class ;
+	rdfs:subClassOf obo:BFO_0000015 , p-plan:MultiStep , p-plan:Step , <http://www.w3.org/ns/prov#Plan> ;
+	rdfs:label "Experimental Step" .
+# 
+# http://qptdat.plasma-mds.org/ontology/Frequency
+
+:Frequency a owl:Class ;
+	rdfs:subClassOf :NumericalConfiguration .
+# 
+# http://qptdat.plasma-mds.org/ontology/Gas
+
+:Gas a owl:Class ;
+	rdfs:subClassOf :Matter ;
+	rdfs:label "Gas"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/Helix
+
+:Helix a owl:Class ;
+	rdfs:subClassOf :Source ;
+	rdfs:comment "Helix"@en ;
+	rdfs:label "Helix"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/HighFrequency
+
+:HighFrequency a owl:Class ;
+	owl:equivalentClass _:genid14 .
+
+_:genid14 owl:intersectionOf _:genid22 .
+
+_:genid22 a rdf:List ;
+	rdf:first :Frequency ;
+	rdf:rest _:genid15 .
+
+_:genid15 a rdf:List ;
+	rdf:first _:genid16 .
+
+_:genid16 a owl:Restriction ;
+	owl:onProperty :value ;
+	owl:someValuesFrom _:genid17 .
+
+_:genid17 a rdfs:Datatype ;
+	owl:onDatatype xsd:decimal ;
+	owl:withRestrictions _:genid20 .
+
+_:genid20 a rdf:List ;
+	rdf:first _:genid21 .
+
+_:genid21 xsd:minInclusive "300000.0"^^xsd:decimal .
+
+_:genid20 rdf:rest _:genid18 .
+
+_:genid18 a rdf:List ;
+	rdf:first _:genid19 .
+
+_:genid19 xsd:maxInclusive "3.0E8"^^xsd:decimal .
+
+_:genid18 rdf:rest rdf:nil .
+
+_:genid15 rdf:rest rdf:nil .
+
+_:genid14 a owl:Class .
+
+:HighFrequency rdfs:subClassOf :Frequency .
+# 
+# http://qptdat.plasma-mds.org/ontology/HighPressure
+
+:HighPressure a owl:Class ;
+	rdfs:subClassOf :Pressure .
+# 
+# http://qptdat.plasma-mds.org/ontology/HighTemperature
+
+:HighTemperature a owl:Class ;
+	rdfs:subClassOf :Temperature .
+# 
+# http://qptdat.plasma-mds.org/ontology/InletPressure
+
+:InletPressure a owl:Class ;
+	rdfs:subClassOf :Pressure .
+# 
+# http://qptdat.plasma-mds.org/ontology/LicenseDocument
+
+:LicenseDocument a owl:Class ;
+	rdfs:subClassOf obo:BFO_0000031 , dcterms:LicenseDocument , <http://www.w3.org/ns/prov#Entity> ;
+	rdfs:label "License Document"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/Liquid
+
+:Liquid a owl:Class ;
+	rdfs:subClassOf :Matter ;
+	rdfs:label "Liquid"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/LowFrequency
+
+:LowFrequency a owl:Class ;
+	owl:equivalentClass _:genid23 .
+
+_:genid23 owl:intersectionOf _:genid29 .
+
+_:genid29 a rdf:List ;
+	rdf:first :Frequency ;
+	rdf:rest _:genid24 .
+
+_:genid24 a rdf:List ;
+	rdf:first _:genid25 .
+
+_:genid25 a owl:Restriction ;
+	owl:onProperty :value ;
+	owl:someValuesFrom _:genid26 .
+
+_:genid26 a rdfs:Datatype ;
+	owl:onDatatype xsd:decimal ;
+	owl:withRestrictions _:genid27 .
+
+_:genid27 a rdf:List ;
+	rdf:first _:genid28 .
+
+_:genid28 xsd:maxInclusive "300000.0"^^xsd:decimal .
+
+_:genid27 rdf:rest rdf:nil .
+
+_:genid24 rdf:rest rdf:nil .
+
+_:genid23 a owl:Class .
+
+:LowFrequency rdfs:subClassOf :Frequency .
+# 
+# http://qptdat.plasma-mds.org/ontology/LowPressure
+
+:LowPressure a owl:Class ;
+	rdfs:subClassOf :Pressure .
+# 
+# http://qptdat.plasma-mds.org/ontology/LowTemperature
+
+:LowTemperature a owl:Class ;
+	rdfs:subClassOf :Temperature .
+# 
+# http://qptdat.plasma-mds.org/ontology/Material
+
+:Material a owl:Class ;
+	rdfs:subClassOf :Variable .
+# 
+# http://qptdat.plasma-mds.org/ontology/MaterialProperty
+
+:MaterialProperty a owl:Class .
+# 
+# http://qptdat.plasma-mds.org/ontology/Matter
+
+:Matter a owl:Class ;
+	rdfs:subClassOf orkg:ResearchMaterial , obo:BFO_0000030 ;
+	rdfs:label "Matter"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/MeasurementUnit
+
+:MeasurementUnit a owl:Class .
+# 
+# http://qptdat.plasma-mds.org/ontology/Medium
+
+:Medium a owl:Class ;
+	rdfs:subClassOf orkg:ResearchMaterial , obo:BFO_0000030 , :Material , <http://www.w3.org/ns/prov#Entity> ;
+	rdfs:label "Medium"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/MediumConfiguration
+
+:MediumConfiguration a owl:Class ;
+	rdfs:subClassOf :Configuration ;
+	rdfs:comment "A medium configuration determines which medium is used."@en ;
+	rdfs:label "Medium Configuration"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/MediumPressure
+
+:MediumPressure a owl:Class ;
+	rdfs:subClassOf :Pressure .
+# 
+# http://qptdat.plasma-mds.org/ontology/Microwave
+
+:Microwave a owl:Class ;
+	owl:equivalentClass _:genid30 .
+
+_:genid30 owl:intersectionOf _:genid36 .
+
+_:genid36 a rdf:List ;
+	rdf:first :Frequency ;
+	rdf:rest _:genid31 .
+
+_:genid31 a rdf:List ;
+	rdf:first _:genid32 .
+
+_:genid32 a owl:Restriction ;
+	owl:onProperty :value ;
+	owl:someValuesFrom _:genid33 .
+
+_:genid33 a rdfs:Datatype ;
+	owl:onDatatype xsd:decimal ;
+	owl:withRestrictions _:genid34 .
+
+_:genid34 a rdf:List ;
+	rdf:first _:genid35 .
+
+_:genid35 xsd:minInclusive "300000.0"^^xsd:decimal .
+
+_:genid34 rdf:rest rdf:nil .
+
+_:genid31 rdf:rest rdf:nil .
+
+_:genid30 a owl:Class .
+
+:Microwave rdfs:subClassOf :Frequency ;
+	rdfs:label "Microwave"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/ModellingMethod
+
+:ModellingMethod a owl:Class ;
+	rdfs:subClassOf :DiagnosticMethod ;
+	rdfs:label "Modelling Method"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/ModeratePressure
+
+:ModeratePressure a owl:Class ;
+	rdfs:subClassOf :Pressure .
+# 
+# http://qptdat.plasma-mds.org/ontology/NumericalConfiguration
+
+:NumericalConfiguration a owl:Class ;
+	rdfs:subClassOf :Configuration , _:genid37 .
+
+_:genid37 owl:intersectionOf _:genid53 .
+
+_:genid53 a rdf:List ;
+	rdf:first _:genid54 .
+
+_:genid54 a owl:Class ;
+	owl:unionOf _:genid61 .
+
+_:genid61 a rdf:List ;
+	rdf:first _:genid62 .
+
+_:genid62 owl:intersectionOf _:genid65 .
+
+_:genid65 a rdf:List ;
+	rdf:first _:genid66 .
+
+_:genid66 a owl:Restriction ;
+	owl:onProperty :hasRange ;
+	owl:cardinality "0"^^xsd:nonNegativeInteger .
+
+_:genid65 rdf:rest _:genid63 .
+
+_:genid63 a rdf:List ;
+	rdf:first _:genid64 .
+
+_:genid64 a owl:Restriction ;
+	owl:onProperty :value ;
+	owl:cardinality "1"^^xsd:nonNegativeInteger .
+
+_:genid63 rdf:rest rdf:nil .
+
+_:genid62 a owl:Class .
+
+_:genid61 rdf:rest _:genid55 .
+
+_:genid55 a rdf:List ;
+	rdf:first _:genid56 .
+
+_:genid56 owl:intersectionOf _:genid59 .
+
+_:genid59 a rdf:List ;
+	rdf:first _:genid60 .
+
+_:genid60 a owl:Restriction ;
+	owl:onProperty :hasRange ;
+	owl:cardinality "1"^^xsd:nonNegativeInteger .
+
+_:genid59 rdf:rest _:genid57 .
+
+_:genid57 a rdf:List ;
+	rdf:first _:genid58 .
+
+_:genid58 a owl:Restriction ;
+	owl:onProperty :value ;
+	owl:cardinality "0"^^xsd:nonNegativeInteger .
+
+_:genid57 rdf:rest rdf:nil .
+
+_:genid56 a owl:Class .
+
+_:genid55 rdf:rest rdf:nil .
+
+_:genid53 rdf:rest _:genid38 .
+
+_:genid38 a rdf:List ;
+	rdf:first _:genid39 .
+
+_:genid39 a owl:Class ;
+	owl:complementOf _:genid40 .
+
+_:genid40 owl:intersectionOf _:genid47 .
+
+_:genid47 a rdf:List ;
+	rdf:first _:genid48 .
+
+_:genid48 owl:intersectionOf _:genid51 .
+
+_:genid51 a rdf:List ;
+	rdf:first _:genid52 .
+
+_:genid52 a owl:Restriction ;
+	owl:onProperty :hasRange ;
+	owl:cardinality "0"^^xsd:nonNegativeInteger .
+
+_:genid51 rdf:rest _:genid49 .
+
+_:genid49 a rdf:List ;
+	rdf:first _:genid50 .
+
+_:genid50 a owl:Restriction ;
+	owl:onProperty :value ;
+	owl:cardinality "1"^^xsd:nonNegativeInteger .
+
+_:genid49 rdf:rest rdf:nil .
+
+_:genid48 a owl:Class .
+
+_:genid47 rdf:rest _:genid41 .
+
+_:genid41 a rdf:List ;
+	rdf:first _:genid42 .
+
+_:genid42 owl:intersectionOf _:genid45 .
+
+_:genid45 a rdf:List ;
+	rdf:first _:genid46 .
+
+_:genid46 a owl:Restriction ;
+	owl:onProperty :hasRange ;
+	owl:cardinality "1"^^xsd:nonNegativeInteger .
+
+_:genid45 rdf:rest _:genid43 .
+
+_:genid43 a rdf:List ;
+	rdf:first _:genid44 .
+
+_:genid44 a owl:Restriction ;
+	owl:onProperty :value ;
+	owl:cardinality "0"^^xsd:nonNegativeInteger .
+
+_:genid43 rdf:rest rdf:nil .
+
+_:genid42 a owl:Class .
+
+_:genid41 rdf:rest rdf:nil .
+
+_:genid40 a owl:Class .
+
+_:genid38 rdf:rest rdf:nil .
+
+_:genid37 a owl:Class .
+
+:NumericalConfiguration rdfs:comment "A numerical configuration"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/Offset
+
+:Offset a owl:Class ;
+	rdfs:subClassOf :NumericalConfiguration .
+# 
+# http://qptdat.plasma-mds.org/ontology/ParallelPlate
+
+:ParallelPlate a owl:Class ;
+	rdfs:subClassOf :ElectrodeShape ;
+	rdfs:label "Parallel Plate"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/Person
+
+:Person a owl:Class .
+# 
+# http://qptdat.plasma-mds.org/ontology/PinToPin
+
+:PinToPin a owl:Class ;
+	rdfs:subClassOf :ElectrodeShape ;
+	rdfs:label "Pin to Pin"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/PinToPlate
+
+:PinToPlate a owl:Class ;
+	rdfs:subClassOf :ElectrodeShape ;
+	rdfs:label "Pin to Plate"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/Plasma
+
+:Plasma a owl:Class ;
+	rdfs:subClassOf obo:BFO_0000030 ;
+	rdfs:label "Plasma"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/PlasmaJet
+
+:PlasmaJet a owl:Class ;
+	owl:equivalentClass :PlasmaPen ;
+	rdfs:subClassOf :Source ;
+	rdfs:comment "Capillary plasma source, sometimes in form of a handheld device"@en ;
+	rdfs:label "Plasma Jet"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/PlasmaPen
+
+:PlasmaPen a owl:Class ;
+	rdfs:subClassOf :Source ;
+	rdfs:label "Plasma Pen"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/PlasmaStudy
+
+:PlasmaStudy a owl:Class ;
+	rdfs:subClassOf orkg:ResearchMethod , obo:BFO_0000015 , p-plan:Plan , :ExperimentStep ;
+	rdfs:label "Plasma Study"@en ;
+	<http://www.w3.org/2004/02/skos/core#altLabel> "Plasma Experiment"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/PlasmaStudyTag
+
+:PlasmaStudyTag a owl:Class ;
+	rdfs:comment "A (closed) vocabulary to annotate plasma studies with keywords that might be helpful in retrieving studies, e.g. basic research."@en ;
+	rdfs:label "Plasma Study Tag"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/PlasmaTorch
+
+:PlasmaTorch a owl:Class ;
+	rdfs:subClassOf :Source ;
+	rdfs:label "Plasma Torch"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/Power
+
+:Power a owl:Class ;
+	rdfs:subClassOf :NumericalConfiguration .
+# 
+# http://qptdat.plasma-mds.org/ontology/Pressure
+
+:Pressure a owl:Class ;
+	rdfs:subClassOf :NumericalConfiguration ;
+	rdfs:label "Pressure"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/Publication
+
+:Publication a owl:Class ;
+	rdfs:subClassOf obo:BFO_0000031 , <http://www.w3.org/ns/prov#Entity> .
+# 
+# http://qptdat.plasma-mds.org/ontology/PulseWaveform
+
+:PulseWaveform a owl:Class ;
+	rdfs:subClassOf :Waveform , _:genid67 .
+
+_:genid67 owl:intersectionOf _:genid70 .
+
+_:genid70 a rdf:List ;
+	rdf:first _:genid71 .
+
+_:genid71 a owl:Class ;
+	owl:unionOf _:genid74 .
+
+_:genid74 a rdf:List ;
+	rdf:first _:genid75 .
+
+_:genid75 a owl:Restriction ;
+	owl:onProperty :hasSubConfiguration ;
+	owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onClass :DutyCycle .
+
+_:genid74 rdf:rest _:genid72 .
+
+_:genid72 a rdf:List ;
+	rdf:first _:genid73 .
+
+_:genid73 a owl:Restriction ;
+	owl:onProperty :hasSubConfiguration ;
+	owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onClass :PulseWidth .
+
+_:genid72 rdf:rest rdf:nil .
+
+_:genid70 rdf:rest _:genid68 .
+
+_:genid68 a rdf:List ;
+	rdf:first _:genid69 .
+
+_:genid69 a owl:Restriction ;
+	owl:onProperty :hasSubConfiguration ;
+	owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onClass :RiseTime .
+
+_:genid68 rdf:rest rdf:nil .
+
+_:genid67 a owl:Class .
+# 
+# http://qptdat.plasma-mds.org/ontology/PulseWidth
+
+:PulseWidth a owl:Class ;
+	rdfs:subClassOf :NumericalConfiguration .
+# 
+# http://qptdat.plasma-mds.org/ontology/PulsedAC
+
+:PulsedAC a owl:Class ;
+	rdfs:subClassOf :AC ;
+	rdfs:label "Pulsed AC"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/PulsedDC
+
+:PulsedDC a owl:Class ;
+	rdfs:subClassOf :DC ;
+	rdfs:label "Pulsed DC"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/RadioFrequency
+
+:RadioFrequency a owl:Class ;
+	owl:equivalentClass _:genid76 .
+
+_:genid76 owl:intersectionOf _:genid84 .
+
+_:genid84 a rdf:List ;
+	rdf:first :Frequency ;
+	rdf:rest _:genid77 .
+
+_:genid77 a rdf:List ;
+	rdf:first _:genid78 .
+
+_:genid78 a owl:Restriction ;
+	owl:onProperty :value ;
+	owl:someValuesFrom _:genid79 .
+
+_:genid79 a rdfs:Datatype ;
+	owl:onDatatype xsd:decimal ;
+	owl:withRestrictions _:genid82 .
+
+_:genid82 a rdf:List ;
+	rdf:first _:genid83 .
+
+_:genid83 xsd:minInclusive "1000000.0"^^xsd:decimal .
+
+_:genid82 rdf:rest _:genid80 .
+
+_:genid80 a rdf:List ;
+	rdf:first _:genid81 .
+
+_:genid81 xsd:maxInclusive "1.0E8"^^xsd:decimal .
+
+_:genid80 rdf:rest rdf:nil .
+
+_:genid77 rdf:rest rdf:nil .
+
+_:genid76 a owl:Class .
+
+:RadioFrequency rdfs:subClassOf :Frequency .
+# 
+# http://qptdat.plasma-mds.org/ontology/RampWaveform
+
+:RampWaveform a owl:Class ;
+	rdfs:subClassOf :Waveform , _:genid85 .
+
+_:genid85 a owl:Restriction ;
+	owl:onProperty :hasSubConfiguration ;
+	owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onClass :Symmetry .
+# 
+# http://qptdat.plasma-mds.org/ontology/Range
+
+:Range a owl:Class ;
+	rdfs:subClassOf obo:BFO_0000019 , <http://www.w3.org/ns/prov#Entity> ;
+	rdfs:comment "closed interval"@en ;
+	rdfs:label "Range"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/ReactorVolume
+
+:ReactorVolume a owl:Class ;
+	rdfs:subClassOf :Configuration ;
+	rdfs:label "Reactor Volume"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/ResearchTopic
+
+:ResearchTopic a owl:Class ;
+	rdfs:subClassOf obo:BFO_0000019 , <http://www.w3.org/ns/prov#Entity> ;
+	rdfs:label "research topic"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/Resource
+
+:Resource a owl:Class ;
+	rdfs:subClassOf obo:BFO_0000031 , <http://www.w3.org/ns/prov#Entity> ;
+	rdfs:label "Resource"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/RiseTime
+
+:RiseTime a owl:Class ;
+	rdfs:subClassOf :NumericalConfiguration .
+# 
+# http://qptdat.plasma-mds.org/ontology/ScanningDriftTubeApparatus
+
+:ScanningDriftTubeApparatus a owl:Class ;
+	rdfs:subClassOf :Source ;
+	rdfs:label "Scanning Drift Tube Apparatus"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/ShieldingGas
+
+:ShieldingGas a owl:Class ;
+	rdfs:subClassOf :Gas ;
+	rdfs:label "Shielding Gas"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/SimulationMethod
+
+:SimulationMethod a owl:Class ;
+	rdfs:subClassOf :DiagnosticMethod ;
+	rdfs:label "Simulation Method"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/SineWaveform
+
+:SineWaveform a owl:Class ;
+	rdfs:subClassOf :Waveform .
+# 
+# http://qptdat.plasma-mds.org/ontology/Size
+
+:Size a owl:Class ;
+	rdfs:subClassOf obo:BFO_0000019 , :MaterialProperty , <http://www.w3.org/ns/prov#Entity> ;
+	rdfs:label "Size"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/Source
+
+:Source a owl:Class ;
+	rdfs:subClassOf :Device ;
+	rdfs:comment "A plasma source generates a plasma."@en ;
+	rdfs:label "Source"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/SourceGeometry
+
+:SourceGeometry a owl:Class ;
+	rdfs:subClassOf :Configuration ;
+	rdfs:label "Source Geometry"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/SquareWaveform
+
+:SquareWaveform a owl:Class ;
+	rdfs:subClassOf :Waveform , _:genid86 .
+
+_:genid86 owl:intersectionOf _:genid89 .
+
+_:genid89 a rdf:List ;
+	rdf:first _:genid90 .
+
+_:genid90 a owl:Restriction ;
+	owl:onProperty :hasSubConfiguration ;
+	owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onClass :DutyCycle .
+
+_:genid89 rdf:rest _:genid87 .
+
+_:genid87 a rdf:List ;
+	rdf:first _:genid88 .
+
+_:genid88 a owl:Restriction ;
+	owl:onProperty :hasSubConfiguration ;
+	owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onClass :PulseWidth .
+
+_:genid87 rdf:rest rdf:nil .
+
+_:genid86 a owl:Class .
+# 
+# http://qptdat.plasma-mds.org/ontology/StateOfMatter
+
+:StateOfMatter a owl:Class ;
+	rdfs:subClassOf obo:BFO_0000019 , :MaterialProperty , <http://www.w3.org/ns/prov#Entity> ;
+	rdfs:label "State of Matter"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/Surface
+
+:Surface a owl:Class ;
+	rdfs:subClassOf obo:BFO_0000019 , :MaterialProperty , <http://www.w3.org/ns/prov#Entity> ;
+	rdfs:label "Surface"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/Symmetry
+
+:Symmetry a owl:Class ;
+	rdfs:subClassOf :NumericalConfiguration .
+# 
+# http://qptdat.plasma-mds.org/ontology/Target
+
+:Target a owl:Class ;
+	rdfs:subClassOf orkg:ResearchMaterial , obo:BFO_0000030 , :Material , <http://www.w3.org/ns/prov#Entity> ;
+	rdfs:comment "A target is the entity on which a plasma acts on."@en ;
+	rdfs:label "Target"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/Temperature
+
+:Temperature a owl:Class ;
+	rdfs:subClassOf :NumericalConfiguration ;
+	rdfs:label "Temperature"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/Time
+
+:Time a owl:Class ;
+	rdfs:subClassOf :NumericalConfiguration .
+# 
+# http://qptdat.plasma-mds.org/ontology/Vacuum
+
+:Vacuum a owl:Class ;
+	rdfs:subClassOf :Pressure .
+# 
+# http://qptdat.plasma-mds.org/ontology/Variable
+
+:Variable a owl:Class .
+# 
+# http://qptdat.plasma-mds.org/ontology/VoltageFeed
+
+:VoltageFeed a owl:Class ;
+	rdfs:subClassOf :Configuration .
+# 
+# http://qptdat.plasma-mds.org/ontology/Waveform
+
+:Waveform a owl:Class ;
+	rdfs:subClassOf :ConfigurationCollection , _:genid91 .
+
+_:genid91 owl:intersectionOf _:genid96 .
+
+_:genid96 a rdf:List ;
+	rdf:first _:genid97 .
+
+_:genid97 a owl:Restriction ;
+	owl:onProperty :hasSubConfiguration ;
+	owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onClass :Amplitude .
+
+_:genid96 rdf:rest _:genid94 .
+
+_:genid94 a rdf:List ;
+	rdf:first _:genid95 .
+
+_:genid95 a owl:Restriction ;
+	owl:onProperty :hasSubConfiguration ;
+	owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onClass :Frequency .
+
+_:genid94 rdf:rest _:genid92 .
+
+_:genid92 a rdf:List ;
+	rdf:first _:genid93 .
+
+_:genid93 a owl:Restriction ;
+	owl:onProperty :hasSubConfiguration ;
+	owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+	owl:onClass :Offset .
+
+_:genid92 rdf:rest rdf:nil .
+
+_:genid91 a owl:Class .
+
+:Waveform rdfs:comment "A waveform is a collection of configurations to describe a waveform. As such it has an amplitude, frequency and offset."@en ;
+	rdfs:label "Waveform"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/Wavelength
+
+:Wavelength a owl:Class ;
+	rdfs:subClassOf :NumericalConfiguration .
+# 
+# http://www.w3.org/ns/dcat#Dataset
+
+<http://www.w3.org/ns/dcat#Dataset> a owl:Class .
+# 
+# http://www.w3.org/ns/prov#Agent
+
+<http://www.w3.org/ns/prov#Agent> a owl:Class .
+# 
+# http://www.w3.org/ns/prov#Collection
+
+<http://www.w3.org/ns/prov#Collection> a owl:Class .
+# 
+# http://www.w3.org/ns/prov#Entity
+
+<http://www.w3.org/ns/prov#Entity> a owl:Class .
+# 
+# http://www.w3.org/ns/prov#Plan
+
+<http://www.w3.org/ns/prov#Plan> a owl:Class .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Individuals
+# #
+# #################################################################
+# 
+# 
+# http://qptdat.plasma-mds.org/ontology/airFilteringResearchTopic
+
+:airFilteringResearchTopic a owl:NamedIndividual , :ResearchTopic ;
+	rdfs:label "air filtering"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/atomicLayerDepositionResearchTopic
+
+:atomicLayerDepositionResearchTopic a owl:NamedIndividual , :ResearchTopic ;
+	rdfs:label "atomic layer deposition"@en ;
+	<http://www.w3.org/2004/02/skos/core#altLabel> "ALD"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/basicResearchPlasmaStudyTag
+
+:basicResearchPlasmaStudyTag a owl:NamedIndividual , :PlasmaStudyTag ;
+	rdfs:label "Basic Research"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/benchmarkDataPlasmaStudyTag
+
+:benchmarkDataPlasmaStudyTag a owl:NamedIndividual , :PlasmaStudyTag ;
+	rdfs:label "Benchmark Data"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/bioactiveSurfacesResearchTopic
+
+:bioactiveSurfacesResearchTopic a owl:NamedIndividual , :ResearchTopic ;
+	:isSubResearchTopicOf :surfaceTreatmentResearchTopic ;
+	rdfs:label "bioactive surfaces"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/biologicalDecontaminationResearchTopic
+
+:biologicalDecontaminationResearchTopic a owl:NamedIndividual , :ResearchTopic ;
+	:isSubResearchTopicOf :decontaminationResearchTopic ;
+	rdfs:label "biological decontamination"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/decontaminationResearchTopic
+
+:decontaminationResearchTopic a owl:NamedIndividual , :ResearchTopic ;
+	rdfs:label "Decontamination"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/fineCleaningResearchTopic
+
+:fineCleaningResearchTopic a owl:NamedIndividual , :ResearchTopic ;
+	rdfs:label "fine cleaning"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/fluxCoredWeldingResearchTopic
+
+:fluxCoredWeldingResearchTopic a owl:NamedIndividual , :ResearchTopic ;
+	:isSubResearchTopicOf :weldingResearchTopic ;
+	rdfs:label "flux cored welding"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/gasMetalArcWeldingResearchTopic
+
+:gasMetalArcWeldingResearchTopic a owl:NamedIndividual , :ResearchTopic ;
+	:isSubResearchTopicOf :weldingResearchTopic ;
+	rdfs:label "gas metal arc welding"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/liquidTreatmentResearchTopic
+
+:liquidTreatmentResearchTopic a owl:NamedIndividual , :ResearchTopic ;
+	rdfs:label "liquid treatment"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/magWeldingResearchTopic
+
+:magWeldingResearchTopic a owl:NamedIndividual , :ResearchTopic ;
+	:isSubResearchTopicOf :weldingResearchTopic ;
+	rdfs:label "MAG welding"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/materialsResearchTopic
+
+:materialsResearchTopic a owl:NamedIndividual , :ResearchTopic ;
+	rdfs:label "materials / surfaces"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/migWeldingResearchTopic
+
+:migWeldingResearchTopic a owl:NamedIndividual , :ResearchTopic ;
+	:isSubResearchTopicOf :weldingResearchTopic ;
+	rdfs:label "MIG welding"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/modelValidationPlasmaStudyTag
+
+:modelValidationPlasmaStudyTag a owl:NamedIndividual , :PlasmaStudyTag ;
+	:isSubPlasmaStudyTagOf :plasmaModellingPlasmaStudyTag ;
+	rdfs:label "Model Validation"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/plasmaChemicalProcessesResearchTopic
+
+:plasmaChemicalProcessesResearchTopic a owl:NamedIndividual , :ResearchTopic ;
+	rdfs:label "plasma chemical processes"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/plasmaEnhancedChemicalVaporDepositionResearchTopic
+
+:plasmaEnhancedChemicalVaporDepositionResearchTopic a owl:NamedIndividual , :ResearchTopic ;
+	rdfs:label "plasma enhanced chemical vapor deposition"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/plasmaMedicineResearchTopic
+
+:plasmaMedicineResearchTopic a owl:NamedIndividual , :ResearchTopic ;
+	rdfs:label "plasma medicine"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/plasmaModellingPlasmaStudyTag
+
+:plasmaModellingPlasmaStudyTag a owl:NamedIndividual , :PlasmaStudyTag ;
+	rdfs:label "Plasma Modelling/Simulation"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/publicAccessLevel
+
+:publicAccessLevel a owl:NamedIndividual , :AccessLevel ;
+	rdfs:comment "The dataset is publicialy avalible."@en ;
+	rdfs:label "Public"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/pulsedMagWeldingResearchTopic
+
+:pulsedMagWeldingResearchTopic a owl:NamedIndividual , :ResearchTopic ;
+	:isSubResearchTopicOf :magWeldingResearchTopic ;
+	rdfs:label "pulsed MAG welding"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/pulsedMigWeldingResearchTopic
+
+:pulsedMigWeldingResearchTopic a owl:NamedIndividual , :ResearchTopic ;
+	:isSubResearchTopicOf :migWeldingResearchTopic ;
+	rdfs:label "pulsed MIG welding"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/reactiveIonEtchingResearchTopic
+
+:reactiveIonEtchingResearchTopic a owl:NamedIndividual , :ResearchTopic ;
+	rdfs:label "reactive ion etching"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/reactiveSpeciesGenerationResearchTopic
+
+:reactiveSpeciesGenerationResearchTopic a owl:NamedIndividual , :ResearchTopic ;
+	rdfs:label "reactive species generation"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/selfControllingMechanismPlasmaStudyTag
+
+:selfControllingMechanismPlasmaStudyTag a owl:NamedIndividual , :PlasmaStudyTag ;
+	rdfs:label "self-controlling mechanism"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/selfOrganizationPlasmaStudyTag
+
+:selfOrganizationPlasmaStudyTag a owl:NamedIndividual , :PlasmaStudyTag ;
+	rdfs:label "Self-organization"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/surfaceTreatmentResearchTopic
+
+:surfaceTreatmentResearchTopic a owl:NamedIndividual , :ResearchTopic ;
+	:isSubResearchTopicOf :materialsResearchTopic ;
+	rdfs:label "surface treatment"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/unifiedDescriptionPlasmaStudyTag
+
+:unifiedDescriptionPlasmaStudyTag a owl:NamedIndividual , :PlasmaStudyTag ;
+	rdfs:label "Unified Description"@en .
+# 
+# http://qptdat.plasma-mds.org/ontology/weldingResearchTopic
+
+:weldingResearchTopic a owl:NamedIndividual , :ResearchTopic ;
+	rdfs:label "welding / switching"@en .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Annotations
+# #
+# #################################################################
+# 
+# 
 
 :studyAbstract rdfs:comment "A summary of the plasma study."@en ;
-               rdfs:label "Study Abstract"@en .
-
+	rdfs:label "Study Abstract"@en .
+# 
 
 :studyTitle rdfs:label "Study Title"@en ;
-            rdfs:comment "A name given to the plasma study."@en .
-
-
-###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
+	rdfs:comment "A name given to the plasma study."@en .
+# 
+# Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
